@@ -3,6 +3,9 @@ best_lstm_model.h5
 best_rnn_model.h5
 best_vgg16_model.h5
 
+# mysql-data : docker files
+mysql-data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

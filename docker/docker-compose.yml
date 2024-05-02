@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: users_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Rakuten
+      MYSQL_DATABASE: rakuten_db
+#      MYSQL_USER: Olivier
+#      MYSQL_PASSWORD: Olivier
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql-data:/var/lib/mysql
+
+
+  adminer:
+    image: adminer
+    container_name: admin_db
+    restart: always
+    ports:
+      - "8080:8080"

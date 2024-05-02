@@ -1,3 +1,8 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List
+import uvicorn
+
 from features.build_features import TextPreprocessor
 from features.build_features import ImagePreprocessor
 import tensorflow as tf
@@ -12,7 +17,11 @@ import argparse
 from keras import backend as K
 from tools import f1_m, load_model
 import time
-    
+
+
+# Instanciate your FastAPI app
+app = FastAPI()
+
 class Predict:
     def __init__(
         self,
@@ -71,13 +80,20 @@ class Predict:
             for i in range(len(final_predictions))
         }
 
+    
 
+# Création de l'application FastAPI
+app = FastAPI()
 
-def main():
+# Endpoint pour l'initialisation
+@app.get("/initialisation")
+def initialisation():
+    global predictor
+    
     parser = argparse.ArgumentParser(description= "Input data")
     
-    parser.add_argument("--dataset_path", default = "data/preprocessed/X_train_update.csv", type=str,help="File path for the input CSV file.")
-    parser.add_argument("--images_path", default = "data/preprocessed/image_train", type=str,  help="Base path for the images.")
+    parser.add_argument("--dataset_path", default = "data/predict/X_train.csv", type=str,help="File path for the input CSV file.")
+    parser.add_argument("--images_path", default = "data/predict/image_train", type=str,  help="Base path for the images.")
     args = parser.parse_args()
 
     # Charger les configurations et modèles
@@ -105,15 +121,25 @@ def main():
         imagepath = args.images_path,
     )
 
+    return {"message": "Initialisation effectuée avec succès"}
+
+# Endpoint pour la prédiction
+@app.get("/prediction")
+def prediction():
+    global predictor
+    
     # Création de l'instance Predict et exécution de la prédiction
     t_debut = time.time()
     predictions = predictor.predict()
     
     # Sauvegarde des prédictions
-    with open("data/preprocessed/predictions.json", "w", encoding="utf-8") as json_file:
+    with open("data/predict/predictions.json", "w", encoding="utf-8") as json_file:
         json.dump(predictions, json_file, indent=2)
     t_fin = time.time()
     print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
+    
+    return {"message": "Prédiction effectuée avec succès", "duration": t_fin - t_debut}
 
+# Run the app using uvicorn
 if __name__ == "__main__":
-    main()
+    uvicorn.run(app, host="127.0.0.1", port=8000) #, reload=True)

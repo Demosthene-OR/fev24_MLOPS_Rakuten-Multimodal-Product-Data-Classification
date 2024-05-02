@@ -6,11 +6,13 @@ import pickle
 import tensorflow as tf
 import sys
 import json
+import time
 from tools import f1_m, load_model
 
+t_debut = time.time()
 data_importer = DataImporter()
 df = data_importer.load_data()
-samples_per_class = 600
+samples_per_class = 200
 X_train, X_val, _, y_train, y_val, _ = data_importer.split_train_test(df, samples_per_class=samples_per_class) 
 
 # Preprocess text and images
@@ -68,3 +70,5 @@ concatenate_model = keras.models.Model(
 
 # Enregistrer le modèle au format h5
 concatenate_model.save("models/concatenate.h5")
+t_fin = time.time()
+print("Durée de l'entrainement' : {:.2f}".format(t_fin - t_debut))

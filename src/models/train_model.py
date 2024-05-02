@@ -25,7 +25,7 @@ import sys
 import glob
 
 file_path = "models"
-n_epochs = 1
+n_epochs = 5
 random_state = 42
 
 class TextRnnModel:
