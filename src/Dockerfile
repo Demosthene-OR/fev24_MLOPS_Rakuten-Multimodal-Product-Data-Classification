@@ -1,10 +1,11 @@
 FROM python:3.10.14-slim
 
+# Installation de curl
+# RUN apt-get update && apt-get install -y curl
+
 WORKDIR /app
 
 COPY . .
-
-# COPY ./requirements.txt /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
