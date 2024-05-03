@@ -23,3 +23,15 @@ services:
     restart: always
     ports:
       - "8080:8080"
+
+  api:
+    build: 
+      context: ../src
+      dockerfile: Dockerfile
+    container_name: api
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../models:/app/models
+      - ../data:/app/data
