@@ -11,39 +11,65 @@ from datetime import datetime, timedelta
 app = FastAPI()
 
 # Configuration de la base de données MySQL
-MYSQL_HOST = "mysql"
+MYSQL_HOST = "localhost"
 MYSQL_USER = "root"
 MYSQL_PASSWORD = "Rakuten"
-MYSQL_DB = "rakeuten_db"
+MYSQL_DB = "rakuten_db"
 
 # Configuration pour le JWT
 SECRET_KEY = "secret"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRATION = 30
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+users_db = {
+
+    "Olivier": {
+        "username": "Olivier",
+        "name": "Daniel Datascientest",
+        "email": "daniel@datascientest.com",
+        "password": pwd_context.hash('Olivier'),
+        "resource" : "Module DE",
+    },
+
+    "johndatascientest" : {
+        "username" :  "johndatascientest",
+        "name" : "John Datascientest",
+        "email" : "john@datascientest.com",
+        "password" : pwd_context.hash('secret'),
+        'resource' : 'Module DS',
+    }
+}
+
 # Fonction pour interroger la base de données et récupérer les informations d'identification de l'utilisateur
 def get_user(username: str):
+    # return users_db.get(username)
     try:
+        print("username : ",username)
         connection = mysql.connector.connect(
             host=MYSQL_HOST,
             user=MYSQL_USER,
+            port="3306", 
             password=MYSQL_PASSWORD,
             database=MYSQL_DB
         )
+        print("username : ",username)
         if connection.is_connected():
             cursor = connection.cursor(dictionary=True)
-            query = f"SELECT * FROM users WHERE username = '{username}'"
+            query = f"SELECT * FROM Users WHERE username = '{username}'"
             cursor.execute(query)
-            user = cursor.fetchone()
-            return user
+            user_connected = cursor.fetchone()
+            print("userconnected : ",user_connected)
+            return user_connected
     except Error as e:
         print(f"Error while querying MySQL: {e}")
     finally:
         cursor.close()
         connection.close()
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
 
 class Token(BaseModel):
     access_token: str
@@ -51,6 +77,7 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: Optional[str] = None
+
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
@@ -65,7 +92,7 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def get_current_user(token: str = Depends(oauth2_scheme)):
+def get_current_user(token: str = Depends(oauth2_scheme), form_data: OAuth2PasswordRequestForm = Depends()):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -77,12 +104,20 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)
-    except JWTError:
+    except jwt.JWTError as e:
         raise credentials_exception
-    user = users_db.get(username, None)
+
+    user = get_user(username)
     if user is None:
         raise credentials_exception
+
+    # Vérification du mot de passe
+    # password = user.get("password")
+    # if not verify_password(form_data.password, password):
+    #     raise HTTPException(status_code=400, detail="Incorrect username or password")
+
     return user
+
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
@@ -99,9 +134,9 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     Raises:
     - HTTPException(400, detail="Incorrect username or password"): Si l'authentification échoue en raison d'un nom d'utilisateur ou d'un mot de passe incorrect, une exception HTTP 400 Bad Request est levée.
     """
-
-    user = get_user(form_data.username)
-    if not user or not verify_password(form_data.password, user.get("password")):
+    user = get_user(form_data.username) 
+    hashed_password = user["password"]
+    if not user or not verify_password(form_data.password, hashed_password):
         raise HTTPException(status_code=400, detail="Incorrect username or password")
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRATION)
@@ -128,7 +163,8 @@ def read_public_data():
     return {"message": "Hello World!"}
 
 @app.get("/secured")
-def read_private_data(current_user: str = Depends(get_current_user)):
+def read_private_data(token: str = Depends(oauth2_scheme)):
+# def read_private_data(current_user: str = Depends(get_current_user)):
     """
     Description:
     Cette route renvoie un message "Hello World, but secured!" uniquement si l'utilisateur est authentifié.
@@ -145,8 +181,13 @@ def read_private_data(current_user: str = Depends(get_current_user)):
 
     return {"message": "Hello World, but secured!"}
 
+'''
 @app.on_event("startup")
 async def startup_event():
+    global connection
+    
+    # Définir les options de connexion TCP
+    client_flags = [mysql.connector.ClientFlag.PROTOCOL_41] #, mysql.connector.ClientFlag.SSL]
     # Connexion à la base de données au démarrage de l'application
     try:
         connection = mysql.connector.connect(
@@ -164,9 +205,19 @@ async def startup_event():
 
 @app.on_event("shutdown")
 async def shutdown_event():
+    global connection
+    
     # Fermeture de la connexion à la base de données à l'arrêt de l'application
     try:
         connection.close()
         print("Connection to MySQL Server closed")
     except Error as e:
         print(f"Error while closing connection to MySQL: {e}")
+'''
+@app.get("/prediction")
+def prediction(token: str = Depends(oauth2_scheme)):
+    global predictor
+    
+    # Appel au service d'authentification pour vérifier le token
+    auth_response = requests.get("http://localhost:8000/secured", headers={"Authorization": f"Bearer {token}"})
+    return {"message": auth_response.status_code}
