@@ -153,7 +153,9 @@ async def startup_event():
             host=MYSQL_HOST,
             user=MYSQL_USER,
             password=MYSQL_PASSWORD,
-            database=MYSQL_DB
+            port="3306", 
+            database=MYSQL_DB,
+            client_flags=client_flags, 
         )
         if connection.is_connected():
             print("Connected to MySQL Server")

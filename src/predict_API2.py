@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
 from typing import List
-import uvicorn
 
 from features.build_features import TextPreprocessor
 from features.build_features import ImagePreprocessor
@@ -17,10 +17,12 @@ import argparse
 from keras import backend as K
 from tools import f1_m, load_model
 import time
+import requests
 
 
 # Instanciate your FastAPI app
 app = FastAPI()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 class Predict:
     def __init__(
@@ -115,21 +117,26 @@ def initialisation():
 
 # Endpoint pour la prédiction
 @app.get("/prediction")
-def prediction():
+def prediction(token: str = Depends(oauth2_scheme)):
     global predictor
     
-    # Création de l'instance Predict et exécution de la prédiction
-    t_debut = time.time()
-    predictions = predictor.predict()
+    # Appel au service d'authentification pour vérifier le token
+    auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
     
-    # Sauvegarde des prédictions
-    with open("data/predict/predictions.json", "w", encoding="utf-8") as json_file:
-        json.dump(predictions, json_file, indent=2)
-    t_fin = time.time()
-    print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
-    
-    return {"message": "Prédiction effectuée avec succès", "duration": t_fin - t_debut}
+    if auth_response.status_code == 200:
+        # Si l'authentification est réussie, exécuter la prédiction
+        t_debut = time.time()
+        predictions = predictor.predict()
+        t_fin = time.time()
+        
+        # Sauvegarde des prédictions
+        with open("data/predict/predictions.json", "w", encoding="utf-8") as json_file:
+            json.dump(predictions, json_file, indent=2)
+            
+        print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
+        
+        prediction_response = {"message": "Prédiction effectuée avec succès", "duration": t_fin - t_debut}
+        return prediction_response
+    else:
+        raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
 
-# Run the app using uvicorn
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="127.0.0.1", port=8000) #, reload=True)
