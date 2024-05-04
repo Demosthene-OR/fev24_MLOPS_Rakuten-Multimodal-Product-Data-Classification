@@ -101,3 +101,7 @@ uvicorn==0.20.0
 chardet==5.2.0
 filesplit==4.0.1
 pydot==2.0.0
+passlib==1.7.4
+pyjwt==2.4.0
+python-multipart==0.0.9
+mysql-connector-python==8.3.0
