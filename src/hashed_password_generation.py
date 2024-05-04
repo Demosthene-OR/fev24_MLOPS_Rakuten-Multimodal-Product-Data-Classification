@@ -1,7 +1,7 @@
 from passlib.hash import bcrypt
 
 # Mot de passe à stocker dans la base de données
-password = "Olivier"
+password = "John"
 
 # Hash du mot de passe avec bcrypt
 hashed_password = bcrypt.hash(password)
