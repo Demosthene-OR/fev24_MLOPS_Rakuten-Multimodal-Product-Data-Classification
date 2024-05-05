@@ -12,6 +12,14 @@ import requests
 
 app = FastAPI()
 
+class UserDetail(BaseModel):
+    FirstName: str
+    LastName: str
+    Email: str
+    Authorization: str
+    username: str
+
+
 # Configuration de la base de données MySQL
 MYSQL_HOST = "users_db"
 MYSQL_USER = "root"
@@ -151,7 +159,7 @@ def read_private_data(current_user: dict = Depends(get_current_user)):
     - HTTPException(401, detail="Unauthorized"): Si l'utilisateur n'est pas authentifié, une exception HTTP 401 Unauthorized est levée.
     """
 
-    return {"message": "Hello World, but secured!"}
+    return {**current_user}
 
 '''
 @app.on_event("startup")

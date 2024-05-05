@@ -10,7 +10,8 @@ Project Organization
     ├── README.md          <- The top-level README for developers using this project.
     ├── data
     │   ├── external       <- Data from third party sources -> the external data you want to make a prediction on
-    │   ├── preprocessed      <- The final, canonical data sets for modeling.
+    │   ├── predict        <- Data (input and output) to make a prediction on
+    │   ├── preprocessed   <- The final, canonical data sets for modeling.
     |   |  ├── image_train <- Where you put the images of the train set
     |   |  ├── image_test <- Where you put the images of the predict set
     |   |  ├── X_train_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
@@ -18,6 +19,8 @@ Project Organization
     │   └── raw            <- The original, immutable data dump.
     |   |  ├── image_train <- Where you put the images of the train set
     |   |  ├── image_test <- Where you put the images of the predict set
+    ├── docker             <- Files to launch Docker-compose and run a MySQL database with users, authorisation process & the predict function
+    │   └── mysql-data     <- Rakuten_db in MySQL with users and their rights
     │
     ├── logs               <- Logs from training and predicting
     │
@@ -34,6 +37,7 @@ Project Organization
     │   ├── __init__.py    <- Makes src a Python module
     │   ├── main.py        <- Scripts to train models 
     │   ├── predict.py     <- Scripts to use trained models to make prediction on the files put in ../data/preprocessed
+    │   ├── fastapi_oauth  <- Source code for Open Authorization API. It will check if User is recorded in Rakuten_db and the rights he is granted
     │   │
     │   ├── data           <- Scripts to download or generate data
     │   │   ├── check_structure.py    
@@ -77,6 +81,22 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
     Exemple : python src/predict_1.py --dataset_path "data/preprocessed/X_test_update.csv" --images_path "data/preprocessed/image_test"
                                         
                                          The predictions are saved in data/preprocessed as 'predictions.json'
+
+> `cd docker`                            <- To do in Git bash  
+> `./setup.sh`                           <- It will run the process to build and launch the containers with all the API
+
+    Then in your browser you can launch the database admin:
+    http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users
+    password = Rakuten
+
+    You can then run..
+    1 - Token generation (to login) :
+        curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=John' --data-urlencode 'password=John'
+    2 - Predict 
+        The input data are located in data/predict . 
+        The predictions are saved in data/predict as 'predictions.json'
+        curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Previously obtained access token"'
+        
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 python make_dataset.py "../../data/raw" "../../data/preprocessed"

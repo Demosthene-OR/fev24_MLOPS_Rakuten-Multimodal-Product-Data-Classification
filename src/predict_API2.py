@@ -124,8 +124,9 @@ def prediction(token: str = Depends(oauth2_scheme)):
     # Appel au service d'authentification pour vérifier le token
     auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
     
-    if True: #auth_response.status_code == 200:
+    if auth_response.status_code == 200:
         # Si l'authentification est réussie, exécuter la prédiction
+        user_data = auth_response.json()
         t_debut = time.time()
         predictions = predictor.predict()
         t_fin = time.time()
@@ -136,7 +137,7 @@ def prediction(token: str = Depends(oauth2_scheme)):
             
         print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
         
-        prediction_response = {"message": "Prédiction effectuée avec succès", "duration": t_fin - t_debut}
+        prediction_response = {"message": f"Prédiction effectuée avec succès, demandée par {user_data['FirstName']} {user_data['LastName']}","duration": t_fin - t_debut}
         return prediction_response
     else:
         raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
