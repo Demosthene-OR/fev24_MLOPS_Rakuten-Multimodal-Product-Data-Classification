@@ -91,7 +91,8 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 
     You can then run..
     1 - Token generation (to login) :
-        curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=John' --data-urlencode 'password=John'
+        curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \ 
+        --data-urlencode 'username=John' --data-urlencode 'password=John'
     2 - Predict 
         The input data are located in data/predict . 
         The predictions are saved in data/predict as 'predictions.json'
