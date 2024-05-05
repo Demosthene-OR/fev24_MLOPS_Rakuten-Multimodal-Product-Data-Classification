@@ -10,6 +10,7 @@ sleep 30
 # Lancement de l'initialisation avec curl
 echo "Lancement de l'initialisation..."
 curl http://localhost:8000/initialisation
+echo "Fin de l'initialisation..."
 
 # Récupération des logs
 docker-compose logs > log_docker_compose.txt

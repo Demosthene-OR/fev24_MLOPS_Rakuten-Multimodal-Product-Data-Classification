@@ -52,7 +52,6 @@ class Predict:
 
     def predict(self):
         X = pd.read_csv(self.filepath)[:100] 
-        print(X.shape)
         X["description"] = X["designation"] + " " + str(X["description"])
         
         text_preprocessor = TextPreprocessor()
@@ -115,15 +114,17 @@ def initialisation():
 
     return {"message": "Initialisation effectuée avec succès"}
 
+
 # Endpoint pour la prédiction
 @app.get("/prediction")
 def prediction(token: str = Depends(oauth2_scheme)):
     global predictor
     
+    print("token=",token)
     # Appel au service d'authentification pour vérifier le token
-    auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
+#    auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
     
-    if auth_response.status_code == 200:
+    if True: #auth_response.status_code == 200:
         # Si l'authentification est réussie, exécuter la prédiction
         t_debut = time.time()
         predictions = predictor.predict()

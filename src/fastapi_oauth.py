@@ -6,7 +6,9 @@ from pydantic import BaseModel
 from passlib.context import CryptContext
 from typing import Optional
 import jwt
-from datetime import datetime, timedelta
+from jwt import PyJWTError
+from datetime import datetime, timedelta, timezone
+import requests
 
 app = FastAPI()
 
@@ -19,35 +21,15 @@ MYSQL_DB = "rakuten_db"
 # Configuration pour le JWT
 SECRET_KEY = "secret"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRATION = 30
+ACCESS_TOKEN_EXPIRATION = 45
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-users_db = {
-
-    "Olivier": {
-        "username": "Olivier",
-        "name": "Daniel Datascientest",
-        "email": "daniel@datascientest.com",
-        "password": pwd_context.hash('Olivier'),
-        "resource" : "Module DE",
-    },
-
-    "johndatascientest" : {
-        "username" :  "johndatascientest",
-        "name" : "John Datascientest",
-        "email" : "john@datascientest.com",
-        "password" : pwd_context.hash('secret'),
-        'resource' : 'Module DS',
-    }
-}
 
 # Fonction pour interroger la base de données et récupérer les informations d'identification de l'utilisateur
 def get_user(username: str):
     # return users_db.get(username)
     try:
-        print("username : ",username)
         connection = mysql.connector.connect(
             host=MYSQL_HOST,
             user=MYSQL_USER,
@@ -55,7 +37,6 @@ def get_user(username: str):
             password=MYSQL_PASSWORD,
             database=MYSQL_DB
         )
-        print("username : ",username)
         if connection.is_connected():
             cursor = connection.cursor(dictionary=True)
             query = f"SELECT * FROM Users WHERE username = '{username}'"
@@ -85,39 +66,31 @@ def verify_password(plain_password, hashed_password):
 def create_access_token(data: dict, expires_delta: timedelta = None):
     to_encode = data.copy()
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
+        expire = datetime.now(timezone.utc) + timedelta(minutes=15)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def get_current_user(token: str = Depends(oauth2_scheme), form_data: OAuth2PasswordRequestForm = Depends()):
+def get_current_user(token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(jwt=token, key=SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)
-    except jwt.JWTError as e:
+    except PyJWTError as e:
         raise credentials_exception
-
     user = get_user(username)
     if user is None:
         raise credentials_exception
-
-    # Vérification du mot de passe
-    # password = user.get("password")
-    # if not verify_password(form_data.password, password):
-    #     raise HTTPException(status_code=400, detail="Incorrect username or password")
-
     return user
-
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
@@ -163,8 +136,7 @@ def read_public_data():
     return {"message": "Hello World!"}
 
 @app.get("/secured")
-def read_private_data(token: str = Depends(oauth2_scheme)):
-# def read_private_data(current_user: str = Depends(get_current_user)):
+def read_private_data(current_user: dict = Depends(get_current_user)):
     """
     Description:
     Cette route renvoie un message "Hello World, but secured!" uniquement si l'utilisateur est authentifié.
@@ -214,10 +186,3 @@ async def shutdown_event():
     except Error as e:
         print(f"Error while closing connection to MySQL: {e}")
 '''
-@app.get("/prediction")
-def prediction(token: str = Depends(oauth2_scheme)):
-    global predictor
-    
-    # Appel au service d'authentification pour vérifier le token
-    auth_response = requests.get("http://localhost:8000/secured", headers={"Authorization": f"Bearer {token}"})
-    return {"message": auth_response.status_code}
