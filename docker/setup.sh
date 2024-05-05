@@ -5,7 +5,7 @@ docker-compose up -d
 
 # Attente pour que les services soient prêts
 echo "Attente pour que les services soient prêts..."
-sleep 30
+sleep 15
 
 # Lancement de l'initialisation avec curl
 echo "Lancement de l'initialisation..."

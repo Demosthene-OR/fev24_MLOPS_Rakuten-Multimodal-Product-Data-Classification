@@ -24,14 +24,23 @@ services:
     ports:
       - "8080:8080"
 
-  api:
+  api_predict:
     build: 
       context: ../src
-      dockerfile: Dockerfile
-    container_name: api
+      dockerfile: Dockerfile.predict
+    container_name: api_predict
     restart: always
     ports:
       - "8000:8000"
     volumes:
       - ../models:/app/models
       - ../data:/app/data
+
+  api_oauth:
+    build: 
+      context: ../src/fastapi_oauth
+      dockerfile: Dockerfile.oauth
+    container_name: api_oauth
+    restart: always
+    ports:
+      - "8001:8001"

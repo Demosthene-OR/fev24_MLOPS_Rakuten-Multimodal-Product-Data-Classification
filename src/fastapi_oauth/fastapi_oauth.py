@@ -13,7 +13,7 @@ import requests
 app = FastAPI()
 
 # Configuration de la base de données MySQL
-MYSQL_HOST = "localhost"
+MYSQL_HOST = "users_db"
 MYSQL_USER = "root"
 MYSQL_PASSWORD = "Rakuten"
 MYSQL_DB = "rakuten_db"
@@ -156,33 +156,8 @@ def read_private_data(current_user: dict = Depends(get_current_user)):
 '''
 @app.on_event("startup")
 async def startup_event():
-    global connection
-    
-    # Définir les options de connexion TCP
-    client_flags = [mysql.connector.ClientFlag.PROTOCOL_41] #, mysql.connector.ClientFlag.SSL]
-    # Connexion à la base de données au démarrage de l'application
-    try:
-        connection = mysql.connector.connect(
-            host=MYSQL_HOST,
-            user=MYSQL_USER,
-            password=MYSQL_PASSWORD,
-            port="3306", 
-            database=MYSQL_DB,
-            client_flags=client_flags, 
-        )
-        if connection.is_connected():
-            print("Connected to MySQL Server")
-    except Error as e:
-        print(f"Error while connecting to MySQL: {e}")
 
 @app.on_event("shutdown")
 async def shutdown_event():
-    global connection
-    
-    # Fermeture de la connexion à la base de données à l'arrêt de l'application
-    try:
-        connection.close()
-        print("Connection to MySQL Server closed")
-    except Error as e:
-        print(f"Error while closing connection to MySQL: {e}")
+
 '''

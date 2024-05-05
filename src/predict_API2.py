@@ -122,7 +122,7 @@ def prediction(token: str = Depends(oauth2_scheme)):
     
     print("token=",token)
     # Appel au service d'authentification pour vérifier le token
-#    auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
+    auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
     
     if True: #auth_response.status_code == 200:
         # Si l'authentification est réussie, exécuter la prédiction
