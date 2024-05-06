@@ -1,28 +1,33 @@
 from fastapi import FastAPI, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
-from typing import List
-
+from typing import List, Optional
+import pandas as pd
+import requests
 from features.build_features import TextPreprocessor
 from features.build_features import ImagePreprocessor
-import tensorflow as tf
 from tensorflow.keras.applications.vgg16 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+import tensorflow as tf
 import numpy as np
 import json
 from tensorflow import keras
-import pandas as pd
-import argparse
 from keras import backend as K
 from tools import f1_m, load_model
 import time
-import requests
 
+MAX_ROW = 15000
 
 # Instanciate your FastAPI app
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+class PredictionInput(BaseModel):
+    dataset_path: Optional[str] = "data/predict/X_test_update.csv"
+    images_path: Optional[str] = "data/predict/image_test"
+    prediction_path: Optional[str] = "data/predict/predictions.csv"
+    api_secured: Optional[bool] = False
 
 class Predict:
     def __init__(
@@ -51,7 +56,7 @@ class Predict:
         return img_array
 
     def predict(self):
-        X = pd.read_csv(self.filepath)[:100] 
+        X = pd.read_csv(self.filepath)[:MAX_ROW] 
         X["description"] = X["designation"] + " " + str(X["description"])
         
         text_preprocessor = TextPreprocessor()
@@ -76,16 +81,31 @@ class Predict:
         )
         final_predictions = np.argmax(concatenate_proba, axis=1)
 
-        return {
-            i: self.mapper[str(final_predictions[i])]
-            for i in range(len(final_predictions))
-        }
+        # Récupérer les noms des catégories à partir du mapper
+        categories = list(self.mapper.values())
 
+        # Créer un DataFrame pour stocker les résultats de la prédiction
+        results_df = pd.DataFrame(columns=['cat_pred'] + categories)
+
+        for i in range(len(final_predictions)):
+            # Récupérer la catégorie prédite
+            cat_pred = self.mapper[str(final_predictions[i])]
+
+            # Récupérer les probabilités pour chaque catégorie
+            proba_values = concatenate_proba[i]
+
+            # Créer une ligne pour cette prédiction
+            prediction_row = [cat_pred] + list(proba_values)
+
+            # Ajouter la ligne au DataFrame
+            results_df.loc[i] = prediction_row
+
+        return results_df
 
 # Endpoint pour l'initialisation
 @app.get("/initialisation")
 def initialisation():
-    global predictor
+    global predictor, tokenizer, rnn, vgg16, best_weights, mapper
     
     # Charger les configurations et modèles
     with open("models/tokenizer_config.json", "r", encoding="utf-8") as json_file:
@@ -101,52 +121,55 @@ def initialisation():
     with open("models/mapper.json", "r") as json_file:
         mapper = json.load(json_file)
         
-    
     predictor = Predict(
         tokenizer=tokenizer,
         rnn=rnn,
         vgg16=vgg16,
         best_weights=best_weights,
         mapper=mapper,
-        filepath= "data/predict/X_train.csv", # args.dataset_path,
-        imagepath = "data/predict/image_train", # args.images_path,
+        filepath="",
+        imagepath=""
     )
 
     return {"message": "Initialisation effectuée avec succès"}
 
-
 # Endpoint pour la prédiction
-@app.get("/prediction")
-def prediction(token: str = Depends(oauth2_scheme)):
-    global predictor
+@app.post("/prediction")
+def prediction(input_data: PredictionInput, token: str = Depends(oauth2_scheme)):
+    global predictor, tokenizer, rnn, vgg16, best_weights, mapper
     
     print("token=",token)
-    # Appel au service d'authentification pour vérifier le token
-    auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
-    
-    if auth_response.status_code == 200:
-        # Si l'authentification est réussie, exécuter la prédiction
-        user_data = auth_response.json()
-        t_debut = time.time()
-        predictor = Predict(
-            tokenizer=tokenizer,
-            rnn=rnn,
-            vgg16=vgg16,
-            best_weights=best_weights,
-            mapper=mapper,
-            filepath= "data/predict/X_train.csv", # args.dataset_path,
-            imagepath = "data/predict/image_train", # args.images_path,
-            )
-        predictions = predictor.predict()
-        t_fin = time.time()
-        
-        # Sauvegarde des prédictions
-        with open("data/predict/predictions.json", "w", encoding="utf-8") as json_file:
-            json.dump(predictions, json_file, indent=2)
-            
-        print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
-        
-        prediction_response = {"message": f"Prédiction effectuée avec succès, demandée par {user_data['FirstName']} {user_data['LastName']}","duration": t_fin - t_debut}
-        return prediction_response
+    # Si api_secured est True, vérifiez les crédentiels
+    if input_data.api_secured:
+        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        if auth_response.status_code != 200:
+            raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
+        else:
+            user_data = auth_response.json()
+            user_info = user_data['FirstName']+" "+user_data['LastName']
     else:
-        raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
+            user_info = "un utilisateur inconnu"
+
+    # Exécutez la prédiction
+    t_debut = time.time()
+    predictor = Predict(
+        tokenizer=predictor.tokenizer,
+        rnn=predictor.rnn,
+        vgg16=predictor.vgg16,
+        best_weights=predictor.best_weights,
+        mapper=predictor.mapper,
+        filepath=input_data.dataset_path,
+        imagepath=input_data.images_path
+    )
+    predictions = predictor.predict()
+    t_fin = time.time()
+    
+    # Sauvegarde des prédictions
+    #with open(input_data.prediction_path, "w", encoding="utf-8") as json_file:
+    #    json.dump(predictions, json_file, indent=2)
+    predictions.to_csv(input_data.prediction_path, index=False)
+        
+    print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
+    
+    prediction_response = {"message": f"Prédiction effectuée avec succès, demandée par {user_info}","duration": t_fin - t_debut}
+    return prediction_response

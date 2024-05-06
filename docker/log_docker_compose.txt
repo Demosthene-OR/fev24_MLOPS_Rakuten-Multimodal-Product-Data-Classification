@@ -1,87 +1,767 @@
-[2Kapi_predict  | 2024-05-05 21:41:53.220797: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_predict  | 2024-05-05 21:41:53.222928: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-05 21:41:53.254585: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-05 21:41:53.255157: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_oauth  | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kadmin_db   | [Mon May  6 21:14:12 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Traceback (most recent call last):
+[2Kapi_oauth  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth  |     sys.exit(main())
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth  |     return self.main(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth  |     rv = self.invoke(ctx)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth  |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth  |     return __callback(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth  |     run(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth  |     server.run()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth  |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth  |     return loop.run_until_complete(main)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth  |     return future.result()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth  |     config.load()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth  |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth  |     module = importlib.import_module(module_str)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth  |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth  |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth  |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth  |     self.add_api_route(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth  |     route = route_class(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth  |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth  |     check_file_field(final_field)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth  |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth  | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Traceback (most recent call last):
+[2Kapi_oauth  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth  |     sys.exit(main())
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth  |     return self.main(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth  |     rv = self.invoke(ctx)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth  |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth  |     return __callback(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth  |     run(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth  |     server.run()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth  |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth  |     return loop.run_until_complete(main)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth  |     return future.result()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth  |     config.load()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth  |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth  |     module = importlib.import_module(module_str)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth  |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth  |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth  |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth  |     self.add_api_route(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth  |     route = route_class(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth  |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth  |     check_file_field(final_field)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth  |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth  | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Traceback (most recent call last):
+[2Kapi_oauth  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth  |     sys.exit(main())
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth  |     return self.main(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth  |     rv = self.invoke(ctx)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth  |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth  |     return __callback(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth  |     run(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth  |     server.run()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth  |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth  |     return loop.run_until_complete(main)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth  |     return future.result()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth  |     config.load()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth  |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth  |     module = importlib.import_module(module_str)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth  |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth  |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth  |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth  |     self.add_api_route(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth  |     route = route_class(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth  |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth  |     check_file_field(final_field)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth  |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth  | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Traceback (most recent call last):
+[2Kapi_oauth  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth  |     sys.exit(main())
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth  |     return self.main(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth  |     rv = self.invoke(ctx)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth  |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth  |     return __callback(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth  |     run(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth  |     server.run()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth  |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth  |     return loop.run_until_complete(main)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth  |     return future.result()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth  |     config.load()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth  |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth  |     module = importlib.import_module(module_str)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth  |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth  |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth  |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth  |     self.add_api_route(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth  |     route = route_class(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth  |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth  |     check_file_field(final_field)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth  |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth  | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Traceback (most recent call last):
+[2Kapi_oauth  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth  |     sys.exit(main())
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth  |     return self.main(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth  |     rv = self.invoke(ctx)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth  |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth  |     return __callback(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth  |     run(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth  |     server.run()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth  |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth  |     return loop.run_until_complete(main)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth  |     return future.result()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth  |     config.load()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth  |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth  |     module = importlib.import_module(module_str)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth  |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth  |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth  |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth  |     self.add_api_route(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth  |     route = route_class(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth  |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth  |     check_file_field(final_field)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth  |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth  | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth  | You can install "python-multipart" with: 
+[2Kapi_oauth  | 
+[2Kapi_oauth  | pip install python-multipart
+[2Kapi_oauth  | 
+[2Kapi_oauth  | Traceback (most recent call last):
+[2Kapi_oauth  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth  |     sys.exit(main())
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth  |     return self.main(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth  |     rv = self.invoke(ctx)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth  |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth  |     return __callback(*args, **kwargs)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth  |     run(
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth  |     server.run()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth  |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth  |     return loop.run_until_complete(main)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth  |     return future.result()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth  |     config.load()
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth  |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth  |     module = importlib.import_module(module_str)
+[2Kapi_oauth  |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth  |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth  |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_predict  | 2024-05-06 21:14:13.434121: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_predict  | 2024-05-06 21:14:13.436027: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_predict  | 2024-05-06 21:14:13.509024: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_predict  | 2024-05-06 21:14:13.512407: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
 [2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_predict  | 2024-05-05 21:41:54.152746: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_predict  | 2024-05-06 21:14:14.524079: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
 [2Kapi_predict  | INFO:     Started server process [1]
 [2Kapi_predict  | INFO:     Waiting for application startup.
 [2Kapi_predict  | INFO:     Application startup complete.
-[2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2Kapi_predict  | INFO:     172.19.0.1:50584 - "GET /initialisation HTTP/1.1" 200 OK
-[2Kadmin_db     | [Sun May  5 21:41:51 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
-[2Kadmin_db     | [Sun May  5 21:42:29 2024] [::ffff:172.19.0.1]:60370 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60370 [200]: GET /
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60370 Closing
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60382 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60382 [200]: GET /?file=default.css&version=4.8.1
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60382 Closing
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60386 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60386 [200]: GET /?file=functions.js&version=4.8.1
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60386 Closing
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60402 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60402 [200]: GET /?file=favicon.ico&version=4.8.1
-[2Kadmin_db     | [Sun May  5 21:42:30 2024] [::ffff:172.19.0.1]:60402 Closing
-[2Kadmin_db     | [Sun May  5 21:42:45 2024] [::ffff:172.19.0.1]:45756 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:45 2024] [::ffff:172.19.0.1]:45756 [302]: POST /
-[2Kadmin_db     | [Sun May  5 21:42:45 2024] [::ffff:172.19.0.1]:45756 Closing
-[2Kadmin_db     | [Sun May  5 21:42:45 2024] [::ffff:172.19.0.1]:45758 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:49 2024] [::ffff:172.19.0.1]:45758 [403]: GET /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:42:49 2024] [::ffff:172.19.0.1]:45758 Closing
-[2Kadmin_db     | [Sun May  5 21:42:49 2024] [::ffff:172.19.0.1]:45762 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:55 2024] [::ffff:172.19.0.1]:45762 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Sun May  5 21:42:55 2024] [::ffff:172.19.0.1]:45762 Closing
-[2Kadmin_db     | [Sun May  5 21:42:57 2024] [::ffff:172.19.0.1]:41664 Accepted
-[2Kadmin_db     | [Sun May  5 21:42:57 2024] [::ffff:172.19.0.1]:41664 [302]: POST /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:42:57 2024] [::ffff:172.19.0.1]:41664 Closing
-[2Kadmin_db     | [Sun May  5 21:42:57 2024] [::ffff:172.19.0.1]:41680 Accepted
-[2Kadmin_db     | [Sun May  5 21:43:00 2024] [::ffff:172.19.0.1]:41680 [403]: GET /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:43:00 2024] [::ffff:172.19.0.1]:41680 Closing
-[2Kadmin_db     | [Sun May  5 21:43:01 2024] [::ffff:172.19.0.1]:41684 Accepted
-[2Kadmin_db     | [Sun May  5 21:43:06 2024] [::ffff:172.19.0.1]:41684 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Sun May  5 21:43:06 2024] [::ffff:172.19.0.1]:41684 Closing
-[2Kadmin_db     | [Sun May  5 21:44:09 2024] [::ffff:172.19.0.1]:59510 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:09 2024] [::ffff:172.19.0.1]:59510 [302]: POST /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:44:09 2024] [::ffff:172.19.0.1]:59510 Closing
-[2Kadmin_db     | [Sun May  5 21:44:09 2024] [::ffff:172.19.0.1]:59520 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:12 2024] [::ffff:172.19.0.1]:59520 [403]: GET /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:44:12 2024] [::ffff:172.19.0.1]:59520 Closing
-[2Kadmin_db     | [Sun May  5 21:44:13 2024] [::ffff:172.19.0.1]:59534 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:18 2024] [::ffff:172.19.0.1]:59534 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Sun May  5 21:44:18 2024] [::ffff:172.19.0.1]:59534 Closing
-[2Kadmin_db     | [Sun May  5 21:44:27 2024] [::ffff:172.19.0.1]:40446 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:27 2024] [::ffff:172.19.0.1]:40446 [302]: POST /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:44:27 2024] [::ffff:172.19.0.1]:40446 Closing
-[2Kadmin_db     | [Sun May  5 21:44:27 2024] [::ffff:172.19.0.1]:40462 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:30 2024] [::ffff:172.19.0.1]:40462 [403]: GET /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:44:30 2024] [::ffff:172.19.0.1]:40462 Closing
-[2Kadmin_db     | [Sun May  5 21:44:30 2024] [::ffff:172.19.0.1]:40478 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:36 2024] [::ffff:172.19.0.1]:40478 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Sun May  5 21:44:36 2024] [::ffff:172.19.0.1]:40478 Closing
-[2Kadmin_db     | [Sun May  5 21:44:40 2024] [::ffff:172.19.0.1]:36584 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:40 2024] [::ffff:172.19.0.1]:36584 [302]: POST /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:44:40 2024] [::ffff:172.19.0.1]:36584 Closing
-[2Kadmin_db     | [Sun May  5 21:44:40 2024] [::ffff:172.19.0.1]:36592 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:44 2024] [::ffff:172.19.0.1]:36592 [403]: GET /?server=db&username=root&db=rakuten_db
-[2Kadmin_db     | [Sun May  5 21:44:44 2024] [::ffff:172.19.0.1]:36592 Closing
-[2Kadmin_db     | [Sun May  5 21:44:44 2024] [::ffff:172.19.0.1]:36524 Accepted
-[2Kadmin_db     | [Sun May  5 21:44:49 2024] [::ffff:172.19.0.1]:36524 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Sun May  5 21:44:49 2024] [::ffff:172.19.0.1]:36524 Closing
-[2Kapi_oauth    | INFO:     Started server process [1]
-[2Kapi_oauth    | INFO:     Waiting for application startup.
-[2Kapi_oauth    | INFO:     Application startup complete.
-[2Kapi_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
-[2Kusers_db     | 2024-05-05 21:41:51+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
-[2Kusers_db     | 2024-05-05 21:41:52+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2Kusers_db     | 2024-05-05 21:41:52+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2K[2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+[2Kapi_predict  | INFO:     172.23.0.1:59944 - "GET /initialisation HTTP/1.1" 200 OK
+api_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Traceback (most recent call last):
+[2Kapi_oauth    |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth    |     sys.exit(main())
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth    |     return self.main(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth    |     rv = self.invoke(ctx)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth    |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth    |     return __callback(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth    |     run(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth    |     server.run()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth    |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth    |     return loop.run_until_complete(main)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth    |     return future.result()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth    |     config.load()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth    |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth    |     module = importlib.import_module(module_str)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth    |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Traceback (most recent call last):
+[2Kapi_oauth    |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth    |     sys.exit(main())
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth    |     return self.main(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth    |     rv = self.invoke(ctx)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth    |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth    |     return __callback(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth    |     run(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth    |     server.run()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth    |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth    |     return loop.run_until_complete(main)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth    |     return future.result()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth    |     config.load()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth    |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth    |     module = importlib.import_module(module_str)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth    |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kusers_db     | 2024-05-06 21:14:12+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kusers_db     | 2024-05-06 21:14:13+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+[2Kusers_db     | 2024-05-06 21:14:13+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kapi_oauth    | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
 [2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kusers_db     | 2024-05-05T21:41:52.452843Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2Kusers_db     | 2024-05-05T21:41:52.682755Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kusers_db     | 2024-05-05T21:41:52.687451Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-[2Kusers_db     | 2024-05-05T21:41:52.709806Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kusers_db     | 2024-05-05T21:41:53.723083Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-[2Kusers_db     | 2024-05-05T21:41:54.291020Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kusers_db     | 2024-05-05T21:41:54.291888Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-[2Kusers_db     | 2024-05-05T21:41:54.319159Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-[2Kusers_db     | 2024-05-05T21:41:54.412209Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db     | 2024-05-05T21:41:54.669131Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+[2Kapi_oauth    | pip install python-multipart
+[2Kusers_db     | 2024-05-06T21:14:13.285784Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kapi_oauth    | 
+[2Kusers_db     | 2024-05-06T21:14:13.547179Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kusers_db     | 2024-05-06T21:14:13.553326Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kusers_db     | 2024-05-06T21:14:13.582728Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+[2Kusers_db     | 2024-05-06T21:14:14.848827Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kapi_oauth    | Traceback (most recent call last):
+[2Kusers_db     | 2024-05-06T21:14:15.555388Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2Kapi_oauth    |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth    |     sys.exit(main())
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth    |     return self.main(*args, **kwargs)
+[2Kusers_db     | 2024-05-06T21:14:15.555685Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kusers_db     | 2024-05-06T21:14:15.581599Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kusers_db     | 2024-05-06T21:14:15.635608Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kapi_oauth    |     rv = self.invoke(ctx)
+[2Kusers_db     | 2024-05-06T21:14:15.950253Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth    |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth    |     return __callback(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth    |     run(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth    |     server.run()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth    |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth    |     return loop.run_until_complete(main)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth    |     return future.result()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth    |     config.load()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth    |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth    |     module = importlib.import_module(module_str)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth    |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Traceback (most recent call last):
+[2Kapi_oauth    |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth    |     sys.exit(main())
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth    |     return self.main(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth    |     rv = self.invoke(ctx)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth    |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth    |     return __callback(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth    |     run(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth    |     server.run()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth    |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth    |     return loop.run_until_complete(main)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth    |     return future.result()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth    |     config.load()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth    |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth    |     module = importlib.import_module(module_str)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth    |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Traceback (most recent call last):
+[2Kapi_oauth    |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth    |     sys.exit(main())
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth    |     return self.main(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth    |     rv = self.invoke(ctx)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth    |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth    |     return __callback(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth    |     run(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth    |     server.run()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth    |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth    |     return loop.run_until_complete(main)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth    |     return future.result()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth    |     config.load()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth    |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth    |     module = importlib.import_module(module_str)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth    |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Traceback (most recent call last):
+[2Kapi_oauth    |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth    |     sys.exit(main())
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth    |     return self.main(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth    |     rv = self.invoke(ctx)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth    |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth    |     return __callback(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth    |     run(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth    |     server.run()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth    |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth    |     return loop.run_until_complete(main)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth    |     return future.result()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth    |     config.load()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth    |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth    |     module = importlib.import_module(module_str)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth    |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
+[2Kapi_oauth    | Traceback (most recent call last):
+[2Kapi_oauth    |   File "/usr/local/bin/uvicorn", line 8, in <module>
+[2Kapi_oauth    |     sys.exit(main())
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+[2Kapi_oauth    |     return self.main(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1078, in main
+[2Kapi_oauth    |     rv = self.invoke(ctx)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+[2Kapi_oauth    |     return ctx.invoke(self.callback, **ctx.params)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+[2Kapi_oauth    |     return __callback(*args, **kwargs)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 404, in main
+[2Kapi_oauth    |     run(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/main.py", line 569, in run
+[2Kapi_oauth    |     server.run()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 60, in run
+[2Kapi_oauth    |     return asyncio.run(self.serve(sockets=sockets))
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
+[2Kapi_oauth    |     return loop.run_until_complete(main)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+[2Kapi_oauth    |     return future.result()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/server.py", line 67, in serve
+[2Kapi_oauth    |     config.load()
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/config.py", line 477, in load
+[2Kapi_oauth    |     self.loaded_app = import_from_string(self.app)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2Kapi_oauth    |     module = importlib.import_module(module_str)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+[2Kapi_oauth    |     return _bootstrap._gcd_import(name[level:], package, level)
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+[2Kapi_oauth    |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+[2Kapi_oauth    |   File "/app/./fastapi_oauth.py", line 104, in <module>
+[2Kapi_oauth    |     async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 704, in decorator
+[2Kapi_oauth    |     self.add_api_route(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 643, in add_api_route
+[2Kapi_oauth    |     route = route_class(
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 495, in __init__
+[2Kapi_oauth    |     self.body_field = get_body_field(dependant=self.dependant, name=self.unique_id)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 801, in get_body_field
+[2Kapi_oauth    |     check_file_field(final_field)
+[2Kapi_oauth    |   File "/usr/local/lib/python3.10/site-packages/fastapi/dependencies/utils.py", line 100, in check_file_field
+[2Kapi_oauth    |     raise RuntimeError(multipart_not_installed_error) from None
+[2Kapi_oauth    | RuntimeError: Form data requires "python-multipart" to be installed. 
+[2Kapi_oauth    | You can install "python-multipart" with: 
+[2Kapi_oauth    | 
+[2Kapi_oauth    | pip install python-multipart
+[2Kapi_oauth    | 
