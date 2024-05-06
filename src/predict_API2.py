@@ -128,6 +128,15 @@ def prediction(token: str = Depends(oauth2_scheme)):
         # Si l'authentification est réussie, exécuter la prédiction
         user_data = auth_response.json()
         t_debut = time.time()
+        predictor = Predict(
+            tokenizer=tokenizer,
+            rnn=rnn,
+            vgg16=vgg16,
+            best_weights=best_weights,
+            mapper=mapper,
+            filepath= "data/predict/X_train.csv", # args.dataset_path,
+            imagepath = "data/predict/image_train", # args.images_path,
+            )
         predictions = predictor.predict()
         t_fin = time.time()
         
@@ -141,4 +150,3 @@ def prediction(token: str = Depends(oauth2_scheme)):
         return prediction_response
     else:
         raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
-

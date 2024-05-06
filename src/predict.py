@@ -64,6 +64,7 @@ class Predict:
         concatenate_proba = (
             self.best_weights[0] * rnn_proba + self.best_weights[1] * vgg16_proba
         )
+        # print(concatenate_proba)
         final_predictions = np.argmax(concatenate_proba, axis=1)
 
         return {
