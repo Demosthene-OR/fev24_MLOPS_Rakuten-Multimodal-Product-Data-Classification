@@ -76,6 +76,9 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 
 > `python src/main.py`                   <- It will train the models on the dataset and save them in models. By default, the number of epochs = 1
 
+> `tensorboard --logdir=logs/`           <- It will launch tensorborad and you will be able to visualize and track various aspects of the machine learning model during training and evaluation.
+                                            In order to see them, you have to go on you browser and run "http://localhost:6006"
+
 > `python src/predict.py`                <- It will use the trained models to make a prediction (of the prdtypecode) on the desired data, by default, it will predict on the train. You can pass the path to data and images as arguments if you want to change it
 >
     Exemple : python src/predict_1.py --dataset_path "data/preprocessed/X_test_update.csv" --images_path "data/preprocessed/image_test"
