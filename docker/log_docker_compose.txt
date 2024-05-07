@@ -1,72 +1,74 @@
+[2Kadmin_db   | [Tue May  7 12:53:42 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kadmin_db   | [Tue May  7 12:53:43 2024] [::ffff:172.25.0.1]:45548 Accepted
 [2Kapi_oauth  | INFO:     Started server process [1]
+[2Kadmin_db   | [Tue May  7 12:53:45 2024] [::ffff:172.25.0.1]:45548 [403]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
+[2Kadmin_db   | [Tue May  7 12:53:45 2024] [::ffff:172.25.0.1]:45548 Closing
+[2Kusers_db   | 2024-05-07 12:53:43+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kadmin_db   | [Tue May  7 12:53:45 2024] [::ffff:172.25.0.1]:45560 Accepted
+[2Kusers_db   | 2024-05-07 12:53:43+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
 [2Kapi_oauth  | INFO:     Waiting for application startup.
-[2Kapi_oauth  | INFO:     Application startup complete.
-[2Kapi_oauth  | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
-[2Kadmin_db   | [Tue May  7 12:13:11 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
-[2Kadmin_db   | [Tue May  7 12:13:17 2024] [::ffff:172.22.0.1]:38444 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:19 2024] [::ffff:172.22.0.1]:38444 [403]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:13:19 2024] [::ffff:172.22.0.1]:38444 Closing
-[2Kadmin_db   | [Tue May  7 12:13:19 2024] [::ffff:172.22.0.1]:38448 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:20 2024] [::ffff:172.22.0.1]:38448 [302]: POST /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:13:20 2024] [::ffff:172.22.0.1]:38448 Closing
-[2Kadmin_db   | [Tue May  7 12:13:20 2024] [::ffff:172.22.0.1]:38458 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:20 2024] [::ffff:172.22.0.1]:38458 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:13:20 2024] [::ffff:172.22.0.1]:38458 Closing
-[2Kadmin_db   | [Tue May  7 12:13:20 2024] [::ffff:172.22.0.1]:38464 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:23 2024] [::ffff:172.22.0.1]:38464 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:13:23 2024] [::ffff:172.22.0.1]:38464 Closing
-[2Kadmin_db   | [Tue May  7 12:13:23 2024] [::ffff:172.22.0.1]:38470 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:23 2024] [::ffff:172.22.0.1]:38472 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:25 2024] [::ffff:172.22.0.1]:38472 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:13:25 2024] [::ffff:172.22.0.1]:38472 Closing
-[2Kadmin_db   | [Tue May  7 12:13:29 2024] [::ffff:172.22.0.1]:38470 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db   | [Tue May  7 12:13:29 2024] [::ffff:172.22.0.1]:38470 Closing
-[2Kadmin_db   | [Tue May  7 12:13:29 2024] [::ffff:172.22.0.1]:53572 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:29 2024] [::ffff:172.22.0.1]:53572 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:13:29 2024] [::ffff:172.22.0.1]:53572 Closing
-[2Kadmin_db   | [Tue May  7 12:13:29 2024] [::ffff:172.22.0.1]:53586 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:29 2024] [::ffff:172.22.0.1]:53592 Accepted
-[2Kadmin_db   | [Tue May  7 12:13:35 2024] [::ffff:172.22.0.1]:53586 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db   | [Tue May  7 12:13:35 2024] [::ffff:172.22.0.1]:53586 Closing
-[2Kadmin_db   | [Tue May  7 12:13:35 2024] [::ffff:172.22.0.1]:53592 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db   | [Tue May  7 12:13:35 2024] [::ffff:172.22.0.1]:53592 Closing
-[2Kadmin_db   | [Tue May  7 12:14:27 2024] [::ffff:172.22.0.1]:53832 Accepted
-[2Kadmin_db   | [Tue May  7 12:14:28 2024] [::ffff:172.22.0.1]:53832 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:14:28 2024] [::ffff:172.22.0.1]:53832 Closing
-[2Kadmin_db   | [Tue May  7 12:14:28 2024] [::ffff:172.22.0.1]:53836 Accepted
-[2Kadmin_db   | [Tue May  7 12:14:34 2024] [::ffff:172.22.0.1]:53836 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db   | [Tue May  7 12:14:34 2024] [::ffff:172.22.0.1]:53836 Closing
-[2Kadmin_db   | [Tue May  7 12:14:47 2024] [::ffff:172.22.0.1]:48360 Accepted
-[2Kadmin_db   | [Tue May  7 12:14:48 2024] [::ffff:172.22.0.1]:48360 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db   | [Tue May  7 12:14:48 2024] [::ffff:172.22.0.1]:48360 Closing
-[2Kadmin_db   | [Tue May  7 12:14:48 2024] [::ffff:172.22.0.1]:48366 Accepted
-[2Kadmin_db   | [Tue May  7 12:14:48 2024] [::ffff:172.22.0.1]:48372 Accepted
-[2Kadmin_db   | [Tue May  7 12:14:53 2024] [::ffff:172.22.0.1]:48366 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db   | [Tue May  7 12:14:53 2024] [::ffff:172.22.0.1]:48366 Closing
-[2Kadmin_db   | [Tue May  7 12:14:53 2024] [::ffff:172.22.0.1]:48372 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db   | [Tue May  7 12:14:53 2024] [::ffff:172.22.0.1]:48372 Closing
-[2Kusers_db   | 2024-05-07 12:13:11+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
-[2Kusers_db   | 2024-05-07 12:13:11+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2Kusers_db   | 2024-05-07 12:13:11+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kadmin_db   | [Tue May  7 12:53:46 2024] [::ffff:172.25.0.1]:45560 [302]: POST /?server=users_db&username=root&db=rakuten_db&select=Users
+[2Kadmin_db   | [Tue May  7 12:53:46 2024] [::ffff:172.25.0.1]:45560 Closing
+[2Kusers_db   | 2024-05-07 12:53:43+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kadmin_db   | [Tue May  7 12:53:46 2024] [::ffff:172.25.0.1]:59434 Accepted
 [2Kusers_db   | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kusers_db   | 2024-05-07T12:13:11.935260Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2Kapi_predict  | 2024-05-07 12:13:12.465917: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_predict  | 2024-05-07 12:13:12.467430: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-07 12:13:12.498934: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-07 12:13:12.499290: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-[2K[2Kusers_db     | 2024-05-07T12:13:12.124008Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kusers_db     | 2024-05-07T12:13:12.128573Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-[2Kusers_db     | 2024-05-07T12:13:12.143066Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kusers_db     | 2024-05-07T12:13:12.985797Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-[2Kusers_db     | 2024-05-07T12:13:13.467886Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kusers_db     | 2024-05-07T12:13:13.468200Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-api_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_predict  | 2024-05-07 12:13:13.235785: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-[2Kusers_db     | 2024-05-07T12:13:13.484169Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kadmin_db   | [Tue May  7 12:53:46 2024] [::ffff:172.25.0.1]:59434 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
+[2K[2Kadmin_db   | [Tue May  7 12:53:46 2024] [::ffff:172.25.0.1]:59434 Closing
+[2Kadmin_db   | [Tue May  7 12:53:46 2024] [::ffff:172.25.0.1]:59444 Accepted
+[2Kadmin_db   | [Tue May  7 12:53:49 2024] [::ffff:172.25.0.1]:59444 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
+[2Kadmin_db   | [Tue May  7 12:53:49 2024] [::ffff:172.25.0.1]:59444 Closing
+[2Kadmin_db   | [Tue May  7 12:53:49 2024] [::ffff:172.25.0.1]:59456 Accepted
+[2Kapi_oauth  | INFO:     Application startup complete.
+[2Kusers_db   | 2024-05-07T12:53:43.806709Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kusers_db   | 2024-05-07T12:53:44.004978Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kusers_db   | 2024-05-07T12:53:44.008132Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kusers_db   | 2024-05-07T12:53:44.018600Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+[2Kusers_db   | 2024-05-07T12:53:44.849456Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kusers_db   | 2024-05-07T12:53:45.347126Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2Kapi_oauth  | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+admin_db   | [Tue May  7 12:53:49 2024] [::ffff:172.25.0.1]:59462 Accepted
+[2Kusers_db   | 2024-05-07T12:53:45.347665Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2Kapi_oauth  | INFO:     Shutting down
+[2Kusers_db   | 2024-05-07T12:53:45.361365Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kapi_oauth  | INFO:     Waiting for application shutdown.
+[2Kadmin_db   | [Tue May  7 12:53:54 2024] [::ffff:172.25.0.1]:59456 Closed without sending a request; it was probably just an unused speculative preconnection
+[2Kapi_oauth  | INFO:     Application shutdown complete.
+[2Kadmin_db   | [Tue May  7 12:53:54 2024] [::ffff:172.25.0.1]:59456 Closing
+[2Kapi_oauth  | INFO:     Finished server process [1]
+[2Kadmin_db   | [Tue May  7 12:53:54 2024] [::ffff:172.25.0.1]:59462 Closed without sending a request; it was probably just an unused speculative preconnection
+[2Kusers_db   | 2024-05-07T12:53:45.468771Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kadmin_db   | [Tue May  7 12:53:54 2024] [::ffff:172.25.0.1]:59462 Closing
+[2K[2Kusers_db   | 2024-05-07T12:53:45.732650Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+admin_db   | [Tue May  7 12:53:55 2024] [::ffff:172.25.0.1]:59466 Accepted
+[2Kadmin_db   | [Tue May  7 12:53:56 2024] [::ffff:172.25.0.1]:59466 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
+[2Kusers_db   | 2024-05-07T12:54:22.890591Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.4.0).
+[2Kadmin_db   | [Tue May  7 12:53:56 2024] [::ffff:172.25.0.1]:59466 Closing
+[2Kusers_db   | 2024-05-07T12:54:23.599038Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.0)  MySQL Community Server - GPL.
+[2Kusers_db   | 2024-05-07T12:54:23.599078Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+[2Kadmin_db   | [Tue May  7 12:53:56 2024] [::ffff:172.25.0.1]:59972 Accepted
+[2Kadmin_db   | [Tue May  7 12:53:56 2024] [::ffff:172.25.0.1]:59986 Accepted
+[2Kadmin_db   | [Tue May  7 12:53:57 2024] [::ffff:172.25.0.1]:59972 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
+[2Kadmin_db   | [Tue May  7 12:53:57 2024] [::ffff:172.25.0.1]:59972 Closing
+[2Kadmin_db   | [Tue May  7 12:54:02 2024] [::ffff:172.25.0.1]:59986 Closed without sending a request; it was probably just an unused speculative preconnection
+[2Kadmin_db   | [Tue May  7 12:54:02 2024] [::ffff:172.25.0.1]:59986 Closing
+[2Kadmin_db   | [Tue May  7 12:54:09 2024] [::ffff:172.25.0.1]:58786 Accepted
+[2Kadmin_db   | [Tue May  7 12:54:09 2024] [::ffff:172.25.0.1]:58786 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
+[2Kadmin_db   | [Tue May  7 12:54:09 2024] [::ffff:172.25.0.1]:58786 Closing
+[2Kadmin_db   | [Tue May  7 12:54:10 2024] [::ffff:172.25.0.1]:58802 Accepted
+[2Kadmin_db   | [Tue May  7 12:54:10 2024] [::ffff:172.25.0.1]:58808 Accepted
+[2Kadmin_db   | [Tue May  7 12:54:10 2024] [::ffff:172.25.0.1]:58802 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
+[2Kadmin_db   | [Tue May  7 12:54:10 2024] [::ffff:172.25.0.1]:58802 Closing
+[2Kadmin_db   | [Tue May  7 12:54:15 2024] [::ffff:172.25.0.1]:58808 Closed without sending a request; it was probably just an unused speculative preconnection
+[2Kadmin_db   | [Tue May  7 12:54:15 2024] [::ffff:172.25.0.1]:58808 Closing
+[2Kapi_predict  | 2024-05-07 12:53:44.408593: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_predict  | 2024-05-07 12:53:44.410951: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-07 12:53:44.456346: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-07 12:53:44.457554: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[2Kapi_predict  | 2024-05-07 12:53:45.425425: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 [2Kapi_predict  | INFO:     Started server process [1]
-[2Kusers_db     | 2024-05-07T12:13:13.576978Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db     | 2024-05-07T12:13:13.835115Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
 [2Kapi_predict  | INFO:     Waiting for application startup.
 [2Kapi_predict  | INFO:     Application startup complete.
 [2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2Kapi_predict  | INFO:     172.22.0.1:52116 - "GET /initialisation HTTP/1.1" 200 OK
+[2Kapi_predict  | INFO:     Shutting down
+[2Kapi_predict  | INFO:     Waiting for connections to close. (CTRL+C to force quit)
