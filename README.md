@@ -85,13 +85,13 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
                                          The predictions are saved in data/preprocessed as 'predictions.csv'  
 
     If you with to predict with the API in a unsecured way (without Docker) :  
-> `uvicorn src.predict_API:app --reload`
-> `curl 'http://localhost:8000/initialisation'`
+> `uvicorn src.predict_API:app --reload`  
+> `curl 'http://localhost:8000/initialisation'`  
 > `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'`  
 
-    If you want to use **Docker** in a secured way (*stop uvicorn first*):  
+    If you want to use Docker in a secured way (stop uvicorn first):  
 > `cd docker`                            <- To do in Git bash  
-> `./setup.sh`                           <- It will run the process to build and launch the containers with all the API
+> `./setup.sh`                           <- It will run the process to build and launch the containers with all the API  
 
     Then in your browser you can launch the database adminer which show you the registered users:
     http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users
