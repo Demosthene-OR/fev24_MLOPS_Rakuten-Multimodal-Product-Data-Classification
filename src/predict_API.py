@@ -120,16 +120,6 @@ def initialisation():
 
     with open("models/mapper.json", "r") as json_file:
         mapper = json.load(json_file)
-        
-    predictor = Predict(
-        tokenizer=tokenizer,
-        rnn=rnn,
-        vgg16=vgg16,
-        best_weights=best_weights,
-        mapper=mapper,
-        filepath="",
-        imagepath=""
-    )
 
     return {"message": "Initialisation effectuée avec succès"}
 

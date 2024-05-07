@@ -1,150 +1,173 @@
-[2Kusers_db  | 2024-05-07 12:56:45+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
-[2Kusers_db  | 2024-05-07 12:56:46+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2Kusers_db  | 2024-05-07 12:56:46+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
-[2Kusers_db  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kusers_db  | 2024-05-07T12:56:46.590684Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2Kusers_db  | 2024-05-07T12:56:46.805822Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kusers_db  | 2024-05-07T12:56:46.809791Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-[2Kusers_db  | 2024-05-07T12:56:46.821558Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kusers_db  | 2024-05-07T12:56:47.650668Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-[2Kusers_db  | 2024-05-07T12:56:48.134260Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kusers_db  | 2024-05-07T12:56:48.134702Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-[2Kusers_db  | 2024-05-07T12:56:48.147863Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-[2Kusers_db  | 2024-05-07T12:56:48.208776Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db  | 2024-05-07T12:56:48.469424Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-[2Kapi_predict  | 2024-05-07 12:56:47.271042: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_predict  | 2024-05-07 12:56:47.272672: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-07 12:56:47.308167: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-07 12:56:47.308531: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-[2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_predict  | 2024-05-07 12:56:48.211466: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-[2Kapi_predict  | INFO:     Started server process [1]
 [2Kapi_oauth    | INFO:     Started server process [1]
 [2Kapi_oauth    | INFO:     Waiting for application startup.
 [2Kapi_oauth    | INFO:     Application startup complete.
-[2K[2Kapi_predict  | INFO:     Waiting for application startup.
-api_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+[2Kapi_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+[2Kapi_oauth    | userconnected :  {'FirstName': 'John', 'LastName': 'Doe', 'Email': 'john.doe@example.com', 'Authorization': 1, 'username': 'John', 'password': '$2b$12$pfyjoh3RWS9crj8lFwF3ROWeSZ26Eu5m1WknmMJ0RqCYp.AHiu.MO'}
+[2K[2Kapi_oauth    | INFO:     172.18.0.2:60634 - "GET /secured HTTP/1.1" 200 OK
+[2Kadmin_db     | [Tue May  7 17:28:04 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+api_predict  | 2024-05-07 17:28:06.446781: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_oauth    | userconnected :  {'FirstName': 'John', 'LastName': 'Doe', 'Email': 'john.doe@example.com', 'Authorization': 1, 'username': 'John', 'password': '$2b$12$pfyjoh3RWS9crj8lFwF3ROWeSZ26Eu5m1WknmMJ0RqCYp.AHiu.MO'}
+[2Kapi_predict  | 2024-05-07 17:28:06.448997: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-07 17:28:06.489212: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kusers_db     | 2024-05-07 17:28:05+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kusers_db     | 2024-05-07 17:28:05+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+[2Kusers_db     | 2024-05-07 17:28:05+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+[2Kusers_db     | 2024-05-07T17:28:06.120689Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kusers_db     | 2024-05-07T17:28:06.376268Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kusers_db     | 2024-05-07T17:28:06.388026Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kapi_oauth    | INFO:     172.18.0.2:60646 - "GET /secured HTTP/1.1" 200 OK
+[2Kusers_db     | 2024-05-07T17:28:06.417260Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+[2Kapi_oauth    | userconnected :  {'FirstName': 'John', 'LastName': 'Doe', 'Email': 'john.doe@example.com', 'Authorization': 1, 'username': 'John', 'password': '$2b$12$pfyjoh3RWS9crj8lFwF3ROWeSZ26Eu5m1WknmMJ0RqCYp.AHiu.MO'}
+[2Kusers_db     | 2024-05-07T17:28:08.594732Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kusers_db     | 2024-05-07T17:28:09.215740Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2K[2Kapi_predict  | 2024-05-07 17:28:06.489822: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_oauth    | INFO:     172.18.0.1:56258 - "POST /token HTTP/1.1" 200 OK
+[2Kapi_oauth    | userconnected :  {'FirstName': 'John', 'LastName': 'Doe', 'Email': 'john.doe@example.com', 'Authorization': 1, 'username': 'John', 'password': '$2b$12$pfyjoh3RWS9crj8lFwF3ROWeSZ26Eu5m1WknmMJ0RqCYp.AHiu.MO'}
+users_db     | 2024-05-07T17:28:09.216218Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2K[2Kapi_oauth    | INFO:     172.18.0.2:46976 - "GET /secured HTTP/1.1" 200 OK
+users_db     | 2024-05-07T17:28:09.228838Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[2Kapi_predict  | 2024-05-07 17:28:07.368559: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_predict  | INFO:     Started server process [1]
+[2Kusers_db     | 2024-05-07T17:28:09.327535Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kapi_predict  | INFO:     Waiting for application startup.
+[2Kusers_db     | 2024-05-07T17:28:09.587188Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
 [2Kapi_predict  | INFO:     Application startup complete.
 [2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2Kapi_predict  | INFO:     172.27.0.1:44668 - "GET /initialisation HTTP/1.1" 200 OK
-[2Kadmin_db     | [Tue May  7 12:56:45 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
-[2Kadmin_db     | [Tue May  7 12:57:02 2024] [::ffff:172.27.0.1]:49684 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:04 2024] [::ffff:172.27.0.1]:49684 [403]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db     | [Tue May  7 12:57:04 2024] [::ffff:172.27.0.1]:49684 Closing
-[2Kadmin_db     | [Tue May  7 12:57:04 2024] [::ffff:172.27.0.1]:49694 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:05 2024] [::ffff:172.27.0.1]:49694 [302]: POST /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db     | [Tue May  7 12:57:05 2024] [::ffff:172.27.0.1]:49694 Closing
-[2Kadmin_db     | [Tue May  7 12:57:05 2024] [::ffff:172.27.0.1]:49704 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:05 2024] [::ffff:172.27.0.1]:49704 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db     | [Tue May  7 12:57:05 2024] [::ffff:172.27.0.1]:49704 Closing
-[2Kadmin_db     | [Tue May  7 12:57:05 2024] [::ffff:172.27.0.1]:49710 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:10 2024] [::ffff:172.27.0.1]:49710 [200]: GET /?server=users_db&username=root&db=rakuten_db&edit=Users&where%5BFirstName%5D=Olivier2&where%5BLastName%5D=Renouard&where%5BEmail%5D=olivier.renouard1103%40gmail.com&where%5BAuthorization%5D=2&where%5Busername%5D=Olivier&where%5Bpassword%5D=%242b%2412%24FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY%2FOB6pOp0q
-[2Kadmin_db     | [Tue May  7 12:57:10 2024] [::ffff:172.27.0.1]:49710 Closing
-[2Kadmin_db     | [Tue May  7 12:57:10 2024] [::ffff:172.27.0.1]:35496 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35498 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35496 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35496 Closing
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35498 [302]: POST /?server=users_db&username=root&db=rakuten_db&edit=Users&where%5BFirstName%5D=Olivier2&where%5BLastName%5D=Renouard&where%5BEmail%5D=olivier.renouard1103%40gmail.com&where%5BAuthorization%5D=2&where%5Busername%5D=Olivier&where%5Bpassword%5D=%242b%2412%24FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY%2FOB6pOp0q
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35498 Closing
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35500 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35500 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35500 Closing
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35502 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:15 2024] [::ffff:172.27.0.1]:35508 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:21 2024] [::ffff:172.27.0.1]:35502 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:57:21 2024] [::ffff:172.27.0.1]:35502 Closing
-[2Kadmin_db     | [Tue May  7 12:57:21 2024] [::ffff:172.27.0.1]:35508 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:57:21 2024] [::ffff:172.27.0.1]:35508 Closing
-[2Kadmin_db     | [Tue May  7 12:57:21 2024] [::ffff:172.27.0.1]:33508 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:22 2024] [::ffff:172.27.0.1]:33508 [302]: POST /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db     | [Tue May  7 12:57:22 2024] [::ffff:172.27.0.1]:33508 Closing
-[2Kadmin_db     | [Tue May  7 12:57:22 2024] [::ffff:172.27.0.1]:33510 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:22 2024] [::ffff:172.27.0.1]:33510 [200]: GET /?server=users_db
-[2Kadmin_db     | [Tue May  7 12:57:22 2024] [::ffff:172.27.0.1]:33510 Closing
-[2Kadmin_db     | [Tue May  7 12:57:22 2024] [::ffff:172.27.0.1]:33524 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:27 2024] [::ffff:172.27.0.1]:33524 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:57:27 2024] [::ffff:172.27.0.1]:33524 Closing
-[2Kadmin_db     | [Tue May  7 12:57:35 2024] [::ffff:172.27.0.1]:58170 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:35 2024] [::ffff:172.27.0.1]:58170 [302]: POST /?server=users_db
-[2Kadmin_db     | [Tue May  7 12:57:35 2024] [::ffff:172.27.0.1]:58170 Closing
-[2Kadmin_db     | [Tue May  7 12:57:35 2024] [::ffff:172.27.0.1]:58180 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:35 2024] [::ffff:172.27.0.1]:58180 [403]: GET /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:57:35 2024] [::ffff:172.27.0.1]:58180 Closing
-[2Kadmin_db     | [Tue May  7 12:57:35 2024] [::ffff:172.27.0.1]:58186 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:41 2024] [::ffff:172.27.0.1]:58186 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:57:41 2024] [::ffff:172.27.0.1]:58186 Closing
-[2Kadmin_db     | [Tue May  7 12:57:50 2024] [::ffff:172.27.0.1]:35400 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:50 2024] [::ffff:172.27.0.1]:35400 [302]: POST /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:57:50 2024] [::ffff:172.27.0.1]:35400 Closing
-[2Kadmin_db     | [Tue May  7 12:57:50 2024] [::ffff:172.27.0.1]:35402 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:50 2024] [::ffff:172.27.0.1]:35402 [403]: GET /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:57:50 2024] [::ffff:172.27.0.1]:35402 Closing
-[2Kadmin_db     | [Tue May  7 12:57:50 2024] [::ffff:172.27.0.1]:35404 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:55 2024] [::ffff:172.27.0.1]:35404 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:57:55 2024] [::ffff:172.27.0.1]:35404 Closing
-[2Kadmin_db     | [Tue May  7 12:57:58 2024] [::ffff:172.27.0.1]:46882 Accepted
-[2Kadmin_db     | [Tue May  7 12:57:58 2024] [::ffff:172.27.0.1]:46882 [403]: GET /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:57:58 2024] [::ffff:172.27.0.1]:46882 Closing
-[2Kadmin_db     | [Tue May  7 12:57:58 2024] [::ffff:172.27.0.1]:46888 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46898 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46888 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46888 Closing
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46898 [302]: POST /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46898 Closing
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46906 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46906 [403]: GET /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46906 Closing
-[2Kadmin_db     | [Tue May  7 12:58:03 2024] [::ffff:172.27.0.1]:46916 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:09 2024] [::ffff:172.27.0.1]:46916 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:58:09 2024] [::ffff:172.27.0.1]:46916 Closing
-[2Kadmin_db     | [Tue May  7 12:58:23 2024] [::ffff:172.27.0.1]:54952 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:23 2024] [::ffff:172.27.0.1]:54952 [302]: POST /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:58:23 2024] [::ffff:172.27.0.1]:54952 Closing
-[2Kadmin_db     | [Tue May  7 12:58:23 2024] [::ffff:172.27.0.1]:54954 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:23 2024] [::ffff:172.27.0.1]:54954 [403]: GET /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:58:23 2024] [::ffff:172.27.0.1]:54954 Closing
-[2Kadmin_db     | [Tue May  7 12:58:23 2024] [::ffff:172.27.0.1]:54956 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:29 2024] [::ffff:172.27.0.1]:54956 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:58:29 2024] [::ffff:172.27.0.1]:54956 Closing
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33184 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33184 [302]: POST /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33184 Closing
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33186 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33186 [200]: GET /?server=users_db&username=root&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33186 Closing
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33200 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33200 [200]: GET /?server=users_db&username=root&db=rakuten_db&script=db
-[2Kadmin_db     | [Tue May  7 12:58:35 2024] [::ffff:172.27.0.1]:33200 Closing
-[2Kadmin_db     | [Tue May  7 12:58:36 2024] [::ffff:172.27.0.1]:37780 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:38 2024] [::ffff:172.27.0.1]:37780 [302]: POST /?server=users_db&username=root&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:58:38 2024] [::ffff:172.27.0.1]:37780 Closing
-[2Kadmin_db     | [Tue May  7 12:58:38 2024] [::ffff:172.27.0.1]:37794 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:38 2024] [::ffff:172.27.0.1]:37794 [200]: GET /?server=users_db
-[2Kadmin_db     | [Tue May  7 12:58:38 2024] [::ffff:172.27.0.1]:37794 Closing
-[2Kadmin_db     | [Tue May  7 12:58:38 2024] [::ffff:172.27.0.1]:37798 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:41 2024] [::ffff:172.27.0.1]:37798 [404]: GET /favicon.ico - No such file or directory
-[2Kadmin_db     | [Tue May  7 12:58:41 2024] [::ffff:172.27.0.1]:37798 Closing
-[2Kadmin_db     | [Tue May  7 12:58:42 2024] [::ffff:172.27.0.1]:37806 Accepted
-[2Kadmin_db     | [Tue May  7 12:58:47 2024] [::ffff:172.27.0.1]:37806 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:58:47 2024] [::ffff:172.27.0.1]:37806 Closing
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57110 Accepted
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57110 [302]: POST /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57110 Closing
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57112 Accepted
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57112 [200]: GET /?server=users_db&username=root&db=rakuten_db
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57112 Closing
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57116 Accepted
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57116 [200]: GET /?server=users_db&username=root&db=rakuten_db&script=db
-[2Kadmin_db     | [Tue May  7 12:59:00 2024] [::ffff:172.27.0.1]:57116 Closing
-[2Kadmin_db     | [Tue May  7 12:59:03 2024] [::ffff:172.27.0.1]:57128 Accepted
-[2Kadmin_db     | [Tue May  7 12:59:06 2024] [::ffff:172.27.0.1]:57128 [200]: GET /?server=users_db&username=root&db=rakuten_db&sql=
-[2Kadmin_db     | [Tue May  7 12:59:06 2024] [::ffff:172.27.0.1]:57128 Closing
-[2Kadmin_db     | [Tue May  7 12:59:06 2024] [::ffff:172.27.0.1]:55062 Accepted
-[2Kadmin_db     | [Tue May  7 12:59:06 2024] [::ffff:172.27.0.1]:55064 Accepted
-[2Kadmin_db     | [Tue May  7 12:59:08 2024] [::ffff:172.27.0.1]:55062 [200]: GET /?server=users_db&username=root&db=rakuten_db&table=Users
-[2Kadmin_db     | [Tue May  7 12:59:08 2024] [::ffff:172.27.0.1]:55062 Closing
-[2Kadmin_db     | [Tue May  7 12:59:09 2024] [::ffff:172.27.0.1]:55064 [200]: GET /?server=users_db&username=root&db=rakuten_db&select=Users
-[2Kadmin_db     | [Tue May  7 12:59:09 2024] [::ffff:172.27.0.1]:55064 Closing
-[2Kadmin_db     | [Tue May  7 12:59:09 2024] [::ffff:172.27.0.1]:55074 Accepted
-[2Kadmin_db     | [Tue May  7 12:59:14 2024] [::ffff:172.27.0.1]:55074 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db     | [Tue May  7 12:59:14 2024] [::ffff:172.27.0.1]:55074 Closing
+[2Kapi_predict  | token= eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb2huIiwiZXhwIjoxNzE1MTA1MDU2fQ.jnQCSyW4W_VeC24S3NxHrwWMyhsdsD_qfqpfTnKTgeI
+[2Kapi_predict  | INFO:     172.18.0.1:46522 - "POST /prediction HTTP/1.1" 500 Internal Server Error
+[2Kapi_predict  | ERROR:    Exception in ASGI application
+[2Kapi_predict  | Traceback (most recent call last):
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 407, in run_asgi
+[2Kapi_predict  |     result = await app(  # type: ignore[func-returns-value]
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+[2Kapi_predict  |     return await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/applications.py", line 292, in __call__
+[2Kapi_predict  |     await super().__call__(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+[2Kapi_predict  |     await self.middleware_stack(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, _send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, sender)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+[2Kapi_predict  |     raise e
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+[2Kapi_predict  |     await route.handle(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+[2Kapi_predict  |     response = await func(request)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 273, in app
+[2Kapi_predict  |     raw_response = await run_endpoint_function(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 192, in run_endpoint_function
+[2Kapi_predict  |     return await run_in_threadpool(dependant.call, **values)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+[2Kapi_predict  |     return await anyio.to_thread.run_sync(func, *args)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/to_thread.py", line 56, in run_sync
+[2Kapi_predict  |     return await get_async_backend().run_sync_in_worker_thread(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2144, in run_sync_in_worker_thread
+[2Kapi_predict  |     return await future
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 851, in run
+[2Kapi_predict  |     result = context.run(func, *args)
+[2Kapi_predict  |   File "/app/./src/predict_API.py", line 148, in prediction
+[2Kapi_predict  |     vgg16=vgg16,
+[2Kapi_predict  | NameError: name 'vgg16' is not defined
+[2Kapi_predict  | token= eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb2huIiwiZXhwIjoxNzE1MTA1MDU2fQ.jnQCSyW4W_VeC24S3NxHrwWMyhsdsD_qfqpfTnKTgeI
+[2Kapi_predict  | INFO:     172.18.0.1:46544 - "POST /prediction HTTP/1.1" 500 Internal Server Error
+[2Kapi_predict  | ERROR:    Exception in ASGI application
+[2Kapi_predict  | Traceback (most recent call last):
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 407, in run_asgi
+[2Kapi_predict  |     result = await app(  # type: ignore[func-returns-value]
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+[2Kapi_predict  |     return await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/applications.py", line 292, in __call__
+[2Kapi_predict  |     await super().__call__(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+[2Kapi_predict  |     await self.middleware_stack(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, _send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, sender)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+[2Kapi_predict  |     raise e
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+[2Kapi_predict  |     await route.handle(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+[2Kapi_predict  |     response = await func(request)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 273, in app
+[2Kapi_predict  |     raw_response = await run_endpoint_function(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 192, in run_endpoint_function
+[2Kapi_predict  |     return await run_in_threadpool(dependant.call, **values)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+[2Kapi_predict  |     return await anyio.to_thread.run_sync(func, *args)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/to_thread.py", line 56, in run_sync
+[2Kapi_predict  |     return await get_async_backend().run_sync_in_worker_thread(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2144, in run_sync_in_worker_thread
+[2Kapi_predict  |     return await future
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 851, in run
+[2Kapi_predict  |     result = context.run(func, *args)
+[2Kapi_predict  |   File "/app/./src/predict_API.py", line 148, in prediction
+[2Kapi_predict  |     vgg16=vgg16,
+[2Kapi_predict  | NameError: name 'vgg16' is not defined
+[2Kapi_predict  | token= eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb2huIiwiZXhwIjoxNzE1MTA1ODg0fQ.jpeXT7UCEOJkKx8UBmwqXGnWfmcQ0RnSOLU_dBT0QPc
+[2Kapi_predict  | INFO:     172.18.0.1:48958 - "POST /prediction HTTP/1.1" 500 Internal Server Error
+[2Kapi_predict  | ERROR:    Exception in ASGI application
+[2Kapi_predict  | Traceback (most recent call last):
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 407, in run_asgi
+[2Kapi_predict  |     result = await app(  # type: ignore[func-returns-value]
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+[2Kapi_predict  |     return await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/applications.py", line 292, in __call__
+[2Kapi_predict  |     await super().__call__(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+[2Kapi_predict  |     await self.middleware_stack(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, _send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, sender)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+[2Kapi_predict  |     raise e
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+[2Kapi_predict  |     await route.handle(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+[2Kapi_predict  |     response = await func(request)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 273, in app
+[2Kapi_predict  |     raw_response = await run_endpoint_function(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 192, in run_endpoint_function
+[2Kapi_predict  |     return await run_in_threadpool(dependant.call, **values)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+[2Kapi_predict  |     return await anyio.to_thread.run_sync(func, *args)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/to_thread.py", line 56, in run_sync
+[2Kapi_predict  |     return await get_async_backend().run_sync_in_worker_thread(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2144, in run_sync_in_worker_thread
+[2Kapi_predict  |     return await future
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 851, in run
+[2Kapi_predict  |     result = context.run(func, *args)
+[2Kapi_predict  |   File "/app/./src/predict_API.py", line 148, in prediction
+[2Kapi_predict  |     vgg16=vgg16,
+[2Kapi_predict  | NameError: name 'vgg16' is not defined
+[2Kapi_predict  | INFO:     172.18.0.1:44040 - "GET /initialisation HTTP/1.1" 200 OK
