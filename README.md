@@ -98,7 +98,7 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
         --data-urlencode 'username=John' --data-urlencode 'password=John'
     2 - Predict 
         The input data are located in data/predict . 
-        The predictions are saved in data/predict as 'predictions.json'
+        The predictions are saved in data/predict as 'predictions.csv'
         curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Previously obtained access token"'
         
 
