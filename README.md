@@ -81,14 +81,19 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 
 > `python src/predict.py`                <- It will use the trained models to make a prediction (of the prdtypecode) on the desired data, by default, it will predict on the train. You can pass the path to data and images as arguments if you want to change it
 >
-    Exemple : python src/predict_1.py --dataset_path "data/preprocessed/X_test_update.csv" --images_path "data/preprocessed/image_test"
-                                        
-                                         The predictions are saved in data/preprocessed as 'predictions.json'
+    Exemple : python src/predict_1.py --dataset_path "data/preprocessed/X_test_update.csv" --images_path "data/preprocessed/image_test"                         
+                                         The predictions are saved in data/preprocessed as 'predictions.csv'  
 
+    If you with to predict with the API in a unsecured way (without Docker) :  
+> `uvicorn src.predict_API:app --reload`
+> `curl 'http://localhost:8000/initialisation'`
+> `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'`  
+
+    If you want to use **Docker** in a secured way (*stop uvicorn first*):  
 > `cd docker`                            <- To do in Git bash  
 > `./setup.sh`                           <- It will run the process to build and launch the containers with all the API
 
-    Then in your browser you can launch the database admin:
+    Then in your browser you can launch the database adminer which show you the registered users:
     http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users
     password = Rakuten
 
@@ -99,7 +104,8 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
     2 - Predict 
         The input data are located in data/predict . 
         The predictions are saved in data/predict as 'predictions.csv'
-        curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Previously obtained access token"'
+        curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Previously obtained access token"' --header 'Content-Type: application/json' --data '{}'
+
         
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>

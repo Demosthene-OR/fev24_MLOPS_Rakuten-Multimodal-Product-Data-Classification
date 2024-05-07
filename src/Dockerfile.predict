@@ -13,5 +13,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /app
 
-CMD ["uvicorn", "src.predict_API_docker:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.predict_API:app", "--host", "0.0.0.0", "--port", "8000"]
 
