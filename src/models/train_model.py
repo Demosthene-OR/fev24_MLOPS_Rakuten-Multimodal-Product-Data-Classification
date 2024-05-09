@@ -24,34 +24,30 @@ import os
 import sys
 import glob
 
-file_path = "models"
-n_epochs = 5
-random_state = 42
 
 class TextRnnModel:
-    def __init__(self, max_words=30000, max_sequence_length=50):
-        global file_path
+    def __init__(self, max_words=30000, max_sequence_length=50, file_path="models"):
         
         self.max_words = max_words
         self.max_sequence_length = max_sequence_length
+        self.file_path = file_path
 
-        if not glob.glob(file_path+"/best_rnn_model/best_rnn_model*.h5"):
+        if not glob.glob(self.file_path+"/best_rnn_model/best_rnn_model*.h5"):
             self.tokenizer = Tokenizer(num_words=max_words, oov_token="<OOV>")
             self.model = None
         else:
-            with open(file_path+"/tokenizer_config.json", "r", encoding="utf-8") as json_file:
+            with open(self.file_path+"/tokenizer_config.json", "r", encoding="utf-8") as json_file:
                 tokenizer_config = json_file.read()
             self.tokenizer = keras.preprocessing.text.tokenizer_from_json(tokenizer_config)
-            self.model = load_model("best_rnn_model.h5")
+            self.model = load_model(self.file_path, "best_rnn_model.h5")
 
-    def preprocess_and_fit(self, X_train, y_train, X_val, y_val):
-        global file_path, n_epochs
+    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5):
         
         # Si le modele RNN n'existe pas, on initialise le tokenizer (création du vocabulaire)
-        if not glob.glob(file_path+"/best_rnn_model/best_rnn_model*.h5"):
+        if not glob.glob(self.file_path+"/best_rnn_model/best_rnn_model*.h5"):
             self.tokenizer.fit_on_texts(X_train["description"])
             tokenizer_config = self.tokenizer.to_json()
-            with open(file_path+"/tokenizer_config.json", "w", encoding="utf-8") as json_file:
+            with open(self.file_path+"/tokenizer_config.json", "w", encoding="utf-8") as json_file:
                 json_file.write(tokenizer_config)
 
         train_sequences = self.tokenizer.texts_to_sequences(X_train["description"])
@@ -71,7 +67,7 @@ class TextRnnModel:
         )
         
         # Si, le modèle n'xiste pas, on le créé: 1 couche d'embedding, 1 couche de GRU bi-directionnel, 1 couche de Dense softmax de classification
-        if not os.path.exists(file_path+"/best_rnn_model.h5"):
+        if not os.path.exists(self.file_path+"/best_rnn_model.h5"):
             text_input = Input(shape=(self.max_sequence_length,))
             embedding_layer = Embedding(input_dim=self.max_words, output_dim=512)(  #128
                 text_input
@@ -84,7 +80,7 @@ class TextRnnModel:
             self.model = Model(inputs=[text_input], outputs=output)
         # Sinon, on charge le modele existant.
         else:
-            self.model = load_model("best_rnn_model.h5") 
+            self.model = load_model(self.file_path, "best_rnn_model.h5") 
 
         # Compile le modèle avec la métrique F1
         self.model.compile(
@@ -96,7 +92,7 @@ class TextRnnModel:
 
         rnn_callbacks = [
             ModelCheckpoint(
-                filepath=file_path+"/best_rnn_model.h5", save_best_only=True
+                filepath=self.file_path+"/best_rnn_model.h5", save_best_only=True
             ),  # Enregistre le meilleur modèle
             EarlyStopping(
                 patience=3, restore_best_weights=True
@@ -115,20 +111,20 @@ class TextRnnModel:
             ),
             callbacks=rnn_callbacks,
         )
-        save_model("best_rnn_model.h5")
+        save_model(self.file_path, "best_rnn_model.h5")
 
 
 class ImageVGG16Model:
-    def __init__(self):
-        global file_path
+    def __init__(self, file_path="models"):
         
-        if not glob.glob(file_path+"/best_vgg16_model/best_vgg16_model*.h5"):
+        self.file_path = file_path
+        
+        if not glob.glob(self.file_path+"/best_vgg16_model/best_vgg16_model*.h5"):
             self.model = None
         else:
-            self.model = load_model("best_vgg16_model.h5")
+            self.model = load_model(self.file_path, "best_vgg16_model.h5")
 
-    def preprocess_and_fit(self, X_train, y_train, X_val, y_val):
-        global file_path, n_epochs
+    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5):
         
         # Paramètres
         batch_size = 32
@@ -161,7 +157,7 @@ class ImageVGG16Model:
             shuffle=False,  # Pas de mélange pour le set de validation
         )
 
-        if not glob.glob(file_path+"/best_vgg16_model/best_vgg16_model*.h5"):
+        if not glob.glob(self.file_path+"/best_vgg16_model/best_vgg16_model*.h5"):
             image_input = Input(
                 shape=(224, 224, 3)
             )  # Adjust input shape according to your images
@@ -181,7 +177,7 @@ class ImageVGG16Model:
             for layer in vgg16_base.layers:
                 layer.trainable = False
         else:
-            self.model = load_model("best_vgg16_model.h5") 
+            self.model = load_model(self.file_path, "best_vgg16_model.h5") 
         
         self.model.compile(
             optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
@@ -192,7 +188,7 @@ class ImageVGG16Model:
         
         vgg_callbacks = [
             ModelCheckpoint(
-                filepath=file_path+"/best_vgg16_model.h5", save_best_only=True
+                filepath=self.file_path+"/best_vgg16_model.h5", save_best_only=True
             ),  # Enregistre le meilleur modèle
             EarlyStopping(
                 patience=3, restore_best_weights=True
@@ -206,7 +202,7 @@ class ImageVGG16Model:
             validation_data=val_generator,
             callbacks=vgg_callbacks,
         )
-        save_model("best_vgg16_model.h5")
+        save_model(self.file_path, "best_vgg16_model.h5")
         
 class concatenate:
     def __init__(self, tokenizer, rnn, vgg16):
@@ -221,10 +217,9 @@ class concatenate:
         return img_array
 
     def predict(
-        self, X_train, y_train, new_samples_per_class=0, max_sequence_length=50
+        self, X_train, y_train, new_samples_per_class=0, max_sequence_length=50, random_state=42
     ):
-        global random_state
-        
+               
         num_classes = 27
         
         new_X_train = pd.DataFrame(columns=X_train.columns)
@@ -307,9 +302,12 @@ class concatenate:
                 best_weighted_f1 = weighted_f1
                 best_accuracy = accuracy
                 best_weights = (rnn_weight, vgg16_weight)
-                
+        
+        print('============================')
+        print("Taille du dataset Train :", len(y_train))   
         print("best_weighted_f1 =", best_weighted_f1)
         print("accuracy when best f1 =", best_accuracy)
         print("best_weights =", best_weights)
+        print('============================')
         
         return best_weights

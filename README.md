@@ -61,7 +61,7 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 
 > `conda install pip`                    <- May be optionnal
 
-> `pip install -r requirements.txt`      <- It will install the required packages
+> `pip install -r requirements.txt`      <- It will install the required packages. Caution: You must install python 3.10.14 before this
 
 > `python src/data/import_raw_data.py`   <- It will import the tabular data on data/raw/
 

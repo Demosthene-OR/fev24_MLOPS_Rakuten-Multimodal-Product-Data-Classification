@@ -112,8 +112,8 @@ def initialisation():
         tokenizer_config = json_file.read()
     tokenizer = keras.preprocessing.text.tokenizer_from_json(tokenizer_config)
 
-    rnn = load_model("best_rnn_model.h5")
-    vgg16 = load_model("best_vgg16_model.h5")
+    rnn = load_model( "models" , "best_rnn_model.h5" )
+    vgg16 = load_model("models" , "best_vgg16_model.h5")
 
     with open("models/best_weights.json", "r") as json_file:
         best_weights = json.load(json_file)

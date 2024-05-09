@@ -67,18 +67,34 @@ class Predict:
         # print(concatenate_proba)
         final_predictions = np.argmax(concatenate_proba, axis=1)
 
-        return {
-            i: self.mapper[str(final_predictions[i])]
-            for i in range(len(final_predictions))
-        }
+        # Récupérer les noms des catégories à partir du mapper
+        categories = list(self.mapper.values())
 
+        # Créer un DataFrame pour stocker les résultats de la prédiction
+        results_df = pd.DataFrame(columns=['cat_pred'] + categories)
+
+        for i in range(len(final_predictions)):
+            # Récupérer la catégorie prédite
+            cat_pred = self.mapper[str(final_predictions[i])]
+
+            # Récupérer les probabilités pour chaque catégorie
+            proba_values = concatenate_proba[i]
+
+            # Créer une ligne pour cette prédiction
+            prediction_row = [cat_pred] + list(proba_values)
+
+            # Ajouter la ligne au DataFrame
+            results_df.loc[i] = prediction_row
+
+        return results_df
 
 
 def main():
     parser = argparse.ArgumentParser(description= "Input data")
     
-    parser.add_argument("--dataset_path", default = "data/preprocessed/X_train_update.csv", type=str,help="File path for the input CSV file.")
-    parser.add_argument("--images_path", default = "data/preprocessed/image_train", type=str,  help="Base path for the images.")
+    parser.add_argument("--dataset_path", default = "data/predict/X_test_update.csv", type=str,help="File path for the input CSV file.")
+    parser.add_argument("--images_path", default = "data/predict/image_test", type=str,  help="Base path for the images.")
+    parser.add_argument("--prediction_path", default = "data/predict/predictions.csv",  type=str,  help="Path for the prediction results.")
     args = parser.parse_args()
 
     # Charger les configurations et modèles
@@ -86,8 +102,8 @@ def main():
         tokenizer_config = json_file.read()
     tokenizer = keras.preprocessing.text.tokenizer_from_json(tokenizer_config)
 
-    rnn = load_model("best_rnn_model.h5")
-    vgg16 = load_model("best_vgg16_model.h5")
+    rnn = load_model("models","best_rnn_model.h5")
+    vgg16 = load_model("models","best_vgg16_model.h5")
 
     with open("models/best_weights.json", "r") as json_file:
         best_weights = json.load(json_file)
@@ -111,8 +127,10 @@ def main():
     predictions = predictor.predict()
     
     # Sauvegarde des prédictions
-    with open("data/preprocessed/predictions.json", "w", encoding="utf-8") as json_file:
-        json.dump(predictions, json_file, indent=2)
+    # with open("data/preprocessed/predictions.json", "w", encoding="utf-8") as json_file:
+    #     json.dump(predictions, json_file, indent=2)
+    predictions.to_csv(args.prediction_path, index=False)
+    
     t_fin = time.time()
     print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
 

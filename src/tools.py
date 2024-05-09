@@ -3,6 +3,7 @@ from tensorflow import keras
 from keras import backend as K
 from filesplit.merge import Merge
 from filesplit.split import Split
+import os
 
 # Definition de la metrique weighted-F1 score
 precision = tf.keras.metrics.Precision()
@@ -26,18 +27,19 @@ def f1_m(y_true, y_pred):
     
     return weighted_f1
 
-# Voici 2 fonctions qui permettent de passer sous la barre des 100 Mo.....
+# Voici 2 fonctions qui permettent de passer sous la barre des 100 Mo,
+# et permettent ainsi d'enregistrer le model sur Github sans LFS .....
 
-def load_model(file_name):
-    global file_path
+def load_model(file_path, file_name):
     
     merge = Merge(file_path+"/"+file_name[:-3],  file_path, file_name).merge(cleanup=False)
     with keras.utils.custom_object_scope({"f1_m": f1_m}):
         return keras.models.load_model(file_path+"/"+file_name)
 
-def save_model(file_name):
-    global file_path
+def save_model(file_path, file_name):
     
+    # if not os.path.exists(file_path):
+    #     os.makedirs(file_path)
     Split(file_path+"/"+file_name,file_path+"/"+file_name[:-3]).bysize(9500000)
     return
     
