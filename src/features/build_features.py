@@ -54,15 +54,12 @@ class DataImporter:
         
         # Le calcul suivant est nécessaire si on entraine le modele sur la totalité de df (i.e. samples_per_class==0,)
         class_size = grouped_data.size().tolist()
-        print("sum(class_size) = ",sum(class_size))
         train_size = [int(n*0.8) for n in class_size]
         # Le nombre de ligne de X_test est plafonné à 50 * nombre de classes
         test_reduc =  1.0 if (len(df)//10) < (27*50) else 1350 / len(df)
         test_size = [(math.ceil(test_reduc *n) if with_test else 0) for n in class_size]
         val_size = [(class_size[i]-train_size[i]-test_size[i]) for i in range(len(class_size))]
-        print("sum(train_size) = ",sum(train_size))
-        print("sum(test_size) = ",sum(test_size))
-        print("sum(val_size) = ",sum(val_size))
+
 
         X_train_samples = []
         X_test_samples = []
