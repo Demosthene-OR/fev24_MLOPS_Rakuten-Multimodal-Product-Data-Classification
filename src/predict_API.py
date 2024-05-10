@@ -137,8 +137,11 @@ def prediction(input_data: PredictionInput, token: Optional[str] = Depends(oauth
         else:
             user_data = auth_response.json()
             user_info = user_data['FirstName']+" "+user_data['LastName']
+            if user_data['Authorization'] < 1:
+                prediction_response = {"message": f"{user_info} n'est pas autorisé a effectuer une prediction"}
+                return prediction_response
     else:
-            user_info = "un utilisateur inconnu"
+        user_info = "un utilisateur inconnu"
 
     # Exécutez la prédiction
     t_debut = time.time()
