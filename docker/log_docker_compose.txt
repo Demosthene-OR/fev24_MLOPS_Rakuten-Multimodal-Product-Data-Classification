@@ -1,68 +1,56 @@
-[2Kadmin_db  | [Wed May  8 17:16:47 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
-[2Kadmin_db  | [Wed May  8 17:17:49 2024] [::ffff:172.18.0.1]:59932 Accepted
-[2Kadmin_db  | [Wed May  8 17:17:50 2024] [::ffff:172.18.0.1]:59932 [200]: GET /
-[2Kadmin_db  | [Wed May  8 17:17:50 2024] [::ffff:172.18.0.1]:59932 Closing
-[2Kadmin_db  | [Wed May  8 17:17:50 2024] [::ffff:172.18.0.1]:59936 Accepted
-[2Kadmin_db  | [Wed May  8 17:17:51 2024] [::ffff:172.18.0.1]:59936 [200]: POST /?script=version
-[2Kadmin_db  | [Wed May  8 17:17:51 2024] [::ffff:172.18.0.1]:59936 Closing
-[2Kadmin_db  | [Wed May  8 17:17:55 2024] [::ffff:172.18.0.1]:56906 Accepted
-[2Kadmin_db  | [Wed May  8 17:18:00 2024] [::ffff:172.18.0.1]:56906 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db  | [Wed May  8 17:18:00 2024] [::ffff:172.18.0.1]:56906 Closing
-[2Kadmin_db  | [Wed May  8 17:19:18 2024] [::ffff:172.18.0.1]:59438 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:19 2024] [::ffff:172.18.0.1]:59438 [302]: POST /
-[2Kadmin_db  | [Wed May  8 17:19:19 2024] [::ffff:172.18.0.1]:59438 Closing
-[2Kadmin_db  | [Wed May  8 17:19:19 2024] [::ffff:172.18.0.1]:59452 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:19 2024] [::ffff:172.18.0.1]:59452 [403]: GET /?server=users_db&username=Fadimatou&db=rakuten_db
-[2Kadmin_db  | [Wed May  8 17:19:19 2024] [::ffff:172.18.0.1]:59452 Closing
-[2Kadmin_db  | [Wed May  8 17:19:19 2024] [::ffff:172.18.0.1]:59466 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:24 2024] [::ffff:172.18.0.1]:59466 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db  | [Wed May  8 17:19:24 2024] [::ffff:172.18.0.1]:59466 Closing
-[2Kadmin_db  | [Wed May  8 17:19:30 2024] [::ffff:172.18.0.1]:35384 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:30 2024] [::ffff:172.18.0.1]:35384 [302]: POST /?server=users_db&username=Fadimatou&db=rakuten_db
-[2Kadmin_db  | [Wed May  8 17:19:30 2024] [::ffff:172.18.0.1]:35384 Closing
-[2Kadmin_db  | [Wed May  8 17:19:30 2024] [::ffff:172.18.0.1]:35390 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:30 2024] [::ffff:172.18.0.1]:35390 [403]: GET /?server=users_db&username=Fadimatou&db=rakuten_db
-[2Kadmin_db  | [Wed May  8 17:19:30 2024] [::ffff:172.18.0.1]:35390 Closing
-[2Kadmin_db  | [Wed May  8 17:19:30 2024] [::ffff:172.18.0.1]:35400 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:35 2024] [::ffff:172.18.0.1]:35400 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db  | [Wed May  8 17:19:35 2024] [::ffff:172.18.0.1]:35400 Closing
-[2Kadmin_db  | [Wed May  8 17:19:51 2024] [::ffff:172.18.0.1]:42780 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:51 2024] [::ffff:172.18.0.1]:42780 [302]: POST /?server=users_db&username=Fadimatou&db=rakuten_db
-[2Kadmin_db  | [Wed May  8 17:19:51 2024] [::ffff:172.18.0.1]:42780 Closing
-[2Kadmin_db  | [Wed May  8 17:19:51 2024] [::ffff:172.18.0.1]:42788 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:51 2024] [::ffff:172.18.0.1]:42788 [403]: GET /?server=users_db&username=Olivier&db=rakuten_db
-[2Kadmin_db  | [Wed May  8 17:19:51 2024] [::ffff:172.18.0.1]:42788 Closing
-[2Kadmin_db  | [Wed May  8 17:19:51 2024] [::ffff:172.18.0.1]:42802 Accepted
-[2Kadmin_db  | [Wed May  8 17:19:56 2024] [::ffff:172.18.0.1]:42802 Closed without sending a request; it was probably just an unused speculative preconnection
-[2Kadmin_db  | [Wed May  8 17:19:56 2024] [::ffff:172.18.0.1]:42802 Closing
-[2Kusers_db  | 2024-05-08 17:16:47+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
-[2Kusers_db  | 2024-05-08 17:16:47+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2Kusers_db     | 2024-05-08 17:16:47+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
-[2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kusers_db     | 2024-05-08T17:16:47.841080Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2Kusers_db     | 2024-05-08T17:16:48.060765Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kusers_db     | 2024-05-08T17:16:48.064793Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-[2Kusers_db     | 2024-05-08T17:16:48.077163Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kapi_predict  | 2024-05-08 17:16:48.490781: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_oauth    | INFO:     Started server process [1]
-[2Kusers_db     | 2024-05-08T17:16:49.115237Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-[2Kusers_db     | 2024-05-08T17:16:49.603705Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kapi_oauth    | INFO:     Waiting for application startup.
-[2Kusers_db     | 2024-05-08T17:16:49.604398Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-[2K[2Kapi_oauth    | INFO:     Application startup complete.
-api_predict  | 2024-05-08 17:16:48.492480: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-08 17:16:48.527082: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-08 17:16:48.527481: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-[2Kapi_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+[2Kapi_predict  | 2024-05-10 22:53:58.784727: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_predict  | 2024-05-10 22:53:58.786593: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-10 22:53:58.834129: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-10 22:53:58.834856: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 [2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2K[2Kapi_predict  | 2024-05-08 17:16:49.482073: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_predict  | 2024-05-10 22:53:59.666937: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 [2Kapi_predict  | INFO:     Started server process [1]
 [2Kapi_predict  | INFO:     Waiting for application startup.
 [2Kapi_predict  | INFO:     Application startup complete.
-users_db     | 2024-05-08T17:16:49.617832Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
 [2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2Kusers_db     | 2024-05-08T17:16:49.714999Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db     | 2024-05-08T17:16:49.974024Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-[2Kusers_db     | 2024-05-08T17:19:19.054648Z 9 [Warning] [MY-013360] [Server] Plugin sha256_password reported: ''sha256_password' is deprecated and will be removed in a future release. Please use caching_sha2_password instead'
-[2Kusers_db     | 2024-05-08T17:19:30.394778Z 10 [Warning] [MY-013360] [Server] Plugin sha256_password reported: ''sha256_password' is deprecated and will be removed in a future release. Please use caching_sha2_password instead'
-[2Kapi_predict  | INFO:     172.18.0.1:39018 - "GET /initialisation HTTP/1.1" 200 OK
+[2Kapi_predict  | INFO:     172.19.0.1:45684 - "GET /initialisation HTTP/1.1" 200 OK
+[2Kadmin_db     | [Fri May 10 22:53:57 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kapi_oauth    | INFO:     Started server process [1]
+[2Kapi_oauth    | INFO:     Waiting for application startup.
+[2Kapi_oauth    | INFO:     Application startup complete.
+[2Kapi_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+[2Kapi_oauth    | userconnected :  {'FirstName': 'John', 'LastName': 'Doe', 'Email': 'john.doe@example.com', 'Authorization': 1, 'username': 'John', 'password': '$2b$12$pfyjoh3RWS9crj8lFwF3ROWeSZ26Eu5m1WknmMJ0RqCYp.AHiu.MO'}
+[2Kapi_oauth    | INFO:     172.19.0.1:54278 - "POST /token HTTP/1.1" 200 OK
+[2Kapi_oauth    | INFO:     172.19.0.3:51724 - "GET /secured HTTP/1.1" 401 Unauthorized
+[2Kapi_oauth    | userconnected :  {'FirstName': 'John', 'LastName': 'Doe', 'Email': 'john.doe@example.com', 'Authorization': 1, 'username': 'John', 'password': '$2b$12$pfyjoh3RWS9crj8lFwF3ROWeSZ26Eu5m1WknmMJ0RqCYp.AHiu.MO'}
+[2Kapi_oauth    | INFO:     172.19.0.3:33166 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth    | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth    | INFO:     172.19.0.1:47168 - "POST /token HTTP/1.1" 200 OK
+[2Kapi_oauth    | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth    | INFO:     172.19.0.3:40630 - "GET /secured HTTP/1.1" 200 OK
+[2Kusers_db     | 2024-05-10 22:53:56+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kusers_db     | 2024-05-10 22:53:57+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+[2Kusers_db     | 2024-05-10 22:53:57+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el8 started.
+[2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+[2Kusers_db     | 2024-05-10T22:53:57.426866Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kusers_db     | 2024-05-10T22:53:57.716980Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kusers_db     | 2024-05-10T22:53:57.723634Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kusers_db     | 2024-05-10T22:53:57.743752Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+[2Kusers_db     | 2024-05-10T22:53:58.796709Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kusers_db     | 2024-05-10T22:53:59.444920Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2Kusers_db     | 2024-05-10T22:53:59.445217Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2Kusers_db     | 2024-05-10T22:53:59.460977Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kusers_db     | 2024-05-10T22:53:59.571371Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kusers_db     | 2024-05-10T22:53:59.834212Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+[2Kapi_train    | 2024-05-10 22:53:58.784850: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_train    | 2024-05-10 22:53:58.786712: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_train    | 2024-05-10 22:53:58.834752: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_train    | 2024-05-10 22:53:58.835108: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_train    | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[2Kapi_train    | 2024-05-10 22:53:59.668149: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_train    | INFO:     Started server process [1]
+[2Kapi_train    | INFO:     Waiting for application startup.
+[2Kapi_train    | INFO:     Application startup complete.
+[2Kapi_train    | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+[2Kapi_train    | INFO:     172.19.0.1:37626 - "POST /train HTTP/1.1" 401 Unauthorized
+[2Kapi_train    | INFO:     172.19.0.1:59656 - "POST /train HTTP/1.1" 200 OK
+[2Kapi_train    | [nltk_data] Downloading package punkt to /root/nltk_data...
+[2Kapi_train    | [nltk_data]   Unzipping tokenizers/punkt.zip.
+[2Kapi_train    | [nltk_data] Downloading package stopwords to /root/nltk_data...
+[2Kapi_train    | [nltk_data]   Unzipping corpora/stopwords.zip.
+[2Kapi_train    | [nltk_data] Downloading package wordnet to /root/nltk_data...
