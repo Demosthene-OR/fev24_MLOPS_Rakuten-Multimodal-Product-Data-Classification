@@ -100,7 +100,7 @@ class TextRnnModel:
             TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
         ]
 
-        self.model.fit(
+        history = self.model.fit(
             [train_padded_sequences],
             tf.keras.utils.to_categorical(y_train, num_classes=27),
             epochs=n_epochs,
@@ -112,6 +112,13 @@ class TextRnnModel:
             callbacks=rnn_callbacks,
         )
         save_model(self.file_path, "best_rnn_model.h5")
+        
+        # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
+        best_f1_epoch = np.argmax(history.history['f1_m'])
+        # Récupérer les meilleures valeurs de F1 et d'accuracy
+        best_f1 = history.history['f1_m'][best_f1_epoch]
+        best_accuracy_when_best_f1 = history.history['accuracy'][best_f1_epoch]
+        return history, best_f1_epoch, best_f1, best_accuracy_when_best_f1
 
 
 class ImageVGG16Model:
@@ -196,13 +203,20 @@ class ImageVGG16Model:
             TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
         ]
 
-        self.model.fit(
+        history = self.model.fit(
             train_generator,
             epochs=n_epochs,
             validation_data=val_generator,
             callbacks=vgg_callbacks,
         )
         save_model(self.file_path, "best_vgg16_model.h5")
+        
+        # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
+        best_f1_epoch = np.argmax(history.history['f1_m'])
+        # Récupérer les meilleures valeurs de F1 et d'accuracy
+        best_f1 = history.history['f1_m'][best_f1_epoch]
+        best_accuracy_when_best_f1 = history.history['accuracy'][best_f1_epoch]
+        return history, best_f1_epoch, best_f1, best_accuracy_when_best_f1
         
 class concatenate:
     def __init__(self, tokenizer, rnn, vgg16):
@@ -304,10 +318,11 @@ class concatenate:
                 best_weights = (rnn_weight, vgg16_weight)
         
         print('============================')
-        print("Taille du dataset Train :", len(y_train))   
+        print("Train dataset size :", len(y_train))   
         print("best_weighted_f1 =", best_weighted_f1)
         print("accuracy when best f1 =", best_accuracy)
         print("best_weights =", best_weights)
-        print('============================')
+        # print('============================')
         
-        return best_weights
+        
+        return best_weights, best_weighted_f1, best_accuracy, len(y_train)

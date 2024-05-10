@@ -12,6 +12,7 @@ import numpy as np
 from tools import f1_m, load_model
 import sys
 import random
+import datetime
 
 
 def main():
@@ -51,18 +52,20 @@ def main():
 
     # sys.exit(0)
     # Train Rnn model
+    print('============================')
     print("Training RNN Model")
     text_rnn_model = TextRnnModel(file_path=args.model_path)
-    text_rnn_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
+    rnn_history, rnn_best_f1_epoch, rnn_best_f1, rnn_best_accuracy_when_best_f1 = text_rnn_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
     print("Finished training RNN")
-
-
+    
+    print('============================')
     print("Training VGG")
     # Train VGG16 model
     image_vgg16_model = ImageVGG16Model(file_path=args.model_path)
-    image_vgg16_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
+    vgg16_history, vgg16_best_f1_epoch, vgg16_best_f1, vgg16_best_accuracy_when_best_f1 = image_vgg16_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
     print("Finished training VGG")
-
+    
+    print('============================')
     with open(args.model_path+"/tokenizer_config.json", "r", encoding="utf-8") as json_file:
         tokenizer_config = json_file.read()
     tokenizer = tf.keras.preprocessing.text.tokenizer_from_json(tokenizer_config)
@@ -73,56 +76,108 @@ def main():
     print("Training the concatenate model")
     model_concatenate = concatenate(tokenizer, rnn, vgg16)
     if (samples_per_class > 0):
-        new_samples_per_class = max(int(samples_per_class/12),3) # 50
+        new_samples_per_class = min(samples_per_class,50)  # max(int(samples_per_class/12),3) # 50
     else:
-        new_samples_per_class = 0
+        new_samples_per_class = 50
 
     rnn_proba, vgg16_proba, new_y_train = model_concatenate.predict(X_train, y_train, new_samples_per_class=new_samples_per_class, random_state=random_state)  
-    best_weights = model_concatenate.optimize(rnn_proba, vgg16_proba, new_y_train)
-    print("Finished training concatenate model")
+    best_weights, best_weighted_f1, best_accuracy, concatenate_train_size = model_concatenate.optimize(rnn_proba, vgg16_proba, new_y_train)
 
-    with open(args.model_path+"/best_weights.pkl", "wb") as file:
-        pickle.dump(best_weights, file)
     with open(args.model_path+"/best_weights.json", "w") as file:
         json.dump(best_weights, file)
+        
+    # with open(args.model_path+"/best_weights.pkl", "wb") as file:
+    #     pickle.dump(best_weights, file)
+    # num_classes = 27
 
-    num_classes = 27
+    # proba_rnn = keras.layers.Input(shape=(num_classes,))
+    # proba_vgg16 = keras.layers.Input(shape=(num_classes,))
 
-    proba_rnn = keras.layers.Input(shape=(num_classes,))
-    proba_vgg16 = keras.layers.Input(shape=(num_classes,))
+    # weighted_proba = keras.layers.Lambda(
+    #     lambda x: best_weights[0] * x[0] + best_weights[1] * x[1]
+    # )([proba_rnn, proba_vgg16])
 
-    weighted_proba = keras.layers.Lambda(
-        lambda x: best_weights[0] * x[0] + best_weights[1] * x[1]
-    )([proba_rnn, proba_vgg16])
-
-    concatenate_model = keras.models.Model(
-        inputs=[proba_rnn, proba_vgg16], outputs=weighted_proba
-    )
+    # concatenate_model = keras.models.Model(
+    #     inputs=[proba_rnn, proba_vgg16], outputs=weighted_proba
+    # )
     
     t_fin = time.time()
-    print("Durée de l'entrainement = {:.2f}".format(t_fin - t_debut))
+    training_duration = t_fin - t_debut
+    print("Training duration = {:.2f} sec".format(training_duration))
+    print("Finished training concatenate model")
     print('============================')
-
+    
     # Enregistre le modèle au format h5
-    concatenate_model.save(args.model_path+"/concatenate.h5")
-
-
+    # concatenate_model.save(args.model_path+"/concatenate.h5")
     
     # Calcul de la perforance sur le dataset test
+    t_debut = time.time()
+    t_fin = t_debut
+    concatenate_test_size = 0
+    test_accuracy = 0
+    test_f1 = 0
     if with_test:
-        t_debut = time.time()
         rnn_proba_test, vgg16_proba_test, new_y_test = model_concatenate.predict(X_test, y_test, new_samples_per_class=0, random_state=random_state) 
         combined_predictions = (best_weights[0] * rnn_proba_test) + (best_weights[1] * vgg16_proba_test)
         final_predictions = np.argmax(combined_predictions, axis=1)
+        concatenate_test_size = len(new_y_test)
         test_accuracy = accuracy_score(new_y_test, final_predictions)
         test_f1 = f1_score(new_y_test , final_predictions, average='weighted')
         t_fin = time.time()
         print('============================')
-        print("Taille du dataset Test :", len(y_test))
+        print("Testing the concatenate model")
+        print("Test dataset size :", concatenate_test_size)
         print("Test: f1 score =", test_f1)
         print("Test accuracy score =", test_accuracy)
-        print("Durée du test = {:.2f}".format(t_fin - t_debut))
+        print("Test duration = {:.2f} sec".format(t_fin - t_debut))
         print('============================')
+    
+    test_duration = t_fin - t_debut
+    train_size = int(len(X_train))
+    val_size = int(len(X_val))
+    test_size = int(len(X_test))
+    performances_recap = {
+        "Date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "Input": {
+            "epochs_requested": int(n_epochs),
+            "samples_per_class": int(samples_per_class),
+            "with_test": int(with_test),
+            "random_state": int(random_state),
+            "Dataset_size": {
+                "Train": train_size,
+                "Val": val_size,
+                "Test": test_size
+                }    
+        },
+        "Text" : {
+            "best_epoch": int(rnn_best_f1_epoch+1), 
+            "f1": float(rnn_best_f1),
+            "accuracy" : float(rnn_best_accuracy_when_best_f1)
+        },
+        "VGG16" : {
+            "best_epoch": int(vgg16_best_f1_epoch+1), 
+            "f1": float(vgg16_best_f1),
+            "accuracy" : float(vgg16_best_accuracy_when_best_f1)
+        },
+        "Concatenate" : {
+            "weight": best_weights,
+            "Train": {
+                "f1": float(best_weighted_f1),
+                "accuracy": float(best_accuracy),
+                "duration" : int(training_duration),
+                "size": int(concatenate_train_size)
+            },
+            "Test": {
+                "f1": float(test_f1),
+                "accuracy": float(test_accuracy),
+                "duration" : int(test_duration),
+                "size": concatenate_test_size
+            }
+        }
+    }
+    with open(args.model_path+"/performances.json", "w") as file:
+        json.dump( performances_recap, file, indent=4)
+    
     
 if __name__ == "__main__":
     main()

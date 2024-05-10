@@ -29,8 +29,8 @@ class DataImporter:
             modalite_mapping = {
                 modalite: i for i, modalite in enumerate(target["prdtypecode"].unique())
             }
-            with open(f"{self.model_path}mapper.pkl", "wb") as fichier:
-                pickle.dump(modalite_mapping, fichier)
+            # with open(f"{self.model_path}mapper.pkl", "wb") as fichier:
+            #     pickle.dump(modalite_mapping, fichier)
             with open(f"{self.model_path}/mapper.json", "w") as fichier_json:
                 json_mapper = {str(v): str(k) for k, v in modalite_mapping.items()}
                 json.dump(json_mapper, fichier_json)
@@ -93,8 +93,10 @@ class DataImporter:
 
         grouped_data_test = X_test.groupby("prdtypecode") 
         X_test = X_test.drop(X_test.index)
+        y_test=[]
         X_val_samples = []
         X_test_samples = []
+        
         i=0
 
         for _, group in grouped_data_test:
