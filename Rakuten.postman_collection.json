@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "ef7b381c-864a-437a-ae03-8b503dfd5879",
+		"name": "Rakuten",
+		"description": "This collection contains all the API requests for the Datascientest Rakuten project achieved by Fadimatou Abdoulaye and Olivier Renouard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32855865",
+		"_collection_link": "https://rakuten-project-datascientest.postman.co/workspace/Rakuten-Project---Datascientest~ff9ec2f8-47ad-423a-a221-2339dda198be/collection/32855865-ef7b381c-864a-437a-ae03-8b503dfd5879?action=share&source=collection_link&creator=32855865"
+	},
+	"item": [
+		{
+			"name": "FastAPI OAuth2 token generate",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Fadimatou",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Fadimatou",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURLsecured}}/token",
+					"host": [
+						"{{baseURLsecured}}"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FastAPI OAuth2 secured",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseURLsecured}}/secured",
+					"host": [
+						"{{baseURLsecured}}"
+					],
+					"path": [
+						"secured"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initialisation Predict",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{baseURLPredict}}/initialisation",
+					"host": [
+						"{{baseURLPredict}}"
+					],
+					"path": [
+						"initialisation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict (secured or not)",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dataset_path\": \"data/predict/X_test_update.csv\",\r\n    \"images_path\": \"data/predict/image_test\",\r\n    \"prediction_path\": \"data/predict/predictions.csv\",\r\n    \"api_secured\": \"True\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURLPredict}}/prediction",
+					"host": [
+						"{{baseURLPredict}}"
+					],
+					"path": [
+						"prediction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Train (secured or not)",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"x_train_path\": \"data/preprocessed/X_train_update.csv\",\r\n    \"y_train_path\": \"data/preprocessed/Y_train_CVw08PX.csv\",\r\n    \"images_path\": \"data/preprocessed/image_train\",\r\n    \"model_path\": \"models\",\r\n    \"n_epochs\": 1,\r\n    \"samples_per_class\": 20,\r\n    \"with_test\": \"False\",\r\n    \"random_state\": 42,\r\n    \"api_secured\": \"True\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURLTrain}}/train",
+					"host": [
+						"{{baseURLTrain}}"
+					],
+					"path": [
+						"train"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenName",
+				"value": "Access with authorization 2",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURLPredict",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "baseURLTrain",
+			"value": "http://localhost:8002",
+			"type": "string"
+		},
+		{
+			"key": "baseURLsecured",
+			"value": "http://localhost:8001",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "Fadimatou"
+		},
+		{
+			"key": "password",
+			"value": "Fadimatou"
+		}
+	]
+}
