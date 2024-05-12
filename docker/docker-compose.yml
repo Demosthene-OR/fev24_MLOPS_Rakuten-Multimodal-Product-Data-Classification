@@ -26,19 +26,19 @@ services:
 
   api_predict:
     build: 
-      context: ../src
+      context: ./src
       dockerfile: Dockerfile.predict
     container_name: api_predict
     restart: always
     ports:
       - "8000:8000"
     volumes:
-      - ../models:/app/models
-      - ../data:/app/data
+      - ./models:/app/models
+      - ./data:/app/data
 
   api_oauth:
     build: 
-      context: ../src/fastapi_oauth
+      context: ./src/fastapi_oauth
       dockerfile: Dockerfile.oauth
     container_name: api_oauth
     restart: always
@@ -47,12 +47,12 @@ services:
 
   api_train:
     build: 
-      context: ../src
+      context: ./src
       dockerfile: Dockerfile.train
     container_name: api_train
     restart: always
     ports:
       - "8002:8002"
     volumes:
-      - ../models:/app/models
-      - ../data:/app/data
+      - ./models:/app/models
+      - ./data:/app/data

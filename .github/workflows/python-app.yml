@@ -1,12 +1,12 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-name: Python application
+name: Python application with Docker Compose
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]  # Correction de la branche pull_request
+    branches: [ "main" ]
 
 permissions:
   contents: read
@@ -16,36 +16,32 @@ jobs:
     name: Check tests
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ROOT_PASSWORD: Rakuten
-          MYSQL_DATABASE: rakuten_db
-        ports:
-          - "3306:3306"
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+
+    # Docker Compose setup
+    - name: Set up Docker Compose
+      uses: docker/compose-action@v2
+      with:
+        compose-file: docker-compose.yml
+
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; fi
+
     - name: Lint with flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Start API with Uvicorn
-      run: |
-        uvicorn src.predict_API:app --host 0.0.0.0 --port 8000 --reload &
-        sleep 5  # Attendez quelques secondes pour que l'API démarre correctement
+
     - name: Test with pytest
       run: |
         pytest tests/
