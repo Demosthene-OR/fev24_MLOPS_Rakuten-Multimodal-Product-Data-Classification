@@ -33,12 +33,12 @@
 						},
 						{
 							"key": "username",
-							"value": "Alice",
+							"value": "Fadimatou",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "Alice",
+							"value": "Fadimatou",
 							"type": "text"
 						},
 						{
@@ -115,7 +115,7 @@
 			"response": []
 		},
 		{
-			"name": "New Products Proposal",
+			"name": "Initialisation Predict",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -143,21 +143,16 @@
 				"method": "GET",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"num_products\": 2,\r\n    \"new_products_folder_path\": \"data/predict\",\r\n    \"api_secured\": \"True\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"mode": "formdata",
+					"formdata": []
 				},
 				"url": {
-					"raw": "{{baseURLflows}}/new_product_proposal",
+					"raw": "{{baseURLPredict}}/initialisation",
 					"host": [
-						"{{baseURLflows}}"
+						"{{baseURLPredict}}"
 					],
 					"path": [
-						"new_product_proposal"
+						"initialisation"
 					]
 				}
 			},
@@ -210,153 +205,6 @@
 			"response": []
 		},
 		{
-			"name": "Add_new_products",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "tokenType",
-							"value": "",
-							"type": "string"
-						},
-						{
-							"key": "accessToken",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"new_products_origin_path\": \"data/predict\",\r\n    \"new_products_dest_path\": \"data/preprocessed\",\r\n    \"api_secured\": \"True\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURLflows}}/add_new_products",
-					"host": [
-						"{{baseURLflows}}"
-					],
-					"path": [
-						"add_new_products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Compute metrics for new products",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "tokenType",
-							"value": "",
-							"type": "string"
-						},
-						{
-							"key": "accessToken",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"classes_path\": \"data/preprocessed/new_classes.csv\",\r\n    \"num_sales\": 100,\r\n    \"api_secured\": \"True\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURLflows}}/compute_metrics",
-					"host": [
-						"{{baseURLflows}}"
-					],
-					"path": [
-						"compute_metrics"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Save model & start train",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "tokenType",
-							"value": "",
-							"type": "string"
-						},
-						{
-							"key": "accessToken",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"model_path\": \"models/empty_model\",\r\n    \"dataset_path\": \"data/preprocessed\",\r\n    \"n_epochs\": 10,\r\n    \"samples_per_class\": 0,\r\n    \"api_secured\": \"True\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURLflows}}/save_model_start_train",
-					"host": [
-						"{{baseURLflows}}"
-					],
-					"path": [
-						"save_model_start_train"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Train (secured or not)",
 			"request": {
 				"auth": {
@@ -383,7 +231,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"x_train_path\": \"data/preprocessed/X_train_update.csv\",\r\n    \"y_train_path\": \"data/preprocessed/Y_train_CVw08PX.csv\",\r\n    \"images_path\": \"data/preprocessed/image_train\",\r\n    \"model_path\": \"models\",\r\n    \"n_epochs\": 10,\r\n    \"samples_per_class\": 0,\r\n    \"with_test\": \"True\",\r\n    \"random_state\": 42,\r\n    \"api_secured\": \"False\"\r\n}",
+					"raw": "{\r\n    \"x_train_path\": \"data/preprocessed/X_train_update.csv\",\r\n    \"y_train_path\": \"data/preprocessed/Y_train_CVw08PX.csv\",\r\n    \"images_path\": \"data/preprocessed/image_train\",\r\n    \"model_path\": \"models\",\r\n    \"n_epochs\": 1,\r\n    \"samples_per_class\": 10,\r\n    \"with_test\": \"True\",\r\n    \"random_state\": 42,\r\n    \"api_secured\": \"False\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -397,55 +245,6 @@
 					],
 					"path": [
 						"train"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Reset Datasets",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "tokenType",
-							"value": "",
-							"type": "string"
-						},
-						{
-							"key": "accessToken",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UiLCJleHAiOjE3MTU0MTU3ODh9.aF6j9OODPPA7vhSfpH2GgaLikI3W_DzPu0ypugtRWLY",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"new_products_origin_path\": \"data/predict\",\r\n    \"new_products_dest_path\": \"data/preprocessed\",\r\n    \"api_secured\": \"True\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURLflows}}/reset_dataset",
-					"host": [
-						"{{baseURLflows}}"
-					],
-					"path": [
-						"reset_dataset"
 					]
 				}
 			},
@@ -503,11 +302,6 @@
 		{
 			"key": "baseURLsecured",
 			"value": "http://localhost:8001",
-			"type": "string"
-		},
-		{
-			"key": "baseURLflows",
-			"value": "http://localhost:8003",
 			"type": "string"
 		},
 		{

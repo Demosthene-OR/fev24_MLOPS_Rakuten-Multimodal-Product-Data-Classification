@@ -15,7 +15,7 @@ Project Organization
     │   ├── preprocessed   <- The final, canonical data sets for modeling.
     |   |  ├── image_train <- Where you put the images of the train set
     |   |  ├── image_test <- Where you put the images of the predict set
-    |   |  ├── X_train_update.csv   <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
+    |   |  ├── X_train_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
     |   |  └── X_test_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
     │   └── raw            <- The original, immutable data dump.
     |   |  ├── image_train <- Where you put the images of the train set
@@ -50,13 +50,6 @@ Project Organization
     │   ├── models                
     │   │   └── train_model.py
     │   └── config         <- Describe the parameters used in train_model.py and predict_model.py
-    │
-    ├── streamlit_app      <- Source code of the streamlit app which shows how to use all the APIs
-    │
-    └── tests              <- Source code of the tests
-    │   └── test_rakuten.py     <- Scripts of all the test which are launched by Gihub Actions @ each commit
-    │
-    └── Rakuten.postman_collection.json     <- This collection contains all the API requests for the Datascientest Rakuten project
 
 --------
 
@@ -91,43 +84,29 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
     Exemple : python src/predict_1.py --dataset_path "data/preprocessed/X_test_update.csv" --images_path "data/preprocessed/image_test"                         
                                          The predictions are saved in data/preprocessed as 'predictions.csv'  
 
-    If you want with to predict with the API in a unsecured way (without Docker) :  
+    If you with to predict with the API in a unsecured way (without Docker) :  
 > `uvicorn src.predict_API:app --reload`  
+> `curl 'http://localhost:8000/initialisation'`  
 > `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'`  
 
-    If you want with to train the model with the API in a unsecured way (without Docker) :   
-> `uvicorn src.main_API:app --port 8002 --reload`  
-> `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer ' --data '{}'`  
- 
+    If you want to use Docker in a secured way (stop uvicorn first):  
+> `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API  
 
-    If you want to run the API in a secured way, you have to use Docker (stop uvicorn first):   
-> `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API    
+    Then in your browser you can launch the database adminer which show you the registered users:
+    http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users
+    password = Rakuten
 
-    2 containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data  
-    Then, in your browser you can launch the database adminer which show you the registered users:  
-    http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users  
-    password = Rakuten  
+    You can then run..
+    1 - Token generation (to login) :
+        curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \ 
+        --data-urlencode 'username=John' --data-urlencode 'password=John'
+    2 - Predict 
+        The input data are located in data/predict . 
+        The predictions are saved in data/predict as 'predictions.csv'
+        curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Obtained access token"' \
+        --header 'Content-Type: application/json' --data '{"api_secured": "True"}'
 
-    You can then run:
->   
-    1 - Token generation (to login) :  
->   `curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \`    
->       `--data-urlencode 'username=John' --data-urlencode 'password=John'`    
-    2 - Check the informations about the user designated by the token :   
->   `curl 'http://localhost:8001/secured' --header 'Authorization: Bearer "Obtained access token"'`
-    3 - Predict  
-        The input data are located, by default, in data/predict.  (There are many paramteters available)   
-        The predictions are saved in data/predict as 'predictions.csv'    
->   `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Obtained access token"' \`  
->        `--header 'Content-Type: application/json' --data '{"api_secured": "True"}'`  
-    4 - Train   
->   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' \`    
->       `--data '{"api_secured": "True"}'`  
-        There are many paramteters available   
-          
-        Finally, if you want to have an overview of the full process, 
-        we encourage you to launch Streamlit:
->   `http://localhost:8501/`
+        
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
-
+python make_dataset.py "../../data/raw" "../../data/preprocessed"

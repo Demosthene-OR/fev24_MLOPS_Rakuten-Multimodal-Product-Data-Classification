@@ -4,18 +4,10 @@ name: Python application with Docker Compose
 
 on:
   push:
-    branches: 
-      - main
-      - tests
-      - flows-complement
-      - af
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
-      - tests
-      - flows-complement
-      - af
-      
+    branches: [ "main" ]
+
 permissions:
   contents: read
 
@@ -28,7 +20,7 @@ jobs:
       ACCESS_TOKEN_AUTH_0: ${{ secrets.ACCESS_TOKEN_AUTH_0 }}
       ACCESS_TOKEN_AUTH_1: ${{ secrets.ACCESS_TOKEN_AUTH_1 }}
       ACCESS_TOKEN_AUTH_2: ${{ secrets.ACCESS_TOKEN_AUTH_2 }}
-      MYSQL_ROOT_PWD: ${{secrets.MYSQL_ROOT_PWD}}
+      MYSQL_ROOT_PWD: $({secrets.MYSQL_ROOT_PWD})
 
     steps:
     - name: Checkout repository
@@ -64,6 +56,6 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest -c tests/pytest.ini tests/
+        pytest  -c tests/pytest.ini tests/
 
 
