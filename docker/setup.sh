@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Lancement de Docker Compose en mode détaché
-# cd docker
 docker-compose -f docker/docker-compose.yml up -d
 
 # Attendre que MySQL soit prêt
@@ -23,6 +22,4 @@ echo -e "\nFin de l'initialisation..."
 
 # Récupération des logs
 docker-compose -f docker/docker-compose.yml logs > docker/log_docker_compose.txt
-
-# cd ..
 
