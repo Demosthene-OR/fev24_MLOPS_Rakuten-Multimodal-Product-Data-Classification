@@ -56,6 +56,6 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest -c tests/pytest.ini
+        pytest  /tests
 
 
