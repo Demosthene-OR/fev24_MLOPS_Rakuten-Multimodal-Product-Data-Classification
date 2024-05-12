@@ -6,7 +6,7 @@ services:
     container_name: users_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Rakuten
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PWD 
       MYSQL_DATABASE: rakuten_db
     ports:
       - "3306:3306"

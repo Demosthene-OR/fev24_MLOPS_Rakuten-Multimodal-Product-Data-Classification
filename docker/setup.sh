@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export MYSQL_ROOT_PWD="${MYSQL_ROOT_PWD}"
+
 # Lancement de Docker Compose en mode détaché
 docker-compose -f docker/docker-compose.yml up -d
 
