@@ -11,16 +11,16 @@ Project Organization
     ├── data
     │   ├── external       <- Data from third party sources -> the external data you want to make a prediction on
     │   ├── predict        <- Data (input and output) to make a prediction on
+        ├── mysql-data     <- Rakuten_db in MySQL with users and their rights
     │   ├── preprocessed   <- The final, canonical data sets for modeling.
     |   |  ├── image_train <- Where you put the images of the train set
     |   |  ├── image_test <- Where you put the images of the predict set
     |   |  ├── X_train_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
-    |   |  ├── X_test_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
+    |   |  └── X_test_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
     │   └── raw            <- The original, immutable data dump.
     |   |  ├── image_train <- Where you put the images of the train set
-    |   |  ├── image_test <- Where you put the images of the predict set
+    |   |  └── image_test <- Where you put the images of the predict set
     ├── docker             <- Files to launch Docker-compose and run a MySQL database with users, authorisation process & the predict function
-    │   └── mysql-data     <- Rakuten_db in MySQL with users and their rights
     │
     ├── logs               <- Logs from training and predicting
     │
@@ -70,7 +70,7 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
     ├── data
     │   └── raw           
     |   |  ├── image_train 
-    |   |  ├── image_test 
+    |   |  └── image_test 
 
 > `python src/data/make_dataset.py data/raw data/preprocessed`      <- It will copy the raw dataset and paste it on data/preprocessed/
 
@@ -90,8 +90,7 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 > `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'`  
 
     If you want to use Docker in a secured way (stop uvicorn first):  
-> `cd docker`                            <- To do in Git bash  
-> `./setup.sh`                           <- It will run the process to build and launch the containers with all the API  
+> `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API  
 
     Then in your browser you can launch the database adminer which show you the registered users:
     http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users
