@@ -22,7 +22,7 @@ echo -e "\nFin de l'initialisation..."
 
 
 # Récupération des logs
-docker-compose -f docker-compose.yml logs > docker/log_docker_compose.txt
+docker-compose -f docker/docker-compose.yml logs > docker/log_docker_compose.txt
 
 # cd ..
 
