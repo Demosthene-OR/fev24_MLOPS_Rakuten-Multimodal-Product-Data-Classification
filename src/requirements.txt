@@ -105,3 +105,4 @@ passlib==1.7.4
 pyjwt==2.4.0
 python-multipart==0.0.9
 mysql-connector-python==8.3.0
+pytest==7.4.0

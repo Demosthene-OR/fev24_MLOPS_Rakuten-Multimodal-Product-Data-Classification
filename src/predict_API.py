@@ -26,7 +26,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 class PredictionInput(BaseModel):
     dataset_path: Optional[str] = "data/predict/X_test_update.csv"
     images_path: Optional[str] = "data/predict/image_test"
-    prediction_path: Optional[str] = "data/predict/predictions.csv"
+    prediction_path: Optional[str] = "data/predict"
     api_secured: Optional[bool] = False
 
 class Predict:
@@ -128,7 +128,6 @@ def initialisation():
 def prediction(input_data: PredictionInput, token: Optional[str] = Depends(oauth2_scheme)):
     global predictor, tokenizer, rnn, vgg16, best_weights, mapper
     
-    print("token=",token)
     # Si api_secured est True, vérifiez les crédentiels
     if input_data.api_secured:
         auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
@@ -158,9 +157,10 @@ def prediction(input_data: PredictionInput, token: Optional[str] = Depends(oauth
     t_fin = time.time()
     
     # Sauvegarde des prédictions
-    #with open(input_data.prediction_path, "w", encoding="utf-8") as json_file:
-    #    json.dump(predictions, json_file, indent=2)
-    predictions.to_csv(input_data.prediction_path, index=False)
+    predictions.to_csv(input_data.prediction_path+"/predictions.csv", index=False)
+    predictions = predictions.rename(columns={'cat_pred': 'cat_real'})
+    predictions['cat_pred'] = predictions.iloc[:, 0]
+    predictions.to_csv(input_data.prediction_path+"/new_classes.csv", index=False)
         
     print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
     
