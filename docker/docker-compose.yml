@@ -6,16 +6,14 @@ services:
     container_name: users_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Rakuten
+      MYSQL_ROOT_PASSWORD: Rakuten # $MYSQL_ROOT_PWD 
       MYSQL_DATABASE: rakuten_db
-#      MYSQL_USER: Olivier
-#      MYSQL_PASSWORD: Olivier
     ports:
       - "3306:3306"
     volumes:
+      - ./../data/mysql-data:/var/lib/mysql:z
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./mysql-data:/var/lib/mysql
-
+    command: --innodb-flush-log-at-trx-commit=2
 
   adminer:
     image: adminer
@@ -26,19 +24,19 @@ services:
 
   api_predict:
     build: 
-      context: ../src
+      context: ./../src
       dockerfile: Dockerfile.predict
     container_name: api_predict
     restart: always
     ports:
       - "8000:8000"
     volumes:
-      - ../models:/app/models
-      - ../data:/app/data
+      - ./../models:/app/models:z
+      - ./../data:/app/data:z
 
   api_oauth:
     build: 
-      context: ../src/fastapi_oauth
+      context: ./../src/fastapi_oauth
       dockerfile: Dockerfile.oauth
     container_name: api_oauth
     restart: always
@@ -47,12 +45,12 @@ services:
 
   api_train:
     build: 
-      context: ../src
+      context: ./../src
       dockerfile: Dockerfile.train
     container_name: api_train
     restart: always
     ports:
       - "8002:8002"
     volumes:
-      - ../models:/app/models
-      - ../data:/app/data
+      - ./../models:/app/models:z
+      - ./../data:/app/data:z
