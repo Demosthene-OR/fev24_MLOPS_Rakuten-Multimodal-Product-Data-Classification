@@ -86,37 +86,37 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 
     If you want with to predict with the API in a unsecured way (without Docker) :  
 > `uvicorn src.predict_API:app --reload`  
-> `curl 'http://localhost:8000/initialisation'`  
-> `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'` 
+> `curl 'http://localhost:8000/initialisation'`   
+> `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'`  
 
     If you want with to train the model with the API in a unsecured way (without Docker) :   
 > `uvicorn src.main_API:app --port 8002 --reload`  
 > `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer ' --data '{}'`  
  
 
-    If you want to run the API in a secured way, you have to use Docker (stop uvicorn first):  
-> `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API  
+    If you want to run the API in a secured way, you have to use Docker (stop uvicorn first):   
+> `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API    
 
-    2 containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data
-    Then, in your browser you can launch the database adminer which show you the registered users:
-    http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users
-    password = Rakuten
+    2 containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data  
+    Then, in your browser you can launch the database adminer which show you the registered users:  
+    http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users  
+    password = Rakuten  
 
-    You can then run..
-    1 - Token generation (to login) :
+    You can then run..  
+    1 - Token generation (to login) :  
 >   `curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \`    
->       `--data-urlencode 'username=John' --data-urlencode 'password=John'`  
-    2 - Check the informations about the user designated by the token :  
+>       `--data-urlencode 'username=John' --data-urlencode 'password=John'`    
+    2 - Check the informations about the user designated by the token :   
 >   `curl 'http://localhost:8001/secured' --header 'Authorization: Bearer "Obtained access token"'`
-    3 - Predict 
-        The input data are located, by default, in data/predict.  (There are many paramteters available) 
-        The predictions are saved in data/predict as 'predictions.csv'
+    3 - Predict  
+        The input data are located, by default, in data/predict.  (There are many paramteters available)   
+        The predictions are saved in data/predict as 'predictions.csv'    
 >   `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Obtained access token"' \`  
->        `--header 'Content-Type: application/json' --data '{"api_secured": "True"}'` 
-    4 - Train  
+>        `--header 'Content-Type: application/json' --data '{"api_secured": "True"}'`  
+    4 - Train   
 >   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' \`    
 >       `--data '{"api_secured": "True"}'`  
-        There are many paramteters available 
+        There are many paramteters available   
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 
