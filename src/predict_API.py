@@ -160,7 +160,7 @@ def prediction(input_data: PredictionInput, token: Optional[str] = Depends(oauth
     predictions.to_csv(input_data.prediction_path+"/predictions.csv", index=False)
     predictions = predictions.rename(columns={'cat_pred': 'cat_real'})
     predictions['cat_pred'] = predictions.iloc[:, 0]
-    predictions.to_csv(input_data.prediction_path+"/new_classes.csv", index=False)
+    predictions[['cat_real','cat_pred']].to_csv(input_data.prediction_path+"/new_classes.csv", index=False)
         
     print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
     
