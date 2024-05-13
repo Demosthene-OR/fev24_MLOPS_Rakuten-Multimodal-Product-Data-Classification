@@ -5,8 +5,9 @@ import requests
 from dotenv import load_dotenv
 import os
 
-dotenv_path = 'docker/.env'
-load_dotenv(dotenv_path)
+# Decommenter les 2 lignes suivants si tests lancés manuellement
+# dotenv_path = 'docker/.env'
+# load_dotenv(dotenv_path)
 
 # Maintenant, vous pouvez accéder aux variables d'environnement normalement
 ACCESS_TOKEN_AUTH_0 = os.environ.get('ACCESS_TOKEN_AUTH_0')
