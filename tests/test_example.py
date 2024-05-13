@@ -3,14 +3,11 @@ import pytest
 import requests
 # import env_config
 from dotenv import load_dotenv
-import os
 
 # Decommenter les 2 lignes suivants si tests lancés manuellement
 # dotenv_path = 'docker/.env'
 # load_dotenv(dotenv_path)
 
-# Maintenant, vous pouvez accéder aux variables d'environnement normalement
-ACCESS_TOKEN_AUTH_0 = os.environ.get('ACCESS_TOKEN_AUTH_0')
 # Récupération des tokens d'accès depuis les variables d'environnement
 ACCESS_TOKEN_AUTH_0 = os.environ.get('ACCESS_TOKEN_AUTH_0')
 ACCESS_TOKEN_AUTH_1 = os.environ.get('ACCESS_TOKEN_AUTH_1')
