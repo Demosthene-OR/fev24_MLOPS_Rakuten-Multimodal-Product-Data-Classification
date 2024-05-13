@@ -1,6 +1,7 @@
 import os
 import pytest
 import requests
+# import env_config
 
 # Récupération des tokens d'accès depuis les variables d'environnement
 ACCESS_TOKEN_AUTH_0 = os.environ.get('ACCESS_TOKEN_AUTH_0')
