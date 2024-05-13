@@ -45,6 +45,12 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-buildx-action@v1
 
+    - name: Set up environment variables
+        echo "ACCESS_TOKEN_AUTH_2=${ACCESS_TOKEN_AUTH_0}" >> .env
+        echo "ACCESS_TOKEN_AUTH_2=${ACCESS_TOKEN_AUTH_1}" >> .env
+        echo "ACCESS_TOKEN_AUTH_2=${ACCESS_TOKEN_AUTH_2}" >> .env
+        echo "MYSQL_ROOT_PWD=${MYSQL_ROOT_PWD}" >> .env
+
     - name: Set up Docker Compose
       run: |
         sudo apt-get update && sudo apt-get install -y docker-compose
