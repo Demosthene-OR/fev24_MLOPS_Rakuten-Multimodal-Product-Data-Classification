@@ -79,14 +79,14 @@ def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_scheme)):
     print('============================')
     print("Training RNN Model")
     text_rnn_model = TextRnnModel(file_path=input_data.model_path)
-    rnn_history, rnn_best_f1_epoch, rnn_best_f1, rnn_best_accuracy_when_best_f1 = text_rnn_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
+    rnn_history, rnn_best_epoch, rnn_best_f1, rnn_best_accuracy = text_rnn_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
     print("Finished training RNN")
     
     print('============================')
     print("Training VGG")
     # Train VGG16 model
     image_vgg16_model = ImageVGG16Model(file_path=input_data.model_path)
-    vgg16_history, vgg16_best_f1_epoch, vgg16_best_f1, vgg16_best_accuracy_when_best_f1 = image_vgg16_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
+    vgg16_history, vgg16_best_epoch, vgg16_best_f1, vgg16_best_accuracy = image_vgg16_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
     print("Finished training VGG")
     
     print('============================')
@@ -109,22 +109,7 @@ def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_scheme)):
 
     with open(input_data.model_path+"/best_weights.json", "w") as file:
         json.dump(best_weights, file)
-        
-    # with open(input_data.model_path+"/best_weights.pkl", "wb") as file:
-    #     pickle.dump(best_weights, file)
-    # num_classes = 27
-
-    # proba_rnn = keras.layers.Input(shape=(num_classes,))
-    # proba_vgg16 = keras.layers.Input(shape=(num_classes,))
-
-    # weighted_proba = keras.layers.Lambda(
-    #     lambda x: best_weights[0] * x[0] + best_weights[1] * x[1]
-    # )([proba_rnn, proba_vgg16])
-
-    # concatenate_model = keras.models.Model(
-    #     inputs=[proba_rnn, proba_vgg16], outputs=weighted_proba
-    # )
-    
+          
     t_fin = time.time()
     training_duration = t_fin - t_debut
     print("Training duration = {:.2f} sec".format(training_duration))
@@ -174,14 +159,14 @@ def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_scheme)):
                 }    
         },
         "Text" : {
-            "best_epoch": int(rnn_best_f1_epoch+1), 
+            "best_epoch": int(rnn_best_epoch+1), 
             "f1": float(rnn_best_f1),
-            "accuracy" : float(rnn_best_accuracy_when_best_f1)
+            "accuracy" : float(rnn_best_accuracy)
         },
         "VGG16" : {
-            "best_epoch": int(vgg16_best_f1_epoch+1), 
+            "best_epoch": int(vgg16_best_epoch+1), 
             "f1": float(vgg16_best_f1),
-            "accuracy" : float(vgg16_best_accuracy_when_best_f1)
+            "accuracy" : float(vgg16_best_accuracy)
         },
         "Concatenate" : {
             "weight": best_weights,
