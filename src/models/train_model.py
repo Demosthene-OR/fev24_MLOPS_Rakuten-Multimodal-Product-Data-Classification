@@ -114,13 +114,11 @@ class TextRnnModel:
         save_model(self.file_path, "best_rnn_model.h5")
         
         # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
-        # best_loss_epoch = np.argmin(history.history['val_loss'])
-        last_epoch = history.epoch[-1]
-        
+        best_f1_epoch = np.argmax(history.history['f1_m'])
         # Récupérer les meilleures valeurs de F1 et d'accuracy
-        best_f1 = history.history['f1_m'][last_epoch]
-        best_accuracy = history.history['accuracy'][last_epoch]
-        return history, last_epoch, best_f1, best_accuracy
+        best_f1 = history.history['f1_m'][best_f1_epoch]
+        best_accuracy_when_best_f1 = history.history['accuracy'][best_f1_epoch]
+        return history, best_f1_epoch, best_f1, best_accuracy_when_best_f1
 
 
 class ImageVGG16Model:
@@ -214,13 +212,11 @@ class ImageVGG16Model:
         save_model(self.file_path, "best_vgg16_model.h5")
         
         # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
-        # best_loss_epoch = np.argmin(history.history['val_loss'])
-        last_epoch = history.epoch[-1]
-        
+        best_f1_epoch = np.argmax(history.history['f1_m'])
         # Récupérer les meilleures valeurs de F1 et d'accuracy
-        best_f1 = history.history['f1_m'][last_epoch]
-        best_accuracy = history.history['accuracy'][last_epoch]
-        return history, last_epoch, best_f1, best_accuracy
+        best_f1 = history.history['f1_m'][best_f1_epoch]
+        best_accuracy_when_best_f1 = history.history['accuracy'][best_f1_epoch]
+        return history, best_f1_epoch, best_f1, best_accuracy_when_best_f1
         
 class concatenate:
     def __init__(self, tokenizer, rnn, vgg16):
@@ -324,7 +320,7 @@ class concatenate:
         print('============================')
         print("Train dataset size :", len(y_train))   
         print("best_weighted_f1 =", best_weighted_f1)
-        print("best_accuracy =", best_accuracy)
+        print("accuracy when best f1 =", best_accuracy)
         print("best_weights =", best_weights)
         # print('============================')
         

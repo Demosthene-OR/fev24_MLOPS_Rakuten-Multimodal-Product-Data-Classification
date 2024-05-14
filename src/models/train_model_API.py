@@ -8,8 +8,6 @@ from tensorflow.keras.applications.vgg16 import VGG16
 from tensorflow.keras.layers import Input, Dense, Flatten, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import ReduceLROnPlateau
 import pandas as pd
 from sklearn.utils import resample
 import numpy as np
@@ -43,7 +41,7 @@ class TextRnnModel:
             self.tokenizer = keras.preprocessing.text.tokenizer_from_json(tokenizer_config)
             self.model = load_model(self.file_path, "best_rnn_model.h5")
 
-    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5, full_train=True):
+    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5):
         
         # Si le modele RNN n'existe pas, on initialise le tokenizer (création du vocabulaire)
         if not glob.glob(self.file_path+"/best_rnn_model/best_rnn_model*.h5"):
@@ -82,59 +80,25 @@ class TextRnnModel:
             self.model = Model(inputs=[text_input], outputs=output)
         # Sinon, on charge le modele existant.
         else:
-            if full_train:
-                self.model = load_model(self.file_path, "best_rnn_model.h5") 
-            else:
-                base_model = load_model(self.file_path, "best_rnn_model.h5")
+            self.model = load_model(self.file_path, "best_rnn_model.h5") 
 
-                # Geler toutes les couches du modèle de base
-                for layer in base_model.layers:
-                    layer.trainable = False
-
-                # Ajouter une nouvelle couche dense
-                x = base_model.layers[-2].output
-                x = Flatten(name="new_flatten_layer")(x)  # Aplatir les sorties si nécessaire
-                x = Dense(512, activation="relu", name="new_dense_layer512")(x)
-                x = Dense(27, activation="softmax", name="new_dense_layer27")(x)  # Ajouter la nouvelle couche dense
-
-                # Créer le nouveau modèle
-                self.model = Model(inputs=base_model.input, outputs=x)
-
-                # Définir les nouvelles couches comme entraînables
-                for layer in self.model.layers[-3:]:
-                    layer.trainable = True
+        # Compile le modèle avec la métrique F1
+        self.model.compile(
+            optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"] 
+        )
 
         # Définir le nom de l'expérience TensorBoard avec la date et l'heure
         log_name = f"experience_tensorboard_{datetime.now().strftime('%Y%m%d-%H%M%S')}_text"
 
-        if full_train:
-            rnn_callbacks = [
-                ModelCheckpoint(
-                    filepath=self.file_path+"/best_rnn_model.h5", save_best_only=True
-                ),  # Enregistre le meilleur modèle
-                EarlyStopping(
-                    patience=3, restore_best_weights=True
-                ),  # Arrête l'entraînement si la performance ne s'améliore pas
-                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
-            ]
-        else:
-            rnn_callbacks = [
-                ModelCheckpoint(
-                    filepath=self.file_path+"/best_rnn_model.h5", save_best_only=True
-                ),  # Enregistre le meilleur modèle
-                EarlyStopping(
-                    patience=3, restore_best_weights=True
-                ),  # Arrête l'entraînement si la performance ne s'améliore pas
-                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
-                ReduceLROnPlateau(
-                    monitor='val_loss', factor=0.5,patience=2, min_lr=0.00005
-                ),
-            ]
-            
-        # Compile le modèle avec la métrique F1 
-        self.model.compile(
-            optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
-            )
+        rnn_callbacks = [
+            ModelCheckpoint(
+                filepath=self.file_path+"/best_rnn_model.h5", save_best_only=True
+            ),  # Enregistre le meilleur modèle
+            EarlyStopping(
+                patience=3, restore_best_weights=True
+            ),  # Arrête l'entraînement si la performance ne s'améliore pas
+            TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
+        ]
 
         history = self.model.fit(
             [train_padded_sequences],
@@ -150,13 +114,11 @@ class TextRnnModel:
         save_model(self.file_path, "best_rnn_model.h5")
         
         # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
-        # best_loss_epoch = np.argmin(history.history['val_loss'])
-        last_epoch = history.epoch[-1]
-        
+        best_f1_epoch = np.argmax(history.history['f1_m'])
         # Récupérer les meilleures valeurs de F1 et d'accuracy
-        best_f1 = history.history['f1_m'][last_epoch]
-        best_accuracy = history.history['accuracy'][last_epoch]
-        return history, last_epoch, best_f1, best_accuracy
+        best_f1 = history.history['f1_m'][best_f1_epoch]
+        best_accuracy_when_best_f1 = history.history['accuracy'][best_f1_epoch]
+        return history, best_f1_epoch, best_f1, best_accuracy_when_best_f1
 
 
 class ImageVGG16Model:
@@ -169,7 +131,7 @@ class ImageVGG16Model:
         else:
             self.model = load_model(self.file_path, "best_vgg16_model.h5")
 
-    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5, full_train=True):
+    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5):
         
         # Paramètres
         batch_size = 32
@@ -222,59 +184,25 @@ class ImageVGG16Model:
             for layer in vgg16_base.layers:
                 layer.trainable = False
         else:
-            if full_train:
-                self.model = load_model(self.file_path, "best_vgg16_model.h5") 
-            else:
-                # n_epochs = min(n_epochs,15)
-                base_model = load_model(self.file_path, "best_vgg16_model.h5")
-                # Geler toutes les couches du modèle de base
-                for layer in base_model.layers:
-                    layer.trainable = False
-
-                # Ajouter une nouvelle couche dense
-                x = base_model.layers[-2].output
-                x = Flatten(name="new_flatten_layer")(x)  # Aplatir les sorties si nécessaire
-                x = Dense(512, activation="relu", name="new_dense_layer512")(x)
-                x = Dense(num_classes, activation="softmax", name="new_dense_layer27")(x)  # Ajouter la nouvelle couche dense
-
-                # Créer le nouveau modèle
-                self.model = Model(inputs=base_model.input, outputs=x)
-
-                # Définir les nouvelles couches comme entraînables
-                for layer in self.model.layers[-3:]:
-                    layer.trainable = True
+            self.model = load_model(self.file_path, "best_vgg16_model.h5") 
+        
+        self.model.compile(
+            optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
+        )
 
         # Définir le nom de l'expérience TensorBoard avec la date et l'heure
         log_name = f"experience_tensorboard_{datetime.now().strftime('%Y%m%d-%H%M%S')}_img"
+        
+        vgg_callbacks = [
+            ModelCheckpoint(
+                filepath=self.file_path+"/best_vgg16_model.h5", save_best_only=True
+            ),  # Enregistre le meilleur modèle
+            EarlyStopping(
+                patience=3, restore_best_weights=True
+            ),  # Arrête l'entraînement si la performance ne s'améliore pas
+            TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
+        ]
 
-        if full_train:        
-            vgg_callbacks = [
-                ModelCheckpoint(
-                    filepath=self.file_path+"/best_vgg16_model.h5", save_best_only=True
-                ),  # Enregistre le meilleur modèle
-                EarlyStopping(
-                    patience=3, restore_best_weights=True
-                ),  # Arrête l'entraînement si la performance ne s'améliore pas
-                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
-            ]
-        else:
-            vgg_callbacks = [
-                ModelCheckpoint(
-                    filepath=self.file_path+"/best_vgg16_model.h5", save_best_only=True
-                ),  # Enregistre le meilleur modèle
-                EarlyStopping(
-                    patience=3, restore_best_weights=True
-                ),  # Arrête l'entraînement si la performance ne s'améliore pas
-                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
-                ReduceLROnPlateau(
-                    monitor='val_loss', factor=0.5,patience=2, min_lr=0.00005
-                ),
-                ]
-
-        self.model.compile(
-                optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
-        )
-                
         history = self.model.fit(
             train_generator,
             epochs=n_epochs,
@@ -284,13 +212,11 @@ class ImageVGG16Model:
         save_model(self.file_path, "best_vgg16_model.h5")
         
         # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
-        # best_loss_epoch = np.argmin(history.history['val_loss'])
-        last_epoch = history.epoch[-1]
-        
+        best_f1_epoch = np.argmax(history.history['f1_m'])
         # Récupérer les meilleures valeurs de F1 et d'accuracy
-        best_f1 = history.history['f1_m'][last_epoch]
-        best_accuracy = history.history['accuracy'][last_epoch]
-        return history, last_epoch, best_f1, best_accuracy
+        best_f1 = history.history['f1_m'][best_f1_epoch]
+        best_accuracy_when_best_f1 = history.history['accuracy'][best_f1_epoch]
+        return history, best_f1_epoch, best_f1, best_accuracy_when_best_f1
         
 class concatenate:
     def __init__(self, tokenizer, rnn, vgg16):
@@ -332,7 +258,7 @@ class concatenate:
                     indices, 
                     replace=False, random_state=random_state
                     )
- 
+                
             # Ajout des échantillons sous-échantillonnés et de leurs étiquettes aux DataFrames
             new_X_train = pd.concat([new_X_train, X_train.loc[sampled_indices]])
             new_y_train = pd.concat([new_y_train, y_train.loc[sampled_indices]])
@@ -377,7 +303,7 @@ class concatenate:
         best_accuracy = 0.0
         best_weighted_f1 = 0.0
 
-        for rnn_weight in np.linspace(0.5, 1, 101):  # Essayer différents poids pour RNN
+        for rnn_weight in np.linspace(0, 1, 101):  # Essayer différents poids pour RNN
             vgg16_weight = 1.0 - rnn_weight  # Le poids total doit être égal à 1
 
             combined_predictions = (rnn_weight * rnn_proba) + (
@@ -394,7 +320,7 @@ class concatenate:
         print('============================')
         print("Train dataset size :", len(y_train))   
         print("best_weighted_f1 =", best_weighted_f1)
-        print("best_accuracy =", best_accuracy)
+        print("accuracy when best f1 =", best_accuracy)
         print("best_weights =", best_weights)
         # print('============================')
         
