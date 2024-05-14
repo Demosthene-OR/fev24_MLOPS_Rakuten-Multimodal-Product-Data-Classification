@@ -65,18 +65,18 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
     
     # File paths
     X_new_path = f"{origin_path}/X_test_update.csv"
-    x_train_update_path = f"{dest_path}/X_train_update.csv"
+    X_train_path = f"{dest_path}/X_train_update.csv"
     new_classes_origin_path = f"{origin_path}/new_classes.csv"
     new_classes_dest_path = f"{dest_path}/new_classes.csv"
-    y_train_csv_path = f"{dest_path}/Y_train_CVw08PX.csv"
+    y_train_path = f"{dest_path}/Y_train_CVw08PX.csv"
 
     # Load the data
     try:
         # Append X_test_update.csv to X_train_update.csv
         X_new_df = pd.read_csv(X_new_path)
-        x_train_update_df = pd.read_csv(x_train_update_path)
-        x_train_update_combined_df = pd.concat([x_train_update_df, X_new_df])
-        x_train_update_combined_df.to_csv(x_train_update_path, index=False)
+        X_train_df = pd.read_csv(X_train_path)
+        X_train_combined_df = pd.concat([X_train_df, X_new_df])
+        X_train_combined_df.to_csv(X_train_path, index=False)
         
         # Append new_classes.csv to new_classes.csv in preprocessed
         new_classes_origin_df = pd.read_csv(new_classes_origin_path)
@@ -85,17 +85,17 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         new_classes_combined_df.to_csv(new_classes_dest_path, index=False)
         
         # Update Y_train_CVw08PX.csv with cat_real column from new_classes.csv
-        y_train_cv_df = pd.read_csv(y_train_cv_path)
+        y_train_df = pd.read_csv(y_train_path)
         cat_real_series = new_classes_origin_df['cat_real']
         
         # Creating a new dataframe to append
         new_rows = pd.DataFrame({
-            y_train_cv_df.columns[0]: range(y_train_cv_df.shape[0], y_train_cv_df.shape[0] + cat_real_series.shape[0]),
-            y_train_cv_df.columns[1]: cat_real_series
+            y_train_df.columns[0]: range(y_train_df.shape[0], y_train_df.shape[0] + cat_real_series.shape[0]),
+            y_train_df.columns[1]: cat_real_series
         })
         
-        y_train_cv_combined_df = pd.concat([y_train_cv_df, new_rows])
-        y_train_cv_combined_df.to_csv(y_train_cv_path, index=False)
+        y_train_cv_combined_df = pd.concat([y_train_df, new_rows])
+        y_train_cv_combined_df.to_csv(y_train_path, index=False)
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors du traitement des fichiers: {e}")
