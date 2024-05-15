@@ -276,6 +276,17 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
             else:
                 shutil.copy2(source_path, destination_path)
         
+        # Vérifier si new_classes.csv existe et le rendre vide si c'est le cas
+        new_classes_path = input_data.dataset_path + "/new_classes.csv"
+        if os.path.exists(new_classes_path):
+            try:
+                df = pd.read_csv(new_classes_path)
+                columns = df.columns
+                empty_df = pd.DataFrame(columns=columns)
+                empty_df.to_csv(new_classes_path, index=False)
+            except Exception as e:
+                print(f"Erreur lors du traitement du fichier {new_classes_path}: {e}")
+                
         # Exécution de la requête POST pour démarrer l'entraînement
         train_endpoint = "http://localhost:8002/train"
         train_data = {
@@ -289,17 +300,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         }
         train_response = requests.post(train_endpoint, json=train_data, headers=train_headers)
         
-        if train_response.status_code == 200:
-            new_classes_path = input_data.dataset_path+"/new_classes.csv"
-            # Lire le fichier CSV pour obtenir les noms des colonnes
-            df = pd.read_csv(new_classes_path)
-            # Obtenir les noms des colonnes
-            columns = df.columns
-            # Créer un DataFrame vide avec les mêmes colonnes
-            empty_df = pd.DataFrame(columns=columns)
-            # Écrire le DataFrame vide dans le fichier new_classes.csv du dossier preprocessed
-            empty_df.to_csv(new_classes_path, index=False)
-            
+        if train_response.status_code == 200:          
             return {"message": f"Le modèle en production a été sauvegardé avec succès par {user_info} et l'entraînement a été démarré"}
         else:
             raise HTTPException(status_code=train_response.status_code, detail=f"Erreur lors de la sauvegarde du model dans {destination_dir} \
