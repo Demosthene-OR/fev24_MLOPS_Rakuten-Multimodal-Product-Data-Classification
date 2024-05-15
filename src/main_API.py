@@ -3,6 +3,7 @@ from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
 from typing import List, Optional
 import requests
+import asyncio
 
 from src.features.build_features import DataImporter, TextPreprocessor, ImagePreprocessor
 from src.models.train_model_API import TextRnnModel, ImageVGG16Model, concatenate
@@ -35,7 +36,7 @@ class TrainInput(BaseModel):
     api_secured: Optional[bool] = False
 
 @app.post("/train")
-def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_scheme)):
+async def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_scheme)):
     
     # Si api_secured est True, vérifiez les crédentiels
     if input_data.api_secured:
