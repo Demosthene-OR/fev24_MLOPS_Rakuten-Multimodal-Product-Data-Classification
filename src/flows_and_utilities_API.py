@@ -137,8 +137,15 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         # Append X_test_update.csv to X_train_update.csv
         X_new_df = pd.read_csv(X_new_path)
         X_train_df = pd.read_csv(X_train_path)
+        
         X_train_combined_df = pd.concat([X_train_df, X_new_df])
-        X_train_combined_df = X_train_combined_df.rename(columns={'Unnamed: 0': ''})
+        X_train_combined_df.rename(columns={X_train_combined_df.columns[0]: 'index'}, inplace=True)
+        X_train_combined_df = X_train_combined_df.astype({
+            'index': int, 
+            'productid': int,
+            'imageid': int
+        })
+        X_train_combined_df.rename(columns={'index': ''}, inplace=True)
         X_train_combined_df.to_csv(X_train_path, index=False)
         
         # Append new_classes.csv to new_classes.csv in preprocessed
@@ -152,8 +159,10 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         cat_real_series = new_classes_origin_df['cat_real']
         
         # Creating a new dataframe to append
+        X_new_df.rename(columns={X_new_df.columns[0]: 'index'}, inplace=True)
+        X_new_df['index'].astype(int)
         new_rows = pd.DataFrame({
-            y_train_df.columns[0]: X_new_df.columns[0],
+            y_train_df.columns[0]: X_new_df['index'],
             y_train_df.columns[1]: cat_real_series
         })
         
@@ -185,12 +194,12 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
                 os.remove(file_path)
         
         # Delete all files in data/predict/image_test
-        if os.path.exists(image_test_path):
+        # if os.path.exists(image_test_path):
         # Parcourir tous les fichiers dans le répertoire et les supprimer
-            for filename in os.listdir(image_test_path):
-                file_path = os.path.join(image_test_path, filename)
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.unlink(file_path)
+        #     for filename in os.listdir(image_test_path):
+        #         file_path = os.path.join(image_test_path, filename)
+        #         if os.path.isfile(file_path) or os.path.islink(file_path):
+        #             os.unlink(file_path)
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors du traitement des fichiers: {e}")
