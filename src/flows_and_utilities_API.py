@@ -22,12 +22,17 @@ class NewProductsProposalInput(BaseModel):
     api_secured: Optional[bool] = False
 
 class NewProductsInput(BaseModel):
-    new_products_origin_folder_path: Optional[str] = "data/predict"
+    new_products_origin_path: Optional[str] = "data/predict"
     new_products_dest_path: Optional[str] = "data/preprocessed"
     api_secured: Optional[bool] = False
 
 class ComputeMetricsInput(BaseModel):
-    classes_path: Optional[str] = "data/predict/new_classes.csv"
+    classes_path: Optional[str] = "data/preprocessed/new_classes.csv"
+    api_secured: Optional[bool] = False
+
+class SaveModelTrain(BaseModel):
+    model_path: Optional[str] = "models"
+    dataset_path: Optional[str] = "data/preprocessed"
     api_secured: Optional[bool] = False
     
 
@@ -36,7 +41,7 @@ def new_product_proposal(input_data: NewProductsProposalInput, token: Optional[s
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -64,13 +69,30 @@ def new_product_proposal(input_data: NewProductsProposalInput, token: Optional[s
 
             # Get the specified number of products from the reserve
             proposed_products_df = reserve_df.head(num_products)
-
+            proposed_products_df = proposed_products_df.rename(columns={'Unnamed: 0': ''})
+            
             # Save the proposed products to the new file
             proposed_products_df.to_csv(proposal_path, index=False)
-
-            # Remove the proposed products from the reserve
-            remaining_reserve_df = reserve_df.iloc[num_products:]
-            remaining_reserve_df.to_csv(reserve_path, index=False)
+                    
+            # Parcourir le DataFrame et copier chaque image
+            base_source_path = folder_path+"/new_products_reserve/image_test"
+            base_destination_path = folder_path+"/image_test"
+            for index, row in proposed_products_df.iterrows():
+                imageid = row['imageid']
+                productid = row['productid']
+                image_name = f"image_{imageid}_product_{productid}.jpg"
+                source_path = os.path.join(base_source_path, image_name)
+                destination_path = os.path.join(base_destination_path, image_name)
+                
+                if os.path.exists(source_path):
+                    shutil.copy(source_path, destination_path)
+                
+            # Previous prediction deletion (if remained)
+            files_to_delete = ["new_classes.csv", "predictions.csv"]
+            for file_name in files_to_delete:
+                file_path = os.path.join(folder_path, file_name)
+                if os.path.exists(file_path):
+                    os.remove(file_path)
 
             return {"message": f"{num_products} produits ont été proposés par {user_info}"}
         else:
@@ -85,7 +107,7 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -98,7 +120,7 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         user_info = "un utilisateur inconnu" 
         
     # Paths for the files
-    origin_path = input_data.new_products_origin_folder_path
+    origin_path = input_data.new_products_origin_path
     dest_path = input_data.new_products_dest_path
     
     # File paths
@@ -116,6 +138,7 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         X_new_df = pd.read_csv(X_new_path)
         X_train_df = pd.read_csv(X_train_path)
         X_train_combined_df = pd.concat([X_train_df, X_new_df])
+        X_train_combined_df = X_train_combined_df.rename(columns={'Unnamed: 0': ''})
         X_train_combined_df.to_csv(X_train_path, index=False)
         
         # Append new_classes.csv to new_classes.csv in preprocessed
@@ -130,13 +153,14 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         
         # Creating a new dataframe to append
         new_rows = pd.DataFrame({
-            y_train_df.columns[0]: new_classes_origin_df.columns[0],
+            y_train_df.columns[0]: X_new_df.columns[0],
             y_train_df.columns[1]: cat_real_series
         })
         
         y_train_cv_combined_df = pd.concat([y_train_df, new_rows])
+        y_train_cv_combined_df = y_train_cv_combined_df.rename(columns={'Unnamed: 0': ''})
         y_train_cv_combined_df.to_csv(y_train_path, index=False)
-        
+
         # Copy images from image_test to image_train
         if not os.path.exists(image_train_path):
             os.makedirs(image_train_path)
@@ -162,7 +186,11 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         
         # Delete all files in data/predict/image_test
         if os.path.exists(image_test_path):
-            shutil.rmtree(image_test_path)
+        # Parcourir tous les fichiers dans le répertoire et les supprimer
+            for filename in os.listdir(image_test_path):
+                file_path = os.path.join(image_test_path, filename)
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors du traitement des fichiers: {e}")
@@ -175,7 +203,7 @@ def compute_metrics_new_products(input_data: ComputeMetricsInput, token: Optiona
 
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -201,19 +229,13 @@ def compute_metrics_new_products(input_data: ComputeMetricsInput, token: Optiona
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors du calcul des metrics: {e}")
 
-        
-
-class SaveModelTrain(BaseModel):
-    model_path: Optional[str] = "models"
-    dataset_path: Optional[str] = "data/preprocessed"
-    api_secured: Optional[bool] = False
 
 @app.get("/save_model_start_train")
 def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = Depends(oauth2_scheme)):
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://localhost:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -228,7 +250,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
     try:
         # Chemins des répertoires
         source_dir = input_data.model_path
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+        current_time = datetime.now().strftime("%Y-%m-%d %H%M")
         destination_dir = f"{source_dir}/saved_models - {current_time}"
 
         # Liste des fichiers et répertoires à copier
@@ -258,7 +280,8 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         train_endpoint = "http://localhost:8002/train"
         train_data = {
             "api_secured": True,
-            "model_path": destination_dir  
+            "model_path": destination_dir,  
+            "samples_per_class": 2
         }
         train_headers = {
             "Content-Type": "application/json",
@@ -267,6 +290,16 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         train_response = requests.post(train_endpoint, json=train_data, headers=train_headers)
         
         if train_response.status_code == 200:
+            new_classes_path = input_data.dataset_path+"/new_classes.csv"
+            # Lire le fichier CSV pour obtenir les noms des colonnes
+            df = pd.read_csv(new_classes_path)
+            # Obtenir les noms des colonnes
+            columns = df.columns
+            # Créer un DataFrame vide avec les mêmes colonnes
+            empty_df = pd.DataFrame(columns=columns)
+            # Écrire le DataFrame vide dans le fichier new_classes.csv du dossier preprocessed
+            empty_df.to_csv(new_classes_path, index=False)
+            
             return {"message": f"Le modèle en production a été sauvegardé avec succès par {user_info} et l'entraînement a été démarré"}
         else:
             raise HTTPException(status_code=train_response.status_code, detail=f"Erreur lors de la sauvegarde du model dans {destination_dir} \
