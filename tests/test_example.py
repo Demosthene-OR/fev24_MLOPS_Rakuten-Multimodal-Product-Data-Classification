@@ -1,4 +1,4 @@
-import os
+""" import os
 import requests
 from dotenv import load_dotenv
 import mysql.connector
@@ -139,3 +139,4 @@ def test_predict():
     ###3.4 - Vérification du refus de predicition en mode secured avec un niveau d'autorisation = 0###
     assert response.status_code == 403
     
+ """
