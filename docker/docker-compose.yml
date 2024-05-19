@@ -33,6 +33,7 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
+      - ./../tests:/app/tests:z
 
   api_oauth:
     build: 
@@ -54,3 +55,31 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
+      - ./../tests:/app/tests:z
+
+  api_flows:
+    build: 
+      context: ./../src/flows
+      dockerfile: Dockerfile.flows
+    container_name: api_flows
+    restart: always
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./../models:/app/models:z
+      - ./../data:/app/data:z
+      - ./../tests:/app/tests:z
+
+  streamlit:
+    build: 
+      context: ./../streamlit_app
+      dockerfile: Dockerfile.streamlit
+    container_name: streamlit
+    restart: always
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./../models:/app/models:z
+      - ./../data:/app/data:z
+      - ./../tests:/app/tests:z
+      - ./:/app/docker:z

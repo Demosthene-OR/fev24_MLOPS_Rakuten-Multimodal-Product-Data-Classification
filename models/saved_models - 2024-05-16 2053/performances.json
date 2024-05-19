@@ -1,0 +1,42 @@
+{
+    "Date": "2024-05-16 21:05:04",
+    "Input": {
+        "epochs_requested": 1,
+        "samples_per_class": 5,
+        "with_test": 1,
+        "random_state": 42,
+        "Dataset_size": {
+            "Train": 135,
+            "Val": 81,
+            "Test": 1350
+        }
+    },
+    "Text": {
+        "best_epoch": 1,
+        "f1": 0.8523727655410767,
+        "accuracy": 0.8888888955116272
+    },
+    "VGG16": {
+        "best_epoch": 1,
+        "f1": 0.7779168486595154,
+        "accuracy": 0.5259259343147278
+    },
+    "Concatenate": {
+        "weight": [
+            0.87,
+            0.13
+        ],
+        "Train": {
+            "f1": 0.9403666292555182,
+            "accuracy": 0.9407407407407408,
+            "duration": 565,
+            "size": 135
+        },
+        "Test": {
+            "f1": 0.8629124277019118,
+            "accuracy": 0.8622222222222222,
+            "duration": 127,
+            "size": 1350
+        }
+    }
+}
