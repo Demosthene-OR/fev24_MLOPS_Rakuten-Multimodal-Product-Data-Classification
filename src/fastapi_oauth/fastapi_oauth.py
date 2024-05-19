@@ -36,6 +36,27 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 # Fonction pour interroger la base de données et récupérer les informations d'identification de l'utilisateur
 def get_user(username: str):
+    try:
+        connection = mysql.connector.connect(
+            host=MYSQL_HOST,
+            user=MYSQL_USER,
+            port="3306",
+            password=MYSQL_PASSWORD,
+            database=MYSQL_DB
+        )
+        if connection.is_connected():
+            cursor = connection.cursor(dictionary=True)
+            query = f"SELECT * FROM Users WHERE username = '{username}'"
+            cursor.execute(query)
+            user_connected = cursor.fetchone()
+            print("userconnected:", user_connected)
+            return user_connected
+    except Error as e:
+        print(f"Error while querying MySQL: {e}")
+    finally:
+        if 'cursor' in locals() and cursor:
+            cursor.close()  # Close the cursor if it was defined
+""" def get_user(username: str):
     # return users_db.get(username)
     try:
         connection = mysql.connector.connect(
@@ -56,7 +77,7 @@ def get_user(username: str):
         print(f"Error while querying MySQL: {e}")
     finally:
         cursor.close()
-        connection.close()
+        connection.close() """
 
 
 
@@ -117,6 +138,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     - HTTPException(400, detail="Incorrect username or password"): Si l'authentification échoue en raison d'un nom d'utilisateur ou d'un mot de passe incorrect, une exception HTTP 400 Bad Request est levée.
     """
     user = get_user(form_data.username) 
+    # print(user["password"])
     hashed_password = user["password"]
     if not user or not verify_password(form_data.password, hashed_password):
         raise HTTPException(status_code=400, detail="Incorrect username or password")
