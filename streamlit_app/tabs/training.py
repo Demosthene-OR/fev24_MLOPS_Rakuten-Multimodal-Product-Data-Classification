@@ -43,7 +43,43 @@ def run():
                 }))
         accuracy = response.json().get("accuracy", None)
         st.write("#### Accuracy on the last",num_sales,"sales = ",accuracy)
+    if (chosen_id == "tab2"):
+        # Chemin du dossier principal
+        model_folder = st.session_state.PrePath+'models'
+
+        # Obtenir la liste des sous-dossiers
+        subfolders = [f.name for f in os.scandir(model_folder) if f.is_dir()]
+        subfolders.insert(0, 'Production')
         
+        # Sous-dossiers à supprimer
+        folders_to_remove = ['best_rnn_model', 'best_vgg16_model']
+
+        # Supprimer les sous-dossiers spécifiés de la liste
+        subfolders = [folder for folder in subfolders if folder not in folders_to_remove]
+        st.write("List of saved models you can use to initialize the training:")
+        st.write(subfolders)
+        sel_model = st.selectbox("Model selected:",subfolders) # label_visibility="hidden")
+        if sel_model == "Production":
+            model_dir = ""
+        else:
+            model_dir = "/"+sel_model
+                
+        if st.button('Click to start the training process'):
+            response = requests.get(
+                'http://'+st.session_state.api_flows+':8003/save_model_start_train',
+                headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {st.session_state.token}"},
+                data=json.dumps({
+                    "model_path": "models"+model_dir,
+                    "dataset_path":"data/preprocessed",
+                    "api_secured": True
+                    }))
+            if response.status_code == 200:
+                st.success("Training processed over !")
+                st.success(response.json().get("message", "No message in response"))
+            else:
+                st.error("Failed to train the model")
+                st.error(response.json().get("message", "No message in response"))
+
         
 # if __name__ == "__main__":
 #     run()

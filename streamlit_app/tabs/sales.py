@@ -220,7 +220,9 @@ def run():
                 del st.session_state.new_classes_df
                 st.write(df_concatenated[["designation","description","cat_real","cat_pred"]].to_html(index=False), unsafe_allow_html=True)
                 st.write("#### **If you want to sell more products, go to step 1**")
-                
+            else:
+                st.error("Failed to confirm and sell")
+                return
 
 
 

@@ -265,7 +265,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         # Chemins des répertoires
         source_dir = input_data.model_path
         current_time = datetime.now().strftime("%Y-%m-%d %H%M")
-        destination_dir = f"{source_dir}/saved_models - {current_time}"
+        destination_dir = f"models/saved_models - {current_time}"
 
         # Liste des fichiers et répertoires à copier
         items_to_copy = [
@@ -290,6 +290,17 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
             else:
                 shutil.copy2(source_path, destination_path)
         
+        # Copie du dataset pour ne pas être déranger
+        items_to_copy = [
+            "X_train_update.csv",
+            "Y_train_CVw08PX.csv",
+        ] 
+        source_dir = input_data.dataset_path
+        for item in items_to_copy:
+            source_path = os.path.join(source_dir, item)
+            destination_path = os.path.join(destination_dir, item)
+            shutil.copy2(source_path, destination_path)
+            
         # Vérifier si new_classes.csv existe et le rendre vide si c'est le cas
         new_classes_path = input_data.dataset_path + "/new_classes.csv"
         if os.path.exists(new_classes_path):
@@ -305,6 +316,9 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         train_endpoint = "http://api_train:8002/train"
         train_data = {
             "api_secured": True,
+            "x_train_path": destination_dir+"/X_train_update.csv",
+            "y_train_path":destination_dir+"/Y_train_CVw08PX.csv",
+            "images_path": "data/preprocessed/image_train",
             "model_path": destination_dir,  
             "samples_per_class": 5,
             "with_test": True
@@ -316,7 +330,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         train_response = requests.post(train_endpoint, json=train_data, headers=train_headers)
         
         if train_response.status_code == 200:          
-            return {"message": f"Le modèle en production a été sauvegardé avec succès par {user_info} et l'entraînement a été démarré"}
+            return {"message": f"Le modèle {destination_dir} a été sauvegardé avec succès par {user_info} et l'entraînement a été démarré"}
         else:
             raise HTTPException(status_code=train_response.status_code, detail=f"Erreur lors de la sauvegarde du model dans {destination_dir} \
                 ou lors de la requête d'entraînement: {train_response.text}")
