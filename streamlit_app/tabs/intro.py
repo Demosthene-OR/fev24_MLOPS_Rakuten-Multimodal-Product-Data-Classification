@@ -1,5 +1,7 @@
 import streamlit as st
 from PIL import Image
+import requests
+import json
 
 title = "Rakuten - Multimodal Product Data Classification"
 sidebar_name = "Introduction"
