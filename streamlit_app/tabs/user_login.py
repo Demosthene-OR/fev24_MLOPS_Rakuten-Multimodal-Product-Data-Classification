@@ -32,7 +32,7 @@ MYSQL_DB = "rakuten_db"
 
 def run():
     
-    st.write()
+    st.write("")
     st.title(title)
     st.markdown('''
                 ---

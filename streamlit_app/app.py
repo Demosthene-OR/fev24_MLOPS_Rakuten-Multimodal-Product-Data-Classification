@@ -32,7 +32,7 @@ if 'username' not in st.session_state:
 # Sinon elle tourne localement, ==False
 # En fonction de la valeur de varible précédente, le (pre) path est différent 
 st.session_state.docker = os.path.exists('/.dockerenv')
-if st.session_state.docker == True: 
+if st.session_state.docker: 
     st.session_state.PrePath = ""
     st.session_state.users_db = "users_db"
     st.session_state.api_oauth = "api_oauth"
@@ -42,7 +42,7 @@ if st.session_state.docker == True:
 
 else: 
     st.session_state.PrePath = "../"
-    st.session_state.admin_db = "localhost"
+    st.session_state.users_db = "localhost"
     st.session_state.api_oauth = "localhost"
     st.session_state.api_predict = "localhost"
     st.session_state.api_train = "localhost"

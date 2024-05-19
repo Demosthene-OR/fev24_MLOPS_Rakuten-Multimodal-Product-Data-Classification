@@ -4,8 +4,8 @@ FROM python:3.10.14-slim
 ENV PYTHONUNBUFFERED=1
 
 # Create application directory
-RUN mkdir -p /app/streamlit_app
-WORKDIR /app/streamlit_app
+RUN mkdir -p /app
+WORKDIR /app
 
 # Copy the application code
 COPY . .
@@ -19,6 +19,8 @@ RUN pip install python-dotenv
 
 # Expose port 8501 for Streamlit
 EXPOSE 8501
+
+WORKDIR /app
 
 # Run the Streamlit app
 CMD ["streamlit", "run", "app.py"]

@@ -1,54 +1,143 @@
+[2Kusers_db   | 2024-05-19 14:56:57+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
 [2Kapi_oauth  | INFO:     Started server process [1]
+[2Kapi_train  | 2024-05-19 14:56:59.832815: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
 [2Kapi_oauth  | INFO:     Waiting for application startup.
 [2Kapi_oauth  | INFO:     Application startup complete.
 [2Kapi_oauth  | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+[2K[2Kusers_db   | 2024-05-19 14:56:57+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+api_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.4:39000 - "POST /token HTTP/1.1" 200 OK
+[2Kusers_db   | 2024-05-19 14:56:57+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_train  | 2024-05-19 14:56:59.834987: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_oauth  | INFO:     172.21.0.6:45262 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_train  | 2024-05-19 14:56:59.877586: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_train  | 2024-05-19 14:56:59.878261: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_oauth  | INFO:     172.21.0.6:57996 - "GET /secured HTTP/1.1" 200 OK
+[2K[2Kapi_train  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+users_db   | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+[2Kusers_db   | 2024-05-19T14:56:57.953421Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Fadimatou', 'LastName': 'Abdoulaye', 'Email': 'afadimatou@gmail.com', 'Authorization': 2, 'username': 'Fadimatou', 'password': '$2b$12$66yNO9XAmZj2vMbYu.icRueNRVJK/cTWvoSE3czHt/P5BlKSFBdyu'}
+[2Kusers_db   | 2024-05-19T14:56:58.149980Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kapi_oauth  | INFO:     172.21.0.6:34850 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_train  | 2024-05-19 14:57:00.846652: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_train  | INFO:     Started server process [1]
+[2K[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.4:60284 - "POST /token HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:37194 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.5:58546 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:39288 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:43386 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:54520 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kusers_db   | 2024-05-19T14:56:58.154250Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kapi_oauth  | INFO:     172.21.0.6:54534 - "GET /secured HTTP/1.1" 200 OK
+[2Kusers_db   | 2024-05-19T14:56:58.171023Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+api_train  | INFO:     Waiting for application startup.
+[2K[2Kapi_train  | INFO:     Application startup complete.
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2K[2Kapi_oauth  | INFO:     172.21.0.6:54546 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:54560 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+users_db   | 2024-05-19T14:56:59.652682Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kusers_db   | 2024-05-19T14:57:00.083635Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2Kusers_db   | 2024-05-19T14:57:00.083953Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2Kusers_db   | 2024-05-19T14:57:00.102485Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kusers_db   | 2024-05-19T14:57:00.191636Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kusers_db   | 2024-05-19T14:57:00.456444Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+[2Kapi_oauth  | INFO:     172.21.0.6:54576 - "GET /secured HTTP/1.1" 200 OK
+api_train  | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:54586 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:54594 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:50336 - "GET /secured HTTP/1.1" 200 OK
+[2Kapi_oauth  | userconnected :  {'FirstName': 'Olivier', 'LastName': 'Renouard', 'Email': 'olivier.renouard1103@gmail.com', 'Authorization': 2, 'username': 'Olivier', 'password': '$2b$12$FWFmGn05f245f637.i9uYOdVEcDD2sC7ZO0cC0ePOjtY/OB6pOp0q'}
+[2Kapi_oauth  | INFO:     172.21.0.6:50342 - "GET /secured HTTP/1.1" 200 OK
+[2K[2Kapi_flows  | INFO:     Started server process [1]
+[2Kapi_flows  | INFO:     Waiting for application startup.
+[2Kapi_flows  | INFO:     Application startup complete.
+admin_db   | [Sun May 19 14:56:57 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kapi_flows    | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
 [2Kapi_predict  | 2024-05-19 14:56:59.955718: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_predict  | 2024-05-19 14:56:59.958536: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-19 14:57:00.015870: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_flows    | INFO:     172.21.0.4:51664 - "GET /new_product_proposal HTTP/1.1" 200 OK
+[2Kapi_flows    | INFO:     172.21.0.4:48844 - "GET /new_product_proposal HTTP/1.1" 200 OK
+[2K[2Kapi_flows    | INFO:     172.21.0.1:36422 - "GET /compute_metrics HTTP/1.1" 200 OK
+api_predict  | 2024-05-19 14:56:59.958536: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_flows    | INFO:     172.21.0.4:35028 - "GET /new_product_proposal HTTP/1.1" 200 OK
+[2Kapi_flows    | INFO:     172.21.0.4:39648 - "GET /add_new_products HTTP/1.1" 200 OK
+[2Kapi_flows    | INFO:     172.21.0.4:50968 - "GET /compute_metrics HTTP/1.1" 200 OK
+[2Kapi_flows    | INFO:     172.21.0.4:55090 - "GET /compute_metrics HTTP/1.1" 200 OK
+[2K[2Kapi_predict  | 2024-05-19 14:57:00.015870: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+api_flows    | INFO:     172.21.0.4:55094 - "GET /compute_metrics HTTP/1.1" 200 OK
 [2Kapi_predict  | 2024-05-19 14:57:00.016883: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2K[2Kapi_flows    | INFO:     172.21.0.4:55110 - "GET /compute_metrics HTTP/1.1" 200 OK
 [2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+api_flows    | INFO:     172.21.0.4:55120 - "GET /compute_metrics HTTP/1.1" 200 OK
 [2Kapi_predict  | 2024-05-19 14:57:00.958701: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-[2Kapi_predict  | INFO:     Started server process [1]
+[2K[2Kapi_predict  | INFO:     Started server process [1]
+api_flows    | INFO:     172.21.0.4:55134 - "GET /compute_metrics HTTP/1.1" 200 OK
 [2Kapi_predict  | INFO:     Waiting for application startup.
 [2Kapi_predict  | INFO:     Application startup complete.
 [2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 [2Kapi_predict  | INFO:     172.21.0.1:57856 - "GET /initialisation HTTP/1.1" 200 OK
-[2Kapi_predict  | INFO:     172.21.0.1:41124 - "GET /initialisation HTTP/1.1" 200 OK
-[2Kapi_train    | 2024-05-19 14:56:59.832815: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_train    | 2024-05-19 14:56:59.834987: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2K[2Kstreamlit    | 
-[2Kapi_flows    | INFO:     Started server process [1]
-[2Kusers_db     | 2024-05-19 14:56:57+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2K[2Kapi_flows    | INFO:     172.21.0.4:55150 - "GET /compute_metrics HTTP/1.1" 200 OK
+[2Kapi_flows    | INFO:     172.21.0.4:55162 - "GET /compute_metrics HTTP/1.1" 200 OK
+[2Kapi_flows    | INFO:     172.21.0.4:60862 - "GET /compute_metrics HTTP/1.1" 200 OK
+api_predict  | INFO:     172.21.0.1:41124 - "GET /initialisation HTTP/1.1" 200 OK
+[2Kapi_predict  | [nltk_data] Downloading package punkt to /root/nltk_data...
+[2Kapi_predict  | [nltk_data]   Unzipping tokenizers/punkt.zip.
+[2Kapi_predict  | [nltk_data] Downloading package stopwords to /root/nltk_data...
+[2Kapi_predict  | [nltk_data]   Unzipping corpora/stopwords.zip.
+[2Kapi_predict  | [nltk_data] Downloading package wordnet to /root/nltk_data...
+[2Kapi_flows    | INFO:     172.21.0.4:60868 - "GET /compute_metrics HTTP/1.1" 200 OK
+[2Kapi_predict  | /app/./src/features/build_features.py:165: MarkupResemblesLocatorWarning: The input looks more like a filename than markup. You may want to open this file and pass the filehandle into Beautiful Soup.
+[2Kapi_predict  |   text = BeautifulSoup(text, "html.parser").get_text()
+[2Kapi_predict  | 1/1 [==============================] - ETA: 0s1/1 [==============================] - 1s 712ms/step
+[2Kapi_predict  | 1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 398ms/step
+[2Kapi_predict  | Durée de la prédiction : 5.41
+[2Kapi_predict  | INFO:     172.21.0.4:55338 - "POST /prediction HTTP/1.1" 200 OK
+[2Kapi_predict  | INFO:     172.21.0.1:36260 - "GET /initialisation HTTP/1.1" 200 OK
+[2Kstreamlit    | 
 [2Kstreamlit    | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
-[2Kusers_db     | 2024-05-19 14:56:57+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2K[2Kusers_db     | 2024-05-19 14:56:57+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-[2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kapi_train    | 2024-05-19 14:56:59.877586: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-api_flows    | INFO:     Waiting for application startup.
-[2Kapi_flows    | INFO:     Application startup complete.
-users_db     | 2024-05-19T14:56:57.953421Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2Kusers_db     | 2024-05-19T14:56:58.149980Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kapi_flows    | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
 [2Kstreamlit    | 
 [2Kstreamlit    | 
-[2K[2Kusers_db     | 2024-05-19T14:56:58.154250Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-api_train    | 2024-05-19 14:56:59.878261: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-[2Kusers_db     | 2024-05-19T14:56:58.171023Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kapi_train    | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_train    | 2024-05-19 14:57:00.846652: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-[2Kapi_train    | INFO:     Started server process [1]
-[2Kusers_db     | 2024-05-19T14:56:59.652682Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
 [2Kstreamlit    |   You can now view your Streamlit app in your browser.
-[2Kapi_train    | INFO:     Waiting for application startup.
-[2Kapi_train    | INFO:     Application startup complete.
-[2Kapi_train    | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
-[2Kusers_db     | 2024-05-19T14:57:00.083635Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kusers_db     | 2024-05-19T14:57:00.083953Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-[2Kusers_db     | 2024-05-19T14:57:00.102485Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-[2Kusers_db     | 2024-05-19T14:57:00.191636Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db     | 2024-05-19T14:57:00.456444Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
 [2Kstreamlit    | 
 [2Kstreamlit    |   Network URL: http://172.21.0.4:8501
 [2Kstreamlit    |   External URL: http://90.46.216.205:8501
 [2Kstreamlit    | 
-[2Kadmin_db     | [Sun May 19 14:56:57 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kstreamlit    | /app/tabs/sales.py:175: SettingWithCopyWarning: 
+[2Kstreamlit    | A value is trying to be set on a copy of a slice from a DataFrame
+[2Kstreamlit    | 
+[2Kstreamlit    | See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+[2Kstreamlit    |   df_concatenated['cat_real'].iloc[i] = new_classes_df['cat_real'].iloc[i].astype(int)
+[2Kstreamlit    | /app/tabs/sales.py:176: SettingWithCopyWarning: 
+[2Kstreamlit    | A value is trying to be set on a copy of a slice from a DataFrame
+[2Kstreamlit    | 
+[2Kstreamlit    | See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+[2Kstreamlit    |   df_concatenated['cat_pred'].iloc[i] = new_classes_df['cat_pred'].iloc[i].astype(int)
+[2Kstreamlit    | /app/tabs/sales.py:175: SettingWithCopyWarning: 
+[2Kstreamlit    | A value is trying to be set on a copy of a slice from a DataFrame
+[2Kstreamlit    | 
+[2Kstreamlit    | See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+[2Kstreamlit    |   df_concatenated['cat_real'].iloc[i] = new_classes_df['cat_real'].iloc[i].astype(int)
+[2Kstreamlit    | /app/tabs/sales.py:176: SettingWithCopyWarning: 
+[2Kstreamlit    | A value is trying to be set on a copy of a slice from a DataFrame
+[2Kstreamlit    | 
+[2Kstreamlit    | See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+[2Kstreamlit    |   df_concatenated['cat_pred'].iloc[i] = new_classes_df['cat_pred'].iloc[i].astype(int)
+[2Kstreamlit    | /app/tabs/sales.py:181: SettingWithCopyWarning: 
+[2Kstreamlit    | A value is trying to be set on a copy of a slice from a DataFrame
+[2Kstreamlit    | 
+[2Kstreamlit    | See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+[2Kstreamlit    |   df_concatenated["cat_real"].loc[selected]=int(new_cat)
+[2Kstreamlit    |   Stopping...

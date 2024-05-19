@@ -7,6 +7,8 @@ from fastapi import FastAPI, Depends, HTTPException, status
 import os
 import json
 from datetime import time
+from extra_streamlit_components import tab_bar, TabBarItemData
+
 
 
 title = "Model Training"
@@ -32,7 +34,15 @@ def run():
 
     if (chosen_id == "tab1"):
         num_sales = st.number_input("Number of sales to measure accuracy since last full train:", min_value=1, max_value=1000, value=10)
-        
+        response = requests.get(
+            'http://'+st.session_state.api_flows+':8003/compute_metrics',
+            headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {st.session_state.token}"},
+            data=json.dumps({
+                "classes_path": "data/preprocessed/new_classes.csv",
+                "api_secured": True
+                }))
+        accuracy = response.json().get("accuracy", None)
+        st.write("#### Accuracy on the last",num_sales,"sales = ",accuracy)
         
         
 # if __name__ == "__main__":
