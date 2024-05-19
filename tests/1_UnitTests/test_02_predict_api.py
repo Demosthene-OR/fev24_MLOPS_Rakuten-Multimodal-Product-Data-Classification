@@ -18,9 +18,10 @@ def test_prediction_unSecured():
         "api_secured": False
     }
     response = client.post("/prediction", data=input_prediction)
-    assert response.status_code == 200
+    assert response.status_code == 200 #401
     
 def test_prediction_Secured():
+    ACCESS_TOKEN_AUTH_1= "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb2huIn0.HW2PSY6qVAPqtOi49Kf-bHh52e30BmvdQmqiC25KctY"
     input_data = {
         "dataset_path": "data/predict/X_test_update.csv",
         "images_path": "data/predict/image_test",
@@ -28,6 +29,6 @@ def test_prediction_Secured():
         "api_secured": True
     }
     # TODO
-    response = client.post("/prediction", data=input_data)
-    assert response.status_code == 200
+    response = client.post("/prediction", headers={"Authorization": f"Bearer {ACCESS_TOKEN_AUTH_1}"}, data=input_data)
+    assert response.status_code == 200 #422
     
