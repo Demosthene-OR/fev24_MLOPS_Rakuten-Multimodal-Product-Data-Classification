@@ -1,0 +1,27 @@
+FROM python:3.10.14-slim
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+
+# Create application directory
+RUN mkdir -p /app
+WORKDIR /app
+
+# Copy the application code
+COPY . .
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y curl
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt || (echo "Failed to install dependencies" && exit 1)
+RUN pip install python-dotenv
+
+# Expose port 8501 for Streamlit
+EXPOSE 8501
+
+WORKDIR /app
+
+# Run the Streamlit app
+CMD ["streamlit", "run", "app.py"]
+
