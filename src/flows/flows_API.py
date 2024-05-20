@@ -200,7 +200,7 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         # Parcourir tous les fichiers dans le répertoire et les supprimer
             for filename in os.listdir(image_test_path):
                 file_path = os.path.join(image_test_path, filename)
-                if os.path.isfile(file_path) or os.path.islink(file_path):
+                if os.path.isfile(file_path): # or os.path.islink(file_path):
                     os.unlink(file_path)
         
     except Exception as e:
