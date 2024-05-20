@@ -1,0 +1,129 @@
+h1 {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  margin-top:6px;
+}
+h2 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+}
+
+/* La ligne suivante est nécessaire à cause du module streamlit_option_menu qui "casse" les CSS suivants */
+@media (prefers-color-scheme: dark) {
+  .st-cc {
+    color: #fff!important; /* Couleur du texte en mode sombre */
+  }
+	.st-cg:hover {
+		color: rgb(255, 75, 75)!important; /* Couleur du texte en mode sombre */
+  }
+  section[data-testid="stSidebar"] .stSelectbox .st-cc {
+    color: rgb(255, 75, 75)!important;
+    font-weight: bold;
+  }
+}
+
+p {
+    margin-bottom:0.1rem;
+}
+
+code {
+  color: #1ec3bc;
+}
+
+#MainMenu {
+  display: none;
+}
+
+div[data-testid="stDecoration"] {
+  display: none;
+}
+
+footer {
+  display: none;
+}
+
+/* Radio buttons */
+
+.st-cc {
+  color: black;
+  font-weight: 500;
+}
+
+/* Sidebar */
+
+.css-1544g2n {
+  padding-top: 1rem;
+}
+
+.css-10oheav {
+  padding-top: 3rem;
+}
+
+.css-ue6h4q {
+  min-height: 0.5rem;
+}
+
+section[data-testid="stSidebar"] > div {
+  background-color: #10b8dd;
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+}
+
+section[data-testid="stSidebar"] button[title="View fullscreen"] {
+  display: none;
+}
+
+section[data-testid="stSidebar"] button[kind="icon"] {
+  display: none;
+}
+
+section[data-testid="stSidebar"] .st-bk {
+  background-color: #10b8dd;
+}
+
+section[data-testid="stSidebar"] .st-c0 {
+/*  background-color: #10b8dd; */
+}
+
+section[data-testid="stSidebar"] hr {
+  margin-top: 30px;
+  border-color: white;
+  width: 50px;
+}
+
+section[data-testid="stSidebar"] h2 {
+  color: white;
+}
+
+section[data-testid="stSidebar"] .stSelectbox .st-bk {
+  background-color: #a0d3de;
+}
+
+section[data-testid="stSidebar"] .stSelectbox .st-cc {
+  color: rgb(255, 75, 75);
+  font-weight: bold;
+}
+
+/* Images */
+
+button[title="View fullscreen"] {
+  display: none;
+}
+
+/* hr */
+
+hr {
+  width: 700px;
+  border-width: 5px;
+  border-color: #10b8dd;
+  margin-top: 0px;
+  margin-bottom: 1em;
+  max-width: 100%;
+}
+
+/* First Page */
+
+section[tabindex="0"] .block-container {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

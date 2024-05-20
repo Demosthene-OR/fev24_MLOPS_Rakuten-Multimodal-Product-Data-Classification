@@ -1,10 +1,13 @@
-#deep learning models
+# deep learning models
 best_lstm_model.h5
 best_rnn_model.h5
 best_vgg16_model.h5
 
 # mysql-data : docker files
 mysql-data/
+
+# log docker
+log_docker_compose.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

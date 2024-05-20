@@ -137,8 +137,9 @@ def prediction(input_data: PredictionInput, token: Optional[str] = Depends(oauth
             user_data = auth_response.json()
             user_info = user_data['FirstName']+" "+user_data['LastName']
             if user_data['Authorization'] < 1:
-                message_response = {"message": f"{user_info} n'est pas autorisé a effectuer une prediction"}
-                return message_response
+                raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"{user_info} n'est pas autorisé à effectuer une prédiction")
+                # message_response = {"message": f"{user_info} n'est pas autorisé a effectuer une prediction"}
+                # return message_response
     else:
         user_info = "un utilisateur inconnu"
 
@@ -160,7 +161,7 @@ def prediction(input_data: PredictionInput, token: Optional[str] = Depends(oauth
     predictions.to_csv(input_data.prediction_path+"/predictions.csv", index=False)
     predictions = predictions.rename(columns={'cat_pred': 'cat_real'})
     predictions['cat_pred'] = predictions.iloc[:, 0]
-    predictions.to_csv(input_data.prediction_path+"/new_classes.csv", index=False)
+    predictions[['cat_real','cat_pred']].to_csv(input_data.prediction_path+"/new_classes.csv", index=False)
         
     print("Durée de la prédiction : {:.2f}".format(t_fin - t_debut))
     
