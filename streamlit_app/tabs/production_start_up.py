@@ -25,7 +25,7 @@ def display_header():
 def run():   
     st.write('Hello')
     display_header()
-    if st.session_state.UserAuthorization <1:
+    if st.session_state.UserAuthorization <2:
         st.write("You are not logged in or not authorized to sell product !")
         return
     
