@@ -9,6 +9,9 @@ import jwt
 from jwt import PyJWTError
 from datetime import datetime, timedelta, timezone
 import requests
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import text
 
 app = FastAPI()
 
@@ -36,6 +39,45 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 # Fonction pour interroger la base de données et récupérer les informations d'identification de l'utilisateur
 def get_user(username: str):
+    # Define the database connection URL
+    db_url = 'mysql+pymysql://'+MYSQL_USER+':'+MYSQL_PASSWORD+'@localhost:3306/'+MYSQL_DB
+
+    # Create the SQLAlchemy engine
+    engine = create_engine(db_url)
+    
+    # Create a session
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    
+    # Retrieve data from the table
+    table_name = 'Users' 
+    
+    # Execute the query
+    query = text(f"SELECT * FROM {table_name} WHERE username = :username")
+    table_data = session.execute(query, {"username": username})
+
+    # Define a User class
+    class User:
+        def __init__(self, **kwargs):
+            self.__dict__.update(kwargs)
+
+    # Process the retrieved data
+    users = []
+    for row in table_data:
+        # Convert the row object to a dictionary
+        row_dict = dict(row._asdict())
+        # Create a user object and add it to the list
+        user = User(**row_dict)
+        users.append(user)
+    
+    # Close the session
+    session.close()
+    
+    return users
+    
+    
+    
+""" def get_user(username: str):
     try:
         connection = mysql.connector.connect(
             host=MYSQL_HOST,
@@ -55,7 +97,8 @@ def get_user(username: str):
         print(f"Error while querying MySQL: {e}")
     finally:
         if 'cursor' in locals() and cursor:
-            cursor.close()  # Close the cursor if it was defined
+            cursor.close()  # Close the cursor if it was defined """
+            
 """ def get_user(username: str):
     # return users_db.get(username)
     try:
@@ -118,9 +161,9 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     except PyJWTError as e:
         raise credentials_exception
     user = get_user(username)
-    if user is None:
+    if user[0] is None:
         raise credentials_exception
-    return user
+    return user[0]
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
@@ -138,15 +181,19 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     - HTTPException(400, detail="Incorrect username or password"): Si l'authentification échoue en raison d'un nom d'utilisateur ou d'un mot de passe incorrect, une exception HTTP 400 Bad Request est levée.
     """
     user = get_user(form_data.username) 
-    # print(user["password"])
-    hashed_password = user["password"]
-    if not user or not verify_password(form_data.password, hashed_password):
-        raise HTTPException(status_code=400, detail="Incorrect username or password")
+    # Access the user's password if the list is not empty
+    if user:
+        hashed_password = user[0].password
+        if not user or not verify_password(form_data.password, hashed_password):
+            raise HTTPException(status_code=400, detail="Incorrect username or password")
 
-    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRATION)
-    access_token = create_access_token(data={"sub": form_data.username}, expires_delta=None) #, expires_delta=access_token_expires)
+        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRATION)
+        access_token = create_access_token(data={"sub": form_data.username}, expires_delta=None) #, expires_delta=access_token_expires)
 
-    return {"access_token": access_token, "token_type": "bearer"}
+        return {"access_token": access_token, "token_type": "bearer"}
+    else:
+        # Handle the case when the list is empty
+        return {"access_token": "No user found.", "token_type": ""}
 
 @app.get("/")
 def read_public_data():
@@ -181,8 +228,9 @@ def read_private_data(current_user: dict = Depends(get_current_user)):
     Raises:
     - HTTPException(401, detail="Unauthorized"): Si l'utilisateur n'est pas authentifié, une exception HTTP 401 Unauthorized est levée.
     """
-
-    return {**current_user}
+    
+    return dict(current_user)
+#{**current_user}
 
 '''
 @app.on_event("startup")
