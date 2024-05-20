@@ -94,7 +94,7 @@ def run():
     
     # Step 1: Suggest new products
     if (chosen_id == "tab1"):
-        global X_test_df
+        global X_test_df, new_classes_df
         
         st.subheader("Step 1: Suggest New Products")
         num_products = st.number_input("Number of Products to Suggest", min_value=1, max_value=10, value=2)
@@ -114,6 +114,8 @@ def run():
                 X_test_path = new_products_folder_path+"/X_test_update.csv"           
                 try:
                     X_test_df = pd.read_csv(prePath+X_test_path, index_col=0)
+                    if "new_classes_df" in st.session_state:
+                        del st.session_state.new_classes_df
                     st.write(X_test_df[["designation","description"]].to_html(index=False), unsafe_allow_html=True)
                     if st.session_state.sale_step==1:
                         st.session_state.sale_step = 2
