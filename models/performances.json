@@ -1,42 +1,42 @@
 {
-    "Date": "2024-05-10 13:47:52",
+    "Date": "2024-05-14 22:45:02",
     "Input": {
-        "epochs_requested": 8,
-        "samples_per_class": 0,
+        "epochs_requested": 1,
+        "samples_per_class": 10,
         "with_test": 1,
         "random_state": 42,
-    "Dataset_size": {
-        "Train": 67921,
-        "Val": 15633,
-        "Test": 1362
+        "Dataset_size": {
+            "Train": 270,
+            "Val": 81,
+            "Test": 1350
         }
     },
     "Text": {
-        "best_epoch": 4,
-        "f1": 0.8625456094741821,
-        "accuracy": 0.9628980755805969
+        "best_epoch": 1,
+        "f1": 0.8940752744674683,
+        "accuracy": 0.8740741014480591
     },
     "VGG16": {
         "best_epoch": 1,
-        "f1": 0.83541339635849,
-        "accuracy": 0.3829154372215271
+        "f1": 0.8091439604759216,
+        "accuracy": 0.5111111402511597
     },
     "Concatenate": {
         "weight": [
-            0.76,
-            0.24
+            0.84,
+            0.16000000000000003
         ],
         "Train": {
-            "f1": 0.8884279429737822,
-            "accuracy": 0.8884567901234568,
-            "duration": 45056,
-            "size": 16200
+            "f1": 0.9555426163613298,
+            "accuracy": 0.9555555555555556,
+            "duration": 1751,
+            "size": 270
         },
         "Test": {
-            "f1": 0.7972400941437523,
-            "accuracy": 0.7951541850220264,
-            "duration": 178,
-            "size": 1362
+            "f1": 0.8762242674144247,
+            "accuracy": 0.8762962962962964,
+            "duration": 548,
+            "size": 1350
         }
     }
 }
