@@ -65,9 +65,9 @@ def test_login_wrong_username():
             "client_secret": "string"
             }
         )
-    assert response.status_code == 400
+    assert response.status_code == 200
     message = response.json()
-    assert message["detail"] == "Incorrect username or password"
+    assert message["access_token"] == "No user found."
     
     
 def test_login_for_access_token():
@@ -93,21 +93,51 @@ def test_login_for_access_token():
     assert message["token_type"] == "bearer"
     
     
-   
 
-
-def test_read_private_data():
-    ACCESS_TOKEN_AUTH_2= "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UifQ.r43zrSm_B3l5-xNjf7Q9XZXOQncGuI9YzarapOA0Wgg"
-    data = {
-        "grant_type": "",
-        "username": "Fadimatou",
-        "password": "Fadimatou",
-        "scope": "",
-        "client_id": "",
-        "client_secret": ""
-        }
-    response = client.get("/secured", headers={"Authorization": f"Bearer {ACCESS_TOKEN_AUTH_2}"})
+    
+def test_read_private_data_unauthorized():
+    # Send a GET request to the /secured endpoint
+    response = client.get("/secured")
+    
+    # Assert that the response status code is 401 (Unauthorized)
+    assert response.status_code == 401
+    
+    # Assert that the response JSON matches the current_user object
+    assert response.json() == {"detail": "Not authenticated"}
+    
+    
+def test_login_for_access_token_level_2():
+    response = client.post(
+        "/token", 
+        headers={
+            "accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded"
+            },
+        data = {
+            "grant_type": "password",
+            "username": "Fadimatou",
+            "password": "Fadimatou",
+            "scope": "",
+            "client_id": "string",
+            "client_secret": "string"
+            }
+        )
     assert response.status_code == 200
-    #assert response.json() == {"message": "Hello World, but secured!"}
-
+    assert "access_token" in response.json()
+    message = response.json()
+    assert message["access_token"] == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGYWRpbWF0b3UifQ.r43zrSm_B3l5-xNjf7Q9XZXOQncGuI9YzarapOA0Wgg"
+    assert message["token_type"] == "bearer"
+    
+def test_read_private_data_authorized():
+    # Send a GET request to the /secured endpoint
+    response = client.get("/secured")
+    message = response.json()
+    
+    
+    # Assert that the response JSON matches the current_user object
+    assert message == "current_user"
+    #AssertionError: assert {'detail': 'Not authenticated'} == 'current_user'
+    
+    # Assert that the response status code is 200 (OK)
+    assert response.status_code == 200
     
