@@ -28,6 +28,7 @@ class NewProductsInput(BaseModel):
 
 class ComputeMetricsInput(BaseModel):
     classes_path: Optional[str] = "data/preprocessed/new_classes.csv"
+    num_sales: Optional[int] = 10
     api_secured: Optional[bool] = False
 
 class SaveModelTrain(BaseModel):
@@ -220,7 +221,7 @@ def compute_metrics_new_products(input_data: ComputeMetricsInput, token: Optiona
         else:
             user_data = auth_response.json()
             user_info = user_data['FirstName'] + " " + user_data['LastName']
-            if user_data['Authorization'] < 1:
+            if user_data['Authorization'] < 2:
                 message_response = {"message": f"{user_info} n'est pas autorisé à calculer les metrics des nouveaux produits en attente"}
                 return message_response
     else:
@@ -234,8 +235,10 @@ def compute_metrics_new_products(input_data: ComputeMetricsInput, token: Optiona
         new_classes_df = pd.read_csv(new_classes_path)
         
         # Calcul de l'accuracy
-        if len(new_classes_df)>0:
-            accuracy = (new_classes_df['cat_real'] == new_classes_df['cat_pred']).mean()
+        num_new_products = len(new_classes_df)
+        if num_new_products>0:
+            num_new_products = min(num_new_products, input_data.num_sales)
+            accuracy = (new_classes_df['cat_real'].iloc[-num_new_products:] == new_classes_df['cat_pred'].iloc[-num_new_products:]).mean()
         else:
             accuracy = 1.0
         
