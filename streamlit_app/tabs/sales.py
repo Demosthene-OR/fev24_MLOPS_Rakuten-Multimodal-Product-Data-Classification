@@ -94,11 +94,10 @@ def run():
     
     # Step 1: Suggest new products
     if (chosen_id == "tab1"):
-        global X_test_df, new_classes_df
+        global X_test_df, new_classes_df, X_test_path
         
         st.subheader("Step 1: Suggest New Products")
         num_products = st.number_input("Number of Products to Suggest", min_value=1, max_value=10, value=2)
-        st.write("session state 1 :",st.session_state.sale_step)
         if (st.session_state.sale_step>=1):
             response1 = requests.get(
                 'http://'+st.session_state.api_flows+':8003/new_product_proposal',
@@ -136,7 +135,6 @@ def run():
         global new_classes_df, df_concatenated
         
         st.subheader("Step 2: Predict Categories")
-        st.write("session state 2 :",st.session_state.sale_step)
         if (st.session_state.sale_step >= 2):
             response2 = requests.post(
                 'http://'+st.session_state.api_predict+':8000/prediction',
@@ -181,7 +179,19 @@ def run():
             selected = select_product()
             new_cat = select_category(df_concatenated.loc[selected, "cat_real"].astype(int).astype(str))
             df_concatenated["cat_real"].loc[selected]=int(new_cat)
+            df_concatenated[["designation","description","productid","imageid"]].to_csv(prePath+X_test_path)
             df_concatenated[["cat_real","cat_pred","designation","description"]]= st.data_editor(df_concatenated[["cat_real","cat_pred","designation","description"]], key="editor 2") # = st.data_editor(df_concatenated[["designation","description","cat_real","cat_pred"]])     
+            if st.button('Refresh prediction'):
+                response2 = requests.post(
+                    'http://'+st.session_state.api_predict+':8000/prediction',
+                    headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {st.session_state.token}"},
+                    data=json.dumps({
+                        "dataset_path": f"{new_products_folder_path}/X_test_update.csv",
+                        "images_path": f"{new_products_folder_path}/image_test",
+                        "prediction_path": f"{new_products_folder_path}",
+                        "api_secured": True
+                        })
+                    )
             display_image(selected)
             
             # Mettre à jour les DataFrames d'origine avec les valeurs actualisées
@@ -201,7 +211,6 @@ def run():
     # Step 3: Confirm selling the products with chosen categories
     if (chosen_id == "tab3"):
         st.subheader("Step 3: Confirm and Sell")
-        st.write("session state 3 :",st.session_state.sale_step)   
         if (st.session_state.sale_step >= 3):
             response3 = requests.get(
                 'http://'+st.session_state.api_flows+':8003/add_new_products',
@@ -217,7 +226,6 @@ def run():
             if response3.status_code == 200:
                 if st.session_state.sale_step==3:
                     st.session_state.sale_step = 1
-                st.write("session state 4 :",st.session_state.sale_step)
                 st.success(response3.json().get("message", "No message in response"))
                 del st.session_state.new_classes_df
                 st.write(df_concatenated[["designation","description","cat_real","cat_pred"]].to_html(index=False), unsafe_allow_html=True)

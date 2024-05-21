@@ -7,10 +7,12 @@ on:
     branches: 
       - main
       - tests
+      - flows-complement
   pull_request:
     branches:
       - main
       - tests
+      - flows-complement
 
 permissions:
   contents: read
