@@ -149,7 +149,7 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         # X_train_combined_df = X_train_combined_df.astype({
         #     'productid': int,
         #     'imageid': int
-        # })
+        # }) 
         X_train_combined_df.to_csv(X_train_path)
         
         # Append new_classes.csv to new_classes.csv in preprocessed

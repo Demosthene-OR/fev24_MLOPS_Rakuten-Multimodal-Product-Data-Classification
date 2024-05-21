@@ -39,6 +39,7 @@ def run():
             headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {st.session_state.token}"},
             data=json.dumps({
                 "classes_path": "data/preprocessed/new_classes.csv",
+                "num_sales": num_sales,
                 "api_secured": True
                 }))
         accuracy = response.json().get("accuracy", None)

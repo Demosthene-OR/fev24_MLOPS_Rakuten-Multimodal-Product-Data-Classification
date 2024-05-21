@@ -98,7 +98,6 @@ def run():
         
         st.subheader("Step 1: Suggest New Products")
         num_products = st.number_input("Number of Products to Suggest", min_value=1, max_value=10, value=2)
-        st.write("session state 1 :",st.session_state.sale_step)
         if (st.session_state.sale_step>=1):
             response1 = requests.get(
                 'http://'+st.session_state.api_flows+':8003/new_product_proposal',
@@ -136,7 +135,6 @@ def run():
         global new_classes_df, df_concatenated
         
         st.subheader("Step 2: Predict Categories")
-        st.write("session state 2 :",st.session_state.sale_step)
         if (st.session_state.sale_step >= 2):
             response2 = requests.post(
                 'http://'+st.session_state.api_predict+':8000/prediction',
@@ -201,7 +199,6 @@ def run():
     # Step 3: Confirm selling the products with chosen categories
     if (chosen_id == "tab3"):
         st.subheader("Step 3: Confirm and Sell")
-        st.write("session state 3 :",st.session_state.sale_step)   
         if (st.session_state.sale_step >= 3):
             response3 = requests.get(
                 'http://'+st.session_state.api_flows+':8003/add_new_products',
