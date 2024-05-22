@@ -1,53 +1,146 @@
-[2Kapi_flows  | INFO:     Started server process [1]
-[2Kapi_flows  | INFO:     Waiting for application startup.
-[2Kapi_flows  | INFO:     Application startup complete.
-[2Kapi_flows  | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
-[2Kapi_oauth  | INFO:     Started server process [1]
-[2Kapi_oauth  | INFO:     Waiting for application startup.
-[2Kapi_oauth  | INFO:     Application startup complete.
-[2Kapi_oauth  | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
-[2Kusers_db   | 2024-05-21 16:14:51+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-[2Kusers_db   | 2024-05-21 16:14:51+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2Kusers_db   | 2024-05-21 16:14:51+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-[2Kusers_db   | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kusers_db   | 2024-05-21T16:14:52.151561Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2Kusers_db   | 2024-05-21T16:14:52.351102Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kusers_db   | 2024-05-21T16:14:52.354451Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-[2Kusers_db   | 2024-05-21T16:14:52.382745Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kusers_db   | 2024-05-21T16:14:53.398473Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-[2Kusers_db   | 2024-05-21T16:14:53.922395Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kusers_db   | 2024-05-21T16:14:53.922907Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-[2Kusers_db   | 2024-05-21T16:14:53.954625Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-[2Kusers_db   | 2024-05-21T16:14:54.034402Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db   | 2024-05-21T16:14:54.296728Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-[2Kapi_train  | 2024-05-21 16:14:52.507937: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_train  | 2024-05-21 16:14:52.509401: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_train  | 2024-05-21 16:14:52.560500: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_train  | 2024-05-21 16:14:52.560865: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-[2Kapi_train  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_train  | 2024-05-21 16:14:53.571591: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-[2Kapi_train  | INFO:     Started server process [1]
-[2Kapi_train  | INFO:     Waiting for application startup.
-[2Kapi_train  | INFO:     Application startup complete.
-[2Kapi_train  | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
-[2Kstreamlit  | 
-[2Kstreamlit  | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
-[2Kstreamlit  | 
-[2Kstreamlit  | 
-[2Kstreamlit  |   You can now view your Streamlit app in your browser.
-[2Kstreamlit  | 
-[2Kstreamlit  |   Network URL: http://172.19.0.5:8501
-[2Kstreamlit    |   External URL: http://90.7.241.177:8501
-[2Kstreamlit    | 
-[2Kapi_predict  | 2024-05-21 16:14:52.508651: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_predict  | 2024-05-21 16:14:52.510328: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-21 16:14:52.560501: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-21 16:14:52.560864: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kadmin_db  | [Tue May 21 18:59:55 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kapi_predict  | 2024-05-21 18:59:58.078474: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_predict  | 2024-05-21 18:59:58.113299: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-21 18:59:58.351674: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-21 18:59:58.355275: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 [2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_predict  | 2024-05-21 16:14:53.571599: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_predict  | 2024-05-21 18:59:59.612881: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 [2Kapi_predict  | INFO:     Started server process [1]
 [2Kapi_predict  | INFO:     Waiting for application startup.
 [2Kapi_predict  | INFO:     Application startup complete.
 [2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2Kapi_predict  | INFO:     172.19.0.1:56414 - "GET /initialisation HTTP/1.1" 200 OK
-[2Kadmin_db     | [Tue May 21 16:14:50 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kapi_predict  | INFO:     172.18.0.1:42718 - "GET /initialisation HTTP/1.1" 500 Internal Server Error
+[2Kapi_predict  | ERROR:    Exception in ASGI application
+[2Kapi_predict  | Traceback (most recent call last):
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 407, in run_asgi
+[2Kapi_predict  |     result = await app(  # type: ignore[func-returns-value]
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+[2Kapi_predict  |     return await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/applications.py", line 292, in __call__
+[2Kapi_predict  |     await super().__call__(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+[2Kapi_predict  |     await self.middleware_stack(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, _send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, sender)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+[2Kapi_predict  |     raise e
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+[2Kapi_predict  |     await route.handle(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+[2Kapi_predict  |     response = await func(request)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 273, in app
+[2Kapi_predict  |     raw_response = await run_endpoint_function(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 192, in run_endpoint_function
+[2Kapi_predict  |     return await run_in_threadpool(dependant.call, **values)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+[2Kapi_predict  |     return await anyio.to_thread.run_sync(func, *args)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/to_thread.py", line 56, in run_sync
+[2Kapi_predict  |     return await get_async_backend().run_sync_in_worker_thread(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2144, in run_sync_in_worker_thread
+[2Kapi_predict  |     return await future
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 851, in run
+[2Kapi_predict  |     result = context.run(func, *args)
+[2Kapi_predict  |   File "/app/./src/predict_API.py", line 111, in initialisation
+[2Kapi_predict  |     with open("models/tokenizer_config.json", "r", encoding="utf-8") as json_file:
+[2Kapi_predict  | FileNotFoundError: [Errno 2] No such file or directory: 'models/tokenizer_config.json'
+[2Kapi_predict  | INFO:     172.18.0.1:48342 - "GET /initialisation HTTP/1.1" 500 Internal Server Error
+[2Kapi_predict  | ERROR:    Exception in ASGI application
+[2Kapi_predict  | Traceback (most recent call last):
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 407, in run_asgi
+[2Kapi_predict  |     result = await app(  # type: ignore[func-returns-value]
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+[2Kapi_predict  |     return await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/applications.py", line 292, in __call__
+[2Kapi_predict  |     await super().__call__(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/applications.py", line 122, in __call__
+[2Kapi_predict  |     await self.middleware_stack(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 184, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 162, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, _send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+[2Kapi_predict  |     raise exc
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, sender)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+[2Kapi_predict  |     raise e
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+[2Kapi_predict  |     await route.handle(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+[2Kapi_predict  |     await self.app(scope, receive, send)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+[2Kapi_predict  |     response = await func(request)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 273, in app
+[2Kapi_predict  |     raw_response = await run_endpoint_function(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/fastapi/routing.py", line 192, in run_endpoint_function
+[2Kapi_predict  |     return await run_in_threadpool(dependant.call, **values)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+[2Kapi_predict  |     return await anyio.to_thread.run_sync(func, *args)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/to_thread.py", line 56, in run_sync
+[2Kapi_predict  |     return await get_async_backend().run_sync_in_worker_thread(
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 2144, in run_sync_in_worker_thread
+[2Kapi_predict  |     return await future
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 851, in run
+[2Kapi_predict  |     result = context.run(func, *args)
+[2Kapi_predict  |   File "/app/./src/predict_API.py", line 115, in initialisation
+[2Kapi_predict  |     rnn = load_model( "models" , "best_rnn_model.h5" )
+[2Kapi_predict  |   File "/app/./src/tools.py", line 35, in load_model
+[2Kapi_predict  |     merge = Merge(file_path+"/"+file_name[:-3],  file_path, file_name).merge(cleanup=False)
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/filesplit/merge.py", line 144, in merge
+[2Kapi_predict  |     manfile = self._getmanifestpath()
+[2Kapi_predict  |   File "/usr/local/lib/python3.10/site-packages/filesplit/merge.py", line 113, in _getmanifestpath
+[2Kapi_predict  |     raise FileNotFoundError(
+[2Kapi_predict  | FileNotFoundError: Manifest file "manifest" not found in "models/best_rnn_model"
+[2Kapi_flows    | INFO:     Started server process [1]
+[2Kapi_flows    | INFO:     Waiting for application startup.
+[2Kapi_flows    | INFO:     Application startup complete.
+[2K[2Kusers_db     | 2024-05-21 18:59:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+api_flows    | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+[2Kusers_db     | 2024-05-21 18:59:56+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+[2Kusers_db     | 2024-05-21 18:59:56+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+[2Kusers_db     | 2024-05-21T18:59:57.031443Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kusers_db     | 2024-05-21T18:59:57.230615Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kusers_db     | 2024-05-21T18:59:57.234201Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kusers_db     | 2024-05-21T18:59:57.260238Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+[2Kusers_db     | 2024-05-21T18:59:58.549633Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kusers_db     | 2024-05-21T18:59:59.050380Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2Kusers_db     | 2024-05-21T18:59:59.050986Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2Kusers_db     | 2024-05-21T18:59:59.076784Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kusers_db     | 2024-05-21T18:59:59.193457Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kusers_db     | 2024-05-21T18:59:59.455840Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+[2Kapi_oauth    | INFO:     Started server process [1]
+[2Kapi_oauth    | INFO:     Waiting for application startup.
+[2Kapi_oauth    | INFO:     Application startup complete.
+[2Kapi_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+[2Kapi_train    | 2024-05-21 18:59:58.078489: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_train    | 2024-05-21 18:59:58.113288: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kstreamlit    | 
+[2Kapi_train    | 2024-05-21 18:59:58.351673: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kstreamlit    | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+[2Kapi_train    | 2024-05-21 18:59:58.355184: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kstreamlit    | 
+[2Kapi_train    | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[2Kstreamlit    | 
+[2Kstreamlit    |   You can now view your Streamlit app in your browser.
+[2Kstreamlit    | 
+[2Kstreamlit    |   Network URL: http://172.18.0.6:8501
+[2Kstreamlit    |   External URL: http://90.7.241.177:8501
+[2Kstreamlit    | 
+[2Kapi_train    | 2024-05-21 18:59:59.612887: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_train    | INFO:     Started server process [1]
+[2Kapi_train    | INFO:     Waiting for application startup.
+[2Kapi_train    | INFO:     Application startup complete.
+[2Kapi_train    | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
