@@ -12,14 +12,14 @@
         }
     },
     "Text": {
-        "best_epoch": 1,
-        "f1": 0.5968987941741943,
-        "accuracy": 0.7226483821868896
+        "best_epoch": 4,
+        "f1": 0.8718,
+        "accuracy": 0.7995
     },
     "VGG16": {
-        "best_epoch": 3,
-        "f1": 0.739859402179718,
-        "accuracy": 0.546119749546051
+        "best_epoch": 6,
+        "f1": 0.6975,
+        "accuracy": 0.5433
     },
     "Concatenate": {
         "weight": [

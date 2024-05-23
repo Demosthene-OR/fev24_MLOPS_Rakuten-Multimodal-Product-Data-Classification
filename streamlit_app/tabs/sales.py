@@ -71,6 +71,37 @@ def select_category(index):
     index = cat_code.index(index)
     return st.selectbox("Category:",cat_code, index = index, format_func = find_cat_label)
 
+def result_top3(selected):
+    global cat_code, cat_label, new_products_folder_path
+    
+    # Créer un dictionnaire pour mapper les codes aux libellés
+    cat_dict = dict(zip(cat_code, cat_label))
+    # Lire le fichier CSV
+    file_path = prePath+new_products_folder_path + "/predictions.csv"
+    df = pd.read_csv(file_path)
+    
+    # Sélectionner la ligne souhaitée
+    row = df.iloc[selected]
+    probabilities = row[1:].values
+
+    # Trouver les trois catégories avec les plus fortes probabilités
+    top_indices = probabilities.argsort()[-3:][::-1]  # Les indices des 3 plus grandes valeurs
+    top_probs = probabilities[top_indices]
+    top_labels = [cat_dict[df.columns[i+1]] for i in top_indices]
+
+    # Préparer le résultat
+    result_row = []
+    for label, prob in zip(top_labels, top_probs):
+        result_row.append(label)
+        result_row.append(prob)
+
+    # Convertir le résultat en DataFrame pour un formatage homogène
+    columns = ["top1_category", "top1_probability", "top2_category", "top2_probability", "top3_category", "top3_probability"]
+    result_df = pd.DataFrame([result_row], columns=columns)
+
+    return result_df
+
+
 def run():
     
     st.write("")
@@ -178,9 +209,23 @@ def run():
             # df_concatenated[["cat_real","cat_pred","designation","description"]]= st.data_editor(df_concatenated[["cat_real","cat_pred","designation","description"]], key="editor 1") # = st.data_editor(df_concatenated[["designation","description","cat_real","cat_pred"]])     
             selected = select_product()
             new_cat = select_category(df_concatenated.loc[selected, "cat_real"].astype(int).astype(str))
+            
+            # Affichage des proba du top 3 des catégories
+            nbsp = "\u00A0"
+            top3 = result_top3(X_test_df.index.get_loc(selected))
+            top1_cat = top3["top1_category"].iloc[0]
+            top1_proba = top3["top1_probability"].iloc[0] * 100  # Conversion en pourcentage
+            top2_cat = top3["top2_category"].iloc[0]
+            top2_proba = top3["top2_probability"].iloc[0] * 100  # Conversion en pourcentage
+            top3_cat = top3["top3_category"].iloc[0]
+            top3_proba = top3["top3_probability"].iloc[0] * 100 
+            st.write(f"**p( {top1_cat} ) = {top1_proba:.0f}%**"+f"{nbsp}{nbsp}  -  {nbsp}{nbsp}p( {top2_cat} ) = {top2_proba:.0f}%"+f"{nbsp}{nbsp}  -  {nbsp}{nbsp}p( {top3_cat} ) = {top3_proba:.0f}%")
+            st.write("")
+            
             df_concatenated["cat_real"].loc[selected]=int(new_cat)
             df_concatenated[["designation","description","productid","imageid"]].to_csv(prePath+X_test_path)
             df_concatenated[["cat_real","cat_pred","designation","description"]]= st.data_editor(df_concatenated[["cat_real","cat_pred","designation","description"]], key="editor 2") # = st.data_editor(df_concatenated[["designation","description","cat_real","cat_pred"]])     
+
             if st.button('Refresh prediction'):
                 response2 = requests.post(
                     'http://'+st.session_state.api_predict+':8000/prediction',
@@ -192,8 +237,7 @@ def run():
                         "api_secured": True
                         })
                     )
-            display_image(selected)
-            
+            display_image(selected)    
             # Mettre à jour les DataFrames d'origine avec les valeurs actualisées
             for i in range(len(df_concatenated)):
                 new_classes_df['cat_real'].iloc[i] = df_concatenated['cat_real'].iloc[i]

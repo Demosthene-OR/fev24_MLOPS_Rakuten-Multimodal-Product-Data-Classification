@@ -34,6 +34,8 @@ class ComputeMetricsInput(BaseModel):
 class SaveModelTrain(BaseModel):
     model_path: Optional[str] = "models"
     dataset_path: Optional[str] = "data/preprocessed"
+    n_epochs:Optional[int] = 1
+    samples_per_class: Optional[int] = 0
     api_secured: Optional[bool] = False
     
 
@@ -322,8 +324,9 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
             "x_train_path": destination_dir+"/X_train_update.csv",
             "y_train_path":destination_dir+"/Y_train_CVw08PX.csv",
             "images_path": "data/preprocessed/image_train",
-            "model_path": destination_dir,  
-            "samples_per_class": 5,
+            "model_path": destination_dir, 
+            "n_epochs": input_data.n_epochs, 
+            "samples_per_class": input_data.samples_per_class,
             "with_test": True
         }
         train_headers = {

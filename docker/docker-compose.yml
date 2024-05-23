@@ -56,6 +56,7 @@ services:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
       - ./../tests:/app/tests:z
+      - ./../logs:/app/logs:z
 
   api_flows:
     build: 

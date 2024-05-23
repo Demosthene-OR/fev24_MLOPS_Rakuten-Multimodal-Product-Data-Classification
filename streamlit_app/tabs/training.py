@@ -45,15 +45,20 @@ def run():
         accuracy = response.json().get("accuracy", None)
         st.write("#### Accuracy on the last",num_sales,"sales = ",accuracy)
     if (chosen_id == "tab2"):
+        
+        n_epochs = st.number_input("Maximum number of epoch(s)                        :", min_value=1, max_value=10, value=1)
+        samples_per_class = st.number_input("Number of samples perclass (0 = Full Training set):", min_value=0, max_value=600, value=0)
+
         # Chemin du dossier principal
         model_folder = st.session_state.PrePath+'models'
 
         # Obtenir la liste des sous-dossiers
         subfolders = [f.name for f in os.scandir(model_folder) if f.is_dir()]
+        subfolders.insert(0, 'From scratch')
         subfolders.insert(0, 'Production')
         
         # Sous-dossiers à supprimer
-        folders_to_remove = ['best_rnn_model', 'best_vgg16_model']
+        folders_to_remove = ['best_rnn_model', 'best_vgg16_model', "empty_model"]
 
         # Supprimer les sous-dossiers spécifiés de la liste
         subfolders = [folder for folder in subfolders if folder not in folders_to_remove]
@@ -62,9 +67,11 @@ def run():
         sel_model = st.selectbox("Model selected:",subfolders) # label_visibility="hidden")
         if sel_model == "Production":
             model_dir = ""
+        elif sel_model == "From scratch":
+            model_dir = "/empty_model"
         else:
             model_dir = "/"+sel_model
-                
+                        
         if st.button('Click to start the training process'):
             response = requests.get(
                 'http://'+st.session_state.api_flows+':8003/save_model_start_train',
@@ -72,6 +79,8 @@ def run():
                 data=json.dumps({
                     "model_path": "models"+model_dir,
                     "dataset_path":"data/preprocessed",
+                    "n_epochs": n_epochs,
+                    "samples_per_class":samples_per_class,
                     "api_secured": True
                     }))
             if response.status_code == 200:

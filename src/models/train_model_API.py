@@ -114,11 +114,13 @@ class TextRnnModel:
         save_model(self.file_path, "best_rnn_model.h5")
         
         # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
-        best_loss_epoch = np.argmin(history.history['val_loss'])
+        # best_loss_epoch = np.argmin(history.history['val_loss'])
+        last_epoch = history.epoch[-1]
+        
         # Récupérer les meilleures valeurs de F1 et d'accuracy
-        best_f1 = history.history['f1_m'][best_loss_epoch]
-        best_accuracy = history.history['accuracy'][best_loss_epoch]
-        return history, best_loss_epoch, best_f1, best_accuracy
+        best_f1 = history.history['f1_m'][last_epoch]
+        best_accuracy = history.history['accuracy'][last_epoch]
+        return history, last_epoch, best_f1, best_accuracy
 
 
 class ImageVGG16Model:
@@ -212,11 +214,13 @@ class ImageVGG16Model:
         save_model(self.file_path, "best_vgg16_model.h5")
         
         # Récupérer les meilleures valeurs de F1 et l'accuracy correspondante
-        best_loss_epoch = np.argmin(history.history['val_loss'])
+        # best_loss_epoch = np.argmin(history.history['val_loss'])
+        last_epoch = history.epoch[-1]
+        
         # Récupérer les meilleures valeurs de F1 et d'accuracy
-        best_f1 = history.history['f1_m'][best_loss_epoch]
-        best_accuracy = history.history['accuracy'][best_loss_epoch]
-        return history, best_loss_epoch, best_f1, best_accuracy
+        best_f1 = history.history['f1_m'][last_epoch]
+        best_accuracy = history.history['accuracy'][last_epoch]
+        return history, last_epoch, best_f1, best_accuracy
         
 class concatenate:
     def __init__(self, tokenizer, rnn, vgg16):

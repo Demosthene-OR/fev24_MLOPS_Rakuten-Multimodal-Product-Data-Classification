@@ -17,9 +17,9 @@
         "accuracy": 0.9628980755805969
     },
     "VGG16": {
-        "best_epoch": 1,
+        "best_epoch": 6,
         "f1": 0.83541339635849,
-        "accuracy": 0.3829154372215271
+        "accuracy": 0.70
     },
     "Concatenate": {
         "weight": [

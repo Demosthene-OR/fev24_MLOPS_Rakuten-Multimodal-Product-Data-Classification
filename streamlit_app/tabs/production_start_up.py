@@ -37,7 +37,7 @@ def run():
     subfolders = [f.name for f in os.scandir(model_folder) if f.is_dir()]
         
     # Sous-dossiers à supprimer
-    folders_to_remove = ['best_rnn_model', 'best_vgg16_model']
+    folders_to_remove = ['best_rnn_model', 'best_vgg16_model', 'empty_model']
 
     # Supprimer les sous-dossiers spécifiés de la liste
     subfolders = [folder for folder in subfolders if folder not in folders_to_remove]

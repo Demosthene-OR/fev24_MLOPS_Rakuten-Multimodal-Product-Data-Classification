@@ -123,6 +123,7 @@ def initialisation():
 
     return {"message": "Initialisation effectuée avec succès"}
 
+
 # Endpoint pour la prédiction
 @app.post("/prediction")
 def prediction(input_data: PredictionInput, token: Optional[str] = Depends(oauth2_scheme)):
