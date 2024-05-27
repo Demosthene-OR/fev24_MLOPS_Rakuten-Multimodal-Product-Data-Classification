@@ -15,7 +15,7 @@ Project Organization
     │   ├── preprocessed   <- The final, canonical data sets for modeling.
     |   |  ├── image_train <- Where you put the images of the train set
     |   |  ├── image_test <- Where you put the images of the predict set
-    |   |  ├── X_train_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
+    |   |  ├── X_train_update.csv   <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
     |   |  └── X_test_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
     │   └── raw            <- The original, immutable data dump.
     |   |  ├── image_train <- Where you put the images of the train set
@@ -50,6 +50,13 @@ Project Organization
     │   ├── models                
     │   │   └── train_model.py
     │   └── config         <- Describe the parameters used in train_model.py and predict_model.py
+    │
+    ├── streamlit_app      <- Source code of the streamlit app which shows how to use all the APIs
+    │
+    └── tests              <- Source code of the tests
+    │   └── test_rakuten.py     <- Scripts of all the test which are launched by Gihub Actions @ each commit
+    │
+    └── Rakuten.postman_collection.json     <- This collection contains all the API requests for the Datascientest Rakuten project
 
 --------
 
@@ -86,7 +93,6 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 
     If you want with to predict with the API in a unsecured way (without Docker) :  
 > `uvicorn src.predict_API:app --reload`  
-> `curl 'http://localhost:8000/initialisation'`   
 > `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'`  
 
     If you want with to train the model with the API in a unsecured way (without Docker) :   
