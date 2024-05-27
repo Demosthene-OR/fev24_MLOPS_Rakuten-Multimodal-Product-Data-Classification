@@ -12,7 +12,9 @@ import argparse
 from keras import backend as K
 from tools import f1_m, load_model
 import time
-    
+
+MAX_ROW = 15000
+   
 class Predict:
     def __init__(
         self,
@@ -40,9 +42,11 @@ class Predict:
         return img_array
 
     def predict(self):
-        X = pd.read_csv(self.filepath)[:100] 
-        print(X.shape)
-        X["description"] = X["designation"] + " " + str(X["description"])
+        X = pd.read_csv(self.filepath)[:MAX_ROW] 
+        # Remplacer les NaN par des chaînes vides
+        X["designation"] = X["designation"].fillna('')
+        X["description"] = X["description"].fillna('')
+        X["description"] = X["designation"] + " " + X["description"]
         
         text_preprocessor = TextPreprocessor()
         image_preprocessor = ImagePreprocessor(self.imagepath)

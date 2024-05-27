@@ -1,61 +1,48 @@
-[2Kapi_train  | 2024-05-23 21:37:55.537341: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kusers_db   | 2024-05-23 21:37:54+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-[2Kapi_train  | 2024-05-23 21:37:55.538943: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kusers_db   | 2024-05-23 21:37:55+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2Kapi_train  | 2024-05-23 21:37:55.571971: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_train  | 2024-05-23 21:37:55.572393: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kusers_db   | 2024-05-26 17:04:39+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2Kapi_oauth  | INFO:     Started server process [1]
+[2Kapi_train  | 2024-05-26 17:04:41.338643: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_train  | 2024-05-26 17:04:41.340284: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_train  | 2024-05-26 17:04:41.379632: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_train  | 2024-05-26 17:04:41.380201: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kusers_db   | 2024-05-26 17:04:40+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
 [2Kapi_train  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_train  | 2024-05-23 21:37:56.429247: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-[2Kusers_db   | 2024-05-23 21:37:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2Kapi_oauth  | INFO:     Waiting for application startup.
+[2Kusers_db   | 2024-05-26 17:04:40+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2K[2Kusers_db   | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+api_oauth  | INFO:     Application startup complete.
+[2K[2Kusers_db   | 2024-05-26T17:04:40.656356Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kapi_train  | 2024-05-26 17:04:42.325143: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+api_oauth  | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
 [2Kapi_train  | INFO:     Started server process [1]
-[2Kusers_db   | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kusers_db   | 2024-05-23T21:37:55.525686Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2Kusers_db   | 2024-05-23T21:37:55.745519Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kusers_db   | 2024-05-23T21:37:55.749064Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kusers_db   | 2024-05-26T17:04:40.867138Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kusers_db   | 2024-05-26T17:04:40.871449Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
 [2Kapi_train  | INFO:     Waiting for application startup.
+[2Kusers_db   | 2024-05-26T17:04:40.892634Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
 [2Kapi_train  | INFO:     Application startup complete.
 [2Kapi_train  | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
-[2Kusers_db   | 2024-05-23T21:37:55.764816Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kusers_db   | 2024-05-23T21:37:57.278838Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-[2Kusers_db   | 2024-05-23T21:37:57.895400Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kusers_db   | 2024-05-23T21:37:57.895803Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-[2Kusers_db   | 2024-05-23T21:37:57.914449Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-[2Kusers_db   | 2024-05-23T21:37:57.984442Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db   | 2024-05-23T21:37:58.246605Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-[2Kapi_flows  | INFO:     Started server process [1]
-[2Kapi_flows  | INFO:     Waiting for application startup.
-[2Kapi_flows  | INFO:     Application startup complete.
-[2Kapi_flows  | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
-[2Kapi_oauth  | INFO:     Started server process [1]
-[2Kapi_oauth  | INFO:     Waiting for application startup.
-[2Kapi_oauth  | INFO:     Application startup complete.
-[2Kapi_oauth  | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
-[2Kapi_predict  | 2024-05-23 21:37:55.777432: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_predict  | 2024-05-23 21:37:55.778987: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-23 21:37:55.822298: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_predict  | 2024-05-23 21:37:55.822845: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kusers_db   | 2024-05-26T17:04:42.062935Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kusers_db   | 2024-05-26T17:04:42.706806Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2Kusers_db   | 2024-05-26T17:04:42.707348Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2Kusers_db   | 2024-05-26T17:04:42.746469Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kusers_db   | 2024-05-26T17:04:42.790764Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kusers_db   | 2024-05-26T17:04:43.052057Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+[2Kstreamlit  | 
+[2Kstreamlit  | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+[2Kstreamlit  | 
+[2Kstreamlit  | 
+[2Kstreamlit  |   You can now view your Streamlit app in your browser.
+[2Kstreamlit  | 
+[2Kstreamlit  |   Network URL: http://172.19.0.5:8501
+[2Kstreamlit  |   External URL: http://90.7.241.177:8501
+[2Kstreamlit  | 
+[2Kapi_predict  | 2024-05-26 17:04:40.917234: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_predict  | 2024-05-26 17:04:40.918859: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-26 17:04:40.954768: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-26 17:04:40.955150: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 [2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_predict  | 2024-05-23 21:37:56.697575: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-[2Kapi_predict  | INFO:     Started server process [1]
-[2Kapi_predict  | INFO:     Waiting for application startup.
-[2Kapi_predict  | INFO:     Application startup complete.
-[2Kapi_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-[2Kapi_predict  | INFO:     172.23.0.1:38682 - "GET /initialisation HTTP/1.1" 200 OK
-[2Kadmin_db     | [Thu May 23 21:37:53 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
-[2Kstreamlit    | 
-[2Kstreamlit    | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
-[2Kstreamlit    | 
-[2Kstreamlit    | 
-[2Kstreamlit    |   You can now view your Streamlit app in your browser.
-[2Kstreamlit    | 
-[2Kstreamlit    |   Network URL: http://172.23.0.4:8501
-[2Kstreamlit    |   External URL: http://90.7.241.177:8501
-[2Kstreamlit    | 
-[2Kstreamlit    | 
-[2Kstreamlit    |   A new version of Streamlit is available.
-[2Kstreamlit    | 
-[2Kstreamlit    |   See what's new at https://discuss.streamlit.io/c/announcements
-[2Kstreamlit    | 
-[2Kstreamlit    |   Enter the following command to upgrade:
-[2Kstreamlit    |   $ pip install streamlit --upgrade
-[2Kstreamlit    | 
+[2Kapi_predict  | 2024-05-26 17:04:41.843371: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_flows    | INFO:     Started server process [1]
+[2Kapi_flows    | INFO:     Waiting for application startup.
+[2Kapi_flows    | INFO:     Application startup complete.
+[2Kapi_flows    | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+[2Kadmin_db     | [Sun May 26 17:04:38 2024] PHP 7.4.33 Development Server (http://[::]:8080) started

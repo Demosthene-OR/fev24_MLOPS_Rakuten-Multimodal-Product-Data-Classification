@@ -15,8 +15,6 @@ Write-Host "Attente pour que les autres services soient prêts..."
 Start-Sleep -Seconds 15
 
 # Lancement de l'initialisation avec Invoke-RestMethod
-Write-Host "Lancement de l'initialisation..."
-Invoke-RestMethod -Uri "http://localhost:8000/initialisation"
 Write-Host "Fin de l'initialisation..."
 
 # Récupération des logs

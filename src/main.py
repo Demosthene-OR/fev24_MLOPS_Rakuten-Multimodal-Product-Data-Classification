@@ -55,14 +55,14 @@ def main():
     print('============================')
     print("Training RNN Model")
     text_rnn_model = TextRnnModel(file_path=args.model_path)
-    rnn_history, rnn_last_epoch, rnn_best_f1, rnn_best_accuracy = text_rnn_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
+    rnn_history, rnn_best_f1_epoch, rnn_best_f1, rnn_best_accuracy = text_rnn_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
     print("Finished training RNN")
     
     print('============================')
     print("Training VGG")
     # Train VGG16 model
     image_vgg16_model = ImageVGG16Model(file_path=args.model_path)
-    vgg16_history, vgg16_last_epoch, vgg16_best_f1, vgg16_best_accuracy = image_vgg16_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
+    vgg16_history, vgg16_best_f1_epoch, vgg16_best_f1, vgg16_best_accuracy = image_vgg16_model.preprocess_and_fit(X_train, y_train, X_val, y_val, n_epochs=n_epochs)
     print("Finished training VGG")
     
     print('============================')
@@ -150,12 +150,12 @@ def main():
                 }    
         },
         "Text" : {
-            "last_epoch": int(rnn_last_epoch+1), 
+            "best_epoch": int(rnn_best_f1_epoch+1), 
             "f1": float(rnn_best_f1),
             "accuracy" : float(rnn_best_accuracy)
         },
         "VGG16" : {
-            "last_epoch": int(vgg16_last_epoch+1), 
+            "best_epoch": int(vgg16_best_f1_epoch+1), 
             "f1": float(vgg16_best_f1),
             "accuracy" : float(vgg16_best_accuracy)
         },

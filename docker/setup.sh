@@ -17,8 +17,6 @@ echo "Attente pour que les autres services soient prêts..."
 sleep 15
 
 # Lancement de l'initialisation avec curl
-echo "Lancement de l'initialisation..."
-curl http://localhost:8000/initialisation
 echo -e "\nFin de l'initialisation..."
 
 

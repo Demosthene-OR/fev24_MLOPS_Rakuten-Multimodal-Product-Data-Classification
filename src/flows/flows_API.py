@@ -290,10 +290,11 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
             source_path = os.path.join(source_dir, item)
             destination_path = os.path.join(destination_dir, item)
             
-            if os.path.isdir(source_path):
-                shutil.copytree(source_path, destination_path)
-            else:
-                shutil.copy2(source_path, destination_path)
+            if os.path.exists(source_path):
+                if os.path.isdir(source_path):
+                    shutil.copytree(source_path, destination_path)
+                else:
+                    shutil.copy2(source_path, destination_path)
         
         # Copie du dataset pour ne pas être déranger
         items_to_copy = [

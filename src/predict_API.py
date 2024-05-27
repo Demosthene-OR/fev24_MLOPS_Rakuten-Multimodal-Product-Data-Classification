@@ -57,8 +57,11 @@ class Predict:
 
     def predict(self):
         X = pd.read_csv(self.filepath)[:MAX_ROW] 
-        X["description"] = X["designation"] + " " + str(X["description"])
-        
+        # Remplacer les NaN par des chaînes vides
+        X["designation"] = X["designation"].fillna('')
+        X["description"] = X["description"].fillna('')
+        X["description"] = X["designation"] + " " + X["description"]
+        pd.set_option('display.max_colwidth', None) 
         text_preprocessor = TextPreprocessor()
         image_preprocessor = ImagePreprocessor(self.imagepath)
         text_preprocessor.preprocess_text_in_df(X, columns=["description"])
@@ -68,13 +71,13 @@ class Predict:
         padded_sequences = pad_sequences(
             sequences, maxlen=50, padding="post", truncating="post"
         )
-
         target_size = (224, 224, 3)
         images = X["image_path"].apply(lambda x: self.preprocess_image(x, target_size))
         images = tf.convert_to_tensor(images.tolist(), dtype=tf.float32)
-
-        rnn_proba = self.rnn.predict([padded_sequences])
-        vgg16_proba = self.vgg16.predict([images])
+        
+        with tf.keras.backend.learning_phase_scope(0):
+            rnn_proba = self.rnn.predict([padded_sequences], verbose=0)
+            vgg16_proba = self.vgg16.predict([images], verbose=0)
 
         concatenate_proba = (
             self.best_weights[0] * rnn_proba + self.best_weights[1] * vgg16_proba
@@ -103,7 +106,7 @@ class Predict:
         return results_df
 
 # Endpoint pour l'initialisation
-@app.get("/initialisation")
+# @app.get("/initialisation")
 def initialisation():
     global predictor, tokenizer, rnn, vgg16, best_weights, mapper
     
@@ -123,6 +126,7 @@ def initialisation():
 
     return {"message": "Initialisation effectuée avec succès"}
 
+initialisation()
 
 # Endpoint pour la prédiction
 @app.post("/prediction")

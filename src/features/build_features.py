@@ -20,7 +20,10 @@ class DataImporter:
 
     def load_data(self):
         data = pd.read_csv(self.x_train_path)
-        data["description"] = data["designation"] + " " + str(data["description"])
+        # Remplacer les NaN par des chaînes vides
+        data["designation"] = data["designation"].fillna('')
+        data["description"] = data["description"].fillna('')
+        data["description"] = data["designation"] + " " + data["description"]
         data = data.drop(["Unnamed: 0", "designation"], axis=1)
 
         target = pd.read_csv(self.y_train_path)
