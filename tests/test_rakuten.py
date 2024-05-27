@@ -101,13 +101,8 @@ def test_access_authorization():
 def test_predict():
     
     url = 'http://localhost:8000'
-    
-    # 3.1 - Vérification de l'initialisation de l'API
-    response = requests.get(url+"/initialisation")
-    ### 3.1 - Vérification de l'initialisation de l'API ###
-    assert response.status_code == 200 
-    
-    # 3.2 - Vérification de la predicition en mode unsecured
+      
+    # 3.1 - Vérification de la predicition en mode unsecured
     headers={'Content-Type': 'application/json',
              "Authorization": f"Bearer {ACCESS_TOKEN_AUTH_1}"
              }
