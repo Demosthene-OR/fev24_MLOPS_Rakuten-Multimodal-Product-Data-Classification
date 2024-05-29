@@ -128,7 +128,7 @@ def run():
         global X_test_df, new_classes_df, X_test_path
         
         st.subheader("Step 1: Suggest New Products")
-        num_products = st.number_input("Number of Products to Suggest", min_value=1, max_value=10, value=2)
+        num_products = st.number_input("Number of Products to Suggest", min_value=1, max_value=100, value=2)
         if (st.session_state.sale_step>=1):
             response1 = requests.get(
                 'http://'+st.session_state.api_flows+':8003/new_product_proposal',
