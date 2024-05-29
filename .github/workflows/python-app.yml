@@ -8,12 +8,14 @@ on:
       - main
       - tests
       - flows-complement
+      - af
   pull_request:
     branches:
       - main
       - tests
       - flows-complement
-
+      - af
+      
 permissions:
   contents: read
 
