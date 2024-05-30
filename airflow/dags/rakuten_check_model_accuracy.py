@@ -2,6 +2,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.email import EmailOperator
 from airflow.providers.slack.operators.slack import SlackAPIPostOperator
+from airflow.sensors.filesystem import FileSensor
 from airflow.models import Variable
 from airflow.utils.dates import days_ago
 from airflow.utils.task_group import TaskGroup
@@ -35,6 +36,15 @@ with DAG(
     catchup=False
 ) as dag:
     
+    file_sensor_task = FileSensor(
+        task_id='file_sensor',
+        filepath='/app/data/preprocessed/new_classes.csv',  # Chemin vers le fichier new_classes.csv à surveiller
+        fs_conn_id="fs_default",  # Connexion FS configurée dans Airflow
+        poke_interval=30,  # Intervalle de vérification en secondes
+        timeout=600,  # Timeout en secondes
+        mode='reschedule'  # Configuration du mode reschedule
+    )
+
     def check_accuracy(num_sales = 10, **context):
         try:
             api_key = Variable.get('api_key')
@@ -108,12 +118,12 @@ with DAG(
         slack_api_token = Variable.get('slack_api_token')
         client = WebClient(token=slack_api_token)
         accuracy = context['ti'].xcom_pull(key='accuracy')
+        threshold = float(Variable.get('min_accuracy_threshold', default_var=0.7))
         message = f"The accuracy of the model is below the threshold of {threshold}. Current accuracy: {accuracy}"
-        threshold = Variable.get('min_accuracy_threshold', default_var=0.7)
-        email_list = Variable.get('email_list', default_var="['olivier.renouard1103@gmail.com']")
-        email_list = eval(email_list)
+        slack_email_list = Variable.get('slack_email_list', default_var="['olivier.renouard1103@gmail.com']")
+        slack_email_list = eval(slack_email_list)
         if accuracy < threshold:
-            for email in email_list:
+            for email in slack_email_list:
                 try:
                     # Trouver l'ID de l'utilisateur par email
                     response = client.users_lookupByEmail(email=email)
@@ -136,7 +146,7 @@ with DAG(
 
     def send_email_alert(**context):
         accuracy = context['ti'].xcom_pull(key='accuracy')
-        threshold = Variable.get('min_accuracy_threshold', default_var=0.7)
+        threshold = float(Variable.get('min_accuracy_threshold', default_var=0.7))
         email_list = Variable.get('email_list', default_var="['olivier.renouard1103@gmail.com']")
         email_list = eval(email_list)
         if accuracy < threshold:
@@ -156,6 +166,7 @@ with DAG(
     )
     
     # Définition de l'ordre des tâches
+    file_sensor_task >> check_task
     check_task >> send_email_task
     check_task >> notify_user_task
     check_task >> train_model_task

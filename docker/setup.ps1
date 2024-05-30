@@ -1,6 +1,9 @@
 # Définition de la variable d'environnement MYSQL_ROOT_PWD
 $env:MYSQL_ROOT_PWD = "${MYSQL_ROOT_PWD}"
 
+# Lancement du servie airflow-init avec Docker Compose
+docker-compose -f docker/docker-compose.yml run --rm airflow-init
+
 # Lancement de Docker Compose en mode détaché
 docker-compose -f docker/docker-compose.yml up -d
 
