@@ -43,6 +43,7 @@ def run():
                 "api_secured": True
                 }))
         accuracy = response.json().get("accuracy", None)
+        num_sales = response.json().get("num_sales", None)
         st.write("#### Accuracy on the last",num_sales,"sales = ",accuracy)
     if (chosen_id == "tab2"):
         

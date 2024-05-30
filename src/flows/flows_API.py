@@ -244,7 +244,7 @@ def compute_metrics_new_products(input_data: ComputeMetricsInput, token: Optiona
         else:
             accuracy = 1.0
         
-        return {"accuracy": accuracy}
+        return {"accuracy": accuracy, "num_sales":num_new_products}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors du calcul des metrics: {e}")
 
