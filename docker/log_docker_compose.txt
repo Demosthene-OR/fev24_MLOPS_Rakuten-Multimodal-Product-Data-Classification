@@ -1,48 +1,767 @@
-[2K[2Kapi_oauth    | INFO:     Started server process [1]
-[2Kapi_oauth    | INFO:     Waiting for application startup.
-[2Kapi_oauth    | INFO:     Application startup complete.
-[2Kapi_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
-[2Kadmin_db     | [Mon May 27 05:30:11 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
-api_train    | 2024-05-27 05:30:13.459664: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kapi_train    | 2024-05-27 05:30:13.462419: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kapi_train    | 2024-05-27 05:30:13.511700: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kusers_db     | 2024-05-27 05:30:11+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-[2Kapi_predict  | 2024-05-27 05:30:13.459665: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-[2Kusers_db     | 2024-05-27 05:30:12+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-[2Kapi_predict  | 2024-05-27 05:30:13.462419: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-[2Kusers_db     | 2024-05-27 05:30:12+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-[2Kapi_train    | 2024-05-27 05:30:13.512411: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_predict  | 2024-05-29 21:34:57.848840: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kusers_db     | 2024-05-29 21:34:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2Kapi_predict  | 2024-05-29 21:34:57.852262: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_predict  | 2024-05-29 21:34:57.946451: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kusers_db     | 2024-05-29 21:34:55+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+[2Kapi_predict  | 2024-05-29 21:34:57.948892: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+[2Kapi_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+[2Kapi_predict  | 2024-05-29 21:34:59.222219: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kusers_db     | 2024-05-29 21:34:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+[2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+[2Kusers_db     | 2024-05-29T21:34:56.272893Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+[2Kusers_db     | 2024-05-29T21:34:56.528174Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+[2Kusers_db     | 2024-05-29T21:34:56.539184Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+[2Kusers_db     | 2024-05-29T21:34:56.569294Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+[2Kusers_db     | 2024-05-29T21:34:57.973674Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+[2Kusers_db     | 2024-05-29T21:34:58.770962Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+[2Kusers_db     | 2024-05-29T21:34:58.771340Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+[2Kusers_db     | 2024-05-29T21:34:58.816131Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+[2Kusers_db     | 2024-05-29T21:34:58.867780Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+[2Kusers_db     | 2024-05-29T21:34:59.133729Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+[2Kpostgres-1   | The files belonging to this database system will be owned by user "postgres".
+[2Kpostgres-1   | This user must also own the server process.
+[2Kpostgres-1   | 
+[2Kpostgres-1   | The database cluster will be initialized with locale "en_US.utf8".
+[2Kpostgres-1   | The default database encoding has accordingly been set to "UTF8".
+[2Kpostgres-1   | The default text search configuration will be set to "english".
+[2Kpostgres-1   | 
+[2Kpostgres-1   | Data page checksums are disabled.
+[2Kpostgres-1   | 
+[2Kpostgres-1   | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+[2Kpostgres-1   | creating subdirectories ... ok
+[2Kpostgres-1   | selecting dynamic shared memory implementation ... posix
+[2Kpostgres-1   | selecting default max_connections ... 100
+[2Kpostgres-1   | selecting default shared_buffers ... 128MB
+[2Kpostgres-1   | selecting default time zone ... Etc/UTC
+[2Kpostgres-1   | creating configuration files ... ok
+[2Kpostgres-1   | running bootstrap script ... ok
+[2Kpostgres-1   | performing post-bootstrap initialization ... ok
+[2Kpostgres-1   | initdb: warning: enabling "trust" authentication for local connections
+[2Kpostgres-1   | You can change this by editing pg_hba.conf or using the option -A, or
+[2Kpostgres-1   | --auth-local and --auth-host, the next time you run initdb.
+[2Kpostgres-1   | syncing data to disk ... ok
+[2Kpostgres-1   | 
+[2Kpostgres-1   | 
+[2Kpostgres-1   | Success. You can now start the database server using:
+[2Kpostgres-1   | 
+[2Kpostgres-1   |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+[2Kpostgres-1   | 
+[2Kpostgres-1   | waiting for server to start....2024-05-29 21:29:55.615 UTC [48] LOG:  starting PostgreSQL 13.15 (Debian 13.15-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+[2Kpostgres-1   | 2024-05-29 21:29:55.620 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[2Kpostgres-1   | 2024-05-29 21:29:55.636 UTC [49] LOG:  database system was shut down at 2024-05-29 21:29:55 UTC
+[2Kpostgres-1   | 2024-05-29 21:29:55.644 UTC [48] LOG:  database system is ready to accept connections
+[2Kpostgres-1   |  done
+[2Kpostgres-1   | server started
+[2Kpostgres-1   | CREATE DATABASE
+[2Kpostgres-1   | 
+[2Kpostgres-1   | 
+[2Kpostgres-1   | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+[2Kpostgres-1   | 
+[2Kpostgres-1   | waiting for server to shut down....2024-05-29 21:29:55.935 UTC [48] LOG:  received fast shutdown request
+[2Kpostgres-1   | 2024-05-29 21:29:55.940 UTC [48] LOG:  aborting any active transactions
+[2Kpostgres-1   | 2024-05-29 21:29:55.942 UTC [48] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
+[2Kpostgres-1   | 2024-05-29 21:29:55.942 UTC [50] LOG:  shutting down
+[2Kpostgres-1   | 2024-05-29 21:29:56.032 UTC [48] LOG:  database system is shut down
+[2Kpostgres-1   |  done
+[2Kpostgres-1   | server stopped
+[2Kpostgres-1   | 
+[2Kapi_train    | 2024-05-29 21:34:57.669028: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[2Kapi_train    | 2024-05-29 21:34:57.671687: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_train    | 2024-05-29 21:34:57.747079: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+[2Kapi_train    | 2024-05-29 21:34:57.747704: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 [2Kapi_train    | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2Kapi_train    | 2024-05-27 05:30:14.391002: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[2Kapi_train    | 2024-05-29 21:34:59.110834: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 [2Kapi_train    | INFO:     Started server process [1]
-[2Kapi_predict  | 2024-05-27 05:30:13.511698: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
 [2Kapi_train    | INFO:     Waiting for application startup.
-[2Kapi_predict  | 2024-05-27 05:30:13.512380: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 [2Kapi_train    | INFO:     Application startup complete.
 [2Kapi_train    | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
-[2Kusers_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-[2Kusers_db     | 2024-05-27T05:30:12.330766Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-[2K[2Kusers_db     | 2024-05-27T05:30:12.575992Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-[2Kusers_db     | 2024-05-27T05:30:12.584235Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-api_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-[2K[2Kapi_predict  | 2024-05-27 05:30:14.391002: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-users_db     | 2024-05-27T05:30:12.600800Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-[2Kusers_db     | 2024-05-27T05:30:13.680567Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-[2Kusers_db     | 2024-05-27T05:30:14.183341Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-[2Kusers_db     | 2024-05-27T05:30:14.183662Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-[2Kusers_db     | 2024-05-27T05:30:14.201890Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-[2Kusers_db     | 2024-05-27T05:30:14.297894Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-[2Kusers_db     | 2024-05-27T05:30:14.556594Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-[2Kapi_flows    | INFO:     Started server process [1]
-[2Kapi_flows    | INFO:     Waiting for application startup.
-[2Kapi_flows    | INFO:     Application startup complete.
-[2Kapi_flows    | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
-[2Kstreamlit    | 
-[2Kstreamlit    | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
-[2Kstreamlit    | 
-[2Kstreamlit    | 
-[2Kstreamlit    |   You can now view your Streamlit app in your browser.
-[2Kstreamlit    | 
-[2Kstreamlit    |   Network URL: http://172.21.0.4:8501
-[2Kstreamlit    |   External URL: http://90.7.241.177:8501
-[2Kstreamlit    | 
+[2Kairflow-init-1  | 
+[2Kairflow-init-1  | WARNING! You should run the image with GID (Group ID) set to 0
+[2Kairflow-init-1  |          even if you use 'airflow' user (UID=50000)
+[2Kairflow-init-1  | 
+[2Kairflow-init-1  |  You started the image with UID=50000 and GID=50000
+[2Kairflow-init-1  | 
+[2Kairflow-init-1  |  This is to make sure you can run the image with an arbitrary UID in the future.
+[2Kairflow-init-1  | 
+[2Kairflow-init-1  |  See more about it in the Airflow's docker image documentation
+[2Kairflow-init-1  |      http://airflow.apache.org/docs/docker-stack/entrypoint
+[2Kairflow-init-1  | 
+[2Kairflow-init-1  | 
+[2Kstreamlit       | 
+[2Kstreamlit       | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+[2Kstreamlit       | 
+[2Kstreamlit       | 
+[2Kstreamlit       |   You can now view your Streamlit app in your browser.
+[2Kstreamlit       | 
+[2Kstreamlit       |   Network URL: http://172.18.0.7:8501
+[2Kstreamlit       |   External URL: http://90.7.241.177:8501
+[2Kstreamlit       | 
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:812 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:724 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:747 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:761 FutureWarning: The auth_backends setting in [api] has had airflow.api.auth.backend.session added in the running config, which is needed by the UI. Please update your config before Apache Airflow 3.0.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:738 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/base.py:72 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | DB: postgresql+psycopg2://airflow:***@postgres/airflow
+[2Kairflow-init-1  | Performing upgrade to the metadata database postgresql+psycopg2://airflow:***@postgres/airflow
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:07.323+0000[0m] {[34mmigration.py:[0m216} INFO[0m - Context impl PostgresqlImpl.[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:07.323+0000[0m] {[34mmigration.py:[0m219} INFO[0m - Will assume transactional DDL.[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:07.325+0000[0m] {[34mmigration.py:[0m216} INFO[0m - Context impl PostgresqlImpl.[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:07.325+0000[0m] {[34mmigration.py:[0m219} INFO[0m - Will assume transactional DDL.[0m
+[2Kairflow-init-1  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+[2Kairflow-init-1  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+[2Kairflow-init-1  | INFO  [alembic.runtime.migration] Running stamp_revision  -> 1949afb29106
+[2Kairflow-init-1  | Database migrating done!
+[2Kairflow-init-1  | WARNING: Environment variable '_AIRFLOW_DB_UPGRADE' is deprecated please use '_AIRFLOW_DB_MIGRATE' instead
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:812 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:724 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:747 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:761 FutureWarning: The auth_backends setting in [api] has had airflow.api.auth.backend.session added in the running config, which is needed by the UI. Please update your config before Apache Airflow 3.0.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:738 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/base.py:72 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/flask_limiter/extension.py:337 UserWarning: Using the in-memory storage for tracking rate limits as no storage was explicitly specified. This is not recommended for production use. See: https://flask-limiter.readthedocs.io#configuring-a-storage-backend for documentation about configuring the storage backend.
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.502+0000[0m] {[34moverride.py:[0m1427} INFO[0m - Inserted Role: Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.508+0000[0m] {[34moverride.py:[0m1427} INFO[0m - Inserted Role: Public[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.510+0000[0m] {[34moverride.py:[0m924} WARNING[0m - No user yet created, use flask fab command to do it.[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.551+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can edit on Passwords[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.557+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can edit on Passwords to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.566+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on Passwords[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.571+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on Passwords to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.583+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can edit on My Password[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.588+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can edit on My Password to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.594+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on My Password[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.598+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on My Password to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.609+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can edit on My Profile[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.614+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can edit on My Profile to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.621+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on My Profile[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.625+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on My Profile to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.659+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can create on Users[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.664+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can create on Users to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.671+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on Users[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.676+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on Users to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.682+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can edit on Users[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.687+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can edit on Users to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.696+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can delete on Users[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.701+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can delete on Users to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.715+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: menu access on List Users[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.721+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission menu access on List Users to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.733+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: menu access on Security[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.737+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission menu access on Security to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.761+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can create on Roles[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.767+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can create on Roles to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.773+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on Roles[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.777+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on Roles to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.783+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can edit on Roles[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.788+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can edit on Roles to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.794+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can delete on Roles[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.799+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can delete on Roles to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.811+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: menu access on List Roles[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.815+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission menu access on List Roles to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.830+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on User Stats Chart[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.835+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on User Stats Chart to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.845+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: menu access on User's Statistics[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.851+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission menu access on User's Statistics to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.875+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on Permissions[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.881+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on Permissions to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.891+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: menu access on Actions[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.896+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission menu access on Actions to role Admin[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.987+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on View Menus[0m
+[2Kairflow-init-1  | [[34m2024-05-29T21:30:10.993+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on View Menus to role Admin[0m
+[2Kredis-1         | 1:C 29 May 2024 21:29:54.886 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+[2Kredis-1         | 1:C 29 May 2024 21:29:54.886 * Redis version=7.2.5, bits=64, commit=00000000, modified=0, pid=1, just started
+[2Kredis-1         | 1:C 29 May 2024 21:29:54.886 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[2Kredis-1         | 1:M 29 May 2024 21:29:54.886 * monotonic clock: POSIX clock_gettime
+[2Kredis-1         | 1:M 29 May 2024 21:29:54.886 * Running mode=standalone, port=6379.
+[2Kredis-1         | 1:M 29 May 2024 21:29:54.887 * Server initialized
+[2Kpostgres-1      | PostgreSQL init process complete; ready for start up.
+[2Kpostgres-1      | 
+[2Kpostgres-1      | 2024-05-29 21:29:56.061 UTC [1] LOG:  starting PostgreSQL 13.15 (Debian 13.15-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+[2Kpostgres-1      | 2024-05-29 21:29:56.061 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[2Kpostgres-1      | 2024-05-29 21:29:56.061 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[2Kpostgres-1      | 2024-05-29 21:29:56.072 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[2Kpostgres-1      | 2024-05-29 21:29:56.083 UTC [63] LOG:  database system was shut down at 2024-05-29 21:29:55 UTC
+[2Kpostgres-1      | 2024-05-29 21:29:56.091 UTC [1] LOG:  database system is ready to accept connections
+[2Kpostgres-1      | 2024-05-29 21:30:05.160 UTC [84] ERROR:  relation "log" does not exist at character 13
+[2Kpostgres-1      | 2024-05-29 21:30:05.160 UTC [84] STATEMENT:  INSERT INTO log (dttm, event, owner, extra) VALUES ('2024-05-29T21:30:05.150531+00:00'::timestamptz, 'cli_check', 'airflow', '{"host_name": "bec2ea5814c8", "full_command": "[''/home/airflow/.local/bin/airflow'', ''db'', ''check'']"}') RETURNING log.id
+[2Kpostgres-1      | 2024-05-29 21:30:06.930 UTC [85] ERROR:  relation "log" does not exist at character 13
+[2Kpostgres-1      | 2024-05-29 21:30:06.930 UTC [85] STATEMENT:  INSERT INTO log (dttm, event, owner, extra) VALUES ('2024-05-29T21:30:06.920729+00:00'::timestamptz, 'cli_migratedb', 'airflow', '{"host_name": "bec2ea5814c8", "full_command": "[''/home/airflow/.local/bin/airflow'', ''db'', ''migrate'']"}') RETURNING log.id
+[2Kpostgres-1      | 2024-05-29 21:30:07.303 UTC [85] ERROR:  relation "connection" does not exist at character 33
+[2Kpostgres-1      | 2024-05-29 21:30:07.303 UTC [85] STATEMENT:  SELECT connection.conn_id 
+[2Kpostgres-1      | 	FROM connection GROUP BY connection.conn_id 
+[2Kpostgres-1      | 	HAVING count(*) > 1
+[2Kpostgres-1      | 2024-05-29 21:30:07.305 UTC [85] ERROR:  relation "connection" does not exist at character 33
+[2Kpostgres-1      | 2024-05-29 21:30:07.305 UTC [85] STATEMENT:  SELECT connection.conn_id 
+[2Kpostgres-1      | 	FROM connection 
+[2Kpostgres-1      | 	WHERE connection.conn_type IS NULL
+[2Kpostgres-1      | 2024-05-29 21:30:07.321 UTC [85] ERROR:  relation "ab_user" does not exist at character 31
+[2Kpostgres-1      | 2024-05-29 21:30:07.321 UTC [85] STATEMENT:  SELECT ab_user.username 
+[2Kpostgres-1      | 	FROM ab_user GROUP BY ab_user.username 
+[2Kpostgres-1      | 	HAVING count(*) > 1
+[2Kpostgres-1      | 2024-05-29 21:30:07.322 UTC [85] ERROR:  relation "ab_register_user" does not exist at character 40
+[2Kpostgres-1      | 2024-05-29 21:30:07.322 UTC [85] STATEMENT:  SELECT ab_register_user.username 
+[2Kpostgres-1      | 	FROM ab_register_user GROUP BY ab_register_user.username 
+[2Kpostgres-1      | 	HAVING count(*) > 1
+[2Kredis-1         | 1:M 29 May 2024 21:29:54.887 * Ready to accept connections tcp
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  | WARNING! You should run the image with GID (Group ID) set to 0
+[2Kairflow-scheduler-1  |          even if you use 'airflow' user (UID=50000)
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  |  You started the image with UID=50000 and GID=50000
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  |  This is to make sure you can run the image with an arbitrary UID in the future.
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  |  See more about it in the Airflow's docker image documentation
+[2Kairflow-scheduler-1  |      http://airflow.apache.org/docs/docker-stack/entrypoint
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  | WARNING: This is a development/test feature only. NEVER use it in production!
+[2Kairflow-scheduler-1  |          Instead, build a custom image as described in
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  |          https://airflow.apache.org/docs/docker-stack/build.html
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  |          Adding requirements at container startup is fragile and is done every time
+[2Kairflow-scheduler-1  |          the container starts, so it is only useful for testing and trying out
+[2Kairflow-scheduler-1  |          of adding dependencies.
+[2Kairflow-scheduler-1  | 
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+[2Kairflow-scheduler-1  | Collecting pymongo
+[2Kairflow-scheduler-1  |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.13.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: asgiref in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (23.2.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.8.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: colorlog<5.0,>=4.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.8.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: connexion<3.0,>=2.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.5)
+[2Kairflow-scheduler-1  | Requirement already satisfied: cryptography>=39.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (41.0.7)
+[2Kairflow-scheduler-1  | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.14)
+[2Kairflow-scheduler-1  | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.3.8)
+[2Kairflow-scheduler-1  | Requirement already satisfied: flask-caching>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: flask-wtf>=0.15 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: flask<2.3,>=2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.5)
+[2Kairflow-scheduler-1  | Requirement already satisfied: fsspec>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: google-re2>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.1.20240501)
+[2Kairflow-scheduler-1  | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (22.0.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: httpx in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.23.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.22.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: lazy-object-proxy in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.10.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.5)
+[2Kairflow-scheduler-1  | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+[2Kairflow-scheduler-1  | Requirement already satisfied: opentelemetry-api>=1.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: opentelemetry-exporter-otlp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: packaging>=14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (24.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: pendulum<4.0,>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: pluggy>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: psutil>=4.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (5.9.8)
+[2Kairflow-scheduler-1  | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.17.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: pyjwt>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.8.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: python-dateutil>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.9.0.post0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.0.4)
+[2Kairflow-scheduler-1  | Requirement already satisfied: requests<3,>=2.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.31.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.4)
+[2Kairflow-scheduler-1  | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (13.7.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: setproctitle>=1.1.8 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.52)
+[2Kairflow-scheduler-1  | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: tenacity!=8.2.0,>=6.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.2.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.4.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: unicodecsv>=0.14.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: universal-pathlib>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.12.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.4)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.10.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.5.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.6.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: urllib3>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from docker>=6->apache-airflow-providers-docker) (2.2.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: typing-extensions>=4 in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.11.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: flask-appbuilder==4.4.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.4.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.6.3)
+[2Kairflow-scheduler-1  | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.6.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.6)
+[2Kairflow-scheduler-1  | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.1.7)
+[2Kairflow-scheduler-1  | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.6.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.5.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.6.0)
+[2Kairflow-scheduler-1  | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.21.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.28.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.41.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (20.10.2)
+[2Kairflow-scheduler-1  | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: pytz>2021.1 in /home/airflow/.local/lib/python3.12/site-packages (from croniter>=2.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+[2Kairflow-scheduler-1  | Requirement already satisfied: cffi>=1.12 in /home/airflow/.local/lib/python3.12/site-packages (from cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+[2Kapi_oauth            | INFO:     Started server process [1]
+[2Kapi_oauth            | INFO:     Waiting for application startup.
+[2Kapi_oauth            | INFO:     Application startup complete.
+[2Kapi_oauth            | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+[2Kapi_flows            | INFO:     Started server process [1]
+[2Kapi_flows            | INFO:     Waiting for application startup.
+[2Kapi_flows            | INFO:     Application startup complete.
+[2Kapi_flows            | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+[2Kadmin_db             | [Wed May 29 21:34:54 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+[2Kairflow-init-1       | [[34m2024-05-29T21:30:11.004+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: menu access on Resources[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:30:11.009+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission menu access on Resources to role Admin[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:30:11.034+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: can read on Permission Views[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:30:11.040+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission can read on Permission Views to role Admin[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:30:11.052+0000[0m] {[34moverride.py:[0m1829} INFO[0m - Created Permission View: menu access on Permission Pairs[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:30:11.057+0000[0m] {[34moverride.py:[0m1880} INFO[0m - Added Permission menu access on Permission Pairs to role Admin[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:30:11.669+0000[0m] {[34moverride.py:[0m1516} INFO[0m - Added user airflow[0m
+[2Kairflow-init-1       | User "airflow" created with role "Admin"
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | WARNING: This is a development/test feature only. NEVER use it in production!
+[2Kairflow-init-1       |          Instead, build a custom image as described in
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       |          https://airflow.apache.org/docs/docker-stack/build.html
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       |          Adding requirements at container startup is fragile and is done every time
+[2Kairflow-init-1       |          the container starts, so it is only useful for testing and trying out
+[2Kairflow-init-1       |          of adding dependencies.
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+[2Kairflow-init-1       | Collecting pymongo
+[2Kairflow-init-1       |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+[2Kairflow-init-1       | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+[2Kairflow-init-1       | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+[2Kairflow-init-1       | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+[2Kairflow-init-1       | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.13.1)
+[2Kairflow-init-1       | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.0)
+[2Kairflow-init-1       | Requirement already satisfied: asgiref in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.1)
+[2Kairflow-init-1       | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (23.2.0)
+[2Kairflow-init-1       | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.8.1)
+[2Kairflow-init-1       | Requirement already satisfied: colorlog<5.0,>=4.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.8.0)
+[2Kairflow-init-1       | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.2)
+[2Kairflow-init-1       | Requirement already satisfied: connexion<3.0,>=2.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.2)
+[2Kairflow-init-1       | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.3)
+[2Kairflow-init-1       | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.5)
+[2Kairflow-init-1       | Requirement already satisfied: cryptography>=39.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (41.0.7)
+[2Kairflow-init-1       | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.14)
+[2Kairflow-init-1       | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.3.8)
+[2Kairflow-init-1       | Requirement already satisfied: flask-caching>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+[2Kairflow-init-1       | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+[2Kairflow-init-1       | Requirement already satisfied: flask-wtf>=0.15 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.1)
+[2Kairflow-init-1       | Requirement already satisfied: flask<2.3,>=2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.5)
+[2Kairflow-init-1       | Requirement already satisfied: fsspec>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.2)
+[2Kairflow-init-1       | Requirement already satisfied: google-re2>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.1.20240501)
+[2Kairflow-init-1       | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (22.0.0)
+[2Kairflow-init-1       | Requirement already satisfied: httpx in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.23.3)
+[2Kairflow-init-1       | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+[2Kairflow-init-1       | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.3)
+[2Kairflow-init-1       | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.22.0)
+[2Kairflow-init-1       | Requirement already satisfied: lazy-object-proxy in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.10.0)
+[2Kairflow-init-1       | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.3)
+[2Kairflow-init-1       | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.2)
+[2Kairflow-init-1       | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+[2Kairflow-init-1       | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.5)
+[2Kairflow-init-1       | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.1)
+[2Kairflow-init-1       | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.0)
+[2Kairflow-init-1       | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-api>=1.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-exporter-otlp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-init-1       | Requirement already satisfied: packaging>=14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (24.0)
+[2Kairflow-init-1       | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.1)
+[2Kairflow-init-1       | Requirement already satisfied: pendulum<4.0,>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+[2Kairflow-init-1       | Requirement already satisfied: pluggy>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+[2Kairflow-init-1       | Requirement already satisfied: psutil>=4.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (5.9.8)
+[2Kairflow-init-1       | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.17.2)
+[2Kairflow-init-1       | Requirement already satisfied: pyjwt>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.8.0)
+[2Kairflow-init-1       | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.1)
+[2Kairflow-init-1       | Requirement already satisfied: python-dateutil>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.9.0.post0)
+[2Kairflow-init-1       | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.0)
+[2Kairflow-init-1       | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.0.4)
+[2Kairflow-init-1       | Requirement already satisfied: requests<3,>=2.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.31.0)
+[2Kairflow-init-1       | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.4)
+[2Kairflow-init-1       | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.0)
+[2Kairflow-init-1       | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (13.7.1)
+[2Kairflow-init-1       | Requirement already satisfied: setproctitle>=1.1.8 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+[2Kairflow-init-1       | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.52)
+[2Kairflow-init-1       | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.2)
+[2Kairflow-init-1       | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+[2Kairflow-init-1       | Requirement already satisfied: tenacity!=8.2.0,>=6.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.2.3)
+[2Kairflow-init-1       | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.4.0)
+[2Kairflow-init-1       | Requirement already satisfied: unicodecsv>=0.14.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.1)
+[2Kairflow-init-1       | Requirement already satisfied: universal-pathlib>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.2)
+[2Kairflow-init-1       | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.3)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.12.0)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.4)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.0)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.10.1)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.5.0)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.6.1)
+[2Kairflow-init-1       | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7.1)
+[2Kairflow-init-1       | Requirement already satisfied: urllib3>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from docker>=6->apache-airflow-providers-docker) (2.2.1)
+[2Kairflow-init-1       | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+[2Kairflow-init-1       | Requirement already satisfied: typing-extensions>=4 in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.11.0)
+[2Kairflow-init-1       | Requirement already satisfied: flask-appbuilder==4.4.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.4.1)
+[2Kairflow-init-1       | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.6.3)
+[2Kairflow-init-1       | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.6.1)
+[2Kairflow-init-1       | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.6)
+[2Kairflow-init-1       | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.1.7)
+[2Kairflow-init-1       | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.1)
+[2Kairflow-init-1       | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.0)
+[2Kairflow-init-1       | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.6.0)
+[2Kairflow-init-1       | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.5.1)
+[2Kairflow-init-1       | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.6.0)
+[2Kairflow-init-1       | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.21.2)
+[2Kairflow-init-1       | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.28.2)
+[2Kairflow-init-1       | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.1)
+[2Kairflow-init-1       | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.41.2)
+[2Kairflow-init-1       | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.2)
+[2Kairflow-init-1       | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (20.10.2)
+[2Kairflow-init-1       | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.1)
+[2Kairflow-init-1       | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.1)
+[2Kairflow-init-1       | Requirement already satisfied: pytz>2021.1 in /home/airflow/.local/lib/python3.12/site-packages (from croniter>=2.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+[2Kairflow-init-1       | Requirement already satisfied: cffi>=1.12 in /home/airflow/.local/lib/python3.12/site-packages (from cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+[2Kairflow-init-1       | Requirement already satisfied: wrapt<2,>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from deprecated>=1.2.13->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+[2Kairflow-init-1       | Requirement already satisfied: cachelib<0.10.0,>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-caching>=1.5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+[2Kairflow-init-1       | Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.1)
+[2Kairflow-init-1       | Requirement already satisfied: referencing>=0.28.4 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.31.1)
+[2Kairflow-init-1       | Requirement already satisfied: rpds-py>=0.7.1 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.18.0)
+[2Kairflow-init-1       | Requirement already satisfied: uc-micro-py in /home/airflow/.local/lib/python3.12/site-packages (from linkify-it-py>=2.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.3)
+[2Kairflow-init-1       | Requirement already satisfied: mdurl~=0.1 in /home/airflow/.local/lib/python3.12/site-packages (from markdown-it-py>=2.1.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.2)
+[2Kairflow-init-1       | Requirement already satisfied: wirerope>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from methodtools>=0.4.7->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+[2Kairflow-init-1       | Requirement already satisfied: importlib-metadata<=7.0,>=6.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.11.0)
+[2Kairflow-init-1       | Requirement already satisfied: tzdata>=2020.1 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+[2Kairflow-init-1       | Requirement already satisfied: time-machine>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.1)
+[2Kairflow-init-1       | Requirement already satisfied: docutils in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16)
+[2Kairflow-init-1       | Requirement already satisfied: setuptools>=62.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (66.1.1)
+[2Kairflow-init-1       | Requirement already satisfied: six>=1.5 in /home/airflow/.local/lib/python3.12/site-packages (from python-dateutil>=2.3->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+[2Kairflow-init-1       | Requirement already satisfied: text-unidecode>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from python-slugify>=5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3)
+[2Kairflow-init-1       | Requirement already satisfied: charset-normalizer<4,>=2 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.2)
+[2Kairflow-init-1       | Requirement already satisfied: idna<4,>=2.5 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7)
+[2Kairflow-init-1       | Requirement already satisfied: certifi>=2017.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.2.2)
+[2Kairflow-init-1       | Requirement already satisfied: greenlet!=0.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from sqlalchemy<2.0,>=1.4.36->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.3)
+[2Kairflow-init-1       | Requirement already satisfied: more-itertools>=9.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (10.2.0)
+[2Kairflow-init-1       | Requirement already satisfied: sqlparse>=0.4.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+[2Kairflow-init-1       | Requirement already satisfied: aiohttp>=3.9.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.9.5)
+[2Kairflow-init-1       | Requirement already satisfied: requests_toolbelt in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.0)
+[2Kairflow-init-1       | Requirement already satisfied: httpcore<0.17.0,>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.3)
+[2Kairflow-init-1       | Requirement already satisfied: rfc3986<2,>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+[2Kairflow-init-1       | Requirement already satisfied: sniffio in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-exporter-otlp-proto-http==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-init-1       | Requirement already satisfied: googleapis-common-protos~=1.52 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+[2Kairflow-init-1       | Requirement already satisfied: grpcio<2.0.0,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-proto==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-sdk~=1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-init-1       | Requirement already satisfied: protobuf<5.0,>=3.19 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-proto==1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.25.3)
+[2Kairflow-init-1       | Requirement already satisfied: aiosignal>=1.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+[2Kairflow-init-1       | Requirement already satisfied: frozenlist>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.1)
+[2Kairflow-init-1       | Requirement already satisfied: multidict<7.0,>=4.5 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.5)
+[2Kairflow-init-1       | Requirement already satisfied: yarl<2.0,>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.9.4)
+[2Kairflow-init-1       | Requirement already satisfied: pycparser in /home/airflow/.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.22)
+[2Kairflow-init-1       | Requirement already satisfied: h11<0.15,>=0.13 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.0)
+[2Kairflow-init-1       | Requirement already satisfied: anyio<5.0,>=3.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.3.0)
+[2Kairflow-init-1       | Requirement already satisfied: zipp>=0.5 in /home/airflow/.local/lib/python3.12/site-packages (from importlib-metadata<=7.0,>=6.0->opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.18.1)
+[2Kairflow-init-1       | Requirement already satisfied: Babel>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Babel<3,>=1->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.0)
+[2Kairflow-init-1       | Requirement already satisfied: limits>=2.8 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.11.0)
+[2Kairflow-init-1       | Requirement already satisfied: ordered-set<5,>4 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.1.0)
+[2Kairflow-init-1       | Requirement already satisfied: opentelemetry-semantic-conventions==0.45b0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-sdk~=1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.45b0)
+[2Kairflow-init-1       | Requirement already satisfied: importlib-resources>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from limits>=2.8->Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.4.0)
+[2Kairflow-init-1       | Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (686 kB)
+[2Kairflow-init-1       |    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 686.8/686.8 kB 3.7 MB/s eta 0:00:00
+[2Kairflow-init-1       | Installing collected packages: pymongo
+[2Kairflow-init-1       | Successfully installed pymongo-4.7.2
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:812 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:724 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:747 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:761 FutureWarning: The auth_backends setting in [api] has had airflow.api.auth.backend.session added in the running config, which is needed by the UI. Please update your config before Apache Airflow 3.0.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:738 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/base.py:72 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | 2.9.1
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | WARNING! You should run the image with GID (Group ID) set to 0
+[2Kairflow-init-1       |          even if you use 'airflow' user (UID=50000)
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       |  You started the image with UID=50000 and GID=50000
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       |  This is to make sure you can run the image with an arbitrary UID in the future.
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       |  See more about it in the Airflow's docker image documentation
+[2Kairflow-init-1       |      http://airflow.apache.org/docs/docker-stack/entrypoint
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:812 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:724 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:747 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:761 FutureWarning: The auth_backends setting in [api] has had airflow.api.auth.backend.session added in the running config, which is needed by the UI. Please update your config before Apache Airflow 3.0.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:738 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/base.py:72 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | DB: postgresql+psycopg2://airflow:***@postgres/airflow
+[2Kairflow-init-1       | Performing upgrade to the metadata database postgresql+psycopg2://airflow:***@postgres/airflow
+[2Kairflow-init-1       | [[34m2024-05-29T21:35:04.207+0000[0m] {[34mmigration.py:[0m216} INFO[0m - Context impl PostgresqlImpl.[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:35:04.209+0000[0m] {[34mmigration.py:[0m219} INFO[0m - Will assume transactional DDL.[0m
+[2Kairflow-init-1       | [[34m2024-05-29T21:35:04.212+0000[0m] {[34mdb.py:[0m1623} INFO[0m - Creating tables[0m
+[2Kairflow-init-1       | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+[2Kairflow-init-1       | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+[2Kairflow-init-1       | ERROR [airflow.task.operators.airflow.providers.postgres.operators.postgres.PostgresOperator] Failed to resolve template field 'sql'
+[2Kairflow-init-1       | Traceback (most recent call last):
+[2Kairflow-init-1       |   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/template/templater.py", line 91, in resolve_template_files
+[2Kairflow-init-1       |     setattr(self, field, env.loader.get_source(env, content)[0])  # type: ignore
+[2Kairflow-init-1       |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2Kairflow-init-1       |   File "/home/airflow/.local/lib/python3.12/site-packages/jinja2/loaders.py", line 204, in get_source
+[2Kairflow-init-1       |     raise TemplateNotFound(template)
+[2Kairflow-init-1       | jinja2.exceptions.TemplateNotFound: sql/create_table_customer.sql
+[2Kairflow-init-1       | ERROR [airflow.task.operators.airflow.providers.postgres.operators.postgres.PostgresOperator] Failed to resolve template field 'sql'
+[2Kairflow-init-1       | Traceback (most recent call last):
+[2Kairflow-init-1       |   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/template/templater.py", line 91, in resolve_template_files
+[2Kairflow-init-1       |     setattr(self, field, env.loader.get_source(env, content)[0])  # type: ignore
+[2Kairflow-init-1       |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2Kairflow-init-1       |   File "/home/airflow/.local/lib/python3.12/site-packages/jinja2/loaders.py", line 204, in get_source
+[2Kairflow-init-1       |     raise TemplateNotFound(template)
+[2Kairflow-init-1       | jinja2.exceptions.TemplateNotFound: sql/create_table_product.sql
+[2Kairflow-init-1       | ERROR [airflow.task.operators.airflow.providers.postgres.operators.postgres.PostgresOperator] Failed to resolve template field 'sql'
+[2Kairflow-init-1       | Traceback (most recent call last):
+[2Kairflow-init-1       |   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/template/templater.py", line 91, in resolve_template_files
+[2Kairflow-init-1       |     setattr(self, field, env.loader.get_source(env, content)[0])  # type: ignore
+[2Kairflow-init-1       |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2Kairflow-init-1       |   File "/home/airflow/.local/lib/python3.12/site-packages/jinja2/loaders.py", line 204, in get_source
+[2Kairflow-init-1       |     raise TemplateNotFound(template)
+[2Kairflow-init-1       | jinja2.exceptions.TemplateNotFound: sql/create_table_order.sql
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py:351 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2Kairflow-init-1       | Database migrating done!
+[2Kairflow-init-1       | WARNING: Environment variable '_AIRFLOW_DB_UPGRADE' is deprecated please use '_AIRFLOW_DB_MIGRATE' instead
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:812 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:724 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:747 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:761 FutureWarning: The auth_backends setting in [api] has had airflow.api.auth.backend.session added in the running config, which is needed by the UI. Please update your config before Apache Airflow 3.0.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:738 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/base.py:72 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2Kairflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/flask_limiter/extension.py:337 UserWarning: Using the in-memory storage for tracking rate limits as no storage was explicitly specified. This is not recommended for production use. See: https://flask-limiter.readthedocs.io#configuring-a-storage-backend for documentation about configuring the storage backend.
+[2Kairflow-init-1       | airflow already exist in the db
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       | WARNING: This is a development/test feature only. NEVER use it in production!
+[2Kairflow-init-1       |          Instead, build a custom image as described in
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       |          https://airflow.apache.org/docs/docker-stack/build.html
+[2Kairflow-init-1       | 
+[2Kairflow-init-1       |          Adding requirements at container startup is fragile and is done every time
+[2Kairflow-init-1       |          the container starts, so it is only useful for testing and trying out
+[2Kairflow-init-1       |          of adding dependencies.
+[2Kairflow-init-1       | 
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  | WARNING! You should run the image with GID (Group ID) set to 0
+[2Kairflow-webserver-1  |          even if you use 'airflow' user (UID=50000)
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  |  You started the image with UID=50000 and GID=50000
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  |  This is to make sure you can run the image with an arbitrary UID in the future.
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  |  See more about it in the Airflow's docker image documentation
+[2Kairflow-webserver-1  |      http://airflow.apache.org/docs/docker-stack/entrypoint
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  | WARNING: This is a development/test feature only. NEVER use it in production!
+[2Kairflow-webserver-1  |          Instead, build a custom image as described in
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  |          https://airflow.apache.org/docs/docker-stack/build.html
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  |          Adding requirements at container startup is fragile and is done every time
+[2Kairflow-webserver-1  |          the container starts, so it is only useful for testing and trying out
+[2Kairflow-webserver-1  |          of adding dependencies.
+[2Kairflow-webserver-1  | 
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+[2Kairflow-webserver-1  | Collecting pymongo
+[2Kairflow-webserver-1  |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+[2Kairflow-worker-1     | 
+[2K[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+airflow-worker-1     | WARNING! You should run the image with GID (Group ID) set to 0
+[2Kairflow-worker-1     |          even if you use 'airflow' user (UID=50000)
+[2K[2Kairflow-worker-1     | 
+flower-1             | 
+[2K[2Kairflow-webserver-1  | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.13.1)
+[2Kairflow-worker-1     |  You started the image with UID=50000 and GID=50000
+[2Kairflow-webserver-1  | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: asgiref in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.1)
+flower-1             | WARNING! You should run the image with GID (Group ID) set to 0
+[2Kflower-1             |          even if you use 'airflow' user (UID=50000)
+[2Kairflow-webserver-1  | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (23.2.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.8.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: colorlog<5.0,>=4.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.8.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: connexion<3.0,>=2.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.2)
+[2K[2Kairflow-worker-1     | 
+[2Kflower-1             | 
+[2Kflower-1             |  You started the image with UID=50000 and GID=50000
+[2Kflower-1             | 
+[2Kflower-1             |  This is to make sure you can run the image with an arbitrary UID in the future.
+[2Kflower-1             | 
+[2Kflower-1             |  See more about it in the Airflow's docker image documentation
+[2Kflower-1             |      http://airflow.apache.org/docs/docker-stack/entrypoint
+[2Kflower-1             | 
+[2Kflower-1             | 
+[2Kairflow-worker-1     |  This is to make sure you can run the image with an arbitrary UID in the future.
+[2Kflower-1             | 
+[2Kflower-1             | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+[2Kflower-1             | 
+[2K[2Kairflow-worker-1     | 
+[2Kairflow-worker-1     |  See more about it in the Airflow's docker image documentation
+airflow-webserver-1  | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.3)
+[2Kairflow-worker-1     |      http://airflow.apache.org/docs/docker-stack/entrypoint
+[2Kairflow-worker-1     | 
+[2Kairflow-webserver-1  | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.5)
+[2Kairflow-worker-1     | 
+[2Kairflow-worker-1     | 
+flower-1             | WARNING: This is a development/test feature only. NEVER use it in production!
+[2K[2Kairflow-worker-1     | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+[2K[2Kairflow-webserver-1  | Requirement already satisfied: cryptography>=39.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (41.0.7)
+[2Kairflow-webserver-1  | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.14)
+[2Kairflow-webserver-1  | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.3.8)
+[2Kairflow-webserver-1  | Requirement already satisfied: flask-caching>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+flower-1             |          Instead, build a custom image as described in
+[2Kflower-1             | 
+[2Kflower-1             |          https://airflow.apache.org/docs/docker-stack/build.html
+[2Kflower-1             | 
+[2Kflower-1             |          Adding requirements at container startup is fragile and is done every time
+[2Kflower-1             |          the container starts, so it is only useful for testing and trying out
+[2Kflower-1             |          of adding dependencies.
+[2Kflower-1             | 
+[2Kairflow-webserver-1  | Requirement already satisfied: flask-wtf>=0.15 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: flask<2.3,>=2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.5)
+[2Kflower-1             | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+[2Kflower-1             | Collecting pymongo
+[2Kflower-1             |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+[2Kairflow-webserver-1  | Requirement already satisfied: fsspec>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.2)
+[2Kflower-1             | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+[2Kflower-1             | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+[2Kflower-1             | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+[2Kflower-1             | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: google-re2>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.1.20240501)
+airflow-worker-1     | 
+[2Kairflow-worker-1     | WARNING: This is a development/test feature only. NEVER use it in production!
+[2Kairflow-worker-1     |          Instead, build a custom image as described in
+[2Kairflow-webserver-1  | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (22.0.0)
+[2Kairflow-worker-1     | 
+[2Kairflow-worker-1     |          https://airflow.apache.org/docs/docker-stack/build.html
+[2Kairflow-worker-1     | 
+[2Kairflow-worker-1     |          Adding requirements at container startup is fragile and is done every time
+[2Kairflow-worker-1     |          the container starts, so it is only useful for testing and trying out
+[2Kairflow-worker-1     |          of adding dependencies.
+[2Kairflow-worker-1     | 
+[2Kairflow-worker-1     | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+[2Kairflow-worker-1     | Collecting pymongo
+[2Kairflow-worker-1     |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+[2Kairflow-worker-1     | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+[2Kairflow-worker-1     | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+[2Kairflow-worker-1     | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+[2Kairflow-worker-1     | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: httpx in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.23.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.22.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: lazy-object-proxy in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.10.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.5)
+[2Kairflow-webserver-1  | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+[2Kairflow-webserver-1  | Requirement already satisfied: opentelemetry-api>=1.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: opentelemetry-exporter-otlp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: packaging>=14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (24.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: pendulum<4.0,>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: pluggy>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: psutil>=4.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (5.9.8)
+[2Kairflow-webserver-1  | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.17.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: pyjwt>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.8.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: python-dateutil>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.9.0.post0)
+[2Kairflow-webserver-1  | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.0.4)
+[2Kairflow-webserver-1  | Requirement already satisfied: requests<3,>=2.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.31.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.4)
+[2Kairflow-webserver-1  | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (13.7.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: setproctitle>=1.1.8 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.52)
+[2Kairflow-webserver-1  | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: tenacity!=8.2.0,>=6.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.2.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.4.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: unicodecsv>=0.14.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: universal-pathlib>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.12.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.4)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.10.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.5.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.6.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: urllib3>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from docker>=6->apache-airflow-providers-docker) (2.2.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: typing-extensions>=4 in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.11.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: flask-appbuilder==4.4.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.4.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.6.3)
+[2Kairflow-webserver-1  | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.6.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.6)
+[2Kairflow-webserver-1  | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.1.7)
+[2Kairflow-webserver-1  | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.6.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.5.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.6.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.21.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.28.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.41.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (20.10.2)
+[2Kairflow-webserver-1  | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: pytz>2021.1 in /home/airflow/.local/lib/python3.12/site-packages (from croniter>=2.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+[2Kairflow-webserver-1  | Requirement already satisfied: cffi>=1.12 in /home/airflow/.local/lib/python3.12/site-packages (from cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+[2Kairflow-webserver-1  | Requirement already satisfied: wrapt<2,>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from deprecated>=1.2.13->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)

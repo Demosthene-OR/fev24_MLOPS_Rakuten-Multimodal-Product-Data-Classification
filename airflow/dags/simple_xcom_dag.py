@@ -1,10 +1,11 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
+from airflow.models import Variable
 import random
 
 from airflow.models import Variable
-my_variable_value = Variable.get(key="my_variable")
+my_variable_value = Variable.get(key="my_variable", default_var=0)
 
 """
 def function_with_return(task_instance):
