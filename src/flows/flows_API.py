@@ -294,17 +294,11 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         for item in items_to_copy:
             source_path = os.path.join(source_dir, item)
             destination_path = os.path.join(destination_dir, item)
-            print("####### source_path:",source_path,"    destination_path:",destination_path)
             if os.path.exists(source_path):
-                print("####### source_path:",source_path,"    existe")
                 if os.path.isdir(source_path):
-                    print("####### source_path:",source_path,"    est une directory")
                     shutil.copytree(source_path, destination_path)
                 else:
-                    print("####### source_path:",source_path,"    est un fichier")
-                    shutil.copy2(source_path, destination_path)
-            else:
-                print("####### source_path:",source_path,"    n'existe pas")                
+                    shutil.copy2(source_path, destination_path)             
         
         # Copie du dataset pour ne pas être déranger
         items_to_copy = [
