@@ -105,8 +105,6 @@ class Predict:
 
         return results_df
 
-# Endpoint pour l'initialisation
-# @app.get("/initialisation")
 def initialisation():
     global predictor, tokenizer, rnn, vgg16, best_weights, mapper
     
@@ -124,9 +122,14 @@ def initialisation():
     with open("models/mapper.json", "r") as json_file:
         mapper = json.load(json_file)
 
-    return {"message": "Initialisation effectuée avec succès"}
+    return {"message": "Initialisation de predict effectuée avec succès"}
 
 initialisation()
+
+# Endpoint pour l'initialisation lorsque un nouvelle doit être mis en production
+@app.get("/initialisation")
+def hot_init():
+    return initialisation()
 
 # Endpoint pour la prédiction
 @app.post("/prediction")

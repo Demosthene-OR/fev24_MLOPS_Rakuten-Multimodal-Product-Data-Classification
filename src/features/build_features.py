@@ -54,15 +54,15 @@ class DataImporter:
         
         print("len(df) = ",len(df))
         grouped_data = df.groupby("prdtypecode")
+        num_samples_per_class_test = 50
         
         # Le calcul suivant est nécessaire si on entraine le modele sur la totalité de df (i.e. samples_per_class==0,)
         class_size = grouped_data.size().tolist()
         train_size = [int(n*0.8) for n in class_size]
         # Le nombre de ligne de X_test est plafonné à 50 * nombre de classes
-        test_reduc =  1.0 if (len(df)//10) < (27*50) else 1350 / len(df)
+        test_reduc =  1.0 if (len(df)//10) < (27*num_samples_per_class_test) else (27*num_samples_per_class_test) / len(df)
         test_size = [(math.ceil(test_reduc *n) if with_test else 0) for n in class_size]
         val_size = [(class_size[i]-train_size[i]-test_size[i]) for i in range(len(class_size))]
-
 
         X_train_samples = []
         X_test_samples = []
@@ -101,7 +101,6 @@ class DataImporter:
         X_test_samples = []
         
         i=0
-
         for _, group in grouped_data_test:
             if (val_samples_per_class > 0):
                 samples = group.sample(n=val_samples_per_class, random_state=random_state)
@@ -111,7 +110,7 @@ class DataImporter:
             X_val_samples.append(samples)
             remaining_samples = group.drop(samples.index)
             if with_test and (val_samples_per_class > 0):
-                X_test_samples.append(remaining_samples[:50])
+                X_test_samples.append(remaining_samples[:num_samples_per_class_test])
             elif with_test:
                 X_test_samples.append(remaining_samples)
         

@@ -34,14 +34,8 @@ def run():
     model_folder = st.session_state.PrePath+'models'
 
     # Obtenir la liste des sous-dossiers
-    subfolders = [f.name for f in os.scandir(model_folder) if f.is_dir()]
-        
-    # Sous-dossiers à supprimer
-    folders_to_remove = ['best_rnn_model', 'best_vgg16_model', 'empty_model']
-
-    # Supprimer les sous-dossiers spécifiés de la liste
-    subfolders = [folder for folder in subfolders if folder not in folders_to_remove]
-    
+    subfolders = [f.name for f in os.scandir(model_folder) if f.is_dir() and "saved_model" in f.name]
+          
     chosen_id = tab_bar(data=[
     TabBarItemData(id="tab1", title="Models Performance", description=""),
     TabBarItemData(id="tab2", title="Release a model version", description="")],
@@ -102,3 +96,7 @@ def run():
         # Call the function to copy items
         if st.button('Click to release the model'):
             copy_items(files_path, dest_path, items_to_copy)
+            predict_endpoint = "http://api_predict:8000/initialisation"
+            predict_response = requests.get(predict_endpoint)
+            st.success(predict_response.json().get("message", "No message in response"))
+            

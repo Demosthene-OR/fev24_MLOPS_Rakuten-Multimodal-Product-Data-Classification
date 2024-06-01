@@ -41,7 +41,7 @@ class TextRnnModel:
             self.tokenizer = keras.preprocessing.text.tokenizer_from_json(tokenizer_config)
             self.model = load_model(self.file_path, "best_rnn_model.h5")
 
-    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5):
+    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5, full_train=True):
         
         # Si le modele RNN n'existe pas, on initialise le tokenizer (création du vocabulaire)
         if not glob.glob(self.file_path+"/best_rnn_model/best_rnn_model*.h5"):
@@ -80,7 +80,27 @@ class TextRnnModel:
             self.model = Model(inputs=[text_input], outputs=output)
         # Sinon, on charge le modele existant.
         else:
-            self.model = load_model(self.file_path, "best_rnn_model.h5") 
+            if full_train:
+                self.model = load_model(self.file_path, "best_rnn_model.h5") 
+            else:
+                base_model = load_model(self.file_path, "best_rnn_model.h5")
+
+                # Geler toutes les couches du modèle de base
+                for layer in base_model.layers:
+                    layer.trainable = False
+
+                # Ajouter une nouvelle couche dense
+                x = base_model.output
+                x = Flatten(name="new_flatten_layer")(x)  # Aplatir les sorties si nécessaire
+                x = Dense(512, activation="relu", name="new_dense_layer512")(x)
+                x = Dense(27, activation="softmax", name="new_dense_layer27")(x)  # Ajouter la nouvelle couche dense
+
+                # Créer le nouveau modèle
+                self.model = Model(inputs=base_model.input, outputs=x)
+
+                # Définir les nouvelles couches comme entraînables
+                for layer in self.model.layers[-3:]:
+                    layer.trainable = True
 
         # Compile le modèle avec la métrique F1
         self.model.compile(
@@ -133,7 +153,7 @@ class ImageVGG16Model:
         else:
             self.model = load_model(self.file_path, "best_vgg16_model.h5")
 
-    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5):
+    def preprocess_and_fit(self, X_train, y_train, X_val, y_val, n_epochs=5, full_train=True):
         
         # Paramètres
         batch_size = 32
@@ -178,7 +198,7 @@ class ImageVGG16Model:
             x = vgg16_base.output
             x = Flatten()(x)
             x = Dense(512, activation="relu")(x) 
-            x = Dense(512, activation="relu")(x) 
+            # x = Dense(512, activation="relu")(x) 
             output = Dense(num_classes, activation="softmax")(x)
 
             self.model = Model(inputs=vgg16_base.input, outputs=output)
@@ -186,7 +206,27 @@ class ImageVGG16Model:
             for layer in vgg16_base.layers:
                 layer.trainable = False
         else:
-            self.model = load_model(self.file_path, "best_vgg16_model.h5") 
+            if full_train:
+                self.model = load_model(self.file_path, "best_vgg16_model.h5") 
+            else:
+                n_epochs = min(n_epochs,25)
+                base_model = load_model(self.file_path, "best_vgg16_model.h5")
+                # Geler toutes les couches du modèle de base
+                for layer in base_model.layers:
+                    layer.trainable = False
+
+                # Ajouter une nouvelle couche dense
+                x = base_model.output
+                x = Flatten(name="new_flatten_layer")(x)  # Aplatir les sorties si nécessaire
+                x = Dense(512, activation="relu", name="new_dense_layer512")(x)
+                x = Dense(num_classes, activation="softmax", name="new_dense_layer27")(x)  # Ajouter la nouvelle couche dense
+
+                # Créer le nouveau modèle
+                self.model = Model(inputs=base_model.input, outputs=x)
+
+                # Définir les nouvelles couches comme entraînables
+                for layer in self.model.layers[-3:]:
+                    layer.trainable = True
         
         self.model.compile(
             optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
@@ -262,7 +302,7 @@ class concatenate:
                     indices, 
                     replace=False, random_state=random_state
                     )
-                
+ 
             # Ajout des échantillons sous-échantillonnés et de leurs étiquettes aux DataFrames
             new_X_train = pd.concat([new_X_train, X_train.loc[sampled_indices]])
             new_y_train = pd.concat([new_y_train, y_train.loc[sampled_indices]])
@@ -307,7 +347,7 @@ class concatenate:
         best_accuracy = 0.0
         best_weighted_f1 = 0.0
 
-        for rnn_weight in np.linspace(0, 1, 101):  # Essayer différents poids pour RNN
+        for rnn_weight in np.linspace(0.5, 1, 101):  # Essayer différents poids pour RNN
             vgg16_weight = 1.0 - rnn_weight  # Le poids total doit être égal à 1
 
             combined_predictions = (rnn_weight * rnn_proba) + (

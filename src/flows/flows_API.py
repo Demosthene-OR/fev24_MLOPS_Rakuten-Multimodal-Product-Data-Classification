@@ -36,6 +36,8 @@ class SaveModelTrain(BaseModel):
     dataset_path: Optional[str] = "data/preprocessed"
     n_epochs:Optional[int] = 1
     samples_per_class: Optional[int] = 0
+    full_train: Optional[bool] = True
+    n_sales_ft: Optional[int] = 50
     api_secured: Optional[bool] = False
     
 
@@ -270,7 +272,10 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         # Chemins des répertoires
         source_dir = input_data.model_path
         current_time = datetime.now().strftime("%Y-%m-%d %H%M")
-        destination_dir = f"models/saved_models - {current_time}"
+        if input_data.full_train:
+            destination_dir = f"models/saved_models - {current_time} - Full"
+        else:
+            destination_dir = f"models/saved_models - {current_time} - Fine-tuned"
 
         # Liste des fichiers et répertoires à copier
         items_to_copy = [
@@ -328,6 +333,8 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
             "model_path": destination_dir, 
             "n_epochs": input_data.n_epochs, 
             "samples_per_class": input_data.samples_per_class,
+            "full_train": input_data.full_train,
+            "n_sales_ft": input_data.n_sales_ft,
             "with_test": True
         }
         train_headers = {
@@ -337,7 +344,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         train_response = requests.post(train_endpoint, json=train_data, headers=train_headers)
         
         if train_response.status_code == 200:          
-            return {"message": f"Le modèle {destination_dir} a été sauvegardé avec succès par {user_info} et l'entraînement a été démarré"}
+            return {"message": f"Le modèle {destination_dir} a été sauvegardé avec succès par {user_info} et l'entraînement s'est correctement terminé"}
         else:
             raise HTTPException(status_code=train_response.status_code, detail=f"Erreur lors de la sauvegarde du model dans {destination_dir} \
                 ou lors de la requête d'entraînement: {train_response.text}")
