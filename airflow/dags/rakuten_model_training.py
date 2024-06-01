@@ -147,7 +147,7 @@ with DAG(
             accuracy = context['ti'].xcom_pull(key='accuracy')
             threshold = float(Variable.get('min_accuracy_threshold', default_var=0.7))
             n_sales_ft = int(Variable.get('n_sales_finetuning', default_var=100))
-            if (accuracy < threshold):
+            if (accuracy <= threshold):
                 subfolders = [f.name for f in os.scandir('/app/models') if f.is_dir() and "saved_model" in f.name and "Full" in f.name]
                 # Trier les sous-dossiers de manière descendante seulement si la liste n'est pas vide
                 if subfolders:
@@ -196,10 +196,10 @@ with DAG(
         client = WebClient(token=slack_api_token)
         accuracy = context['ti'].xcom_pull(key='accuracy')
         threshold = float(Variable.get('min_accuracy_threshold', default_var=0.7))
-        message = f"The accuracy of the model is below the threshold of {threshold}. Current accuracy: {accuracy}"
+        message = f"The accuracy of the model is less than or equal to the threshold of {threshold}. Current accuracy: {accuracy}"
         slack_email_list = Variable.get('slack_email_list', default_var="['olivier.renouard1103@gmail.com']")
         slack_email_list = eval(slack_email_list)
-        if accuracy < threshold:
+        if accuracy <= threshold:
             for email in slack_email_list:
                 try:
                     # Trouver l'ID de l'utilisateur par email
@@ -226,13 +226,13 @@ with DAG(
         threshold = float(Variable.get('min_accuracy_threshold', default_var=0.7))
         email_list = Variable.get('email_list', default_var="['olivier.renouard1103@gmail.com']")
         email_list = eval(email_list)
-        if accuracy < threshold:
+        if accuracy <= threshold:
             for email in email_list:
                 email_op = EmailOperator(
                     task_id='send_email',
                     to=email,
                     subject='Model Accuracy Alert',
-                    html_content=f"<p>The accuracy of the model is below the threshold of {threshold}. Current accuracy: {accuracy}</p>"
+                    html_content=f"<p>The accuracy of the model is less than or equal to the threshold of {threshold}. Current accuracy: {accuracy}</p>"
             )
             email_op.execute(context)
     
