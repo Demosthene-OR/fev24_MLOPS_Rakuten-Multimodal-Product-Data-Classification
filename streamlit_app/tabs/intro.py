@@ -38,7 +38,7 @@ def run():
         1.	to predict the category a new product belongs to
         2.	to train the models whith the new products when the accuracy on new product falls under a certain threshold
         
-        All the application are launched through API and can be according the authorization level of the user:
+        All functions are launched via APIs, depending on the user's authorization:
         - Authorization 0 -> not authorized to sell new product, which means cannot predict or train the model
         - Authorization 1 -> authorized to sell new product, can predict but not train the model
         - Authorization 2 -> authorized to sell new product (predict) and train the model
