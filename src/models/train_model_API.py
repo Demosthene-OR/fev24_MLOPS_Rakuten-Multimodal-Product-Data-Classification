@@ -209,7 +209,7 @@ class ImageVGG16Model:
             if full_train:
                 self.model = load_model(self.file_path, "best_vgg16_model.h5") 
             else:
-                n_epochs = min(n_epochs,25)
+                n_epochs = min(n_epochs,35)
                 base_model = load_model(self.file_path, "best_vgg16_model.h5")
                 # Geler toutes les couches du modèle de base
                 for layer in base_model.layers:

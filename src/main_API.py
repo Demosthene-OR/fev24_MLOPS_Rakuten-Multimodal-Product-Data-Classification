@@ -71,18 +71,20 @@ async def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_sch
             data_importer.split_train_test(df, samples_per_class=samples_per_class, random_state=random_state, with_test=with_test) 
     else:
         X_train, X_val, X_test, y_train, y_val, y_test = \
-            data_importer.split_train_test(df, samples_per_class=1, random_state=random_state, with_test=with_test) 
+            data_importer.split_train_test(df, samples_per_class=3, random_state=random_state, with_test=with_test) 
         df2 = df[-n_sales_ft:]
-        X_train2, X_val2, _ , y_train2, y_val2, _ = \
-            data_importer.split_train_test(df2, samples_per_class=0, with_test=False)
+        y_train2 = df2["prdtypecode"]
+        X_train2 = df2.drop(["prdtypecode"], axis=1)
         X_train = pd.concat([X_train,X_train2], axis=0)
         y_train = pd.concat([y_train,y_train2], axis=0)
-        X_val   = pd.concat([X_val,X_val2], axis=0)
-        y_val   = pd.concat([y_val,y_val2], axis=0)
         X_train = X_train.reset_index(drop=True)
         y_train = y_train.reset_index(drop=True)
-        X_val = X_val.reset_index(drop=True)
-        y_val = y_val.reset_index(drop=True)
+        print('============================')
+        print("Final Finetuning Dataset size : ", len(X_train)+len(X_val)+len(X_test))
+        print("Final Finetuning Train size   : ", len(X_train))
+        print("Final Finetuning Val size     : ", len(X_val))
+        print("Final Finetuning Test size    : ", len(X_test))
+        print('============================')
         samples_per_class = 0    
 
     # Preprocess text and images
