@@ -198,7 +198,7 @@ class ImageVGG16Model:
             x = vgg16_base.output
             x = Flatten()(x)
             x = Dense(512, activation="relu")(x) 
-            # x = Dense(512, activation="relu")(x) 
+            x = Dense(512, activation="relu")(x) 
             output = Dense(num_classes, activation="softmax")(x)
 
             self.model = Model(inputs=vgg16_base.input, outputs=output)

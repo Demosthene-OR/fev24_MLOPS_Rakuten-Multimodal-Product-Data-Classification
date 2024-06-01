@@ -140,7 +140,7 @@ with DAG(
     def train_model(n_epochs=1, **context):       
 
         # Dossier template pour le réentrainement
-        model_dir = "/empty_model"
+        model_dir = "empty_model"
                         
         try:
             api_key = Variable.get('api_key')
@@ -152,7 +152,7 @@ with DAG(
                 # Trier les sous-dossiers de manière descendante seulement si la liste n'est pas vide
                 if subfolders:
                     sorted_subfolders = sorted(subfolders, reverse=True)
-                    model_dir = sorted_subfolders[O]  # Selection du dernier entrainement complet
+                    model_dir = sorted_subfolders[0]  # Selection du dernier entrainement complet
                 else:
                     sorted_subfolders = []
                     print('#### Fine-tuning is impossible due to lack of Full traim model')
@@ -162,8 +162,8 @@ with DAG(
                     'http://api_flows:8003/save_model_start_train',
                     headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {api_key}"},
                     data=json.dumps({
-                        "model_path": "/app/models"+model_dir,
-                        "dataset_path":"/app/data/preprocessed",
+                        "model_path": "models/"+model_dir,
+                        "dataset_path":"data/preprocessed",
                         "n_epochs": n_epochs,
                         "samples_per_class":0,
                         "full_train":False,
@@ -275,7 +275,7 @@ with DAG(
     def full_train_model(n_epochs=10, **context):       
 
         # Dossier template pour le réentrainement
-        model_dir = "/empty_model"
+        model_dir = "empty_model"
                         
         try:
             api_key = Variable.get('api_key')               
@@ -283,8 +283,8 @@ with DAG(
                 'http://api_flows:8003/save_model_start_train',
                 headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {api_key}"},
                 data=json.dumps({
-                    "model_path": "/app/models"+model_dir,
-                    "dataset_path":"/app/data/preprocessed",
+                    "model_path": "models/"+model_dir,
+                    "dataset_path":"data/preprocessed",
                     "n_epochs": n_epochs,
                     "samples_per_class":0,
                     "full_train":True,

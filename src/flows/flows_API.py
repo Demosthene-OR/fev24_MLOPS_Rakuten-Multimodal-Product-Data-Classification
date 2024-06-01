@@ -294,12 +294,17 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         for item in items_to_copy:
             source_path = os.path.join(source_dir, item)
             destination_path = os.path.join(destination_dir, item)
-            
+            print("####### source_path:",source_path,"    destination_path:",destination_path)
             if os.path.exists(source_path):
+                print("####### source_path:",source_path,"    existe")
                 if os.path.isdir(source_path):
+                    print("####### source_path:",source_path,"    est une directory")
                     shutil.copytree(source_path, destination_path)
                 else:
+                    print("####### source_path:",source_path,"    est un fichier")
                     shutil.copy2(source_path, destination_path)
+            else:
+                print("####### source_path:",source_path,"    n'existe pas")                
         
         # Copie du dataset pour ne pas être déranger
         items_to_copy = [
@@ -354,7 +359,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
         raise HTTPException(status_code=500, detail=f"Erreur lors de la sauvegarde du modèle: {e}")
 
 @app.get("/reset_dataset")
-def  reset_dataset(input_data: NewProductsInput,token: Optional[str] = Depends(oauth2_scheme)):
+def  reset_dataset(input_data: NewProductsInput, images: Optional[bool] = True, token: Optional[str] = Depends(oauth2_scheme)):
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
@@ -394,15 +399,16 @@ def  reset_dataset(input_data: NewProductsInput,token: Optional[str] = Depends(o
         new_classes_dest_df = pd.read_csv(new_classes_dest_path)
         y_train_df = pd.read_csv(y_train_path, index_col=0)
         
-        # Parcourir le DataFrame X_train de preprocessed et supprimer les images ajoutées
-        if len(X_train_df) > num_train:
-            for index, row in X_train_df.iloc[num_train:].iterrows():
-                    imageid = row['imageid']
-                    productid = row['productid']
-                    image_name = f"image_{imageid}_product_{productid}.jpg"
-                    file_path = os.path.join(image_train_path, image_name)
-                    if os.path.isfile(file_path) or os.path.islink(file_path):
-                        os.unlink(file_path) 
+        if images:
+            # Parcourir le DataFrame X_train de preprocessed et supprimer les images ajoutées
+            if len(X_train_df) > num_train:
+                for index, row in X_train_df.iloc[num_train:].iterrows():
+                        imageid = row['imageid']
+                        productid = row['productid']
+                        image_name = f"image_{imageid}_product_{productid}.jpg"
+                        file_path = os.path.join(image_train_path, image_name)
+                        if os.path.isfile(file_path) or os.path.islink(file_path):
+                            os.unlink(file_path) 
         
         # Réinitialisation
         X_new_df = X_new_df.drop(X_new_df.index)

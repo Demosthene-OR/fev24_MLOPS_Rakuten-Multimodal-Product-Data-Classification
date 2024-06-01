@@ -58,15 +58,30 @@ def run():
     st.image(image_process, caption='Streamlit Pages', use_column_width=True)
     st.write("")
     st.image(image2_process, caption='API', use_column_width=True)
-    
+              
     if st.button('Click to reset Dataset in Production'):
         response = requests.get(
-                'http://'+st.session_state.api_flows+':8003/reset_dataset',
-                headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {st.session_state.token}"},
-                data=json.dumps({
-                    "api_secured": True
-                })
-            )
+            'http://'+st.session_state.api_flows+':8003/reset_dataset',
+            headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {st.session_state.token}"},
+            params={"images": True},
+            data=json.dumps({
+                "api_secured": True
+            })
+        )
+        if response.status_code == 200:
+            st.success(response.json().get("message", "No message in response"))
+        else:
+            st.error("Failed to reset Dataset")
+            
+    if st.button('Click to reset Dataset, but not images, in Production'):
+        response = requests.get(
+            'http://'+st.session_state.api_flows+':8003/reset_dataset',
+            headers={'Content-Type': 'application/json', 'Authorization': f"Bearer {st.session_state.token}"},
+            params={"images": False},
+            data=json.dumps({
+                "api_secured": True
+            })
+        )
         if response.status_code == 200:
             st.success(response.json().get("message", "No message in response"))
         else:
