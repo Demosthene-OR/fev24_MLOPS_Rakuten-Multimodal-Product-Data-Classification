@@ -146,7 +146,7 @@ with DAG(
             api_key = Variable.get('api_key')
             accuracy = context['ti'].xcom_pull(key='accuracy')
             threshold = float(Variable.get('min_accuracy_threshold', default_var=0.7))
-            n_sales_ft = int(Variable.get('n_sales_finetuning', default_var=50))
+            n_sales_ft = int(Variable.get('n_sales_finetuning', default_var=100))
             if (accuracy < threshold):
                 subfolders = [f.name for f in os.scandir('/app/models') if f.is_dir() and "saved_model" in f.name and "Full" in f.name]
                 # Trier les sous-dossiers de manière descendante seulement si la liste n'est pas vide
