@@ -286,7 +286,9 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
             "mapper.json",
             "tokenizer_config.json",
             "best_rnn_model",
-            "best_vgg16_model"
+            "best_vgg16_model",
+            "best_rnn_model.h5",
+            "best_vgg16_model.h5"
         ]
 
         # Création du répertoire de destination
