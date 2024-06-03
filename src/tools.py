@@ -41,8 +41,8 @@ def load_model(file_path, file_name):
 
 def save_model(file_path, file_name):
     
-    # if not os.path.exists(file_path):
-    #     os.makedirs(file_path)
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
     Split(file_path+"/"+file_name,file_path+"/"+file_name[:-3]).bysize(97280000)
     return
     

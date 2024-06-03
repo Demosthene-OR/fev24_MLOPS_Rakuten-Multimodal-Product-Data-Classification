@@ -9,6 +9,7 @@ from tensorflow.keras.layers import Input, Dense, Flatten, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import ReduceLROnPlateau
 import pandas as pd
 from sklearn.utils import resample
 import numpy as np
@@ -103,29 +104,37 @@ class TextRnnModel:
                 for layer in self.model.layers[-3:]:
                     layer.trainable = True
 
-        # Compile le modèle avec la métrique F1
-        if full_train:
-            self.model.compile(
-                optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
-                )
-        else:
-                self.model.compile(
-                optimizer=Adam(lr=1e-5), loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
-                )
-
-
         # Définir le nom de l'expérience TensorBoard avec la date et l'heure
         log_name = f"experience_tensorboard_{datetime.now().strftime('%Y%m%d-%H%M%S')}_text"
 
-        rnn_callbacks = [
-            ModelCheckpoint(
-                filepath=self.file_path+"/best_rnn_model.h5", save_best_only=True
-            ),  # Enregistre le meilleur modèle
-            EarlyStopping(
-                patience=3, restore_best_weights=True
-            ),  # Arrête l'entraînement si la performance ne s'améliore pas
-            TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
-        ]
+        if full_train:
+            rnn_callbacks = [
+                ModelCheckpoint(
+                    filepath=self.file_path+"/best_rnn_model.h5", save_best_only=True
+                ),  # Enregistre le meilleur modèle
+                EarlyStopping(
+                    patience=3, restore_best_weights=True
+                ),  # Arrête l'entraînement si la performance ne s'améliore pas
+                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
+            ]
+        else:
+            rnn_callbacks = [
+                ModelCheckpoint(
+                    filepath=self.file_path+"/best_rnn_model.h5", save_best_only=True
+                ),  # Enregistre le meilleur modèle
+                EarlyStopping(
+                    patience=3, restore_best_weights=True
+                ),  # Arrête l'entraînement si la performance ne s'améliore pas
+                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
+                ReduceLROnPlateau(
+                    monitor='val_loss', factor=0.5,patience=2, min_lr=0.00005
+                ),
+            ]
+            
+        # Compile le modèle avec la métrique F1 
+        self.model.compile(
+            optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
+            )
 
         history = self.model.fit(
             [train_padded_sequences],
@@ -216,7 +225,7 @@ class ImageVGG16Model:
             if full_train:
                 self.model = load_model(self.file_path, "best_vgg16_model.h5") 
             else:
-                n_epochs = min(n_epochs,15)
+                # n_epochs = min(n_epochs,15)
                 base_model = load_model(self.file_path, "best_vgg16_model.h5")
                 # Geler toutes les couches du modèle de base
                 for layer in base_model.layers:
@@ -234,29 +243,38 @@ class ImageVGG16Model:
                 # Définir les nouvelles couches comme entraînables
                 for layer in self.model.layers[-3:]:
                     layer.trainable = True
-        
-        if full_train:
-            self.model.compile(
-                optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
-                )
-        else:
-                self.model.compile(
-                optimizer=Adam(lr=1e-5), loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
-                )
 
         # Définir le nom de l'expérience TensorBoard avec la date et l'heure
         log_name = f"experience_tensorboard_{datetime.now().strftime('%Y%m%d-%H%M%S')}_img"
-        
-        vgg_callbacks = [
-            ModelCheckpoint(
-                filepath=self.file_path+"/best_vgg16_model.h5", save_best_only=True
-            ),  # Enregistre le meilleur modèle
-            EarlyStopping(
-                patience=3, restore_best_weights=True
-            ),  # Arrête l'entraînement si la performance ne s'améliore pas
-            TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
-        ]
 
+        if full_train:        
+            vgg_callbacks = [
+                ModelCheckpoint(
+                    filepath=self.file_path+"/best_vgg16_model.h5", save_best_only=True
+                ),  # Enregistre le meilleur modèle
+                EarlyStopping(
+                    patience=3, restore_best_weights=True
+                ),  # Arrête l'entraînement si la performance ne s'améliore pas
+                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
+            ]
+        else:
+            vgg_callbacks = [
+                ModelCheckpoint(
+                    filepath=self.file_path+"/best_vgg16_model.h5", save_best_only=True
+                ),  # Enregistre le meilleur modèle
+                EarlyStopping(
+                    patience=3, restore_best_weights=True
+                ),  # Arrête l'entraînement si la performance ne s'améliore pas
+                TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
+                ReduceLROnPlateau(
+                    monitor='val_loss', factor=0.5,patience=2, min_lr=0.00005
+                ),
+                ]
+
+        self.model.compile(
+                optimizer="adam", loss="categorical_crossentropy", metrics=[f1_m,"accuracy"]
+        )
+                
         history = self.model.fit(
             train_generator,
             epochs=n_epochs,

@@ -71,12 +71,12 @@ async def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_sch
             data_importer.split_train_test(df, samples_per_class=samples_per_class, random_state=random_state, with_test=with_test) 
     else:
         X_train, X_val, X_test, y_train, y_val, y_test = \
-            data_importer.split_train_test(df, samples_per_class=5, random_state=random_state, with_test=with_test) 
+            data_importer.split_train_test(df, samples_per_class=10, random_state=random_state, with_test=with_test) 
         df2 = df[-n_sales_ft:]
         y_train2 = df2["prdtypecode"]
         X_train2 = df2.drop(["prdtypecode"], axis=1)
-        X_train = pd.concat([X_train,X_train2], axis=0)
         y_train = pd.concat([y_train,y_train2], axis=0)
+        X_train = pd.concat([X_train,X_train2], axis=0)
         X_train = X_train.reset_index(drop=True)
         y_train = y_train.reset_index(drop=True)
         print('============================')
