@@ -71,7 +71,9 @@ def run():
             "mapper.json",
             "tokenizer_config.json",
             "best_rnn_model",
-            "best_vgg16_model"
+            "best_vgg16_model",
+            "best_rnn_model.h5",
+            "best_vgg16_model.h5"     
         ]
         
         # Destination path
