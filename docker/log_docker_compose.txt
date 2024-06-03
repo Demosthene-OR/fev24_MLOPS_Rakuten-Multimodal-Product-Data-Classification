@@ -1,195 +1,664 @@
-admin_db    | [Sat Jun  1 16:43:27 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
-postgres-1  | The files belonging to this database system will be owned by user "postgres".
-postgres-1  | This user must also own the server process.
-postgres-1  | 
-postgres-1  | The database cluster will be initialized with locale "en_US.utf8".
-postgres-1  | The default database encoding has accordingly been set to "UTF8".
-postgres-1  | The default text search configuration will be set to "english".
-postgres-1  | 
-postgres-1  | Data page checksums are disabled.
-postgres-1  | 
-postgres-1  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
-postgres-1  | creating subdirectories ... ok
-postgres-1  | selecting dynamic shared memory implementation ... posix
-postgres-1  | selecting default max_connections ... 100
-postgres-1  | selecting default shared_buffers ... 128MB
-postgres-1  | selecting default time zone ... Etc/UTC
-postgres-1  | creating configuration files ... ok
-postgres-1  | running bootstrap script ... ok
-postgres-1  | performing post-bootstrap initialization ... ok
-postgres-1  | initdb: warning: enabling "trust" authentication for local connections
-postgres-1  | You can change this by editing pg_hba.conf or using the option -A, or
-postgres-1  | --auth-local and --auth-host, the next time you run initdb.
-postgres-1  | syncing data to disk ... ok
-postgres-1  | 
-postgres-1  | 
-postgres-1  | Success. You can now start the database server using:
-postgres-1  | 
-postgres-1  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
-postgres-1  | 
-postgres-1  | waiting for server to start....2024-06-01 16:40:44.685 UTC [48] LOG:  starting PostgreSQL 13.15 (Debian 13.15-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
-postgres-1  | 2024-06-01 16:40:44.686 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-postgres-1  | 2024-06-01 16:40:44.691 UTC [49] LOG:  database system was shut down at 2024-06-01 16:40:44 UTC
-postgres-1  | 2024-06-01 16:40:44.695 UTC [48] LOG:  database system is ready to accept connections
-postgres-1  |  done
-postgres-1  | server started
-postgres-1  | CREATE DATABASE
-postgres-1  | 
-postgres-1  | 
-postgres-1  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
-postgres-1  | 
-postgres-1  | waiting for server to shut down...2024-06-01 16:40:44.898 UTC [48] LOG:  received fast shutdown request
-postgres-1  | .2024-06-01 16:40:44.899 UTC [48] LOG:  aborting any active transactions
-postgres-1  | 2024-06-01 16:40:44.901 UTC [48] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
-postgres-1  | 2024-06-01 16:40:44.901 UTC [50] LOG:  shutting down
-postgres-1  | 2024-06-01 16:40:44.912 UTC [48] LOG:  database system is shut down
-postgres-1  |  done
-postgres-1  | server stopped
-postgres-1  | 
-postgres-1  | PostgreSQL init process complete; ready for start up.
-postgres-1  | 
-postgres-1  | 2024-06-01 16:40:45.015 UTC [1] LOG:  starting PostgreSQL 13.15 (Debian 13.15-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
-postgres-1  | 2024-06-01 16:40:45.015 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
-postgres-1  | 2024-06-01 16:40:45.015 UTC [1] LOG:  listening on IPv6 address "::", port 5432
-postgres-1  | 2024-06-01 16:40:45.018 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-postgres-1  | 2024-06-01 16:40:45.021 UTC [63] LOG:  database system was shut down at 2024-06-01 16:40:44 UTC
-postgres-1  | 2024-06-01 16:40:45.025 UTC [1] LOG:  database system is ready to accept connections
-postgres-1  | 2024-06-01 16:41:40.308 UTC [147] ERROR:  relation "log" does not exist at character 13
-postgres-1  | 2024-06-01 16:41:40.308 UTC [147] STATEMENT:  INSERT INTO log (dttm, event, owner, extra) VALUES ('2024-06-01T16:41:40.298279+00:00'::timestamptz, 'cli_check', 'airflow', '{"host_name": "635a1bd50544", "full_command": "[''/home/airflow/.local/bin/airflow'', ''db'', ''check'']"}') RETURNING log.id
-postgres-1  | 2024-06-01 16:41:42.370 UTC [148] ERROR:  relation "log" does not exist at character 13
-postgres-1  | 2024-06-01 16:41:42.370 UTC [148] STATEMENT:  INSERT INTO log (dttm, event, owner, extra) VALUES ('2024-06-01T16:41:42.363279+00:00'::timestamptz, 'cli_migratedb', 'airflow', '{"host_name": "635a1bd50544", "full_command": "[''/home/airflow/.local/bin/airflow'', ''db'', ''migrate'']"}') RETURNING log.id
-postgres-1  | 2024-06-01 16:41:42.759 UTC [148] ERROR:  relation "connection" does not exist at character 33
-postgres-1  | 2024-06-01 16:41:42.759 UTC [148] STATEMENT:  SELECT connection.conn_id 
-postgres-1  | 	FROM connection GROUP BY connection.conn_id 
-postgres-1  | 	HAVING count(*) > 1
-postgres-1  | 2024-06-01 16:41:42.761 UTC [148] ERROR:  relation "connection" does not exist at character 33
-postgres-1  | 2024-06-01 16:41:42.761 UTC [148] STATEMENT:  SELECT connection.conn_id 
-postgres-1  | 	FROM connection 
-postgres-1  | 	WHERE connection.conn_type IS NULL
-postgres-1  | 2024-06-01 16:41:42.778 UTC [148] ERROR:  relation "ab_user" does not exist at character 31
-postgres-1  | 2024-06-01 16:41:42.778 UTC [148] STATEMENT:  SELECT ab_user.username 
-postgres-1  | 	FROM ab_user GROUP BY ab_user.username 
-postgres-1  | 	HAVING count(*) > 1
-postgres-1  | 2024-06-01 16:41:42.780 UTC [148] ERROR:  relation "ab_register_user" does not exist at character 40
-postgres-1  | 2024-06-01 16:41:42.780 UTC [148] STATEMENT:  SELECT ab_register_user.username 
-postgres-1  | 	FROM ab_register_user GROUP BY ab_register_user.username 
-postgres-1  | 	HAVING count(*) > 1
-streamlit   | 
-streamlit   | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
-streamlit   | 
-streamlit   | 
-streamlit   |   You can now view your Streamlit app in your browser.
-streamlit   | 
-streamlit   |   Network URL: http://172.19.0.5:8501
-streamlit   |   External URL: http://90.7.241.177:8501
-streamlit   | 
-api_predict  | 2024-06-01 16:43:29.859394: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-api_predict  | 2024-06-01 16:43:29.862500: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-api_predict  | 2024-06-01 16:43:29.977294: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-api_predict  | 2024-06-01 16:43:29.977960: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-api_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-api_predict  | 2024-06-01 16:43:31.811749: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-api_oauth    | INFO:     Started server process [1]
-api_oauth    | INFO:     Waiting for application startup.
+api_oauth  | INFO:     Started server process [1]
+api_oauth  | INFO:     Waiting for application startup.
 api_oauth    | INFO:     Application startup complete.
 api_oauth    | INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
-users_db     | 2024-06-01 16:43:27+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-users_db     | 2024-06-01 16:43:28+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-users_db     | 2024-06-01 16:43:28+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
-users_db     | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-users_db     | 2024-06-01T16:43:29.196482Z 0 [System] [MY-015015] [Server] MySQL Server - start.
-users_db     | 2024-06-01T16:43:29.530054Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
-users_db     | 2024-06-01T16:43:29.546895Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
-users_db     | 2024-06-01T16:43:29.648579Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-users_db     | 2024-06-01T16:43:32.332349Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-users_db     | 2024-06-01T16:43:33.356536Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
-users_db     | 2024-06-01T16:43:33.357807Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
-users_db     | 2024-06-01T16:43:33.411600Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
-users_db     | 2024-06-01T16:43:33.475477Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
-users_db     | 2024-06-01T16:43:33.742796Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
-flower-1     | 
-flower-1     | WARNING! You should run the image with GID (Group ID) set to 0
-flower-1     |          even if you use 'airflow' user (UID=50000)
-flower-1     | 
-flower-1     |  You started the image with UID=50000 and GID=50000
-flower-1     | 
-flower-1     |  This is to make sure you can run the image with an arbitrary UID in the future.
-flower-1     | 
-flower-1     |  See more about it in the Airflow's docker image documentation
-flower-1     |      http://airflow.apache.org/docs/docker-stack/entrypoint
-flower-1     | 
-flower-1     | 
-flower-1     | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
-flower-1     | 
-flower-1     | WARNING: This is a development/test feature only. NEVER use it in production!
-flower-1     |          Instead, build a custom image as described in
-flower-1     | 
-flower-1     |          https://airflow.apache.org/docs/docker-stack/build.html
-flower-1     | 
-flower-1     |          Adding requirements at container startup is fragile and is done every time
-flower-1     |          the container starts, so it is only useful for testing and trying out
-flower-1     |          of adding dependencies.
-flower-1     | 
-flower-1     | 
-flower-1     | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
-flower-1     | Collecting pymongo
-flower-1     |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
-flower-1     | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
-flower-1     | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
-flower-1     | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
-flower-1     | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
-redis-1      | 1:C 01 Jun 2024 16:40:44.132 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-redis-1      | 1:C 01 Jun 2024 16:40:44.132 * Redis version=7.2.5, bits=64, commit=00000000, modified=0, pid=1, just started
-redis-1      | 1:C 01 Jun 2024 16:40:44.132 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-redis-1      | 1:M 01 Jun 2024 16:40:44.132 * monotonic clock: POSIX clock_gettime
-redis-1      | 1:M 01 Jun 2024 16:40:44.132 * Running mode=standalone, port=6379.
-redis-1      | 1:M 01 Jun 2024 16:40:44.133 * Server initialized
-redis-1      | 1:M 01 Jun 2024 16:40:44.133 * Ready to accept connections tcp
+api_predict  | 2024-06-03 05:02:23.986741: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+api_predict  | 2024-06-03 05:02:23.989090: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+api_predict  | 2024-06-03 05:02:24.048673: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+api_predict  | 2024-06-03 05:02:24.049362: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+api_predict  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+api_predict  | 2024-06-03 05:02:25.240025: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+api_predict  | INFO:     Started server process [1]
+api_predict  | INFO:     Waiting for application startup.
+api_predict  | INFO:     Application startup complete.
+api_predict  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 api_flows    | INFO:     Started server process [1]
 api_flows    | INFO:     Waiting for application startup.
 api_flows    | INFO:     Application startup complete.
 api_flows    | INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
-airflow-worker-1  | 
-airflow-worker-1  | WARNING! You should run the image with GID (Group ID) set to 0
-airflow-worker-1  |          even if you use 'airflow' user (UID=50000)
-airflow-worker-1  | 
-airflow-worker-1  |  You started the image with UID=50000 and GID=50000
-airflow-worker-1  | 
-airflow-worker-1  |  This is to make sure you can run the image with an arbitrary UID in the future.
-airflow-worker-1  | 
-airflow-worker-1  |  See more about it in the Airflow's docker image documentation
-airflow-worker-1  |      http://airflow.apache.org/docs/docker-stack/entrypoint
-airflow-worker-1  | 
-airflow-worker-1  | 
-airflow-worker-1  | 
-airflow-worker-1  | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
-airflow-worker-1  | 
-airflow-worker-1  | WARNING: This is a development/test feature only. NEVER use it in production!
-airflow-worker-1  |          Instead, build a custom image as described in
-airflow-worker-1  | 
-airflow-worker-1  |          https://airflow.apache.org/docs/docker-stack/build.html
-airflow-worker-1  | 
-airflow-worker-1  |          Adding requirements at container startup is fragile and is done every time
-airflow-worker-1  |          the container starts, so it is only useful for testing and trying out
-airflow-worker-1  |          of adding dependencies.
-airflow-worker-1  | 
-airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
-airflow-worker-1  | Collecting pymongo
-airflow-worker-1  |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
-airflow-worker-1  | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
-airflow-worker-1  | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
-airflow-worker-1  | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
-airflow-worker-1  | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
-api_train         | 2024-06-01 16:43:30.066127: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
-api_train         | 2024-06-01 16:43:30.069532: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-api_train         | 2024-06-01 16:43:30.182673: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
-api_train         | 2024-06-01 16:43:30.183259: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-api_train         | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-api_train         | 2024-06-01 16:43:31.958327: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-api_train         | INFO:     Started server process [1]
-api_train         | INFO:     Waiting for application startup.
-api_train         | INFO:     Application startup complete.
-api_train         | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+airflow-init-1  | 
+airflow-init-1  | WARNING! You should run the image with GID (Group ID) set to 0
+airflow-init-1  |          even if you use 'airflow' user (UID=50000)
+airflow-init-1  | 
+airflow-init-1  |  You started the image with UID=50000 and GID=50000
+airflow-init-1  | 
+airflow-init-1  |  This is to make sure you can run the image with an arbitrary UID in the future.
+airflow-init-1  | 
+airflow-init-1  |  See more about it in the Airflow's docker image documentation
+airflow-init-1  |      http://airflow.apache.org/docs/docker-stack/entrypoint
+airflow-init-1  | 
+airflow-init-1  | 
+airflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:812 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+airflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:724 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+airflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:747 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
+airflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:761 FutureWarning: The auth_backends setting in [api] has had airflow.api.auth.backend.session added in the running config, which is needed by the UI. Please update your config before Apache Airflow 3.0.
+airflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:738 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+airflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+airflow-init-1  | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/base.py:72 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+airflow-init-1  | DB: postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | Performing upgrade to the metadata database postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | [[34m2024-06-03T05:02:35.614+0000[0m] {[34mmigration.py:[0m216} INFO[0m - Context impl PostgresqlImpl.[0m
+airflow-init-1  | [[34m2024-06-03T05:02:35.617+0000[0m] {[34mmigration.py:[0m219} INFO[0m - Will assume transactional DDL.[0m
+airflow-init-1  | [[34m2024-06-03T05:02:35.620+0000[0m] {[34mdb.py:[0m1623} INFO[0m - Creating tables[0m
+airflow-init-1  | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+airflow-init-1  | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+airflow-init-1  | Database migrating done!
+airflow-init-1  | WARNING: Environment variable '_AIRFLOW_DB_UPGRADE' is deprecated please use '_AIRFLOW_DB_MIGRATE' instead
+api_train       | 2024-06-03 05:02:24.056509: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+api_train       | 2024-06-03 05:02:24.058391: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+api_train       | 2024-06-03 05:02:24.107096: I tensorflow/tsl/cuda/cudart_stub.cc:28] Could not find cuda drivers on your machine, GPU will not be used.
+api_train       | 2024-06-03 05:02:24.107567: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+api_train       | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+api_train       | 2024-06-03 05:02:25.306916: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+api_train       | INFO:     Started server process [1]
+api_train       | INFO:     Waiting for application startup.
+api_train       | INFO:     Application startup complete.
+api_train       | INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
+redis-1         | 1:C 03 Jun 2024 04:57:20.097 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1         | 1:C 03 Jun 2024 04:57:20.097 * Redis version=7.2.5, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1         | 1:C 03 Jun 2024 04:57:20.097 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1         | 1:M 03 Jun 2024 04:57:20.097 * monotonic clock: POSIX clock_gettime
+redis-1         | 1:M 03 Jun 2024 04:57:20.098 * Running mode=standalone, port=6379.
+redis-1         | 1:M 03 Jun 2024 04:57:20.098 * Server initialized
+redis-1         | 1:M 03 Jun 2024 04:57:20.098 * Ready to accept connections tcp
+postgres-1      | The files belonging to this database system will be owned by user "postgres".
+postgres-1      | This user must also own the server process.
+postgres-1      | 
+postgres-1      | The database cluster will be initialized with locale "en_US.utf8".
+postgres-1      | The default database encoding has accordingly been set to "UTF8".
+postgres-1      | The default text search configuration will be set to "english".
+postgres-1      | 
+postgres-1      | Data page checksums are disabled.
+postgres-1      | 
+postgres-1      | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+postgres-1      | creating subdirectories ... ok
+postgres-1      | selecting dynamic shared memory implementation ... posix
+postgres-1      | selecting default max_connections ... 100
+postgres-1      | selecting default shared_buffers ... 128MB
+postgres-1      | selecting default time zone ... Etc/UTC
+postgres-1      | creating configuration files ... ok
+postgres-1      | running bootstrap script ... ok
+postgres-1      | performing post-bootstrap initialization ... ok
+postgres-1      | syncing data to disk ... ok
+postgres-1      | 
+postgres-1      | 
+postgres-1      | Success. You can now start the database server using:
+postgres-1      | 
+postgres-1      |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+postgres-1      | 
+postgres-1      | initdb: warning: enabling "trust" authentication for local connections
+postgres-1      | You can change this by editing pg_hba.conf or using the option -A, or
+postgres-1      | --auth-local and --auth-host, the next time you run initdb.
+postgres-1      | waiting for server to start....2024-06-03 04:57:20.729 UTC [48] LOG:  starting PostgreSQL 13.15 (Debian 13.15-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+postgres-1      | 2024-06-03 04:57:20.730 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1      | 2024-06-03 04:57:20.736 UTC [49] LOG:  database system was shut down at 2024-06-03 04:57:20 UTC
+postgres-1      | 2024-06-03 04:57:20.740 UTC [48] LOG:  database system is ready to accept connections
+postgres-1      |  done
+postgres-1      | server started
+postgres-1      | CREATE DATABASE
+postgres-1      | 
+postgres-1      | 
+postgres-1      | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+postgres-1      | 
+postgres-1      | waiting for server to shut down...2024-06-03 04:57:20.954 UTC [48] LOG:  received fast shutdown request
+postgres-1      | .2024-06-03 04:57:20.955 UTC [48] LOG:  aborting any active transactions
+postgres-1      | 2024-06-03 04:57:20.957 UTC [48] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
+postgres-1      | 2024-06-03 04:57:20.958 UTC [50] LOG:  shutting down
+postgres-1      | 2024-06-03 04:57:20.980 UTC [48] LOG:  database system is shut down
+postgres-1      |  done
+postgres-1      | server stopped
+postgres-1      | 
+postgres-1           | PostgreSQL init process complete; ready for start up.
+postgres-1           | 
+postgres-1           | 2024-06-03 04:57:21.078 UTC [1] LOG:  starting PostgreSQL 13.15 (Debian 13.15-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+postgres-1           | 2024-06-03 04:57:21.079 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres-1           | 2024-06-03 04:57:21.079 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+postgres-1           | 2024-06-03 04:57:21.081 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1           | 2024-06-03 04:57:21.085 UTC [63] LOG:  database system was shut down at 2024-06-03 04:57:20 UTC
+postgres-1           | 2024-06-03 04:57:21.089 UTC [1] LOG:  database system is ready to accept connections
+postgres-1           | 2024-06-03 04:58:36.107 UTC [177] ERROR:  relation "log" does not exist at character 13
+postgres-1           | 2024-06-03 04:58:36.107 UTC [177] STATEMENT:  INSERT INTO log (dttm, event, owner, extra) VALUES ('2024-06-03T04:58:36.099289+00:00'::timestamptz, 'cli_check', 'airflow', '{"host_name": "12248ba1f8cb", "full_command": "[''/home/airflow/.local/bin/airflow'', ''db'', ''check'']"}') RETURNING log.id
+postgres-1           | 2024-06-03 04:58:38.223 UTC [178] ERROR:  relation "log" does not exist at character 13
+postgres-1           | 2024-06-03 04:58:38.223 UTC [178] STATEMENT:  INSERT INTO log (dttm, event, owner, extra) VALUES ('2024-06-03T04:58:38.215983+00:00'::timestamptz, 'cli_migratedb', 'airflow', '{"host_name": "12248ba1f8cb", "full_command": "[''/home/airflow/.local/bin/airflow'', ''db'', ''migrate'']"}') RETURNING log.id
+postgres-1           | 2024-06-03 04:58:38.597 UTC [178] ERROR:  relation "connection" does not exist at character 33
+postgres-1           | 2024-06-03 04:58:38.597 UTC [178] STATEMENT:  SELECT connection.conn_id 
+postgres-1           | 	FROM connection GROUP BY connection.conn_id 
+postgres-1           | 	HAVING count(*) > 1
+postgres-1           | 2024-06-03 04:58:38.599 UTC [178] ERROR:  relation "connection" does not exist at character 33
+postgres-1           | 2024-06-03 04:58:38.599 UTC [178] STATEMENT:  SELECT connection.conn_id 
+postgres-1           | 	FROM connection 
+postgres-1           | 	WHERE connection.conn_type IS NULL
+postgres-1           | 2024-06-03 04:58:38.615 UTC [178] ERROR:  relation "ab_user" does not exist at character 31
+postgres-1           | 2024-06-03 04:58:38.615 UTC [178] STATEMENT:  SELECT ab_user.username 
+postgres-1           | 	FROM ab_user GROUP BY ab_user.username 
+postgres-1           | 	HAVING count(*) > 1
+postgres-1           | 2024-06-03 04:58:38.617 UTC [178] ERROR:  relation "ab_register_user" does not exist at character 40
+airflow-webserver-1  | 
+airflow-webserver-1  | WARNING! You should run the image with GID (Group ID) set to 0
+airflow-webserver-1  |          even if you use 'airflow' user (UID=50000)
+airflow-webserver-1  | 
+airflow-webserver-1  |  You started the image with UID=50000 and GID=50000
+postgres-1           | 2024-06-03 04:58:38.617 UTC [178] STATEMENT:  SELECT ab_register_user.username 
+postgres-1           | 	FROM ab_register_user GROUP BY ab_register_user.username 
+postgres-1           | 	HAVING count(*) > 1
+airflow-webserver-1  | 
+airflow-webserver-1  |  This is to make sure you can run the image with an arbitrary UID in the future.
+airflow-webserver-1  | 
+airflow-webserver-1  |  See more about it in the Airflow's docker image documentation
+airflow-webserver-1  |      http://airflow.apache.org/docs/docker-stack/entrypoint
+airflow-webserver-1  | 
+airflow-webserver-1  | 
+flower-1             | 
+flower-1             | WARNING! You should run the image with GID (Group ID) set to 0
+flower-1             |          even if you use 'airflow' user (UID=50000)
+flower-1             | 
+flower-1             |  You started the image with UID=50000 and GID=50000
+flower-1             | 
+flower-1             |  This is to make sure you can run the image with an arbitrary UID in the future.
+flower-1             | 
+flower-1             |  See more about it in the Airflow's docker image documentation
+airflow-webserver-1  | 
+airflow-webserver-1  | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+airflow-webserver-1  | 
+airflow-webserver-1  | WARNING: This is a development/test feature only. NEVER use it in production!
+airflow-webserver-1  |          Instead, build a custom image as described in
+airflow-webserver-1  | 
+flower-1             |      http://airflow.apache.org/docs/docker-stack/entrypoint
+flower-1             | 
+flower-1             | 
+flower-1             | 
+flower-1             | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+flower-1             | 
+flower-1             | WARNING: This is a development/test feature only. NEVER use it in production!
+flower-1             |          Instead, build a custom image as described in
+flower-1             | 
+flower-1             |          https://airflow.apache.org/docs/docker-stack/build.html
+flower-1             | 
+flower-1             |          Adding requirements at container startup is fragile and is done every time
+flower-1             |          the container starts, so it is only useful for testing and trying out
+flower-1             |          of adding dependencies.
+flower-1             | 
+flower-1             | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+flower-1             | Collecting pymongo
+flower-1             |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+flower-1             | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+flower-1             | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+flower-1             | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+flower-1             | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+flower-1             | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.13.1)
+flower-1             | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.0)
+flower-1             | Requirement already satisfied: asgiref in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.1)
+flower-1             | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (23.2.0)
+flower-1             | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.8.1)
+flower-1             | Requirement already satisfied: colorlog<5.0,>=4.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.8.0)
+flower-1             | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.2)
+flower-1             | Requirement already satisfied: connexion<3.0,>=2.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.2)
+flower-1             | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.3)
+flower-1             | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.5)
+flower-1             | Requirement already satisfied: cryptography>=39.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (41.0.7)
+flower-1             | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.14)
+flower-1             | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.3.8)
+flower-1             | Requirement already satisfied: flask-caching>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+flower-1             | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+flower-1             | Requirement already satisfied: flask-wtf>=0.15 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.1)
+flower-1             | Requirement already satisfied: flask<2.3,>=2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.5)
+flower-1             | Requirement already satisfied: fsspec>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.2)
+flower-1             | Requirement already satisfied: google-re2>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.1.20240501)
+flower-1             | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (22.0.0)
+flower-1             | Requirement already satisfied: httpx in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.23.3)
+flower-1             | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+flower-1             | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.3)
+flower-1             | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.22.0)
+flower-1             | Requirement already satisfied: lazy-object-proxy in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.10.0)
+flower-1             | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.3)
+flower-1             | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.2)
+flower-1             | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+flower-1             | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.5)
+flower-1             | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.1)
+flower-1             | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.0)
+flower-1             | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+streamlit            | 
+admin_db             | [Mon Jun  3 05:02:21 2024] PHP 7.4.33 Development Server (http://[::]:8080) started
+streamlit            | Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+streamlit            | 
+streamlit            | 
+streamlit            |   You can now view your Streamlit app in your browser.
+streamlit            | 
+streamlit            |   Network URL: http://172.19.0.4:8501
+streamlit            |   External URL: http://90.7.241.177:8501
+streamlit            | 
+flower-1             | Requirement already satisfied: opentelemetry-api>=1.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+flower-1             | Requirement already satisfied: opentelemetry-exporter-otlp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+flower-1             | Requirement already satisfied: packaging>=14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (24.0)
+flower-1             | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.1)
+flower-1             | Requirement already satisfied: pendulum<4.0,>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+flower-1             | Requirement already satisfied: pluggy>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+flower-1             | Requirement already satisfied: psutil>=4.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (5.9.8)
+flower-1             | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.17.2)
+flower-1             | Requirement already satisfied: pyjwt>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.8.0)
+flower-1             | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.1)
+flower-1             | Requirement already satisfied: python-dateutil>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.9.0.post0)
+flower-1             | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.0)
+flower-1             | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.0.4)
+flower-1             | Requirement already satisfied: requests<3,>=2.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.31.0)
+flower-1             | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.4)
+flower-1             | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.0)
+flower-1             | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (13.7.1)
+flower-1             | Requirement already satisfied: setproctitle>=1.1.8 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+flower-1             | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.52)
+flower-1             | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.2)
+flower-1             | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+flower-1             | Requirement already satisfied: tenacity!=8.2.0,>=6.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.2.3)
+users_db             | 2024-06-03 05:02:22+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+flower-1             | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.4.0)
+flower-1             | Requirement already satisfied: unicodecsv>=0.14.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.1)
+flower-1             | Requirement already satisfied: universal-pathlib>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.2)
+flower-1             | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.3)
+flower-1             | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+flower-1             | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.12.0)
+flower-1             | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.4)
+flower-1             | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.0)
+flower-1             | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.10.1)
+flower-1             | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.5.0)
+flower-1             | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.6.1)
+flower-1             | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7.1)
+flower-1             | Requirement already satisfied: urllib3>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from docker>=6->apache-airflow-providers-docker) (2.2.1)
+users_db             | 2024-06-03 05:02:23+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+users_db             | 2024-06-03 05:02:23+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.0-1.el9 started.
+users_db             | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+flower-1             | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+flower-1             | Requirement already satisfied: typing-extensions>=4 in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.11.0)
+flower-1             | Requirement already satisfied: flask-appbuilder==4.4.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.4.1)
+flower-1             | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.6.3)
+flower-1             | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.6.1)
+flower-1             | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.6)
+flower-1             | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.1.7)
+flower-1             | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.1)
+flower-1             | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.0)
+flower-1             | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.6.0)
+flower-1             | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.5.1)
+flower-1             | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.6.0)
+flower-1             | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.21.2)
+flower-1             | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.28.2)
+flower-1             | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.1)
+flower-1             | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.41.2)
+flower-1             | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.2)
+flower-1             | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (20.10.2)
+flower-1             | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.1)
+flower-1             | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.1)
+flower-1             | Requirement already satisfied: pytz>2021.1 in /home/airflow/.local/lib/python3.12/site-packages (from croniter>=2.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+flower-1             | Requirement already satisfied: cffi>=1.12 in /home/airflow/.local/lib/python3.12/site-packages (from cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+flower-1             | Requirement already satisfied: wrapt<2,>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from deprecated>=1.2.13->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+flower-1             | Requirement already satisfied: cachelib<0.10.0,>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-caching>=1.5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+users_db             | 2024-06-03T05:02:23.408512Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+flower-1             | Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.1)
+flower-1             | Requirement already satisfied: referencing>=0.28.4 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.31.1)
+flower-1             | Requirement already satisfied: rpds-py>=0.7.1 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.18.0)
+users_db             | 2024-06-03T05:02:23.613386Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.0) starting as process 1
+users_db             | 2024-06-03T05:02:23.618403Z 0 [Warning] [MY-010159] [Server] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+users_db             | 2024-06-03T05:02:23.640170Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+users_db             | 2024-06-03T05:02:25.132029Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+users_db             | 2024-06-03T05:02:25.689472Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+users_db             | 2024-06-03T05:02:25.689883Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+users_db             | 2024-06-03T05:02:25.719329Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+users_db             | 2024-06-03T05:02:25.806895Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+users_db             | 2024-06-03T05:02:26.070492Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+flower-1             | Requirement already satisfied: uc-micro-py in /home/airflow/.local/lib/python3.12/site-packages (from linkify-it-py>=2.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.3)
+flower-1             | Requirement already satisfied: mdurl~=0.1 in /home/airflow/.local/lib/python3.12/site-packages (from markdown-it-py>=2.1.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.2)
+flower-1             | Requirement already satisfied: wirerope>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from methodtools>=0.4.7->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+flower-1             | Requirement already satisfied: importlib-metadata<=7.0,>=6.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.11.0)
+flower-1             | Requirement already satisfied: tzdata>=2020.1 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+flower-1             | Requirement already satisfied: time-machine>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.1)
+flower-1             | Requirement already satisfied: docutils in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16)
+flower-1             | Requirement already satisfied: setuptools>=62.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (66.1.1)
+flower-1             | Requirement already satisfied: six>=1.5 in /home/airflow/.local/lib/python3.12/site-packages (from python-dateutil>=2.3->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+flower-1             | Requirement already satisfied: text-unidecode>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from python-slugify>=5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3)
+flower-1             | Requirement already satisfied: charset-normalizer<4,>=2 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.2)
+flower-1             | Requirement already satisfied: idna<4,>=2.5 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7)
+flower-1             | Requirement already satisfied: certifi>=2017.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.2.2)
+flower-1             | Requirement already satisfied: greenlet!=0.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from sqlalchemy<2.0,>=1.4.36->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.3)
+flower-1             | Requirement already satisfied: more-itertools>=9.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (10.2.0)
+flower-1             | Requirement already satisfied: sqlparse>=0.4.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+flower-1             | Requirement already satisfied: aiohttp>=3.9.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.9.5)
+flower-1             | Requirement already satisfied: requests_toolbelt in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.0)
+flower-1             | Requirement already satisfied: httpcore<0.17.0,>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.3)
+flower-1             | Requirement already satisfied: rfc3986<2,>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+flower-1             | Requirement already satisfied: sniffio in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+flower-1             | Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+flower-1             | Requirement already satisfied: opentelemetry-exporter-otlp-proto-http==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+flower-1             | Requirement already satisfied: googleapis-common-protos~=1.52 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+flower-1             | Requirement already satisfied: grpcio<2.0.0,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+flower-1             | Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+flower-1             | Requirement already satisfied: opentelemetry-proto==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+flower-1             | Requirement already satisfied: opentelemetry-sdk~=1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+flower-1             | Requirement already satisfied: protobuf<5.0,>=3.19 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-proto==1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.25.3)
+flower-1             | Requirement already satisfied: aiosignal>=1.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+flower-1             | Requirement already satisfied: frozenlist>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.1)
+flower-1             | Requirement already satisfied: multidict<7.0,>=4.5 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.5)
+flower-1             | Requirement already satisfied: yarl<2.0,>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.9.4)
+flower-1             | Requirement already satisfied: pycparser in /home/airflow/.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.22)
+flower-1             | Requirement already satisfied: h11<0.15,>=0.13 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.0)
+flower-1             | Requirement already satisfied: anyio<5.0,>=3.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.3.0)
+flower-1             | Requirement already satisfied: zipp>=0.5 in /home/airflow/.local/lib/python3.12/site-packages (from importlib-metadata<=7.0,>=6.0->opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.18.1)
+flower-1             | Requirement already satisfied: Babel>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Babel<3,>=1->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.0)
+flower-1             | Requirement already satisfied: limits>=2.8 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.11.0)
+flower-1             | Requirement already satisfied: ordered-set<5,>4 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.1.0)
+airflow-worker-1     | 
+airflow-worker-1     | WARNING! You should run the image with GID (Group ID) set to 0
+airflow-worker-1     |          even if you use 'airflow' user (UID=50000)
+airflow-worker-1     | 
+airflow-worker-1     |  You started the image with UID=50000 and GID=50000
+airflow-worker-1     | 
+airflow-worker-1     |  This is to make sure you can run the image with an arbitrary UID in the future.
+airflow-worker-1     | 
+airflow-worker-1     |  See more about it in the Airflow's docker image documentation
+airflow-worker-1     |      http://airflow.apache.org/docs/docker-stack/entrypoint
+airflow-worker-1     | 
+airflow-worker-1     | 
+airflow-worker-1     | 
+airflow-worker-1     | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
+airflow-worker-1     | 
+airflow-worker-1     | WARNING: This is a development/test feature only. NEVER use it in production!
+airflow-worker-1     |          Instead, build a custom image as described in
+airflow-worker-1     | 
+airflow-worker-1     |          https://airflow.apache.org/docs/docker-stack/build.html
+airflow-worker-1     | 
+airflow-worker-1     |          Adding requirements at container startup is fragile and is done every time
+airflow-worker-1     |          the container starts, so it is only useful for testing and trying out
+airflow-worker-1     |          of adding dependencies.
+airflow-worker-1     | 
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+airflow-worker-1     | Collecting pymongo
+airflow-worker-1     |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+airflow-worker-1     | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+airflow-worker-1     | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+airflow-worker-1     | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+airflow-worker-1     | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+airflow-worker-1     | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.13.1)
+airflow-worker-1     | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.0)
+airflow-worker-1     | Requirement already satisfied: asgiref in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.1)
+airflow-worker-1     | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (23.2.0)
+airflow-worker-1     | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.8.1)
+airflow-worker-1     | Requirement already satisfied: colorlog<5.0,>=4.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.8.0)
+airflow-worker-1     | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.2)
+airflow-worker-1     | Requirement already satisfied: connexion<3.0,>=2.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.2)
+airflow-worker-1     | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.3)
+airflow-worker-1     | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.5)
+airflow-worker-1     | Requirement already satisfied: cryptography>=39.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (41.0.7)
+airflow-worker-1     | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.14)
+airflow-worker-1     | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.3.8)
+airflow-worker-1     | Requirement already satisfied: flask-caching>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+airflow-worker-1     | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+airflow-worker-1     | Requirement already satisfied: flask-wtf>=0.15 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.1)
+airflow-worker-1     | Requirement already satisfied: flask<2.3,>=2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.5)
+airflow-worker-1     | Requirement already satisfied: fsspec>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.2)
+airflow-worker-1     | Requirement already satisfied: google-re2>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.1.20240501)
+airflow-worker-1     | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (22.0.0)
+airflow-worker-1     | Requirement already satisfied: httpx in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.23.3)
+airflow-worker-1     | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+airflow-worker-1     | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.3)
+airflow-worker-1     | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.22.0)
+airflow-worker-1     | Requirement already satisfied: lazy-object-proxy in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.10.0)
+airflow-worker-1     | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.3)
+airflow-worker-1     | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.2)
+airflow-worker-1     | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+airflow-worker-1     | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.5)
+airflow-worker-1     | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.1)
+airflow-worker-1     | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.0)
+airflow-worker-1     | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-api>=1.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-exporter-otlp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-worker-1     | Requirement already satisfied: packaging>=14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (24.0)
+airflow-worker-1     | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.1)
+airflow-worker-1     | Requirement already satisfied: pendulum<4.0,>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+airflow-worker-1     | Requirement already satisfied: pluggy>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+airflow-worker-1     | Requirement already satisfied: psutil>=4.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (5.9.8)
+airflow-worker-1     | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.17.2)
+airflow-worker-1     | Requirement already satisfied: pyjwt>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.8.0)
+airflow-worker-1     | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.1)
+airflow-worker-1     | Requirement already satisfied: python-dateutil>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.9.0.post0)
+airflow-worker-1     | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.0)
+airflow-worker-1     | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.0.4)
+airflow-worker-1     | Requirement already satisfied: requests<3,>=2.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.31.0)
+airflow-worker-1     | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.4)
+airflow-worker-1     | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.0)
+airflow-worker-1     | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (13.7.1)
+airflow-worker-1     | Requirement already satisfied: setproctitle>=1.1.8 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+airflow-worker-1     | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.52)
+airflow-worker-1     | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.2)
+airflow-worker-1     | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+airflow-worker-1     | Requirement already satisfied: tenacity!=8.2.0,>=6.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.2.3)
+airflow-worker-1     | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.4.0)
+airflow-worker-1     | Requirement already satisfied: unicodecsv>=0.14.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.1)
+airflow-worker-1     | Requirement already satisfied: universal-pathlib>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.2)
+airflow-worker-1     | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.3)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.12.0)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.4)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.0)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.10.1)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.5.0)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.6.1)
+airflow-worker-1     | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7.1)
+airflow-worker-1     | Requirement already satisfied: urllib3>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from docker>=6->apache-airflow-providers-docker) (2.2.1)
+airflow-worker-1     | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+airflow-worker-1     | Requirement already satisfied: typing-extensions>=4 in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.11.0)
+airflow-worker-1     | Requirement already satisfied: flask-appbuilder==4.4.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.4.1)
+airflow-worker-1     | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.6.3)
+airflow-worker-1     | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.6.1)
+airflow-worker-1     | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.6)
+airflow-worker-1     | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.1.7)
+airflow-worker-1     | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.1)
+airflow-worker-1     | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.0)
+airflow-worker-1     | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.6.0)
+airflow-worker-1     | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.5.1)
+airflow-worker-1     | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.6.0)
+airflow-worker-1     | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.21.2)
+airflow-worker-1     | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.28.2)
+airflow-worker-1     | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.1)
+airflow-worker-1     | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.41.2)
+airflow-worker-1     | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.2)
+airflow-worker-1     | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (20.10.2)
+airflow-worker-1     | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.1)
+airflow-worker-1     | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.1)
+airflow-worker-1     | Requirement already satisfied: pytz>2021.1 in /home/airflow/.local/lib/python3.12/site-packages (from croniter>=2.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+airflow-worker-1     | Requirement already satisfied: cffi>=1.12 in /home/airflow/.local/lib/python3.12/site-packages (from cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-worker-1     | Requirement already satisfied: wrapt<2,>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from deprecated>=1.2.13->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-worker-1     | Requirement already satisfied: cachelib<0.10.0,>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-caching>=1.5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+airflow-worker-1     | Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.1)
+airflow-worker-1     | Requirement already satisfied: referencing>=0.28.4 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.31.1)
+airflow-worker-1     | Requirement already satisfied: rpds-py>=0.7.1 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.18.0)
+airflow-worker-1     | Requirement already satisfied: uc-micro-py in /home/airflow/.local/lib/python3.12/site-packages (from linkify-it-py>=2.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.3)
+airflow-worker-1     | Requirement already satisfied: mdurl~=0.1 in /home/airflow/.local/lib/python3.12/site-packages (from markdown-it-py>=2.1.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.2)
+airflow-worker-1     | Requirement already satisfied: wirerope>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from methodtools>=0.4.7->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+airflow-worker-1     | Requirement already satisfied: importlib-metadata<=7.0,>=6.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.11.0)
+airflow-worker-1     | Requirement already satisfied: tzdata>=2020.1 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+airflow-worker-1     | Requirement already satisfied: time-machine>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.1)
+airflow-worker-1     | Requirement already satisfied: docutils in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16)
+airflow-worker-1     | Requirement already satisfied: setuptools>=62.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (66.1.1)
+airflow-worker-1     | Requirement already satisfied: six>=1.5 in /home/airflow/.local/lib/python3.12/site-packages (from python-dateutil>=2.3->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-worker-1     | Requirement already satisfied: text-unidecode>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from python-slugify>=5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3)
+airflow-worker-1     | Requirement already satisfied: charset-normalizer<4,>=2 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.2)
+airflow-worker-1     | Requirement already satisfied: idna<4,>=2.5 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7)
+airflow-worker-1     | Requirement already satisfied: certifi>=2017.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.2.2)
+airflow-worker-1     | Requirement already satisfied: greenlet!=0.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from sqlalchemy<2.0,>=1.4.36->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.3)
+airflow-worker-1     | Requirement already satisfied: more-itertools>=9.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (10.2.0)
+airflow-worker-1     | Requirement already satisfied: sqlparse>=0.4.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+airflow-worker-1     | Requirement already satisfied: aiohttp>=3.9.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.9.5)
+airflow-worker-1     | Requirement already satisfied: requests_toolbelt in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.0)
+airflow-worker-1     | Requirement already satisfied: httpcore<0.17.0,>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.3)
+airflow-worker-1     | Requirement already satisfied: rfc3986<2,>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+airflow-worker-1     | Requirement already satisfied: sniffio in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-exporter-otlp-proto-http==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-worker-1     | Requirement already satisfied: googleapis-common-protos~=1.52 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+airflow-worker-1     | Requirement already satisfied: grpcio<2.0.0,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-proto==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-sdk~=1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-worker-1     | Requirement already satisfied: protobuf<5.0,>=3.19 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-proto==1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.25.3)
+airflow-worker-1     | Requirement already satisfied: aiosignal>=1.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-worker-1     | Requirement already satisfied: frozenlist>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.1)
+airflow-worker-1     | Requirement already satisfied: multidict<7.0,>=4.5 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.5)
+airflow-worker-1     | Requirement already satisfied: yarl<2.0,>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.9.4)
+airflow-worker-1     | Requirement already satisfied: pycparser in /home/airflow/.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.22)
+airflow-worker-1     | Requirement already satisfied: h11<0.15,>=0.13 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.0)
+airflow-worker-1     | Requirement already satisfied: anyio<5.0,>=3.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.3.0)
+airflow-worker-1     | Requirement already satisfied: zipp>=0.5 in /home/airflow/.local/lib/python3.12/site-packages (from importlib-metadata<=7.0,>=6.0->opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.18.1)
+airflow-worker-1     | Requirement already satisfied: Babel>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Babel<3,>=1->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.0)
+airflow-worker-1     | Requirement already satisfied: limits>=2.8 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.11.0)
+airflow-worker-1     | Requirement already satisfied: ordered-set<5,>4 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.1.0)
+airflow-worker-1     | Requirement already satisfied: opentelemetry-semantic-conventions==0.45b0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-sdk~=1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.45b0)
+airflow-worker-1     | Requirement already satisfied: importlib-resources>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from limits>=2.8->Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.4.0)
+airflow-worker-1     | Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (686 kB)
+airflow-worker-1     |    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 686.8/686.8 kB 4.5 MB/s eta 0:00:00
+airflow-webserver-1  |          https://airflow.apache.org/docs/docker-stack/build.html
+airflow-webserver-1  | 
+airflow-webserver-1  |          Adding requirements at container startup is fragile and is done every time
+airflow-webserver-1  |          the container starts, so it is only useful for testing and trying out
+airflow-webserver-1  |          of adding dependencies.
+airflow-webserver-1  | 
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
+airflow-webserver-1  | Collecting pymongo
+airflow-webserver-1  |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
+airflow-webserver-1  | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
+airflow-webserver-1  | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
+airflow-webserver-1  | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
+airflow-webserver-1  | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.13.1)
+airflow-webserver-1  | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.0)
+airflow-webserver-1  | Requirement already satisfied: asgiref in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.1)
+airflow-webserver-1  | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (23.2.0)
+airflow-webserver-1  | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.8.1)
+airflow-webserver-1  | Requirement already satisfied: colorlog<5.0,>=4.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.8.0)
+airflow-webserver-1  | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.2)
+airflow-webserver-1  | Requirement already satisfied: connexion<3.0,>=2.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.2)
+airflow-webserver-1  | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.3)
+airflow-webserver-1  | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.5)
+airflow-webserver-1  | Requirement already satisfied: cryptography>=39.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (41.0.7)
+airflow-webserver-1  | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.14)
+airflow-webserver-1  | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.3.8)
+airflow-webserver-1  | Requirement already satisfied: flask-caching>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+airflow-webserver-1  | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+airflow-webserver-1  | Requirement already satisfied: flask-wtf>=0.15 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.1)
+airflow-webserver-1  | Requirement already satisfied: flask<2.3,>=2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.5)
+airflow-webserver-1  | Requirement already satisfied: fsspec>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.2)
+airflow-webserver-1  | Requirement already satisfied: google-re2>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.1.20240501)
+airflow-webserver-1  | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (22.0.0)
+airflow-webserver-1  | Requirement already satisfied: httpx in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.23.3)
+airflow-webserver-1  | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+airflow-webserver-1  | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.3)
+airflow-webserver-1  | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.22.0)
+airflow-webserver-1  | Requirement already satisfied: lazy-object-proxy in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.10.0)
+airflow-webserver-1  | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.3)
+airflow-webserver-1  | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.2)
+airflow-webserver-1  | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+airflow-webserver-1  | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.5)
+airflow-webserver-1  | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.1)
+airflow-webserver-1  | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.0)
+airflow-webserver-1  | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+airflow-webserver-1  | Requirement already satisfied: opentelemetry-api>=1.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-webserver-1  | Requirement already satisfied: opentelemetry-exporter-otlp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-webserver-1  | Requirement already satisfied: packaging>=14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (24.0)
+airflow-webserver-1  | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.1)
+airflow-webserver-1  | Requirement already satisfied: pendulum<4.0,>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+airflow-webserver-1  | Requirement already satisfied: pluggy>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+airflow-webserver-1  | Requirement already satisfied: psutil>=4.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (5.9.8)
+airflow-webserver-1  | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.17.2)
+airflow-webserver-1  | Requirement already satisfied: pyjwt>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.8.0)
+airflow-webserver-1  | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.1)
+airflow-webserver-1  | Requirement already satisfied: python-dateutil>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.9.0.post0)
+airflow-webserver-1  | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.0)
+airflow-webserver-1  | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.0.4)
+airflow-webserver-1  | Requirement already satisfied: requests<3,>=2.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.31.0)
+airflow-webserver-1  | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.4)
+airflow-webserver-1  | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.0)
+airflow-webserver-1  | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (13.7.1)
+airflow-webserver-1  | Requirement already satisfied: setproctitle>=1.1.8 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+airflow-webserver-1  | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.52)
+airflow-webserver-1  | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.2)
+airflow-webserver-1  | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+airflow-webserver-1  | Requirement already satisfied: tenacity!=8.2.0,>=6.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.2.3)
+airflow-webserver-1  | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.4.0)
+airflow-webserver-1  | Requirement already satisfied: unicodecsv>=0.14.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.1)
+airflow-webserver-1  | Requirement already satisfied: universal-pathlib>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.2)
+airflow-webserver-1  | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.3)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.12.0)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.4)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.0)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.10.1)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.5.0)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.6.1)
+airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7.1)
+airflow-webserver-1  | Requirement already satisfied: urllib3>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from docker>=6->apache-airflow-providers-docker) (2.2.1)
+airflow-webserver-1  | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+airflow-webserver-1  | Requirement already satisfied: typing-extensions>=4 in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.11.0)
+airflow-webserver-1  | Requirement already satisfied: flask-appbuilder==4.4.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.4.1)
+airflow-webserver-1  | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.6.3)
+airflow-webserver-1  | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.6.1)
+airflow-webserver-1  | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.6)
+airflow-webserver-1  | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.1.7)
+airflow-webserver-1  | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.1)
+airflow-webserver-1  | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.0)
+airflow-webserver-1  | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.6.0)
+airflow-webserver-1  | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.5.1)
+airflow-webserver-1  | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.6.0)
+airflow-webserver-1  | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.21.2)
+airflow-webserver-1  | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.28.2)
+airflow-webserver-1  | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.1)
+airflow-webserver-1  | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.41.2)
+airflow-webserver-1  | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.2)
+airflow-webserver-1  | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (20.10.2)
+airflow-webserver-1  | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.1)
+airflow-webserver-1  | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.1)
+airflow-webserver-1  | Requirement already satisfied: pytz>2021.1 in /home/airflow/.local/lib/python3.12/site-packages (from croniter>=2.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+airflow-webserver-1  | Requirement already satisfied: cffi>=1.12 in /home/airflow/.local/lib/python3.12/site-packages (from cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-webserver-1  | Requirement already satisfied: wrapt<2,>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from deprecated>=1.2.13->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-webserver-1  | Requirement already satisfied: cachelib<0.10.0,>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-caching>=1.5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+airflow-webserver-1  | Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.1)
+airflow-webserver-1  | Requirement already satisfied: referencing>=0.28.4 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.31.1)
+airflow-webserver-1  | Requirement already satisfied: rpds-py>=0.7.1 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.18.0)
+airflow-webserver-1  | Requirement already satisfied: uc-micro-py in /home/airflow/.local/lib/python3.12/site-packages (from linkify-it-py>=2.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.3)
+airflow-webserver-1  | Requirement already satisfied: mdurl~=0.1 in /home/airflow/.local/lib/python3.12/site-packages (from markdown-it-py>=2.1.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.2)
+airflow-webserver-1  | Requirement already satisfied: wirerope>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from methodtools>=0.4.7->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+airflow-webserver-1  | Requirement already satisfied: importlib-metadata<=7.0,>=6.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.11.0)
+airflow-webserver-1  | Requirement already satisfied: tzdata>=2020.1 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+airflow-webserver-1  | Requirement already satisfied: time-machine>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.1)
+airflow-webserver-1  | Requirement already satisfied: docutils in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16)
+airflow-webserver-1  | Requirement already satisfied: setuptools>=62.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (66.1.1)
+airflow-webserver-1  | Requirement already satisfied: six>=1.5 in /home/airflow/.local/lib/python3.12/site-packages (from python-dateutil>=2.3->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-webserver-1  | Requirement already satisfied: text-unidecode>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from python-slugify>=5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3)
+airflow-webserver-1  | Requirement already satisfied: charset-normalizer<4,>=2 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.2)
+airflow-webserver-1  | Requirement already satisfied: idna<4,>=2.5 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7)
+airflow-webserver-1  | Requirement already satisfied: certifi>=2017.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.2.2)
+airflow-webserver-1  | Requirement already satisfied: greenlet!=0.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from sqlalchemy<2.0,>=1.4.36->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.3)
+airflow-webserver-1  | Requirement already satisfied: more-itertools>=9.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (10.2.0)
+airflow-webserver-1  | Requirement already satisfied: sqlparse>=0.4.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+airflow-webserver-1  | Requirement already satisfied: aiohttp>=3.9.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.9.5)
+airflow-webserver-1  | Requirement already satisfied: requests_toolbelt in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.0)
+airflow-webserver-1  | Requirement already satisfied: httpcore<0.17.0,>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.3)
+airflow-webserver-1  | Requirement already satisfied: rfc3986<2,>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+airflow-webserver-1  | Requirement already satisfied: sniffio in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-webserver-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-webserver-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-http==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-webserver-1  | Requirement already satisfied: googleapis-common-protos~=1.52 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+airflow-webserver-1  | Requirement already satisfied: grpcio<2.0.0,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+airflow-webserver-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-webserver-1  | Requirement already satisfied: opentelemetry-proto==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-webserver-1  | Requirement already satisfied: opentelemetry-sdk~=1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-webserver-1  | Requirement already satisfied: protobuf<5.0,>=3.19 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-proto==1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.25.3)
+airflow-webserver-1  | Requirement already satisfied: aiosignal>=1.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-webserver-1  | Requirement already satisfied: frozenlist>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.1)
+airflow-webserver-1  | Requirement already satisfied: multidict<7.0,>=4.5 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.5)
+airflow-webserver-1  | Requirement already satisfied: yarl<2.0,>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.9.4)
+airflow-webserver-1  | Requirement already satisfied: pycparser in /home/airflow/.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.22)
+airflow-webserver-1  | Requirement already satisfied: h11<0.15,>=0.13 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.0)
+airflow-webserver-1  | Requirement already satisfied: anyio<5.0,>=3.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.3.0)
+airflow-webserver-1  | Requirement already satisfied: zipp>=0.5 in /home/airflow/.local/lib/python3.12/site-packages (from importlib-metadata<=7.0,>=6.0->opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.18.1)
+airflow-webserver-1  | Requirement already satisfied: Babel>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Babel<3,>=1->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.0)
+airflow-webserver-1  | Requirement already satisfied: limits>=2.8 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.11.0)
+airflow-webserver-1  | Requirement already satisfied: ordered-set<5,>4 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.1.0)
 airflow-scheduler-1  | 
 airflow-scheduler-1  | WARNING! You should run the image with GID (Group ID) set to 0
 airflow-scheduler-1  |          even if you use 'airflow' user (UID=50000)
@@ -218,63 +687,144 @@ airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-d
 airflow-scheduler-1  | Collecting pymongo
 airflow-scheduler-1  |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
 airflow-scheduler-1  | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
-airflow-webserver-1  | 
-airflow-webserver-1  | WARNING! You should run the image with GID (Group ID) set to 0
 airflow-scheduler-1  | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
 airflow-scheduler-1  | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
 airflow-scheduler-1  | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
-airflow-webserver-1  |          even if you use 'airflow' user (UID=50000)
-airflow-webserver-1  | 
-airflow-webserver-1  |  You started the image with UID=50000 and GID=50000
-airflow-webserver-1  | 
-airflow-webserver-1  |  This is to make sure you can run the image with an arbitrary UID in the future.
-airflow-webserver-1  | 
-airflow-webserver-1  |  See more about it in the Airflow's docker image documentation
-airflow-webserver-1  |      http://airflow.apache.org/docs/docker-stack/entrypoint
-airflow-webserver-1  | 
-airflow-webserver-1  | 
-airflow-webserver-1  | 
-airflow-webserver-1  | !!!!!  Installing additional requirements: ' apache-airflow-providers-docker pymongo' !!!!!!!!!!!!
-airflow-webserver-1  | 
-airflow-webserver-1  | WARNING: This is a development/test feature only. NEVER use it in production!
-airflow-webserver-1  |          Instead, build a custom image as described in
-airflow-webserver-1  | 
-airflow-webserver-1  |          https://airflow.apache.org/docs/docker-stack/build.html
-airflow-webserver-1  | 
-airflow-webserver-1  |          Adding requirements at container startup is fragile and is done every time
-airflow-webserver-1  |          the container starts, so it is only useful for testing and trying out
-airflow-webserver-1  |          of adding dependencies.
-airflow-webserver-1  | 
-airflow-webserver-1  | Requirement already satisfied: apache-airflow-providers-docker in /home/airflow/.local/lib/python3.12/site-packages (3.10.0)
-airflow-webserver-1  | Collecting pymongo
-airflow-webserver-1  |   Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
-airflow-webserver-1  | Requirement already satisfied: apache-airflow>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (2.9.1)
-airflow-webserver-1  | Requirement already satisfied: docker>=6 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (7.0.0)
-airflow-webserver-1  | Requirement already satisfied: python-dotenv>=0.21.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-docker) (1.0.1)
-airflow-webserver-1  | Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from pymongo) (2.6.1)
-airflow-init-1       | 
-airflow-init-1       | WARNING! You should run the image with GID (Group ID) set to 0
-airflow-init-1       |          even if you use 'airflow' user (UID=50000)
-airflow-init-1       | 
-airflow-init-1       |  You started the image with UID=50000 and GID=50000
-airflow-init-1       | 
-airflow-init-1       |  This is to make sure you can run the image with an arbitrary UID in the future.
-airflow-init-1       | 
-airflow-init-1       |  See more about it in the Airflow's docker image documentation
-airflow-init-1       |      http://airflow.apache.org/docs/docker-stack/entrypoint
-airflow-init-1       | 
-airflow-init-1       | 
-airflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:812 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
-airflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:724 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
-airflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:747 DeprecationWarning: The auth_backend option in [api] has been renamed to auth_backends - the old setting has been used, but please update your config.
-airflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:761 FutureWarning: The auth_backends setting in [api] has had airflow.api.auth.backend.session added in the running config, which is needed by the UI. Please update your config before Apache Airflow 3.0.
-airflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/configuration.py:738 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
-airflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
-airflow-init-1       | /home/airflow/.local/lib/python3.12/site-packages/airflow/models/base.py:72 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
-airflow-init-1       | DB: postgresql+psycopg2://airflow:***@postgres/airflow
-airflow-init-1       | Performing upgrade to the metadata database postgresql+psycopg2://airflow:***@postgres/airflow
-airflow-init-1       | [[34m2024-06-01T16:43:49.494+0000[0m] {[34mmigration.py:[0m216} INFO[0m - Context impl PostgresqlImpl.[0m
-airflow-init-1       | [[34m2024-06-01T16:43:49.495+0000[0m] {[34mmigration.py:[0m219} INFO[0m - Will assume transactional DDL.[0m
-airflow-init-1       | [[34m2024-06-01T16:43:49.501+0000[0m] {[34mdb.py:[0m1623} INFO[0m - Creating tables[0m
-airflow-init-1       | INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
-airflow-init-1       | INFO  [alembic.runtime.migration] Will assume transactional DDL.
+airflow-scheduler-1  | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.13.1)
+airflow-scheduler-1  | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.0)
+airflow-scheduler-1  | Requirement already satisfied: asgiref in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.1)
+airflow-scheduler-1  | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (23.2.0)
+airflow-scheduler-1  | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.8.1)
+airflow-scheduler-1  | Requirement already satisfied: colorlog<5.0,>=4.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.8.0)
+airflow-scheduler-1  | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.2)
+airflow-scheduler-1  | Requirement already satisfied: connexion<3.0,>=2.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.2)
+airflow-scheduler-1  | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.3)
+airflow-scheduler-1  | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.5)
+airflow-scheduler-1  | Requirement already satisfied: cryptography>=39.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (41.0.7)
+airflow-scheduler-1  | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.14)
+airflow-scheduler-1  | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.3.8)
+airflow-scheduler-1  | Requirement already satisfied: flask-caching>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+airflow-scheduler-1  | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+airflow-scheduler-1  | Requirement already satisfied: flask-wtf>=0.15 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.2.1)
+airflow-scheduler-1  | Requirement already satisfied: flask<2.3,>=2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.5)
+airflow-scheduler-1  | Requirement already satisfied: fsspec>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.2)
+airflow-scheduler-1  | Requirement already satisfied: google-re2>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.1.20240501)
+airflow-scheduler-1  | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (22.0.0)
+airflow-scheduler-1  | Requirement already satisfied: httpx in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.23.3)
+airflow-scheduler-1  | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.0)
+airflow-scheduler-1  | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.3)
+airflow-scheduler-1  | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.22.0)
+airflow-scheduler-1  | Requirement already satisfied: lazy-object-proxy in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.10.0)
+airflow-scheduler-1  | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.3)
+airflow-scheduler-1  | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.2)
+airflow-scheduler-1  | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+airflow-scheduler-1  | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.5)
+airflow-scheduler-1  | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.1)
+airflow-scheduler-1  | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.0)
+airflow-scheduler-1  | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-api>=1.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-exporter-otlp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-scheduler-1  | Requirement already satisfied: packaging>=14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (24.0)
+airflow-scheduler-1  | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.12.1)
+airflow-scheduler-1  | Requirement already satisfied: pendulum<4.0,>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.0)
+airflow-scheduler-1  | Requirement already satisfied: pluggy>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+airflow-scheduler-1  | Requirement already satisfied: psutil>=4.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (5.9.8)
+airflow-scheduler-1  | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.17.2)
+airflow-scheduler-1  | Requirement already satisfied: pyjwt>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.8.0)
+airflow-scheduler-1  | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.1)
+airflow-scheduler-1  | Requirement already satisfied: python-dateutil>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.9.0.post0)
+airflow-scheduler-1  | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.0)
+airflow-scheduler-1  | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.0.4)
+airflow-scheduler-1  | Requirement already satisfied: requests<3,>=2.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.31.0)
+airflow-scheduler-1  | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.4)
+airflow-scheduler-1  | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.0)
+airflow-scheduler-1  | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (13.7.1)
+airflow-scheduler-1  | Requirement already satisfied: setproctitle>=1.1.8 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+airflow-scheduler-1  | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.52)
+airflow-scheduler-1  | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.2)
+airflow-scheduler-1  | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+airflow-scheduler-1  | Requirement already satisfied: tenacity!=8.2.0,>=6.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.2.3)
+airflow-scheduler-1  | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.4.0)
+airflow-scheduler-1  | Requirement already satisfied: unicodecsv>=0.14.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.1)
+airflow-scheduler-1  | Requirement already satisfied: universal-pathlib>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.2)
+airflow-scheduler-1  | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.2.3)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.12.0)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.4)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.8.0)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.10.1)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.5.0)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.6.1)
+airflow-scheduler-1  | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7.1)
+airflow-scheduler-1  | Requirement already satisfied: urllib3>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from docker>=6->apache-airflow-providers-docker) (2.2.1)
+airflow-scheduler-1  | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.3)
+airflow-scheduler-1  | Requirement already satisfied: typing-extensions>=4 in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.11.0)
+airflow-scheduler-1  | Requirement already satisfied: flask-appbuilder==4.4.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.4.1)
+airflow-scheduler-1  | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.6.3)
+airflow-scheduler-1  | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.6.1)
+airflow-scheduler-1  | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.6)
+airflow-scheduler-1  | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (8.1.7)
+airflow-scheduler-1  | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.1.1)
+airflow-scheduler-1  | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.0.0)
+airflow-scheduler-1  | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.6.0)
+airflow-scheduler-1  | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.5.1)
+airflow-scheduler-1  | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.6.0)
+airflow-scheduler-1  | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.21.2)
+airflow-scheduler-1  | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.28.2)
+airflow-scheduler-1  | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.2.1)
+airflow-scheduler-1  | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.41.2)
+airflow-scheduler-1  | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.1.2)
+airflow-scheduler-1  | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (20.10.2)
+airflow-scheduler-1  | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.1)
+airflow-scheduler-1  | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.10.0->connexion[flask]<3.0,>=2.10.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.1)
+airflow-scheduler-1  | Requirement already satisfied: pytz>2021.1 in /home/airflow/.local/lib/python3.12/site-packages (from croniter>=2.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+airflow-scheduler-1  | Requirement already satisfied: cffi>=1.12 in /home/airflow/.local/lib/python3.12/site-packages (from cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-scheduler-1  | Requirement already satisfied: wrapt<2,>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from deprecated>=1.2.13->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-scheduler-1  | Requirement already satisfied: cachelib<0.10.0,>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-caching>=1.5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.9.0)
+airflow-scheduler-1  | Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2023.12.1)
+airflow-scheduler-1  | Requirement already satisfied: referencing>=0.28.4 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.31.1)
+airflow-scheduler-1  | Requirement already satisfied: rpds-py>=0.7.1 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.18.0)
+airflow-scheduler-1  | Requirement already satisfied: uc-micro-py in /home/airflow/.local/lib/python3.12/site-packages (from linkify-it-py>=2.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.3)
+airflow-scheduler-1  | Requirement already satisfied: mdurl~=0.1 in /home/airflow/.local/lib/python3.12/site-packages (from markdown-it-py>=2.1.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.1.2)
+airflow-scheduler-1  | Requirement already satisfied: wirerope>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from methodtools>=0.4.7->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.4.7)
+airflow-scheduler-1  | Requirement already satisfied: importlib-metadata<=7.0,>=6.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.11.0)
+airflow-scheduler-1  | Requirement already satisfied: tzdata>=2020.1 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.1)
+airflow-scheduler-1  | Requirement already satisfied: time-machine>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum<4.0,>=2.1.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.1)
+airflow-scheduler-1  | Requirement already satisfied: docutils in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16)
+airflow-scheduler-1  | Requirement already satisfied: setuptools>=62.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from python-daemon>=3.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (66.1.1)
+airflow-scheduler-1  | Requirement already satisfied: six>=1.5 in /home/airflow/.local/lib/python3.12/site-packages (from python-dateutil>=2.3->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.16.0)
+airflow-scheduler-1  | Requirement already satisfied: text-unidecode>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from python-slugify>=5.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3)
+airflow-scheduler-1  | Requirement already satisfied: charset-normalizer<4,>=2 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.3.2)
+airflow-scheduler-1  | Requirement already satisfied: idna<4,>=2.5 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.7)
+airflow-scheduler-1  | Requirement already satisfied: certifi>=2017.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.27.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2024.2.2)
+airflow-scheduler-1  | Requirement already satisfied: greenlet!=0.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from sqlalchemy<2.0,>=1.4.36->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.0.3)
+airflow-scheduler-1  | Requirement already satisfied: more-itertools>=9.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (10.2.0)
+airflow-scheduler-1  | Requirement already satisfied: sqlparse>=0.4.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.5.0)
+airflow-scheduler-1  | Requirement already satisfied: aiohttp>=3.9.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.9.5)
+airflow-scheduler-1  | Requirement already satisfied: requests_toolbelt in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.0.0)
+airflow-scheduler-1  | Requirement already satisfied: httpcore<0.17.0,>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.16.3)
+airflow-scheduler-1  | Requirement already satisfied: rfc3986<2,>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.5.0)
+airflow-scheduler-1  | Requirement already satisfied: sniffio in /home/airflow/.local/lib/python3.12/site-packages (from httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-http==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-scheduler-1  | Requirement already satisfied: googleapis-common-protos~=1.52 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+airflow-scheduler-1  | Requirement already satisfied: grpcio<2.0.0,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.63.0)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-proto==1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-sdk~=1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.24.0)
+airflow-scheduler-1  | Requirement already satisfied: protobuf<5.0,>=3.19 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-proto==1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.25.3)
+airflow-scheduler-1  | Requirement already satisfied: aiosignal>=1.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.3.1)
+airflow-scheduler-1  | Requirement already satisfied: frozenlist>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.4.1)
+airflow-scheduler-1  | Requirement already satisfied: multidict<7.0,>=4.5 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.0.5)
+airflow-scheduler-1  | Requirement already satisfied: yarl<2.0,>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.9.2->apache-airflow-providers-http->apache-airflow>=2.6.0->apache-airflow-providers-docker) (1.9.4)
+airflow-scheduler-1  | Requirement already satisfied: pycparser in /home/airflow/.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography>=39.0.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.22)
+airflow-scheduler-1  | Requirement already satisfied: h11<0.15,>=0.13 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.14.0)
+airflow-scheduler-1  | Requirement already satisfied: anyio<5.0,>=3.0 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore<0.17.0,>=0.15.0->httpx->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.3.0)
+airflow-scheduler-1  | Requirement already satisfied: zipp>=0.5 in /home/airflow/.local/lib/python3.12/site-packages (from importlib-metadata<=7.0,>=6.0->opentelemetry-api>=1.15.0->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.18.1)
+airflow-scheduler-1  | Requirement already satisfied: Babel>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Babel<3,>=1->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (2.14.0)
+airflow-scheduler-1  | Requirement already satisfied: limits>=2.8 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (3.11.0)
+airflow-scheduler-1  | Requirement already satisfied: ordered-set<5,>4 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (4.1.0)
+airflow-scheduler-1  | Requirement already satisfied: opentelemetry-semantic-conventions==0.45b0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-sdk~=1.24.0->opentelemetry-exporter-otlp-proto-grpc==1.24.0->opentelemetry-exporter-otlp->apache-airflow>=2.6.0->apache-airflow-providers-docker) (0.45b0)
+airflow-scheduler-1  | Requirement already satisfied: importlib-resources>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from limits>=2.8->Flask-Limiter<4,>3->flask-appbuilder==4.4.1->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.6.0->apache-airflow-providers-docker) (6.4.0)
+airflow-scheduler-1  | Downloading pymongo-4.7.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (686 kB)
+airflow-scheduler-1  |    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 686.8/686.8 kB 4.7 MB/s eta 0:00:00

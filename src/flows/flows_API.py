@@ -10,6 +10,7 @@ import json
 import time
 import os
 import shutil
+import glob
 from datetime import datetime
 
 # Instanciate your FastAPI app
@@ -202,8 +203,10 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
         
         # Delete all files in data/predict/image_test
         if os.path.exists(image_test_path):
+            pattern = os.path.join(image_test_path, "image_*")
+            image_files = glob.glob(pattern)
         # Parcourir tous les fichiers dans le répertoire et les supprimer
-            for filename in os.listdir(image_test_path):
+            for filename in image_files: # os.listdir(image_test_path):
                 file_path = os.path.join(image_test_path, filename)
                 if os.path.isfile(file_path): # or os.path.islink(file_path):
                     os.unlink(file_path)
@@ -404,18 +407,30 @@ def  reset_dataset(input_data: NewProductsInput, images: Optional[bool] = True, 
                         if os.path.isfile(file_path) or os.path.islink(file_path):
                             os.unlink(file_path) 
         
+        # Effacement des image dans origin_path
+        pattern = os.path.join(origin_path+"/image_test", "image_*")
+        image_files = glob.glob(pattern)
+        for file in image_files:
+            try:
+                os.remove(file)
+            except Exception as e:
+                print(f"Error deleting {file}: {e}")
+
+        
         # Réinitialisation
         X_new_df = X_new_df.drop(X_new_df.index)
-        X_train_df = X_train_df.iloc[:num_train]
-        y_train_df = y_train_df.iloc[:num_train]
+        # X_train_df = X_train_df.iloc[:num_train]
+        # y_train_df = y_train_df.iloc[:num_train]
         new_classes_origin_df = new_classes_origin_df.drop(new_classes_origin_df.index)
         new_classes_dest_df = new_classes_dest_df.drop(new_classes_dest_df.index)
         shutil.copy(X_test_path, reserve_path)
         
         # Ecriture des Datasets réinitialisés
         X_new_df.to_csv(X_new_path)
-        X_train_df.to_csv(X_train_path)
-        y_train_df.to_csv(y_train_path)
+        shutil.copy(f"{dest_path}/X_train_update - saved.csv" , X_train_path)
+        shutil.copy(f"{dest_path}/Y_train_CVw08PX - saved.csv" , y_train_path)
+        # X_train_df.to_csv(X_train_path)
+        # y_train_df.to_csv(y_train_path)
         new_classes_origin_df.to_csv(new_classes_origin_path, index=False)
         new_classes_dest_df.to_csv(new_classes_dest_path, index=False)
         

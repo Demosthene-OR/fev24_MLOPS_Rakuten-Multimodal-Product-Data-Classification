@@ -32,7 +32,10 @@ def f1_m(y_true, y_pred):
 
 def load_model(file_path, file_name):
     
-    merge = Merge(file_path+"/"+file_name[:-3],  file_path, file_name).merge(cleanup=False)
+    model_path = os.path.join(file_path, file_name)
+    # Vérifier si le fichier modèle existe déjà
+    if not os.path.exists(model_path):
+        merge = Merge(file_path+"/"+file_name[:-3],  file_path, file_name).merge(cleanup=False)
     with keras.utils.custom_object_scope({"f1_m": f1_m}):
         return keras.models.load_model(file_path+"/"+file_name)
 
