@@ -9,7 +9,7 @@ import json
 from datetime import time
 from extra_streamlit_components import tab_bar, TabBarItemData
 import shutil
-
+from tools import load_model, save_model
 
 
 title = "Production Release"
@@ -101,4 +101,5 @@ def run():
             predict_endpoint = "http://api_predict:8000/initialisation"
             predict_response = requests.get(predict_endpoint)
             st.success(predict_response.json().get("message", "No message in response"))
+            
             
