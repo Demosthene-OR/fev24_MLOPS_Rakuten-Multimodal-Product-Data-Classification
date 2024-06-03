@@ -187,7 +187,7 @@ with DAG(
     train_model_task = PythonOperator(
         task_id='train_model',
         python_callable=train_model,
-        op_kwargs={'n_epochs': 30},
+        op_kwargs={'n_epochs': 15},
         provide_context=True
     )
        
