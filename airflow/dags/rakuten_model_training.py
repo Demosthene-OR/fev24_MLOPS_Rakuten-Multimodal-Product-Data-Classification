@@ -122,16 +122,19 @@ with DAG(
                     accuracy = response.json().get("accuracy", None)
                     print("#### Accuracy on the last",num_sales,"sales = ",accuracy)
                     context['ti'].xcom_push(key='accuracy', value=accuracy)
+                    return ['alert_email','alert_slack_user','train_model']
                 else:
                     print('#### The task check_accuracy did not work!')
                     raise Exception('#### The task check_accuracy did not work!')
             else:
                 print(f'#### The number of new sales {num_new_sales} is less than the number of sales expected {num_sales} to compute the accuracy!')
+                return 'skip_processing'
         except requests.RequestException as e:
             print(f"#### Failed to compute metrics : {e}")
+            raise Exception(f"#### Failed to compute metrics : {e}")
         return
 
-    check_task = PythonOperator(
+    check_task = BranchPythonOperator(
         task_id='check_model_accuracy',
         python_callable=check_accuracy,
         provide_context=True
@@ -246,6 +249,7 @@ with DAG(
     check_file_modification_task >> check_task
     check_file_modification_task >> skip_processing
     # file_sensor_task >> check_task
+    check_task >> skip_processing
     check_task >> send_email_task
     check_task >> notify_user_task
     check_task >> train_model_task
