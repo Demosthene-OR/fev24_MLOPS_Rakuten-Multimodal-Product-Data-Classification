@@ -88,6 +88,34 @@ def create_user(user: UserDetail):
             cursor.close()
         if connection is not None and connection.is_connected():
             connection.close()
+            
+def delete_user(username: str):
+    connection = None
+    cursor = None
+    try:
+        connection = mysql.connector.connect(
+            host=MYSQL_HOST,
+            user=MYSQL_USER,
+            port="3306",
+            password=MYSQL_PASSWORD,
+            database=MYSQL_DB
+        )
+        if connection.is_connected():
+            cursor = connection.cursor()
+            query = "DELETE FROM Users WHERE username = %s"
+            cursor.execute(query, (username,))
+            connection.commit()
+            if cursor.rowcount == 0:
+                raise HTTPException(status_code=404, detail="User not found")
+    except Error as e:
+        print(f"Error while querying MySQL: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if connection is not None and connection.is_connected():
+            connection.close()
+
 
 class Token(BaseModel):
     access_token: str
@@ -166,6 +194,14 @@ async def create_new_user(user: UserDetail):
         raise HTTPException(status_code=400, detail="Username already registered")
     create_user(user)
     return user
+
+@app.delete("/users/{username}", status_code=204)
+async def delete_existing_user(username: str):
+    existing_user = get_user(username)
+    if not existing_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    delete_user(username)
+    return {"detail": "User deleted successfully"}
 
 @app.get("/")
 def read_public_data():
