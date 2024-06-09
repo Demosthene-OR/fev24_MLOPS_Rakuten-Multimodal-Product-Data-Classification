@@ -195,7 +195,7 @@ async def create_new_user(user: UserDetail):
     create_user(user)
     return user
 
-@app.delete("/userdelete/{username}", status_code=204)
+@app.post("/userdelete/{username}", status_code=204)
 async def delete_existing_user(username: str):
     existing_user = get_user(username)
     if not existing_user:
