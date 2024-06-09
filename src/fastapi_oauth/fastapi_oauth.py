@@ -8,10 +8,6 @@ from typing import Optional
 import jwt
 from jwt import PyJWTError
 from datetime import datetime, timedelta, timezone
-import requests
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import text
 
 app = FastAPI()
 
@@ -21,6 +17,7 @@ class UserDetail(BaseModel):
     Email: str
     Authorization: str
     username: str
+    password: str # The UserDetail model includes a password field
 
 
 # Configuration de la base de données MySQL
@@ -39,67 +36,8 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 # Fonction pour interroger la base de données et récupérer les informations d'identification de l'utilisateur
 def get_user(username: str):
-    # Define the database connection URL
-    db_url = 'mysql+pymysql://'+MYSQL_USER+':'+MYSQL_PASSWORD+'@localhost:3306/'+MYSQL_DB
-
-    # Create the SQLAlchemy engine
-    engine = create_engine(db_url)
-    
-    # Create a session
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    
-    # Retrieve data from the table
-    table_name = 'Users' 
-    
-    # Execute the query
-    query = text(f"SELECT * FROM {table_name} WHERE username = :username")
-    table_data = session.execute(query, {"username": username})
-
-    # Define a User class
-    class User:
-        def __init__(self, **kwargs):
-            self.__dict__.update(kwargs)
-
-    # Process the retrieved data
-    users = []
-    for row in table_data:
-        # Convert the row object to a dictionary
-        row_dict = dict(row._asdict())
-        # Create a user object and add it to the list
-        user = User(**row_dict)
-        users.append(user)
-    
-    # Close the session
-    session.close()
-    
-    return users
-    
-    
-    
-""" def get_user(username: str):
-    try:
-        connection = mysql.connector.connect(
-            host=MYSQL_HOST,
-            user=MYSQL_USER,
-            port="3306",
-            password=MYSQL_PASSWORD,
-            database=MYSQL_DB
-        )
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            query = f"SELECT * FROM Users WHERE username = '{username}'"
-            cursor.execute(query)
-            user_connected = cursor.fetchone()
-            print("userconnected:", user_connected)
-            return user_connected
-    except Error as e:
-        print(f"Error while querying MySQL: {e}")
-    finally:
-        if 'cursor' in locals() and cursor:
-            cursor.close()  # Close the cursor if it was defined """
-            
-""" def get_user(username: str):
+    connection = None
+    cursor = None
     # return users_db.get(username)
     try:
         connection = mysql.connector.connect(
@@ -119,10 +57,37 @@ def get_user(username: str):
     except Error as e:
         print(f"Error while querying MySQL: {e}")
     finally:
-        cursor.close()
-        connection.close() """
+        if cursor is not None:
+            cursor.close()
+        if connection is not None and connection.is_connected():
+            connection.close()
 
 
+def create_user(user: UserDetail):
+    hashed_password = pwd_context.hash(user.password)
+    connection = None
+    cursor = None
+    try:
+        connection = mysql.connector.connect(
+            host=MYSQL_HOST,
+            user=MYSQL_USER,
+            port="3306",
+            password=MYSQL_PASSWORD,
+            database=MYSQL_DB
+        )
+        if connection.is_connected():
+            cursor = connection.cursor()
+            query = f"INSERT INTO Users (FirstName, LastName, Email, username, password) VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(query, (user.FirstName, user.LastName, user.Email, user.username, hashed_password))
+            connection.commit()
+    except Error as e:
+        print(f"Error while querying MySQL: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if connection is not None and connection.is_connected():
+            connection.close()
 
 class Token(BaseModel):
     access_token: str
@@ -161,9 +126,9 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     except PyJWTError as e:
         raise credentials_exception
     user = get_user(username)
-    if user[0] is None:
+    if user is None:
         raise credentials_exception
-    return user[0]
+    return user
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
@@ -181,19 +146,26 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     - HTTPException(400, detail="Incorrect username or password"): Si l'authentification échoue en raison d'un nom d'utilisateur ou d'un mot de passe incorrect, une exception HTTP 400 Bad Request est levée.
     """
     user = get_user(form_data.username) 
-    # Access the user's password if the list is not empty
-    if user:
-        hashed_password = user[0].password
-        if not user or not verify_password(form_data.password, hashed_password):
-            raise HTTPException(status_code=400, detail="Incorrect username or password")
+    hashed_password = user["password"]
+    if not user or not verify_password(form_data.password, hashed_password):
+        raise HTTPException(status_code=400, detail="Incorrect username or password")
 
-        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRATION)
-        access_token = create_access_token(data={"sub": form_data.username}, expires_delta=None) #, expires_delta=access_token_expires)
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRATION)
+    access_token = create_access_token(data={"sub": form_data.username}, expires_delta=None) #, expires_delta=access_token_expires)
 
-        return {"access_token": access_token, "token_type": "bearer"}
-    else:
-        # Handle the case when the list is empty
-        return {"access_token": "No user found.", "token_type": ""}
+    return {"access_token": access_token, "token_type": "bearer"}
+
+# A new endpoint POST /users is created to handle user registration.
+# The create_new_user function receives a UserDetail object, 
+# checks if the username already exists, hashes the password, 
+# and inserts the new user into the MySQL database using the create_user function.
+@app.post("/users", response_model=UserDetail)
+async def create_new_user(user: UserDetail):
+    existing_user = get_user(user.username)
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Username already registered")
+    create_user(user)
+    return user
 
 @app.get("/")
 def read_public_data():
@@ -228,9 +200,8 @@ def read_private_data(current_user: dict = Depends(get_current_user)):
     Raises:
     - HTTPException(401, detail="Unauthorized"): Si l'utilisateur n'est pas authentifié, une exception HTTP 401 Unauthorized est levée.
     """
-    
-    return dict(current_user)
-#{**current_user}
+
+    return {**current_user}
 
 '''
 @app.on_event("startup")
