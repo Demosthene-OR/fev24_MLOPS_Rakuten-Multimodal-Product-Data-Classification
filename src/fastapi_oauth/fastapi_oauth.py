@@ -15,7 +15,7 @@ class UserDetail(BaseModel):
     FirstName: str
     LastName: str
     Email: str
-    Authorization: str
+    Authorization: int # integer, not str
     username: str
     password: str # The UserDetail model includes a password field
 
@@ -77,8 +77,8 @@ def create_user(user: UserDetail):
         )
         if connection.is_connected():
             cursor = connection.cursor()
-            query = f"INSERT INTO Users (FirstName, LastName, Email, username, password) VALUES (%s, %s, %s, %s, %s)"
-            cursor.execute(query, (user.FirstName, user.LastName, user.Email, user.username, hashed_password))
+            query = "INSERT INTO Users (FirstName, LastName, Email, Authorization, username, password) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(query, (user.FirstName, user.LastName, user.Email, user.Authorization, user.username, hashed_password))
             connection.commit()
     except Error as e:
         print(f"Error while querying MySQL: {e}")
