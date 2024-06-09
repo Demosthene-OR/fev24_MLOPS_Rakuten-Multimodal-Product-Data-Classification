@@ -187,7 +187,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 # The create_new_user function receives a UserDetail object, 
 # checks if the username already exists, hashes the password, 
 # and inserts the new user into the MySQL database using the create_user function.
-@app.post("/users", response_model=UserDetail)
+@app.post("/usercreate", response_model=UserDetail)
 async def create_new_user(user: UserDetail):
     existing_user = get_user(user.username)
     if existing_user:
@@ -195,7 +195,7 @@ async def create_new_user(user: UserDetail):
     create_user(user)
     return user
 
-@app.delete("/users/{username}", status_code=204)
+@app.delete("/userdelete/{username}", status_code=204)
 async def delete_existing_user(username: str):
     existing_user = get_user(username)
     if not existing_user:
