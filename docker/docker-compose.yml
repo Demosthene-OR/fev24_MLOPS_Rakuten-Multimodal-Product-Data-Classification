@@ -117,6 +117,17 @@ services:
       - ./../tests:/app/tests:z
       - ./:/app/docker:z
 
+  tensorboard:
+    build: 
+      context: ./../tensorboard
+      dockerfile: Dockerfile.tensorboard
+    container_name: tensorboard
+    restart: always
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./../logs:/app/logs:z
+
   postgres:
     image: postgres:13
     environment:
