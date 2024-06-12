@@ -41,6 +41,7 @@ def run():
     
     if (chosen_id == "tab1"):
 
+        st.link_button("Go to Tensorboard", "http://localhost:6006/")
         st.write("Select the model:")
         sel_model = st.selectbox("Model selected:",subfolders) # label_visibility="hidden")
         
