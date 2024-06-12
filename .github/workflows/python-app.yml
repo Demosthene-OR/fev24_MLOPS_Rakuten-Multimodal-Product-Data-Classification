@@ -3,10 +3,19 @@
 name: Python application with Docker Compose
 
 on:
-  push:
-    branches: [ "main" ]
+    branches: 
+      - main
+      - tests
+      - flows-complement
+      - af
+      - rakflow
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+      - tests
+      - flows-complement
+      - af
+      - rakflow
 
 permissions:
   contents: read
