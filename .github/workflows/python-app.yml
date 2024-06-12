@@ -3,6 +3,7 @@
 name: Python application with Docker Compose
 
 on:
+  push:
     branches: 
       - main
       - tests
