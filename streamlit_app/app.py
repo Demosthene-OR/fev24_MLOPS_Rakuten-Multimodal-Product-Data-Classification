@@ -88,25 +88,9 @@ TABS = OrderedDict(
 def run():
 
     st.sidebar.image(
-        "assets/logo_rakuten.svg",
+        "assets/logo_rakuten.png",
         width=270,
     )
-    # <div style="width:100%;height:0;padding-bottom:60%;position:relative;overflow:hidden;"><iframe src="https://i.giphy.com/ZGdpXBABdYIqc4rMsE.webp" style="position:absolute;width:100%;height:100%;top:0;left:0;border:0;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p></p>
-      
-    iframe_code = """
-        <div style="width:100%;height:0;padding-bottom:60%;position:relative;"><iframe src="https://giphy.com/embed/ZGdpXBABdYIqc4rMsE" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p></p>
-    """
-
-    # Display the iframe in the sidebar using markdown
-    # st.sidebar.markdown(iframe_code, unsafe_allow_html=True)
-    custom_css = """
-    <style>
-    .eczjsme4 {
-        padding-top: 0px !important;
-    }
-    </style>
-    """
-    # st.sidebar.markdown(custom_css, unsafe_allow_html=True)
     
     st.sidebar.markdown(f"<span style='color:red; font-weight:bold;font-size:1.8em;'>{st.session_state.UserFirstName} {st.session_state.UserLastName}</span>", unsafe_allow_html=True)
 
