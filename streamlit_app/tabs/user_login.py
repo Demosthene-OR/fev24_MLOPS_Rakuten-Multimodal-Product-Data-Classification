@@ -33,6 +33,32 @@ MYSQL_USER = "root"
 MYSQL_PASSWORD = os.getenv("MYSQL_ROOT_PWD")
 MYSQL_DB = "rakuten_db"
 
+def display_user_db():
+    st.write("")
+    st.write("<strong>Base de Données Utilisateurs</strong>", unsafe_allow_html=True)
+    # Récupérer tous les enregistrements de la base de données
+    try:
+        connection = mysql.connector.connect(
+        host=MYSQL_HOST,
+        user=MYSQL_USER,
+        port="3306", 
+        password=MYSQL_PASSWORD,
+        database=MYSQL_DB
+        )
+        if connection.is_connected():
+            cursor = connection.cursor(dictionary=True)
+            query = "SELECT * FROM Users"
+            cursor.execute(query)
+            records = cursor.fetchall()
+            df = pd.DataFrame(records)
+            st.dataframe(df)
+            st.link_button("Edit the MySQL database", "http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users")                
+    except Error as e:
+        st.error(f"Error while querying MySQL: {e}")
+    finally:
+        cursor.close()
+        connection.close()
+                
 def run():
     
     st.write("")
