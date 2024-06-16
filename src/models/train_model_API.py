@@ -377,7 +377,7 @@ class concatenate:
         best_accuracy = 0.0
         best_weighted_f1 = 0.0
 
-        for rnn_weight in np.linspace(0.5, 1, 101):  # Essayer différents poids pour RNN
+        for rnn_weight in np.linspace(0, 1, 101):  # Essayer différents poids pour RNN
             vgg16_weight = 1.0 - rnn_weight  # Le poids total doit être égal à 1
 
             combined_predictions = (rnn_weight * rnn_proba) + (
