@@ -1,5 +1,5 @@
 {
-"api_key":"your API key which allow you to request the app",
+"api_key":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPbGl2aWVyIn0.7NH-Yf89yE-Jmp4o9e0zAShl1rQQUvZ4q2I3zknp710",
 "slack_api_token":"you slack api token which will allow you to send alert through Slack",
 "min_accuracy_threshold":0.7,
 "num_sales":10,
