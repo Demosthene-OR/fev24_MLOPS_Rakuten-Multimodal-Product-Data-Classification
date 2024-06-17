@@ -33,12 +33,12 @@
 						},
 						{
 							"key": "username",
-							"value": "Alice",
+							"value": "Olivier",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "Alice",
+							"value": "Olivier",
 							"type": "text"
 						},
 						{
@@ -158,6 +158,23 @@
 					],
 					"path": [
 						"new_product_proposal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict initialization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURLPredict}}/initalisation",
+					"host": [
+						"{{baseURLPredict}}"
+					],
+					"path": [
+						"initalisation"
 					]
 				}
 			},
@@ -383,7 +400,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"x_train_path\": \"data/preprocessed/X_train_update.csv\",\r\n    \"y_train_path\": \"data/preprocessed/Y_train_CVw08PX.csv\",\r\n    \"images_path\": \"data/preprocessed/image_train\",\r\n    \"model_path\": \"models\",\r\n    \"n_epochs\": 10,\r\n    \"samples_per_class\": 0,\r\n    \"with_test\": \"True\",\r\n    \"random_state\": 42,\r\n    \"api_secured\": \"False\"\r\n}",
+					"raw": "{\r\n    \"x_train_path\": \"data/preprocessed/X_train_update.csv\",\r\n    \"y_train_path\": \"data/preprocessed/Y_train_CVw08PX.csv\",\r\n    \"images_path\": \"data/preprocessed/image_train\",\r\n    \"model_path\": \"models\",\r\n    \"n_epochs\": 25,\r\n    \"samples_per_class\": 0,\r\n    \"with_test\": \"True\",\r\n    \"random_state\": 42,\r\n    \"full_train\": \"False\",\r\n    \"n_sales_ft\": 50,\r\n    \"api_secured\": \"True\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -447,6 +464,17 @@
 					"path": [
 						"reset_dataset"
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FastAPI OAuth2 Users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
 				}
 			},
 			"response": []
