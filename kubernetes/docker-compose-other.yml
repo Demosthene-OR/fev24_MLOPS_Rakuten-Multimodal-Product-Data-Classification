@@ -1,0 +1,97 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: users-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PWD}
+      MYSQL_DATABASE: rakuten_db
+    ports:
+      - "3306:3306"
+    # volumes:
+    #   - ./../data/mysql-data:/var/lib/mysql:z
+    #   - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --innodb-flush-log-at-trx-commit=2
+
+  adminer:
+    image: adminer
+    container_name: admin-db
+    restart: always
+    ports:
+      - "8080:8080"
+
+  api_predict:
+    build: 
+      context: ./../src
+      dockerfile: Dockerfile.predict
+    container_name: api-predict
+    restart: always
+    ports:
+      - "8000:8000"
+    # volumes:
+    #   - ./../models:/app/models:z
+    #   - ./../data:/app/data:z
+    #   - ./../tests:/app/tests:z
+
+  api_oauth:
+    build: 
+      context: ./../src/fastapi_oauth
+      dockerfile: Dockerfile.oauth
+    container_name: api-oauth
+    restart: always
+    ports:
+      - "8001:8001"
+
+  api_train:
+    build: 
+      context: ./../src
+      dockerfile: Dockerfile.train
+    container_name: api-train
+    restart: always
+    ports:
+      - "8002:8002"
+    # volumes:
+    #   - ./../models:/app/models:z
+    #   - ./../data:/app/data:z
+    #   - ./../tests:/app/tests:z
+    #   - ./../logs:/app/logs:z
+
+  api_flows:
+    build: 
+      context: ./../src/flows
+      dockerfile: Dockerfile.flows
+    container_name: api-flows
+    restart: always
+    ports:
+      - "8003:8003"
+    # volumes:
+    #   - ./../models:/app/models:z
+    #   - ./../data:/app/data:z
+    #   - ./../tests:/app/tests:z
+
+  streamlit:
+    build: 
+      context: ./../streamlit-app
+      dockerfile: Dockerfile.streamlit
+    container_name: streamlit
+    restart: always
+    ports:
+      - "8501:8501"
+    # volumes:
+    #   - ./../models:/app/models:z
+    #   - ./../data:/app/data:z
+    #   - ./../tests:/app/tests:z
+    #   - ./:/app/docker:z
+
+  tensorboard:
+    build: 
+      context: ./../tensorboard
+      dockerfile: Dockerfile.tensorboard
+    container_name: tensorboard
+    restart: always
+    ports:
+      - "6006:6006"
+    # volumes:
+    #   - ./../logs:/app/logs:z

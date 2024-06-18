@@ -43,7 +43,7 @@ async def main(input_data: TrainInput, token: Optional[str] = Depends(oauth2_sch
     
     # Si api_secured est True, vérifiez les crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://api-oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à l'entrainment du modèle")
         else:

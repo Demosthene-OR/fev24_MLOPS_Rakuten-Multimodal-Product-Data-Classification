@@ -170,7 +170,7 @@ def run():
         # Call the function to copy items
         if st.button('Click to release the model'):
             copy_items(files_path, dest_path, items_to_copy)
-            predict_endpoint = "http://api_predict:8000/initialisation"
+            predict_endpoint = "http://api-predict:8000/initialisation"
             predict_response = requests.get(predict_endpoint)
             st.success(predict_response.json().get("message", "No message in response"))
             

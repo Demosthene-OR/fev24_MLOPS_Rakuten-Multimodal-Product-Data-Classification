@@ -52,7 +52,7 @@ def display_user_db():
             records = cursor.fetchall()
             df = pd.DataFrame(records)
             st.dataframe(df)
-            st.link_button("Edit the MySQL database", "http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users")                
+            st.link_button("Edit the MySQL database", "http://localhost:8080/?server=users-db&username=root&db=rakuten_db&select=Users")                
     except Error as e:
         st.error(f"Error while querying MySQL: {e}")
     finally:

@@ -1,0 +1,97 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-db
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adminer
+spec:
+  selector:
+    app: adminer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-predict
+spec:
+  selector:
+    app: api-predict
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-oauth
+spec:
+  selector:
+    app: api-oauth
+  ports:
+    - protocol: TCP
+      port: 8001
+      targetPort: 8001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-train
+spec:
+  selector:
+    app: api-train
+  ports:
+    - protocol: TCP
+      port: 8002
+      targetPort: 8002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-flows
+spec:
+  selector:
+    app: api-flows
+  ports:
+    - protocol: TCP
+      port: 8003
+      targetPort: 8003
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit
+spec:
+  selector:
+    app: streamlit
+  ports:
+    - protocol: TCP
+      port: 8501
+      targetPort: 8501
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tensorboard
+spec:
+  selector:
+    app: tensorboard
+  ports:
+    - protocol: TCP
+      port: 6006
+      targetPort: 6006
+
+

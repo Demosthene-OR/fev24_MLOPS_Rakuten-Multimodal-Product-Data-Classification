@@ -47,7 +47,7 @@ def new_product_proposal(input_data: NewProductsProposalInput, token: Optional[s
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://api-oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -118,7 +118,7 @@ def  add_new_products(input_data: NewProductsInput, token: Optional[str] = Depen
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://api-oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -222,7 +222,7 @@ def compute_metrics_new_products(input_data: ComputeMetricsInput, token: Optiona
 
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://api-oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -259,7 +259,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://api-oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:
@@ -328,7 +328,7 @@ def save_model_start_train(input_data: SaveModelTrain, token: Optional[str] = De
                 print(f"Erreur lors du traitement du fichier {new_classes_path}: {e}")
                 
         # Exécution de la requête POST pour démarrer l'entraînement
-        train_endpoint = "http://api_train:8002/train"
+        train_endpoint = "http://api-train:8002/train"
         train_data = {
             "api_secured": True,
             "x_train_path": destination_dir+"/X_train_update.csv",
@@ -362,7 +362,7 @@ def  reset_dataset(input_data: NewProductsInput, images: Optional[bool] = True, 
     
     # If api_secured = True, check the crédentiels
     if input_data.api_secured:
-        auth_response = requests.get("http://api_oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
+        auth_response = requests.get("http://api-oauth:8001/secured", headers={"Authorization": f"Bearer {token}"})
         if auth_response.status_code != 200:
             raise HTTPException(status_code=auth_response.status_code, detail="Non autorisé à accéder à la prédiction")
         else:

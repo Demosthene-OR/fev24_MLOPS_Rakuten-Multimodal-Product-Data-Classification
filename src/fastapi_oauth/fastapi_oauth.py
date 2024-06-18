@@ -21,7 +21,7 @@ class UserDetail(BaseModel):
 
 
 # Configuration de la base de données MySQL
-MYSQL_HOST = "users_db"
+MYSQL_HOST = "users-db"
 MYSQL_USER = "root"
 MYSQL_PASSWORD = "Rakuten"
 MYSQL_DB = "rakuten_db"

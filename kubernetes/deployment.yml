@@ -1,0 +1,245 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: users-db
+        image: mysql:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: ${MYSQL_ROOT_PWD}
+        - name: MYSQL_DATABASE
+          value: rakuten_db
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-storage
+          mountPath: /var/lib/mysql
+        - name: init-sql
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+      - name: init-sql
+        hostPath:
+          path: init.sql
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adminer
+  template:
+    metadata:
+      labels:
+        app: adminer
+    spec:
+      containers:
+      - name: adminer
+        image: adminer
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-predict
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-predict
+  template:
+    metadata:
+      labels:
+        app: api-predict
+    spec:
+      containers:
+      - name: api-predict
+        image: olivierrenouard1103523/docker-api_predict:latest
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - mountPath: /app/models
+          name: models-volume
+        - mountPath: /app/data
+          name: data-volume
+      volumes:
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: pvc-models
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: pvc-data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-oauth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-oauth
+  template:
+    metadata:
+      labels:
+        app: api-oauth
+    spec:
+      containers:
+      - name: api-oauth
+        image: olivierrenouard1103523/api-oauth:latest  # Remplacez par votre image Docker Hub
+        ports:
+        - containerPort: 8001
+        # Ajoutez d'autres paramètres nécessaires comme les variables d'environnement, etc.
+      # Ajoutez d'autres configurations nécessaires comme les volumes, les secrets, etc.
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-train
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-train
+  template:
+    metadata:
+      labels:
+        app: api-train
+    spec:
+      containers:
+      - name: api-train
+        image: olivierrenouard1103523/api-train:latest  # Remplacez par votre image Docker Hub
+        ports:
+        - containerPort: 8002
+        volumeMounts:
+        - mountPath: /app/models
+          name: models-volume
+        - mountPath: /app/data
+          name: data-volume
+      volumes:
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: pvc-models
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: pvc-data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-flows
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-flows
+  template:
+    metadata:
+      labels:
+        app: api-flows
+    spec:
+      containers:
+      - name: api-flows
+        image: olivierrenouard1103523/api-flows:latest  # Remplacez par votre image Docker Hub
+        ports:
+        - containerPort: 8003
+        volumeMounts:
+        - mountPath: /app/models
+          name: models-volume
+        - mountPath: /app/data
+          name: data-volume
+      volumes:
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: pvc-models
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: pvc-data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streamlit
+  template:
+    metadata:
+      labels:
+        app: streamlit
+    spec:
+      containers:
+      - name: streamlit
+        image: olivierrenouard1103523/streamlit:latest  # Remplacez par votre image Docker Hub
+        ports:
+        - containerPort: 8501
+        volumeMounts:
+        - name: docker
+          mountPath: /app/docker
+          readOnly: true
+        - mountPath: /app/models
+          name: models-volume
+        - mountPath: /app/data
+          name: data-volume
+      volumes:
+      - name: docker
+        hostPath:
+          path: ./docker
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: pvc-models
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: pvc-data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tensorboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tensorboard
+  template:
+    metadata:
+      labels:
+        app: tensorboard
+    spec:
+      containers:
+      - name: tensorboard
+        image: olivierrenouard1103523/tensorboard:latest  # Remplacez par votre image Docker Hub
+        ports:
+        - containerPort: 6006
+        volumeMounts:
+        - mountPath: /app/logs
+          name: models-logs
+      volumes:
+      - name: models-logs
+        persistentVolumeClaim:
+          claimName: pvc-logs
+
+
+
+
+
+
