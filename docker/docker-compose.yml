@@ -87,7 +87,6 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
-      # - ./../tests:/app/tests:z
       - ./../logs:/app/logs:z
 
   api_flows:
@@ -101,7 +100,6 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
-      # - ./../tests:/app/tests:z
 
   streamlit:
     build: 
@@ -114,7 +112,6 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
-      # - ./../tests:/app/tests:z
 
   tensorboard:
     build: 
@@ -199,6 +196,7 @@ services:
       _AIRFLOW_WWW_USER_CREATE: "true"
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+    user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}" 
 
   flower:
     <<: *airflow-common

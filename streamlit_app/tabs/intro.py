@@ -52,6 +52,7 @@ def run():
         You can also access to:  
         - The **users MySQL database** (Password : Rakuten): [localhost:8501](http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users)  
         - **Airflow** (User : airflow, Password : airflow) : [localhost:8081](http://localhost:8081)  
+          ***Caution*** *: Do not forget to upload the variables with the file "**Variables Airflow.json**" and to enter your Slack token (if you want to use Slack)*
         - **Tensorboard** : [localhost:6006](http://localhost:6006)
           
         """
