@@ -87,7 +87,7 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
-      - ./../tests:/app/tests:z
+      # - ./../tests:/app/tests:z
       - ./../logs:/app/logs:z
 
   api_flows:
@@ -101,7 +101,7 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
-      - ./../tests:/app/tests:z
+      # - ./../tests:/app/tests:z
 
   streamlit:
     build: 
@@ -114,8 +114,7 @@ services:
     volumes:
       - ./../models:/app/models:z
       - ./../data:/app/data:z
-      - ./../tests:/app/tests:z
-      - ./:/app/docker:z
+      # - ./../tests:/app/tests:z
 
   tensorboard:
     build: 
