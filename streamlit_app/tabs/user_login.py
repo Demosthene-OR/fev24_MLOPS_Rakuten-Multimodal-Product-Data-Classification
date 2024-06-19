@@ -16,18 +16,10 @@ title = "User Login"
 sidebar_name = "User Login"
 dataPath = st.session_state.PrePath
 
-# Chargement du fichier .env uniquement si le script est exécuté manuellement
-if not os.getenv('GITHUB_ACTIONS'):
-    dotenv_path = '../docker/.env'
-    load_dotenv(dotenv_path)
-if st.session_state.docker:
-    dotenv_path = 'docker/.env'
-    load_dotenv(dotenv_path)
+# Chargement du fichier .env 
+dotenv_path = '.env'
+load_dotenv(dotenv_path)
 
-# Récupération des tokens d'accès depuis les variables d'environnement
-ACCESS_TOKEN_AUTH_0 = os.environ.get('ACCESS_TOKEN_AUTH_0')
-ACCESS_TOKEN_AUTH_1 = os.environ.get('ACCESS_TOKEN_AUTH_1')
-ACCESS_TOKEN_AUTH_2 = os.environ.get('ACCESS_TOKEN_AUTH_2')
 MYSQL_HOST = st.session_state.users_db
 MYSQL_USER = "root"
 MYSQL_PASSWORD = os.getenv("MYSQL_ROOT_PWD")
@@ -89,6 +81,7 @@ def run():
         
         # Login button
         if st.button("Login"):
+            user_connected = ""
             # Vérification de username et password sur la base de données Utilisateurs MySQL
             try:
                 connection = mysql.connector.connect(
@@ -103,13 +96,12 @@ def run():
                     query = f"SELECT * FROM Users WHERE username = '{username}'"
                     cursor.execute(query)
                     user_connected = cursor.fetchone()
+                    cursor.close()
+                    connection.close()
                 return
             except Error as e:
                 print(f"Error while querying MySQL: {e}")
             finally:
-                cursor.close()
-                connection.close()
-                # if (user_connected["username"] == username) and (user_connected["password"]== hashed_password):
                 if user_connected and bcrypt.verify(password, user_connected["password"]):
                     st.success("Logged in successfully!")
                     st.write()

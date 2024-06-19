@@ -38,24 +38,25 @@ def collect_preformances():
         # Chemin vers le fichier performances.json
         performance_file = os.path.join(model_folder, subfolder, 'performances.json')
         
-        # Lire le fichier performances.json
-        with open(performance_file, 'r') as file:
-            data = json.load(file)
-        
-        # Extraire les valeurs de f1 et d'accuracy du test
-        train_f1 = data["Concatenate"]["Train"]["f1"]
-        train_accuracy = data["Concatenate"]["Train"]["accuracy"]
-        test_f1 = data["Concatenate"]["Test"]["f1"]
-        test_accuracy = data["Concatenate"]["Test"]["accuracy"]
-        text_weight = data["Concatenate"]["weight"][0]
-        
-        # Ajouter les résultats à la liste
-        x_date.append(subfolder[17:26]+subfolder[31:])
-        y_train_f1.append(train_f1) 
-        y_train_accuracy.append(train_accuracy)
-        y_test_f1.append(test_f1)
-        y_test_accuracy.append(test_accuracy) 
-        y_text_weight.append(text_weight)
+        if os.path.isfile(performance_file):
+            # Lire le fichier performances.json
+            with open(performance_file, 'r') as file:
+                data = json.load(file)
+            
+            # Extraire les valeurs de f1 et d'accuracy du test
+            train_f1 = data["Concatenate"]["Train"]["f1"]
+            train_accuracy = data["Concatenate"]["Train"]["accuracy"]
+            test_f1 = data["Concatenate"]["Test"]["f1"]
+            test_accuracy = data["Concatenate"]["Test"]["accuracy"]
+            text_weight = data["Concatenate"]["weight"][0]
+            
+            # Ajouter les résultats à la liste
+            x_date.append(subfolder[17:26]+subfolder[31:])
+            y_train_f1.append(train_f1) 
+            y_train_accuracy.append(train_accuracy)
+            y_test_f1.append(test_f1)
+            y_test_accuracy.append(test_accuracy) 
+            y_text_weight.append(text_weight)
     return x_date, y_train_f1, y_train_accuracy, y_test_f1, y_test_accuracy,y_text_weight
     
 
@@ -75,7 +76,7 @@ def display_performance_graph(x_date, y_train_f1, y_train_accuracy, y_test_f1, y
 
     # Créer le tracé de la courbe principale avec Altair
     chart_line = alt.Chart(data_melted).mark_line(point=alt.OverlayMarkDef(filled=False, fill="white",size=80)).encode(
-        x=alt.X('Date', axis=alt.Axis(labelAngle=15, title=None)),  # Spécifier 'Date' comme temps (Time) avec rotation des étiquettes
+        x=alt.X('Date', axis=alt.Axis(labelAngle=45, title=None)),  # Spécifier 'Date' comme temps (Time) avec rotation des étiquettes
         y=alt.Y('Value:Q', scale=alt.Scale(domain=[0.65, 1.0])),  # Limiter l'échelle de l'axe Y entre 0.7 et 1.0
         color='Metric:N',  # Colorer en fonction de la métrique (Metric)
     ).properties(
