@@ -120,8 +120,7 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 >   `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Obtained access token"' \`  
 >        `--header 'Content-Type: application/json' --data '{"api_secured": "True"}'`  
     4 - Train   
->   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' \`    
->       `--data '{"api_secured": "True"}'`  
+>   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' --data '{"api_secured": "True"}'`  
         There are many paramteters available   
 >          
 > Finally, if you want to have an overview of the full process, we encourage you to launch Streamlit:
