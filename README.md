@@ -65,7 +65,7 @@ Once you've downloaded the github folder, the easiest way to use it is with **Do
   
 > `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API    
 
-Two containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data  
+Two containers, to manage the user database, will be launched: **mysql** & **adminer**. The database is located in the folder *data/mysql-data*  
 Then, in your browser you can launch the database adminer which show you the registered users:  
 http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users  
 password = Rakuten  
@@ -87,7 +87,7 @@ We suggest to use **[Postman](https://www.postman.com/)** to run the API. If the
 >   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' --data '{"api_secured": "True"}'`  
         There are many paramteters available, and many other endpoints to discovers.  
 
-    If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, launch **tensorboard**:
+If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, launch **tensorboard**:  
 > `tensorboard --logdir=logs/`
     In order to see them, you have to go on you browser and run "http://localhost:6006"
 
