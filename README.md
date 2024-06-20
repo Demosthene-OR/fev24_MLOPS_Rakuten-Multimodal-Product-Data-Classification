@@ -62,9 +62,9 @@ Project Organization
     ├── tensorboard        <- Contain the nessecary file to create a docker container
     │
     └── tests              <- Source code of the tests
-    │   └── test_rakuten.py     <- Scripts of all the test which are launched by Gihub Actions @ each commit
+    │   └── test_rakuten.py   <- Scripts of all the test which are launched by Gihub Actions @ each commit
     │
-    └── Rakuten.postman_collection.json     <- This collection contains all the API requests for the Datascientest Rakuten project
+    └── Rakuten.postman_collection.json     <- This collection contains all the API requests
 
 --------
 Using the repository with Docker
