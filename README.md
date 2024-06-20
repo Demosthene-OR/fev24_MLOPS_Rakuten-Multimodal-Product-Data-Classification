@@ -59,8 +59,43 @@ Project Organization
     └── Rakuten.postman_collection.json     <- This collection contains all the API requests for the Datascientest Rakuten project
 
 --------
+Using the repository with Docker
+------------
+Once you've downloaded the github folder, the easiest way to use it is with **Docker**, which lets you access the user database and use the APIs securely.
+  
+> `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API    
 
-Once you have downloaded the github repo, open the anaconda powershell on the root of the project and follow those instructions :
+Two containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data  
+Then, in your browser you can launch the database adminer which show you the registered users:  
+http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users  
+password = Rakuten  
+
+We suggest to use **[Postman](https://www.postman.com/)** to run the API. If the case, you can upload all the available requests with this [json file](https://github.com/Demosthene-OR/fev24_MLOPS_Rakuten-Multimodal-Product-Data-Classification/blob/main/Rakuten.postman_collection.json) 
+> However, without Postman, you can then run:
+    1 - Token generation (to login) :  
+>   `curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \`    
+>       `--data-urlencode 'username=John' --data-urlencode 'password=John'`    
+    2 - Check the informations about the user designated by the token :   
+>   `curl 'http://localhost:8001/secured' --header 'Authorization: Bearer "Obtained access token"'`
+    3 - Predict  
+        The input data are located, by default, in data/predict.  (There are many paramteters available)   
+        The predictions are saved in data/predict as 'predictions.csv'    
+>   `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Obtained access token"' \`  
+>        `--header 'Content-Type: application/json' --data '{"api_secured": "True"}'`  
+    4 - Train   
+>   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' --data '{"api_secured": "True"}'`  
+        There are many paramteters available, and many other endpoints to discovers.  
+
+    If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, launch **tensorboard**:
+> `tensorboard --logdir=logs/`
+    In order to see them, you have to go on you browser and run "http://localhost:6006"
+>          
+> Finally, if you want to have an overview of the full process, we encourage you to launch **Streamlit**:
+>   `http://localhost:8501/`
+--------
+Using the repository without **Docker**
+------------
+Open the anaconda powershell on the root of the project and follow those instructions :
 
 > `conda create -n "Rakuten-project"`    <- It will create your conda environement
 
@@ -72,19 +107,7 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 
 > `python src/data/import_raw_data.py`   <- It will import the tabular data on data/raw/
 
-> Upload the image data folder set directly on local from https://challengedata.ens.fr/participants/challenges/35/, you should save the folders image_train and image_test respecting the following structure
-
-    ├── data
-    │   └── raw           
-    |   |  ├── image_train 
-    |   |  └── image_test 
-
-> `python src/data/make_dataset.py data/raw data/preprocessed`      <- It will copy the raw dataset and paste it on data/preprocessed/
-
 > `python src/main.py`                   <- It will train the models on the dataset and save them in models. By default, the number of epochs = 1
-
-> `tensorboard --logdir=logs/`           <- It will launch tensorborad and you will be able to visualize and track various aspects of the machine learning model during training and evaluation.
-                                            In order to see them, you have to go on you browser and run "http://localhost:6006"
 
 > `python src/predict.py`                <- It will use the trained models to make a prediction (of the prdtypecode) on the desired data, by default it will predict on the train. You can pass the path to data and images as arguments if you want to change it  
 > Exemple : 
@@ -99,32 +122,8 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 > `uvicorn src.main_API:app --port 8002 --reload`  
 > `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer ' --data '{}'`  
  
+> If you want to run the API in a secured way (with Docker), stop uvicorn first   
 
-> If you want to run the API in a secured way, you have to use Docker (stop uvicorn first):   
-> `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API    
-
-> 2 containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data  
-> Then, in your browser you can launch the database adminer which show you the registered users:  
-> http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users  
-> password = Rakuten  
-
-> You can then run:
-    1 - Token generation (to login) :  
->   `curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \`    
->       `--data-urlencode 'username=John' --data-urlencode 'password=John'`    
-    2 - Check the informations about the user designated by the token :   
->   `curl 'http://localhost:8001/secured' --header 'Authorization: Bearer "Obtained access token"'`
-    3 - Predict  
-        The input data are located, by default, in data/predict.  (There are many paramteters available)   
-        The predictions are saved in data/predict as 'predictions.csv'    
->   `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Obtained access token"' \`  
->        `--header 'Content-Type: application/json' --data '{"api_secured": "True"}'`  
-    4 - Train   
->   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' --data '{"api_secured": "True"}'`  
-        There are many paramteters available   
->          
-> Finally, if you want to have an overview of the full process, we encourage you to launch Streamlit:
->   `http://localhost:8501/`
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 
