@@ -109,7 +109,6 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 > password = Rakuten  
 
 > You can then run:
->   
     1 - Token generation (to login) :  
 >   `curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \`    
 >       `--data-urlencode 'username=John' --data-urlencode 'password=John'`    
@@ -124,9 +123,8 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 >   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' \`    
 >       `--data '{"api_secured": "True"}'`  
         There are many paramteters available   
-          
-        Finally, if you want to have an overview of the full process, 
-        we encourage you to launch Streamlit:
+>          
+> Finally, if you want to have an overview of the full process, we encourage you to launch Streamlit:
 >   `http://localhost:8501/`
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
