@@ -86,16 +86,16 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 > `tensorboard --logdir=logs/`           <- It will launch tensorborad and you will be able to visualize and track various aspects of the machine learning model during training and evaluation.
                                             In order to see them, you have to go on you browser and run "http://localhost:6006"
 
-> `python src/predict.py`                <- It will use the trained models to make a prediction (of the prdtypecode) on the desired data, by default, it will predict on the train. You can pass the path to data and images as arguments if you want to change it
->
-    Exemple : python src/predict_1.py --dataset_path "data/preprocessed/X_test_update.csv" --images_path "data/preprocessed/image_test"                         
-                                         The predictions are saved in data/preprocessed as 'predictions.csv'  
+> `python src/predict.py`                <- It will use the trained models to make a prediction (of the prdtypecode) on the desired data, by default it will predict on the train. You can pass the path to data and images as arguments if you want to change it  
+> Exemple : 
+> `python src/predict.py --dataset_path "data/preprocessed/X_test_update.csv" --images_path "data/preprocessed/image_test"`                           
+> The predictions are saved in data/preprocessed as 'predictions.csv'  
 
-    If you want with to predict with the API in a unsecured way (without Docker) :  
+> If you want with to predict with the API in a unsecured way (without Docker) :  
 > `uvicorn src.predict_API:app --reload`  
 > `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer' --header 'Content-Type: application/json' --data '{}'`  
 
-    If you want with to train the model with the API in a unsecured way (without Docker) :   
+> If you want with to train the model with the API in a unsecured way (without Docker) :   
 > `uvicorn src.main_API:app --port 8002 --reload`  
 > `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer ' --data '{}'`  
  
