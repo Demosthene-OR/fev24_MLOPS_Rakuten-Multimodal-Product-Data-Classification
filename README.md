@@ -100,15 +100,15 @@ Once you have downloaded the github repo, open the anaconda powershell on the ro
 > `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer ' --data '{}'`  
  
 
-    If you want to run the API in a secured way, you have to use Docker (stop uvicorn first):   
+> If you want to run the API in a secured way, you have to use Docker (stop uvicorn first):   
 > `./docker/setup.sh`                    <- To do in Git bash. It will run the process to build and launch the containers with all the API    
 
-    2 containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data  
-    Then, in your browser you can launch the database adminer which show you the registered users:  
-    http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users  
-    password = Rakuten  
+> 2 containers to manage the user database will be launched: mysql & adminer. The database is located in the folder data/mysql-data  
+> Then, in your browser you can launch the database adminer which show you the registered users:  
+> http://localhost:8080/?server=users_db&username=root&db=rakuten_db&select=Users  
+> password = Rakuten  
 
-    You can then run:
+> You can then run:
 >   
     1 - Token generation (to login) :  
 >   `curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \`    
