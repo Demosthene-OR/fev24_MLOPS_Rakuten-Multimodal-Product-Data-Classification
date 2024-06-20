@@ -8,18 +8,24 @@ Project Organization
 
     ├── LICENSE
     ├── README.md          <- The top-level README for developers using this project.
+    ├── airflow            <- Airflow service (User: airflow, Pwd: aiflow).
+    │   ├── Variables Airflow.json           <- To upload in order to set all variables
+    │   ├── dags           <- Contain the dags
+    │   ├── logs           
+    │   └── plugins            
     ├── data
     │   ├── external       <- Data from third party sources -> the external data you want to make a prediction on
     │   ├── predict        <- Data (input and output) to make a prediction on
-        ├── mysql-data     <- Rakuten_db in MySQL with users and their rights
+    |   ├── mysql-data     <- Rakuten_db in MySQL with users and their rights (Not in the repo. Will be created with docker-compose)
     │   ├── preprocessed   <- The final, canonical data sets for modeling.
     |   |  ├── image_train <- Where you put the images of the train set
     |   |  ├── image_test <- Where you put the images of the predict set
     |   |  ├── X_train_update.csv   <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
     |   |  └── X_test_update.csv    <- The csv file with te columns designation, description, productid, imageid like in X_train_update.csv
     │   └── raw            <- The original, immutable data dump.
-    |   |  ├── image_train <- Where you put the images of the train set
-    |   |  └── image_test <- Where you put the images of the predict set
+    |      ├── image_train <- Where you put the images of the train set
+    |      └── image_test <- Where you put the images of the predict set
+    |
     ├── docker             <- Files to launch Docker-compose and run a MySQL database with users, authorisation process & the predict function
     │
     ├── logs               <- Logs from training and predicting
@@ -53,6 +59,8 @@ Project Organization
     │
     ├── streamlit_app      <- Source code of the streamlit app which shows how to use all the APIs
     │
+    ├── tensorboard        <- Contain the nessecary file to create a docker container
+    │
     └── tests              <- Source code of the tests
     │   └── test_rakuten.py     <- Scripts of all the test which are launched by Gihub Actions @ each commit
     │
@@ -72,20 +80,20 @@ password = Rakuten
 
 We suggest to use **[Postman](https://www.postman.com/)** to run the API. If the case, you can upload all the available requests with the file [Rakuten.postman_collection.json](https://github.com/Demosthene-OR/fev24_MLOPS_Rakuten-Multimodal-Product-Data-Classification/blob/main/Rakuten.postman_collection.json) in the root folder  
 
-> However, without Postman, you can then run:
-    1 - Token generation (to login) :  
+> However, without Postman, you can then run:  
+    **1** - Token generation (to login) :  
 >   `curl 'http://localhost:8001/token' --header 'Content-Type: application/x-www-form-urlencoded' \`    
 >       `--data-urlencode 'username=John' --data-urlencode 'password=John'`    
-    2 - Check the informations about the user designated by the token :   
->   `curl 'http://localhost:8001/secured' --header 'Authorization: Bearer "Obtained access token"'`
-    3 - Predict  
+    **2** - Check the informations about the user designated by the token :   
+>   `curl 'http://localhost:8001/secured' --header 'Authorization: Bearer "Obtained access token"'`  
+    **3** - Predict  
         The input data are located, by default, in data/predict.  (There are many paramteters available)   
         The predictions are saved in data/predict as 'predictions.csv'    
 >   `curl 'http://localhost:8000/prediction' --header 'Authorization: Bearer "Obtained access token"' \`  
 >        `--header 'Content-Type: application/json' --data '{"api_secured": "True"}'`  
-    4 - Train   
+    **4** - Train   
 >   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' --data '{"api_secured": "True"}'`  
-        There are many paramteters available, and many other endpoints to discovers.  
+        There are many parameters available, and many other endpoints to discover.  
 
 If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, launch **tensorboard**:  
 > `tensorboard --logdir=logs/`
