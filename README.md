@@ -96,7 +96,7 @@ We suggest to use **[Postman](https://www.postman.com/)** to run the API. If the
         There are many parameters available, and many other endpoints to discover.  
 
 If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, use **tensorboard**:  
-    Go on you browser and run "http://localhost:6006"
+    Go on you browser and enter "http://localhost:6006"
 
 You can also use **Airflow**, to update automatically the models when the performances are below a certain threshold.  
 **Caution**: Upload the file 'Variables Airflow.json' in the folder airflow:  
@@ -140,7 +140,7 @@ Exemple :
 
 If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, launch **tensorboard**:  
 > `tensorboard --logdir=logs/`  
-    Then go on you browser and run "http://localhost:6006"  
+    Then go on you browser and enter "http://localhost:6006"  
   
 If you want to run the API in a secured way (with Docker), stop uvicorn first   
 
