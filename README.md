@@ -95,9 +95,8 @@ We suggest to use **[Postman](https://www.postman.com/)** to run the API. If the
 >   `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer "Obtained access token"' --data '{"api_secured": "True"}'`  
         There are many parameters available, and many other endpoints to discover.  
 
-If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, launch **tensorboard**:  
-> `tensorboard --logdir=logs/`
-    In order to see them, you have to go on you browser and run "http://localhost:6006"
+If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, use **tensorboard**:  
+    Go on you browser and enter "http://localhost:6006"
 
 You can also use **Airflow**, to update automatically the models when the performances are below a certain threshold.  
 **Caution**: Upload the file 'Variables Airflow.json' in the folder airflow:  
@@ -138,7 +137,11 @@ Exemple :
 > If you want with to train the model with the API in a unsecured way (without Docker) :   
 > `uvicorn src.main_API:app --port 8002 --reload`  
 > `curl 'http://localhost:8002/train' --header 'Content-Type: application/json' --header 'Authorization: Bearer ' --data '{}'`  
- 
+
+If you want to visualize and track various aspects of the machine learning models (Text & Image) during training, launch **tensorboard**:  
+> `tensorboard --logdir=logs/`  
+    Then go on you browser and enter "http://localhost:6006"  
+  
 If you want to run the API in a secured way (with Docker), stop uvicorn first   
 
 
