@@ -1,7 +1,9 @@
 Project Name
 ==============================
 
-This project is a starting Pack for MLOps projects based on the subject "movie_recommandation". It's not perfect so feel free to make some modifications on it.
+This project was carried out as part of the **Datascientest MLOps course**. Its aim is to design a platform that predicts the category of a new product for sale on the **Rakuten marketplace**, and to keep the model up to date and efficient.
+The models are based on Deep Learning and use the product description and its image.
+If you'd like to find out more, read this [presentation](https://github.com/Demosthene-OR/fev24_MLOPS_Rakuten-Multimodal-Product-Data-Classification/blob/e1bc8f8c6568ff067c89f281b1dd54701f126fb2/project%20presentation/MLOPs%20-%20Projet%20Rakuten2%20-%20Multimodal%20Product%20Data%20Classification%20.pdf).
 
 Project Organization
 ------------
