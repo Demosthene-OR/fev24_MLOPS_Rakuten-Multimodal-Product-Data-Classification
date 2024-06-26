@@ -127,7 +127,7 @@ class TextRnnModel:
                 ),  # Arrête l'entraînement si la performance ne s'améliore pas
                 TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
                 ReduceLROnPlateau(
-                    monitor='val_loss', factor=0.5,patience=2, min_lr=0.00005
+                    monitor='val_loss', factor=0.25,patience=2, min_lr=0.00005
                 ),
             ]
             
@@ -267,7 +267,7 @@ class ImageVGG16Model:
                 ),  # Arrête l'entraînement si la performance ne s'améliore pas
                 TensorBoard(log_dir=f"logs/{log_name}"),  # Enregistre les journaux pour TensorBoard
                 ReduceLROnPlateau(
-                    monitor='val_loss', factor=0.5,patience=2, min_lr=0.00005
+                    monitor='val_loss', factor=0.25,patience=2, min_lr=0.00005
                 ),
                 ]
 

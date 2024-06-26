@@ -51,7 +51,7 @@ def run():
         fine_tune = st.checkbox("Do you want to Fine-tune the model ?", value=False)
         full_train = not fine_tune
         if fine_tune:
-            n_sales_ft = st.number_input("Number of last sales to take into account for the finetuning:", min_value=50, max_value=300, value=50)
+            n_sales_ft = st.number_input("Number of last sales to take into account for the finetuning:", min_value=50, max_value=300, value=150)
             samples_per_class = 0
         else:
             n_sales_ft = 50
