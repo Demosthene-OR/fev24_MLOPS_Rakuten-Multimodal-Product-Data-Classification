@@ -3,7 +3,7 @@
 "slack_api_token":"you slack api token which will allow you to send alert through Slack",
 "min_accuracy_threshold":0.7,
 "num_sales":10,
-"n_sales_finetuning":50,
+"n_sales_finetuning":150,
 "email_list": "['olivier.renouard1103@gmail.com']",
 "slack_email_list":"['olivier.renouard1103@gmail.com']"
 }
