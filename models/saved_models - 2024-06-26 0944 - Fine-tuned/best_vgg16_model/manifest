@@ -1,0 +1,3 @@
+filename,filesize,header
+best_vgg16_model_1.h5,97000000,False
+best_vgg16_model_2.h5,17710936,False

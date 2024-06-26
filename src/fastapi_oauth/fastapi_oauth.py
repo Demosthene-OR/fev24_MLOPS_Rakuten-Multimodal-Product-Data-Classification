@@ -148,13 +148,13 @@ def read_public_data():
 def read_private_data(current_user: dict = Depends(get_current_user)):
     """
     Description:
-    Cette route renvoie un message "Hello World, but secured!" uniquement si l'utilisateur est authentifié.
+    Cette route renvoie un dictionnaire avec les données de l'utilisateur identifié avec le token.
 
     Args:
-    - current_user (str, dépendance): Le nom d'utilisateur de l'utilisateur actuellement authentifié.
+    - current_user (str, dépendance): Les donnée de l'utilisateur, obtenues grâce au username codé dans le token.
 
     Returns:
-    - JSON: Renvoie un JSON contenant un message de salutation sécurisé si l'utilisateur est authentifié, sinon une réponse non autorisée.
+    - current_user: Dictionnaire avec toutes les données de l'utilisateur authentifié grâce au token.
 
     Raises:
     - HTTPException(401, detail="Unauthorized"): Si l'utilisateur n'est pas authentifié, une exception HTTP 401 Unauthorized est levée.

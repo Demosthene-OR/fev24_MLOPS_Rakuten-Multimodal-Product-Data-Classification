@@ -158,7 +158,7 @@ with DAG(
                     model_dir = sorted_subfolders[0]  # Selection du dernier entrainement complet
                 else:
                     sorted_subfolders = []
-                    print('#### Fine-tuning is impossible due to lack of Full traim model')
+                    print('#### Fine-tuning is impossible due to lack of Full trained model')
                     raise Exception('#### The task train_model did not work!')
                     
                 response = requests.get(
