@@ -1,4 +1,4 @@
-Project Name
+Rakuten - Multimodal Product Data Classification
 ==============================
 
 This project was carried out as part of the **Datascientest MLOps course**. Its aim is to design a platform that predicts the category of a new product for sale on the **Rakuten marketplace**, and to keep the model up to date and efficient.
