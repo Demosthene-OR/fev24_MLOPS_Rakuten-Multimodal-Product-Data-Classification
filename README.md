@@ -102,7 +102,7 @@ If you want to visualize and track various aspects of the machine learning model
 
 You can also use **Airflow**, to update automatically the models when the performances are below a certain threshold.  
 **Caution**: Upload the file 'Variables Airflow.json' in the folder airflow:  
-http://localhost:8501/
+http://localhost:8081/
 
 Finally, if you want to have an overview of the full process, we encourage you to launch **Streamlit** which will go through all the proccess, and will give you access to the user database, tensorflow and Airflow:  
 http://localhost:8501/`  
