@@ -1,0 +1,11 @@
+# Ignore sensitive files and large directories for HF Spaces build
+.env
+docker/.env
+streamlit_app/.env
+data/
+logs/
+models/
+venv/
+.git/
+__pycache__/
+*.pyc

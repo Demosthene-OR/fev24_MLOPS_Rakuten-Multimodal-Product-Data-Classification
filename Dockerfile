@@ -13,10 +13,17 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     ffmpeg libsm6 libxext6 iputils-ping \
     nginx supervisor mariadb-server \
+    php-fpm php-mysql wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Fix line endings just in case
 RUN sed -i 's/\r$//' /etc/supervisor/conf.d/supervisord.conf || true
+
+# Setup Adminer
+RUN mkdir -p /var/www/html/adminer \
+    && wget "https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php" -O /var/www/html/adminer/index.php \
+    && chown -R www-data:www-data /var/www/html/adminer \
+    && mkdir -p /run/php
 
 # Copy requirements first
 COPY requirements.txt .
